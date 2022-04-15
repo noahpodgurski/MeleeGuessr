@@ -8,6 +8,7 @@ type PlayData = {
   // only if not correct
   correctChoice?: string;
 }
+const playData:PlayData[] = [];
 
 export const Play: React.FC = () => {
   // ex: stage 1/5
@@ -15,7 +16,6 @@ export const Play: React.FC = () => {
   // ex
   const [score, setScore] = useState(0);
   
-  let playData:PlayData[] = [];
   
 
   const handleChoice = (choice:Choice, correctChoice:Choice) => {
@@ -45,10 +45,10 @@ export const Play: React.FC = () => {
       incorrectChoices: ["Llod", "Polish", "M2K"]
     },
     {
-      clipSrc: "./clips/testClip.mp4",
+      clipSrc: "./clips/testClip2.mp4",
       questionedObject: "Peach",
-      correctChoice: "Armada",
-      incorrectChoices: ["Llod", "Polish", "M2K"]
+      correctChoice: "Llod",
+      incorrectChoices: ["Armada", "Polish", "M2K"]
     },
     {
       clipSrc: "./clips/testClip.mp4",
@@ -57,10 +57,10 @@ export const Play: React.FC = () => {
       incorrectChoices: ["Llod", "Polish", "M2K"]
     },
     {
-      clipSrc: "./clips/testClip.mp4",
+      clipSrc: "./clips/testClip2.mp4",
       questionedObject: "Peach",
-      correctChoice: "Armada",
-      incorrectChoices: ["Llod", "Polish", "M2K"]
+      correctChoice: "Llod",
+      incorrectChoices: ["Armada", "Polish", "M2K"]
     },
     {
       clipSrc: "./clips/testClip.mp4",
@@ -70,17 +70,26 @@ export const Play: React.FC = () => {
     }
   ];
 
+  console.log(playData);
+
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center m-5" style={{height: "90vh"}}>
+      <div className="d-flex justify-content-center align-items-center m-5" style={{height: "100%"}}>
 				<div className="row justify-content-center">
           { stage < mockStages.length ? 
-            <Stage stage={mockStages[stage]} handleChoice={handleChoice} />
+            <Stage stage={mockStages[stage]} handleChoice={handleChoice} stageIndex={stage} />
           : 
-            <div>
-              You got {score} correct!
-            </div>
+            <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+              <h2>Final Score {score}/{mockStages.length} Correct</h2>
+            </div> }
+            { stage >= mockStages.length && playData.map((data, i) => {
+              return (
+                <div key={i} className="row w-100 secondary-text" style={{textAlign: "center"}}>
+                  <h3>#{i+1}. {data.wasCorrect ? "Correct" : "Incorrect"}, You chose {data.choice}</h3>
+                </div> 
+              )
+            })
           }
 				</div>
 			</div>
