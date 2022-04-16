@@ -1,0 +1,1430 @@
+{
+  "mode": "queue",
+  "replay": "",
+  "isRealTimeMode": false,
+  "outputOverlayFiles": true,
+  "queue": [
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190404T184425.slp",
+      "gameStartAt": "04/04/19 6:44 pm",
+      "startFrame": 4792,
+      "endFrame": 5688
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190423T200106.slp",
+      "gameStartAt": "04/23/19 8:01 pm",
+      "startFrame": 5121,
+      "endFrame": 5941
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190423T200702.slp",
+      "gameStartAt": "04/23/19 8:07 pm",
+      "startFrame": 3188,
+      "endFrame": 3936
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190423T200852.slp",
+      "gameStartAt": "04/23/19 8:08 pm",
+      "startFrame": 3742,
+      "endFrame": 4602
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190429T231955.slp",
+      "gameStartAt": "04/29/19 11:19 pm",
+      "startFrame": 3510,
+      "endFrame": 4421
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190506T123837.slp",
+      "gameStartAt": "05/06/19 12:38 pm",
+      "startFrame": 1156,
+      "endFrame": 2142
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190519T203602.slp",
+      "gameStartAt": "05/19/19 8:36 pm",
+      "startFrame": 11151,
+      "endFrame": 11946
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190526T193506.slp",
+      "gameStartAt": "05/26/19 7:35 pm",
+      "startFrame": 2650,
+      "endFrame": 3344
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190617T192200.slp",
+      "gameStartAt": "06/17/19 7:22 pm",
+      "startFrame": 290,
+      "endFrame": 1610
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190702T234612.slp",
+      "gameStartAt": "07/02/19 11:46 pm",
+      "startFrame": 1972,
+      "endFrame": 2998
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190702T235412.slp",
+      "gameStartAt": "07/02/19 11:54 pm",
+      "startFrame": 188,
+      "endFrame": 952
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190709T234424.slp",
+      "gameStartAt": "07/09/19 11:44 pm",
+      "startFrame": 8393,
+      "endFrame": 9237
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190711T223934.slp",
+      "gameStartAt": "07/11/19 10:39 pm",
+      "startFrame": 6298,
+      "endFrame": 7139
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190716T231640.slp",
+      "gameStartAt": "07/16/19 11:16 pm",
+      "startFrame": 890,
+      "endFrame": 1655
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190717T181821.slp",
+      "gameStartAt": "07/17/19 6:18 pm",
+      "startFrame": 1753,
+      "endFrame": 2617
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190718T183305.slp",
+      "gameStartAt": "07/18/19 6:33 pm",
+      "startFrame": 3334,
+      "endFrame": 4031
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190718T211713.slp",
+      "gameStartAt": "07/18/19 9:17 pm",
+      "startFrame": 7287,
+      "endFrame": 8154
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190718T224439.slp",
+      "gameStartAt": "07/18/19 10:44 pm",
+      "startFrame": 7039,
+      "endFrame": 7829
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190719T093954.slp",
+      "gameStartAt": "07/19/19 9:39 am",
+      "startFrame": 1204,
+      "endFrame": 2014
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190724T113731.slp",
+      "gameStartAt": "07/24/19 11:37 am",
+      "startFrame": 3514,
+      "endFrame": 4363
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190729T205551.slp",
+      "gameStartAt": "07/29/19 8:55 pm",
+      "startFrame": 6570,
+      "endFrame": 7687
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190729T212347.slp",
+      "gameStartAt": "07/29/19 9:23 pm",
+      "startFrame": 3431,
+      "endFrame": 4207
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190731T134744.slp",
+      "gameStartAt": "07/31/19 1:47 pm",
+      "startFrame": 578,
+      "endFrame": 1356
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190731T140129.slp",
+      "gameStartAt": "07/31/19 2:01 pm",
+      "startFrame": 214,
+      "endFrame": 1179
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190731T140129.slp",
+      "gameStartAt": "07/31/19 2:01 pm",
+      "startFrame": 5284,
+      "endFrame": 6157
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190731T140830.slp",
+      "gameStartAt": "07/31/19 2:08 pm",
+      "startFrame": 375,
+      "endFrame": 1083
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190731T140830.slp",
+      "gameStartAt": "07/31/19 2:08 pm",
+      "startFrame": 5556,
+      "endFrame": 6377
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190810T152534.slp",
+      "gameStartAt": "08/10/19 3:25 pm",
+      "startFrame": -40,
+      "endFrame": 567
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190810T175044.slp",
+      "gameStartAt": "08/10/19 5:50 pm",
+      "startFrame": 7758,
+      "endFrame": 8498
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190823T155721.slp",
+      "gameStartAt": "08/23/19 3:57 pm",
+      "startFrame": 7699,
+      "endFrame": 8528
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190910T215544.slp",
+      "gameStartAt": "09/10/19 9:55 pm",
+      "startFrame": 2377,
+      "endFrame": 3445
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190918T194905.slp",
+      "gameStartAt": "09/18/19 7:49 pm",
+      "startFrame": 7346,
+      "endFrame": 8285
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190918T195203.slp",
+      "gameStartAt": "09/18/19 7:52 pm",
+      "startFrame": 189,
+      "endFrame": 1476
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190918T195818.slp",
+      "gameStartAt": "09/18/19 7:58 pm",
+      "startFrame": 28,
+      "endFrame": 1066
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190918T195818.slp",
+      "gameStartAt": "09/18/19 7:58 pm",
+      "startFrame": 2088,
+      "endFrame": 2977
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20190918T195818.slp",
+      "gameStartAt": "09/18/19 7:58 pm",
+      "startFrame": 6667,
+      "endFrame": 7615
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200128T211203.slp",
+      "gameStartAt": "01/28/20 9:12 pm",
+      "startFrame": 1988,
+      "endFrame": 2712
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200211T203100.slp",
+      "gameStartAt": "02/11/20 8:31 pm",
+      "startFrame": 8213,
+      "endFrame": 8961
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200212T221025.slp",
+      "gameStartAt": "02/12/20 10:10 pm",
+      "startFrame": -104,
+      "endFrame": 663
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200218T215724.slp",
+      "gameStartAt": "02/18/20 9:57 pm",
+      "startFrame": 2686,
+      "endFrame": 3540
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200302T164530.slp",
+      "gameStartAt": "03/02/20 4:45 pm",
+      "startFrame": 3134,
+      "endFrame": 3833
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200305T221154.slp",
+      "gameStartAt": "03/05/20 10:11 pm",
+      "startFrame": 149,
+      "endFrame": 970
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200307T182343.slp",
+      "gameStartAt": "03/07/20 6:23 pm",
+      "startFrame": 1716,
+      "endFrame": 2613
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200309T182618.slp",
+      "gameStartAt": "03/09/20 6:26 pm",
+      "startFrame": 178,
+      "endFrame": 1156
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200311T152813.slp",
+      "gameStartAt": "03/11/20 3:28 pm",
+      "startFrame": 3198,
+      "endFrame": 4591
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200311T203321.slp",
+      "gameStartAt": "03/11/20 8:33 pm",
+      "startFrame": 2283,
+      "endFrame": 3092
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200312T171904.slp",
+      "gameStartAt": "03/12/20 5:19 pm",
+      "startFrame": 6792,
+      "endFrame": 7531
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200312T233714.slp",
+      "gameStartAt": "03/12/20 11:37 pm",
+      "startFrame": 12677,
+      "endFrame": 13604
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200317T134244.slp",
+      "gameStartAt": "03/17/20 1:42 pm",
+      "startFrame": 697,
+      "endFrame": 1809
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200319T211016.slp",
+      "gameStartAt": "03/19/20 9:10 pm",
+      "startFrame": 716,
+      "endFrame": 1510
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200321T210956.slp",
+      "gameStartAt": "03/21/20 9:09 pm",
+      "startFrame": -123,
+      "endFrame": 622
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200325T191617.slp",
+      "gameStartAt": "03/25/20 7:16 pm",
+      "startFrame": 3378,
+      "endFrame": 4226
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200329T183419.slp",
+      "gameStartAt": "03/29/20 6:34 pm",
+      "startFrame": 8916,
+      "endFrame": 9802
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200329T185726.slp",
+      "gameStartAt": "03/29/20 6:57 pm",
+      "startFrame": 6705,
+      "endFrame": 7503
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200330T203556.slp",
+      "gameStartAt": "03/30/20 8:35 pm",
+      "startFrame": 5244,
+      "endFrame": 6091
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200330T212258.slp",
+      "gameStartAt": "03/30/20 9:22 pm",
+      "startFrame": 2647,
+      "endFrame": 3351
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200624T004028.slp",
+      "gameStartAt": "06/24/20 12:40 am",
+      "startFrame": 12810,
+      "endFrame": 13617
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200626T204807.slp",
+      "gameStartAt": "06/26/20 8:48 pm",
+      "startFrame": 5017,
+      "endFrame": 5718
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200629T023900.slp",
+      "gameStartAt": "06/29/20 2:39 am",
+      "startFrame": 4623,
+      "endFrame": 5297
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200630T191232.slp",
+      "gameStartAt": "06/30/20 7:12 pm",
+      "startFrame": 4907,
+      "endFrame": 5699
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200630T222844.slp",
+      "gameStartAt": "06/30/20 10:28 pm",
+      "startFrame": 3555,
+      "endFrame": 4390
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200701T154613.slp",
+      "gameStartAt": "07/01/20 3:46 pm",
+      "startFrame": 7055,
+      "endFrame": 7857
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200701T161855.slp",
+      "gameStartAt": "07/01/20 4:18 pm",
+      "startFrame": 4551,
+      "endFrame": 5272
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200705T112220.slp",
+      "gameStartAt": "07/05/20 11:22 am",
+      "startFrame": 1829,
+      "endFrame": 2461
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200708T014156.slp",
+      "gameStartAt": "07/08/20 1:41 am",
+      "startFrame": 1533,
+      "endFrame": 2514
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200709T002746.slp",
+      "gameStartAt": "07/09/20 12:27 am",
+      "startFrame": 1069,
+      "endFrame": 2064
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200709T135002.slp",
+      "gameStartAt": "07/09/20 1:50 pm",
+      "startFrame": -123,
+      "endFrame": 756
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200711T121517.slp",
+      "gameStartAt": "07/11/20 12:15 pm",
+      "startFrame": 2109,
+      "endFrame": 3165
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200712T003307.slp",
+      "gameStartAt": "07/12/20 12:33 am",
+      "startFrame": 1359,
+      "endFrame": 2319
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200712T010039.slp",
+      "gameStartAt": "07/12/20 1:00 am",
+      "startFrame": 1091,
+      "endFrame": 1892
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200712T215505.slp",
+      "gameStartAt": "07/12/20 9:55 pm",
+      "startFrame": 668,
+      "endFrame": 1418
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200712T215713.slp",
+      "gameStartAt": "07/12/20 9:57 pm",
+      "startFrame": 137,
+      "endFrame": 965
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200714T193906.slp",
+      "gameStartAt": "07/14/20 7:39 pm",
+      "startFrame": 2915,
+      "endFrame": 3563
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200715T185534.slp",
+      "gameStartAt": "07/15/20 6:55 pm",
+      "startFrame": 393,
+      "endFrame": 1264
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200719T195119.slp",
+      "gameStartAt": "07/19/20 7:51 pm",
+      "startFrame": 10708,
+      "endFrame": 11368
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200721T170803.slp",
+      "gameStartAt": "07/21/20 5:08 pm",
+      "startFrame": 3307,
+      "endFrame": 4055
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200723T215930.slp",
+      "gameStartAt": "07/23/20 9:59 pm",
+      "startFrame": 4587,
+      "endFrame": 5330
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200724T231741.slp",
+      "gameStartAt": "07/24/20 11:17 pm",
+      "startFrame": 9014,
+      "endFrame": 9838
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200729T000554.slp",
+      "gameStartAt": "07/29/20 12:05 am",
+      "startFrame": 3519,
+      "endFrame": 4273
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200805T220422.slp",
+      "gameStartAt": "08/05/20 10:04 pm",
+      "startFrame": 1449,
+      "endFrame": 2243
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200807T023045.slp",
+      "gameStartAt": "08/07/20 2:30 am",
+      "startFrame": 7009,
+      "endFrame": 7748
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200811T013542.slp",
+      "gameStartAt": "08/11/20 1:35 am",
+      "startFrame": 2680,
+      "endFrame": 3542
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200811T225133.slp",
+      "gameStartAt": "08/11/20 10:51 pm",
+      "startFrame": 249,
+      "endFrame": 1203
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200812T151427.slp",
+      "gameStartAt": "08/12/20 3:14 pm",
+      "startFrame": 348,
+      "endFrame": 1317
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200812T214047.slp",
+      "gameStartAt": "08/12/20 9:40 pm",
+      "startFrame": 4937,
+      "endFrame": 5709
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200814T150903.slp",
+      "gameStartAt": "08/14/20 3:09 pm",
+      "startFrame": 8296,
+      "endFrame": 9162
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200823T151530.slp",
+      "gameStartAt": "08/23/20 3:15 pm",
+      "startFrame": 1884,
+      "endFrame": 2800
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200903T133639.slp",
+      "gameStartAt": "09/03/20 1:36 pm",
+      "startFrame": 1634,
+      "endFrame": 2464
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200903T133639.slp",
+      "gameStartAt": "09/03/20 1:36 pm",
+      "startFrame": 4325,
+      "endFrame": 5050
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200903T202020.slp",
+      "gameStartAt": "09/03/20 8:20 pm",
+      "startFrame": 11100,
+      "endFrame": 11947
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200909T211303.slp",
+      "gameStartAt": "09/09/20 9:13 pm",
+      "startFrame": 335,
+      "endFrame": 1184
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200909T211303.slp",
+      "gameStartAt": "09/09/20 9:13 pm",
+      "startFrame": 1011,
+      "endFrame": 1727
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200909T215623.slp",
+      "gameStartAt": "09/09/20 9:56 pm",
+      "startFrame": -123,
+      "endFrame": 488
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200912T222756.slp",
+      "gameStartAt": "09/12/20 10:27 pm",
+      "startFrame": 6387,
+      "endFrame": 7040
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200915T005918.slp",
+      "gameStartAt": "09/15/20 12:59 am",
+      "startFrame": 5584,
+      "endFrame": 6469
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200915T205143.slp",
+      "gameStartAt": "09/15/20 8:51 pm",
+      "startFrame": 6908,
+      "endFrame": 7779
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200915T220231.slp",
+      "gameStartAt": "09/15/20 10:02 pm",
+      "startFrame": 3426,
+      "endFrame": 4223
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200916T001422.slp",
+      "gameStartAt": "09/16/20 12:14 am",
+      "startFrame": 5738,
+      "endFrame": 6435
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200918T121428.slp",
+      "gameStartAt": "09/18/20 12:14 pm",
+      "startFrame": 8026,
+      "endFrame": 8721
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20200929T140449.slp",
+      "gameStartAt": "09/29/20 2:04 pm",
+      "startFrame": 871,
+      "endFrame": 1633
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201008T204313.slp",
+      "gameStartAt": "10/08/20 8:43 pm",
+      "startFrame": 4195,
+      "endFrame": 5108
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201008T204538.slp",
+      "gameStartAt": "10/08/20 8:45 pm",
+      "startFrame": 10237,
+      "endFrame": 11155
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201008T211337.slp",
+      "gameStartAt": "10/08/20 9:13 pm",
+      "startFrame": 3889,
+      "endFrame": 4755
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201020T233036.slp",
+      "gameStartAt": "10/20/20 11:30 pm",
+      "startFrame": -123,
+      "endFrame": 1380
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201021T210954.slp",
+      "gameStartAt": "10/21/20 9:09 pm",
+      "startFrame": 3499,
+      "endFrame": 4373
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201024T223439.slp",
+      "gameStartAt": "10/24/20 10:34 pm",
+      "startFrame": 4000,
+      "endFrame": 4905
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201026T010930.slp",
+      "gameStartAt": "10/26/20 1:09 am",
+      "startFrame": 599,
+      "endFrame": 1337
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201027T111054.slp",
+      "gameStartAt": "10/27/20 11:10 am",
+      "startFrame": 2096,
+      "endFrame": 2956
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201030T223559.slp",
+      "gameStartAt": "10/30/20 10:35 pm",
+      "startFrame": 2717,
+      "endFrame": 3406
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201030T231708.slp",
+      "gameStartAt": "10/30/20 11:17 pm",
+      "startFrame": -123,
+      "endFrame": 685
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201031T150502.slp",
+      "gameStartAt": "10/31/20 3:05 pm",
+      "startFrame": 819,
+      "endFrame": 1499
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201105T190338.slp",
+      "gameStartAt": "11/05/20 7:03 pm",
+      "startFrame": 5102,
+      "endFrame": 5976
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201110T210716.slp",
+      "gameStartAt": "11/10/20 9:07 pm",
+      "startFrame": 2269,
+      "endFrame": 2967
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201113T145641.slp",
+      "gameStartAt": "11/13/20 2:56 pm",
+      "startFrame": 1468,
+      "endFrame": 2339
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201114T015633.slp",
+      "gameStartAt": "11/14/20 1:56 am",
+      "startFrame": 7583,
+      "endFrame": 8270
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201114T015633.slp",
+      "gameStartAt": "11/14/20 1:56 am",
+      "startFrame": 8251,
+      "endFrame": 9182
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201125T012202.slp",
+      "gameStartAt": "11/25/20 1:22 am",
+      "startFrame": 1297,
+      "endFrame": 2211
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201130T150828.slp",
+      "gameStartAt": "11/30/20 3:08 pm",
+      "startFrame": 6400,
+      "endFrame": 7084
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201202T143653.slp",
+      "gameStartAt": "12/02/20 2:36 pm",
+      "startFrame": 5311,
+      "endFrame": 6026
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201217T174207.slp",
+      "gameStartAt": "12/17/20 5:42 pm",
+      "startFrame": 6283,
+      "endFrame": 7027
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201219T232503.slp",
+      "gameStartAt": "12/19/20 11:25 pm",
+      "startFrame": 913,
+      "endFrame": 1839
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201223T184940.slp",
+      "gameStartAt": "12/23/20 6:49 pm",
+      "startFrame": 3224,
+      "endFrame": 4039
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201228T003135.slp",
+      "gameStartAt": "12/28/20 12:31 am",
+      "startFrame": 12311,
+      "endFrame": 13208
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201228T003525.slp",
+      "gameStartAt": "12/28/20 12:35 am",
+      "startFrame": 6777,
+      "endFrame": 7525
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20201230T214519.slp",
+      "gameStartAt": "12/30/20 9:45 pm",
+      "startFrame": 2475,
+      "endFrame": 3450
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210102T003956.slp",
+      "gameStartAt": "01/02/21 12:39 am",
+      "startFrame": 163,
+      "endFrame": 1038
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210102T005817.slp",
+      "gameStartAt": "01/02/21 12:58 am",
+      "startFrame": 8197,
+      "endFrame": 9038
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210110T010514.slp",
+      "gameStartAt": "01/10/21 1:05 am",
+      "startFrame": 6929,
+      "endFrame": 7668
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210118T211819.slp",
+      "gameStartAt": "01/18/21 9:18 pm",
+      "startFrame": 994,
+      "endFrame": 1856
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210124T235856.slp",
+      "gameStartAt": "01/24/21 11:58 pm",
+      "startFrame": 2385,
+      "endFrame": 3443
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210201T231220.slp",
+      "gameStartAt": "02/01/21 11:12 pm",
+      "startFrame": 2204,
+      "endFrame": 3223
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210207T112412.slp",
+      "gameStartAt": "02/07/21 11:24 am",
+      "startFrame": 3485,
+      "endFrame": 4263
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210210T174901.slp",
+      "gameStartAt": "02/10/21 5:49 pm",
+      "startFrame": 2214,
+      "endFrame": 3312
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210213T165018.slp",
+      "gameStartAt": "02/13/21 4:50 pm",
+      "startFrame": 6445,
+      "endFrame": 7314
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210218T214616.slp",
+      "gameStartAt": "02/18/21 9:46 pm",
+      "startFrame": 11300,
+      "endFrame": 12203
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210222T111756.slp",
+      "gameStartAt": "02/22/21 11:17 am",
+      "startFrame": 4866,
+      "endFrame": 5758
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210224T153657.slp",
+      "gameStartAt": "02/24/21 3:36 pm",
+      "startFrame": 5885,
+      "endFrame": 6702
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210227T133020.slp",
+      "gameStartAt": "02/27/21 1:30 pm",
+      "startFrame": 1617,
+      "endFrame": 2994
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210301T123402.slp",
+      "gameStartAt": "03/01/21 12:34 pm",
+      "startFrame": 7902,
+      "endFrame": 8626
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210305T181221.slp",
+      "gameStartAt": "03/05/21 6:12 pm",
+      "startFrame": 6586,
+      "endFrame": 7400
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210306T193057.slp",
+      "gameStartAt": "03/06/21 7:30 pm",
+      "startFrame": 4157,
+      "endFrame": 5115
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210321T004142.slp",
+      "gameStartAt": "03/21/21 12:41 am",
+      "startFrame": 8682,
+      "endFrame": 9329
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210321T010118.slp",
+      "gameStartAt": "03/21/21 1:01 am",
+      "startFrame": 6021,
+      "endFrame": 7065
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210322T220352.slp",
+      "gameStartAt": "03/22/21 10:03 pm",
+      "startFrame": 4149,
+      "endFrame": 5190
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210323T153050.slp",
+      "gameStartAt": "03/23/21 3:30 pm",
+      "startFrame": 7805,
+      "endFrame": 8748
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210326T144148.slp",
+      "gameStartAt": "03/26/21 2:41 pm",
+      "startFrame": 7459,
+      "endFrame": 8475
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210330T211120.slp",
+      "gameStartAt": "03/30/21 9:11 pm",
+      "startFrame": 6352,
+      "endFrame": 7353
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210331T190842.slp",
+      "gameStartAt": "03/31/21 7:08 pm",
+      "startFrame": 9017,
+      "endFrame": 9759
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210402T171327.slp",
+      "gameStartAt": "04/02/21 5:13 pm",
+      "startFrame": 2375,
+      "endFrame": 3237
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210405T191433.slp",
+      "gameStartAt": "04/05/21 7:14 pm",
+      "startFrame": 3655,
+      "endFrame": 4422
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210405T205817.slp",
+      "gameStartAt": "04/05/21 8:58 pm",
+      "startFrame": 277,
+      "endFrame": 1002
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210406T182420.slp",
+      "gameStartAt": "04/06/21 6:24 pm",
+      "startFrame": 3818,
+      "endFrame": 4675
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210406T182857.slp",
+      "gameStartAt": "04/06/21 6:28 pm",
+      "startFrame": 8145,
+      "endFrame": 8835
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210407T133616.slp",
+      "gameStartAt": "04/07/21 1:36 pm",
+      "startFrame": 4991,
+      "endFrame": 5846
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210415T010050.slp",
+      "gameStartAt": "04/15/21 1:00 am",
+      "startFrame": 5339,
+      "endFrame": 6180
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210426T220152.slp",
+      "gameStartAt": "04/26/21 10:01 pm",
+      "startFrame": -87,
+      "endFrame": 566
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210428T161612.slp",
+      "gameStartAt": "04/28/21 4:16 pm",
+      "startFrame": 4725,
+      "endFrame": 5512
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210428T163938.slp",
+      "gameStartAt": "04/28/21 4:39 pm",
+      "startFrame": 5718,
+      "endFrame": 6551
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210428T164425.slp",
+      "gameStartAt": "04/28/21 4:44 pm",
+      "startFrame": 5383,
+      "endFrame": 6075
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210429T180051.slp",
+      "gameStartAt": "04/29/21 6:00 pm",
+      "startFrame": 11765,
+      "endFrame": 12352
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210430T001240.slp",
+      "gameStartAt": "04/30/21 12:12 am",
+      "startFrame": 2123,
+      "endFrame": 3078
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210505T180116.slp",
+      "gameStartAt": "05/05/21 6:01 pm",
+      "startFrame": 134,
+      "endFrame": 1047
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210511T202445.slp",
+      "gameStartAt": "05/11/21 8:24 pm",
+      "startFrame": -105,
+      "endFrame": 695
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210512T175240.slp",
+      "gameStartAt": "05/12/21 5:52 pm",
+      "startFrame": 3481,
+      "endFrame": 4312
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210521T182653.slp",
+      "gameStartAt": "05/21/21 6:26 pm",
+      "startFrame": 618,
+      "endFrame": 1587
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210521T182653.slp",
+      "gameStartAt": "05/21/21 6:26 pm",
+      "startFrame": 5290,
+      "endFrame": 6057
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210522T000341.slp",
+      "gameStartAt": "05/22/21 12:03 am",
+      "startFrame": 9993,
+      "endFrame": 10773
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210522T000646.slp",
+      "gameStartAt": "05/22/21 12:06 am",
+      "startFrame": 3306,
+      "endFrame": 4147
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210527T191131.slp",
+      "gameStartAt": "05/27/21 7:11 pm",
+      "startFrame": 1466,
+      "endFrame": 2297
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210601T221545.slp",
+      "gameStartAt": "06/01/21 10:15 pm",
+      "startFrame": 2234,
+      "endFrame": 3095
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210614T230453.slp",
+      "gameStartAt": "06/14/21 11:04 pm",
+      "startFrame": 80,
+      "endFrame": 896
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210615T225459.slp",
+      "gameStartAt": "06/15/21 10:54 pm",
+      "startFrame": 4141,
+      "endFrame": 5097
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210615T230423.slp",
+      "gameStartAt": "06/15/21 11:04 pm",
+      "startFrame": 6862,
+      "endFrame": 7560
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210626T124106.slp",
+      "gameStartAt": "06/26/21 12:41 pm",
+      "startFrame": 2658,
+      "endFrame": 3620
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210717T191044.slp",
+      "gameStartAt": "07/17/21 7:10 pm",
+      "startFrame": 908,
+      "endFrame": 1849
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210722T142445.slp",
+      "gameStartAt": "07/22/21 2:24 pm",
+      "startFrame": 2830,
+      "endFrame": 3549
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210723T121643.slp",
+      "gameStartAt": "07/23/21 12:16 pm",
+      "startFrame": 494,
+      "endFrame": 1433
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210723T121643.slp",
+      "gameStartAt": "07/23/21 12:16 pm",
+      "startFrame": 1569,
+      "endFrame": 2272
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210723T161755.slp",
+      "gameStartAt": "07/23/21 4:17 pm",
+      "startFrame": 9611,
+      "endFrame": 10326
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210723T162425.slp",
+      "gameStartAt": "07/23/21 4:24 pm",
+      "startFrame": 3703,
+      "endFrame": 4485
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210729T162957.slp",
+      "gameStartAt": "07/29/21 4:29 pm",
+      "startFrame": 6919,
+      "endFrame": 7715
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210802T144849.slp",
+      "gameStartAt": "08/02/21 2:48 pm",
+      "startFrame": 1617,
+      "endFrame": 2603
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210812T183529.slp",
+      "gameStartAt": "08/12/21 6:35 pm",
+      "startFrame": 3715,
+      "endFrame": 4550
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210818T122440.slp",
+      "gameStartAt": "08/18/21 12:24 pm",
+      "startFrame": 3598,
+      "endFrame": 4404
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210823T222654.slp",
+      "gameStartAt": "08/23/21 10:26 pm",
+      "startFrame": 2158,
+      "endFrame": 3265
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210823T231956.slp",
+      "gameStartAt": "08/23/21 11:19 pm",
+      "startFrame": 4428,
+      "endFrame": 5250
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210827T214004.slp",
+      "gameStartAt": "08/27/21 9:40 pm",
+      "startFrame": 198,
+      "endFrame": 964
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210913T184006.slp",
+      "gameStartAt": "09/13/21 6:40 pm",
+      "startFrame": 5579,
+      "endFrame": 6280
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210913T220108.slp",
+      "gameStartAt": "09/13/21 10:01 pm",
+      "startFrame": -123,
+      "endFrame": 337
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210916T160952.slp",
+      "gameStartAt": "09/16/21 4:09 pm",
+      "startFrame": 6984,
+      "endFrame": 7815
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210916T163620.slp",
+      "gameStartAt": "09/16/21 4:36 pm",
+      "startFrame": 3992,
+      "endFrame": 4725
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210917T111536.slp",
+      "gameStartAt": "09/17/21 11:15 am",
+      "startFrame": 3229,
+      "endFrame": 4254
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210917T112325.slp",
+      "gameStartAt": "09/17/21 11:23 am",
+      "startFrame": 6285,
+      "endFrame": 6975
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210917T113634.slp",
+      "gameStartAt": "09/17/21 11:36 am",
+      "startFrame": 1568,
+      "endFrame": 2247
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210921T143913.slp",
+      "gameStartAt": "09/21/21 2:39 pm",
+      "startFrame": -123,
+      "endFrame": 693
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210921T150331.slp",
+      "gameStartAt": "09/21/21 3:03 pm",
+      "startFrame": 4850,
+      "endFrame": 6051
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210922T233330.slp",
+      "gameStartAt": "09/22/21 11:33 pm",
+      "startFrame": 8702,
+      "endFrame": 9520
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210923T173346.slp",
+      "gameStartAt": "09/23/21 5:33 pm",
+      "startFrame": 685,
+      "endFrame": 1649
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210923T175450.slp",
+      "gameStartAt": "09/23/21 5:54 pm",
+      "startFrame": 8109,
+      "endFrame": 8956
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210924T212613.slp",
+      "gameStartAt": "09/24/21 9:26 pm",
+      "startFrame": 2159,
+      "endFrame": 3037
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210925T091751.slp",
+      "gameStartAt": "09/25/21 9:17 am",
+      "startFrame": 132,
+      "endFrame": 979
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210925T190838.slp",
+      "gameStartAt": "09/25/21 7:08 pm",
+      "startFrame": 5477,
+      "endFrame": 6296
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210925T193530.slp",
+      "gameStartAt": "09/25/21 7:35 pm",
+      "startFrame": 5081,
+      "endFrame": 5803
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20210927T161838.slp",
+      "gameStartAt": "09/27/21 4:18 pm",
+      "startFrame": 7123,
+      "endFrame": 8025
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211001T213702.slp",
+      "gameStartAt": "10/01/21 9:37 pm",
+      "startFrame": 2434,
+      "endFrame": 3384
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211001T214244.slp",
+      "gameStartAt": "10/01/21 9:42 pm",
+      "startFrame": 3589,
+      "endFrame": 4396
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211014T000159.slp",
+      "gameStartAt": "10/14/21 12:01 am",
+      "startFrame": 4693,
+      "endFrame": 5441
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211015T183214.slp",
+      "gameStartAt": "10/15/21 6:32 pm",
+      "startFrame": 5075,
+      "endFrame": 5841
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211016T091451.slp",
+      "gameStartAt": "10/16/21 9:14 am",
+      "startFrame": 7321,
+      "endFrame": 8118
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211019T120555.slp",
+      "gameStartAt": "10/19/21 12:05 pm",
+      "startFrame": 2714,
+      "endFrame": 3484
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211019T235847.slp",
+      "gameStartAt": "10/19/21 11:58 pm",
+      "startFrame": 6477,
+      "endFrame": 7585
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211021T164601.slp",
+      "gameStartAt": "10/21/21 4:46 pm",
+      "startFrame": 357,
+      "endFrame": 1164
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211028T231324.slp",
+      "gameStartAt": "10/28/21 11:13 pm",
+      "startFrame": 653,
+      "endFrame": 1504
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211101T221802.slp",
+      "gameStartAt": "11/01/21 10:18 pm",
+      "startFrame": -123,
+      "endFrame": 1149
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211101T221802.slp",
+      "gameStartAt": "11/01/21 10:18 pm",
+      "startFrame": 2654,
+      "endFrame": 4018
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211101T221920.slp",
+      "gameStartAt": "11/01/21 10:19 pm",
+      "startFrame": 480,
+      "endFrame": 1780
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211101T223532.slp",
+      "gameStartAt": "11/01/21 10:35 pm",
+      "startFrame": 254,
+      "endFrame": 1243
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211101T223811.slp",
+      "gameStartAt": "11/01/21 10:38 pm",
+      "startFrame": 703,
+      "endFrame": 2050
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211102T214442.slp",
+      "gameStartAt": "11/02/21 9:44 pm",
+      "startFrame": 1171,
+      "endFrame": 2017
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211110T223607.slp",
+      "gameStartAt": "11/10/21 10:36 pm",
+      "startFrame": 759,
+      "endFrame": 1617
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211124T124459.slp",
+      "gameStartAt": "11/24/21 12:44 pm",
+      "startFrame": 2008,
+      "endFrame": 2842
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211207T213224.slp",
+      "gameStartAt": "12/07/21 9:32 pm",
+      "startFrame": 1123,
+      "endFrame": 2046
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211207T213840.slp",
+      "gameStartAt": "12/07/21 9:38 pm",
+      "startFrame": 8699,
+      "endFrame": 9623
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211216T223929.slp",
+      "gameStartAt": "12/16/21 10:39 pm",
+      "startFrame": 3909,
+      "endFrame": 4959
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211216T225435.slp",
+      "gameStartAt": "12/16/21 10:54 pm",
+      "startFrame": 4962,
+      "endFrame": 5870
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211222T205448.slp",
+      "gameStartAt": "12/22/21 8:54 pm",
+      "startFrame": 6128,
+      "endFrame": 6947
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211225T002844.slp",
+      "gameStartAt": "12/25/21 12:28 am",
+      "startFrame": 3822,
+      "endFrame": 4579
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211229T223042.slp",
+      "gameStartAt": "12/29/21 10:30 pm",
+      "startFrame": 3883,
+      "endFrame": 4765
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20211229T230108.slp",
+      "gameStartAt": "12/29/21 11:01 pm",
+      "startFrame": 11127,
+      "endFrame": 11974
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220109T224444.slp",
+      "gameStartAt": "01/09/22 10:44 pm",
+      "startFrame": 3466,
+      "endFrame": 4551
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220110T141844.slp",
+      "gameStartAt": "01/10/22 2:18 pm",
+      "startFrame": 4579,
+      "endFrame": 5789
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220110T231536.slp",
+      "gameStartAt": "01/10/22 11:15 pm",
+      "startFrame": 2752,
+      "endFrame": 3885
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220117T184834.slp",
+      "gameStartAt": "01/17/22 6:48 pm",
+      "startFrame": 9247,
+      "endFrame": 9988
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220119T194334.slp",
+      "gameStartAt": "01/19/22 7:43 pm",
+      "startFrame": 4697,
+      "endFrame": 5484
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220119T195154.slp",
+      "gameStartAt": "01/19/22 7:51 pm",
+      "startFrame": 307,
+      "endFrame": 1416
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220122T164919.slp",
+      "gameStartAt": "01/22/22 4:49 pm",
+      "startFrame": 6990,
+      "endFrame": 8009
+    },
+    {
+      "path": "E:\\Backups\\Slippi Replays\\highlights\\Game_20220122T165533.slp",
+      "gameStartAt": "01/22/22 4:55 pm",
+      "startFrame": 7815,
+      "endFrame": 8693
+    }
+  ]
+}
