@@ -5,3 +5,29 @@
 .secondary-text {
   color: #bbbb;
 }
+
+.dark-red-text {
+  color: #b72f2f !important;
+
+}
+
+/* remove legend icon */
+.no-icon .recharts-legend-wrapper .recharts-surface {
+  display: none !important;
+}
+
+.choice-data {
+  width: 100%;
+  height: 60vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.Toastify > div > div {
+  background: #444444 !important;
+  color: #bbbb;
+}
+
+.Toastify__progress-bar {
+  display: none;
+}
