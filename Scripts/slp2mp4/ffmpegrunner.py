@@ -10,6 +10,7 @@ class FfmpegRunner:
             '-safe', '0',
             '-f', 'concat',             # Set input stream to concatenate
             '-i', concat_file,          # use a concatenation demuxer file which contains a list of files to combine
+            '-vcodec', 'h264',
             '-c', 'copy',               # copy audio and video
             outfile
             ]
@@ -26,6 +27,7 @@ class FfmpegRunner:
             # offset no longer needed!
             #'-itsoffset', '1.55',   # offset (delay) the audio by 1.55s
             '-i', video_file,  # 1st input stream: video
+            '-vcodec', 'h264',
             '-map', '1:v',          # map 1st input to video output
             '-map', '0:a',          # map 0th input to audio output
             '-c:a', 'mp3',          # convert audio encoding to mp3 for output

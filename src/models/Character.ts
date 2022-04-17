@@ -26,3 +26,32 @@ export enum Character {
   Marth = "Marth", 
   Roy = "Roy"
 }
+
+export const AllCharacters:Character[] = [
+  Character.DrMario,
+  Character.Mario,
+  Character.Luigi,
+  Character.Bowser,
+  Character.Peach,
+  Character.Yoshi,
+  Character.DK,
+  Character.Falcon,
+  Character.Ganondorf,
+  Character.Falco,
+  Character.Fox,
+  Character.Ness,
+  Character.IC,
+  Character.Kirby,
+  Character.Samus,
+  Character.Zelda,
+  Character.Sheik,
+  Character.Link,
+  Character.YLink,
+  Character.Pichu,
+  Character.Pikachu,
+  Character.Jigglypuff,
+  Character.Mewtwo,
+  Character.GAW,
+  Character.Marth,
+  Character.Roy
+]

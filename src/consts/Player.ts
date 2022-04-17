@@ -1,4 +1,4 @@
-import { Character } from "../models/Character";
+import { AllCharacters, Character } from "../models/Character";
 import { Choice } from "../models/Choice";
 
 export interface PlayerType {
@@ -122,5 +122,18 @@ export const Player: PlayerType = {
   'Polish': {
     label: 'Polish',
     characters: [Character.Peach]
+  },
+  'LSD': {
+    label: 'LSD',
+    characters: [Character.Marth]
+  },
+
+
+
+
+  
+  'TEST': {
+    label: 'TEST',
+    characters: AllCharacters
   }
 }

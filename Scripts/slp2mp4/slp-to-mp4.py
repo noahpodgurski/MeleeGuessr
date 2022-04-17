@@ -31,6 +31,7 @@ See README.md for details
 FPS = 60
 MIN_GAME_LENGTH = 30 * FPS
 DURATION_BUFFER = 70              # Record for 70 additional frames
+MELEE_GUESSR_BUFFER = 100
 
 # Paths to files in (this) script's directory
 SCRIPT_DIR, _ = os.path.split(os.path.abspath(__file__))
@@ -62,12 +63,23 @@ def clean():
         os.remove(file)
 
 # Evaluate whether file should be run. The open in dolphin and combine video and audio with ffmpeg.
-def record_file_slp(slp_file, outfile):
+def record_file_slp(slp_file, outfile, OVERWRITE_COMMS=None):
     conf = Config()
 
     # Parse file with py-slippi to determine number of frames
     slippi_game = Game(slp_file)
-    num_frames = slippi_game.metadata.duration + DURATION_BUFFER
+    num_frames = slippi_game.metadata.duration 
+
+    if OVERWRITE_COMMS:
+        # get stat and end frame from overwrite file
+        with open(OVERWRITE_COMMS, "r") as highlight:
+            print(num_frames)
+            data = json.load(highlight)
+            num_frames = data['endFrame'] - DURATION_BUFFER - MELEE_GUESSR_BUFFER
+
+    num_frames += DURATION_BUFFER #ex: 37284 big boy num
+
+
 
     if is_game_too_short(slippi_game.metadata.duration, conf.remove_short):
         print("Warning: Game is less than 30 seconds and won't be recorded. Override in config.")
@@ -75,7 +87,7 @@ def record_file_slp(slp_file, outfile):
 
     DOLPHIN_USER_DIR = os.path.join(conf.dolphin_dir, 'User')
     # Dump frames
-    with DolphinRunner(conf, DOLPHIN_USER_DIR, SCRIPT_DIR, uuid.uuid4()) as dolphin_runner:
+    with DolphinRunner(conf, DOLPHIN_USER_DIR, SCRIPT_DIR, uuid.uuid4(), OVERWRITE_COMMS) as dolphin_runner:
         video_file, audio_file = dolphin_runner.run(slp_file, num_frames)
 
         # Encode
@@ -125,7 +137,7 @@ def combine(conf):
 
 # Get a list of the input files and their subdirectories to prepare the output files. Feed this to record_file_slp.
 # If combine is true, combine the files in the out folder every time there is a new subdirectory.
-def record_folder_slp(slp_folder, conf):
+def record_folder_slp(slp_folder, conf, OVERWRITE_COMMS):
     in_files = []
     out_files = []
 
@@ -205,11 +217,17 @@ def main():
         outfile += '.mp4'
         outfile = os.path.join(OUT_DIR, outfile)
 
+
+    try:
+        OVERWRITE_COMMS = sys.argv[3]
+    except:
+        OVERWRITE_COMMS = None
+
     if os.path.isdir(slp_file):
         conf = Config()
-        record_folder_slp(slp_file, conf)
+        record_folder_slp(slp_file, conf, OVERWRITE_COMMS)
     else:
-        record_file_slp(slp_file, outfile)
+        record_file_slp(slp_file, outfile, OVERWRITE_COMMS)
 
 
 if __name__ == '__main__':

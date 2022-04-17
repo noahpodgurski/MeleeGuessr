@@ -25,7 +25,7 @@ class CommFile:
 
 class DolphinRunner:
 
-    def __init__(self, conf, base_user_dir, working_dir, job_id):
+    def __init__(self, conf, base_user_dir, working_dir, job_id, OVERWRITE_COMMS=None):
         self.conf = conf
         self.job_id = job_id
         self.base_user_dir = base_user_dir
@@ -33,7 +33,22 @@ class DolphinRunner:
 
         # Get all needed paths
         self.comm_file = os.path.join(working_dir, 'slippi-comm-{}.txt'.format(self.job_id))
-        self.combos_file = "C:/Users/Noah/Documents/Programming/Python Projects/slp-to-mp4/slp2mp4/combos.json"
+
+        # self.combos_file = "C:/Users/Noah/Documents/Programming/Python Projects/slp-to-mp4/slp2mp4/combos.json"
+        if OVERWRITE_COMMS:
+            self.combos_file = OVERWRITE_COMMS
+            #overwrite exists
+            # get stat and end frame from overwrite file
+            with open(OVERWRITE_COMMS, "r") as highlight:
+                data = json.load(highlight)
+                self.startFrame = data['startFrame']
+                self.endFrame = data['endFrame']
+
+        else:
+            self.startFrame = 0
+            self.endFrame = 0
+            pass
+
         self.render_time_file = os.path.join(self.user_dir, 'Logs', 'render_time.txt')
         self.dump_dir = os.path.join(self.user_dir, 'Dump')
         self.frames_dir = os.path.join(self.dump_dir, 'Frames')
@@ -54,11 +69,11 @@ class DolphinRunner:
             return False
 
     def count_frames_completed(self):
-        num_completed = 0
+        num_completed = self.startFrame
 
         if os.path.exists(self.render_time_file):
             with open(self.render_time_file, 'r') as f:
-                num_completed = len(list(f))
+                num_completed += len(list(f))
 
         print("Rendered ",num_completed," frames")
         return num_completed

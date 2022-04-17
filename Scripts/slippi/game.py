@@ -26,7 +26,6 @@ class Game(Base):
         self.end = None
         self.metadata = None
         self.metadata_raw = None
-        stop
         parse(input, {
             ParseEvent.START: lambda x: setattr(self, 'start', x),
             ParseEvent.FRAME: self._add_frame,

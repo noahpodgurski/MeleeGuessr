@@ -3,10 +3,12 @@ import { useContext, useEffect, useMemo } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Stage, StageType } from "../components/Stage";
-import { Clips } from "../consts/Clips";
+// import { Clips } from "../hooks/Clips";
 import { Player } from "../consts/Player";
+import { ClipsContext } from "../hooks/Clips";
 import { LivesContext } from "../hooks/UseLives";
 import { Choice } from "../models/Choice";
+import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
 import { shuffleArray } from "../utils/Shuffle";
 
@@ -19,21 +21,46 @@ type PlayData = {
 }
 
 let playData:PlayData[] = [];
-let clips = Clips;
+// let clips:Clip[] = [];
+
+
+const noMore: StageType = 
+{
+  clipSrc: "./clips/testClip.mp4",
+  character: "Peach",
+  correctChoice: Player.Armada,
+  incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
+};
 
 export const Play: React.FC = () => {
   // ex: stage 1/5
   const [stage, setStage] = useState(0);
   const [score, setScore] = useState(0);
   const { lives, setLives } = useContext<any>(LivesContext);
+  const { Clips, getClips } = useContext<any>(ClipsContext);
+  const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);  
+  
+  
+  useEffect( () => {
+    const fetchData = async () => {
+      await getClips();
+    }
+    // if (!Clips)
+      // getClips();
+    fetchData();
+  }, [useEffect])
 
   useEffect(() => {
-    while (playData.length > 0)
-      playData.pop();
-  }, [])
+    setClips(Clips);
+  }, [Clips])
+
+  // useEffect(() => {
+  //   while (playData.length > 0)
+  //     playData.pop();
+  // }, [])
 
   const handleChoice = (choice:Choice, correctChoice:Choice) => {
     if (choice.label === correctChoice.label){
@@ -72,10 +99,17 @@ export const Play: React.FC = () => {
 
 
   
-  const currStage = useMemo(() => {
-    if (clips.length === 0)
+  const currStage:StageType = useMemo(() => {
+    if (clips.length === 0){
+      getClips();
       return noMore;
-    const clip = RandomChoice(clips);
+    }
+
+    const [clip, slicedIndex] = RandomChoice(clips);
+    setClips((clips) => {
+      return clips.splice(slicedIndex, 1);
+    })
+
     const incorrectChoices:Choice[] = [];
   
     const randomPlayers:string[] = shuffleArray(Object.keys(Player));
@@ -93,19 +127,13 @@ export const Play: React.FC = () => {
       correctChoice: clip.player,
       incorrectChoices: incorrectChoices
     }
-  }, [playData.length])
-
-  const noMore: StageType = 
-    {
-      clipSrc: "./clips/testClip.mp4",
-      character: "Peach",
-      correctChoice: Player.Armada,
-      incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
-    };
+  }, [playData.length, getClips])
 
   const reset = () => {
     playData = [];
-    clips = Clips;
+    
+    setClips(Clips);
+    // clips = [];
     setStage(0);
     setScore(0);
     setLives(3);
@@ -115,12 +143,13 @@ export const Play: React.FC = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center m-5" style={{height: "100%"}}>
+      <div className="d-flex justify-content-center align-items-center mt-5" style={{height: "100%"}}>
 				<div className="row justify-content-center w-100">
+          
           { !stop && !showChoiceResult &&
           <>
             <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-              <div>{playData.length > 0 && score > 0 && `Score ${score}`}</div>
+              <h1>{playData.length > 0 && score > 0 && `Score ${score}`}</h1>
             </div> 
             <Stage stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}

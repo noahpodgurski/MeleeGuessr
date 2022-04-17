@@ -1,4 +1,6 @@
-export const RandomChoice = (arr:any[]):any => {
-  return arr[0];
-  // return arr.splice(Math.floor(Math.random()*arr.length), 1);
+import { Clip } from "../models/Clip";
+
+export const RandomChoice = (arr:any[]):[any, number] => {
+  let splicedIndex = Math.floor(Math.random()*arr.length);
+  return [arr[splicedIndex], splicedIndex];
 }

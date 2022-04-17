@@ -8,7 +8,7 @@ from .util import *
 
 import sys
 sys.path.append('../')
-from convertSlp import MAKE_COSTUMES_NEUTRAL, THE_SEARCH_BUFFER
+from addCharacterToJson import MAKE_COSTUMES_NEUTRAL, THE_SEARCH_BUFFER
 
 
 # The first frame of the game is indexed -123, counting up to zero (which is when the word "GO" appears). But since players actually get control before frame zero (!!!), we need to record these frames.
