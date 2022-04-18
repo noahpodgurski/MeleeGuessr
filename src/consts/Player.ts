@@ -29,7 +29,7 @@ export const Player: PlayerType = {
   },
   'Mew2King': {
     label: 'Mew2King',
-    color: 'dark',
+    // color: 'dark',
     aliases: ["M2K"],
     characters: [Character.Fox, Character.Marth, Character.Sheik]
   },
@@ -40,7 +40,7 @@ export const Player: PlayerType = {
   },
   'Leffen': {
     label: 'Leffen',
-    color: 'light',
+    // color: 'light',
     characters: [Character.Fox, Character.Sheik]
   },
   'Plup': {
@@ -50,7 +50,7 @@ export const Player: PlayerType = {
   },
   'iBDW': {
     label: 'iBDW',
-    color: 'light',
+    // color: 'light',
     characters: [Character.Fox]
   },
   'Fiction': {
@@ -126,6 +126,22 @@ export const Player: PlayerType = {
   'LSD': {
     label: 'LSD',
     characters: [Character.Marth]
+  },
+  'Wizzrobe': {
+    label: 'Wizzrobe',
+    characters: [Character.Falcon]
+  },
+  'n0ne': {
+    label: 'n0ne',
+    characters: [Character.Falcon]
+  },
+  'Gahtzu': {
+    label: 'Gahtzu',
+    characters: [Character.Falcon]
+  },
+  'S2J': {
+    label: 'S2J',
+    characters: [Character.Falcon]
   },
 
 

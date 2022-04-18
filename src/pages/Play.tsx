@@ -1,12 +1,13 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import { useContext, useEffect, useMemo } from "react";
+import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Stage, StageType } from "../components/Stage";
+import { RefObject, Stage, StageType } from "../components/Stage";
 // import { Clips } from "../hooks/Clips";
 import { Player } from "../consts/Player";
 import { ClipsContext } from "../hooks/Clips";
-import { LivesContext } from "../hooks/UseLives";
+import { ILoading, LoadingContext } from "../hooks/UseLoading";
+import { StocksContext } from "../hooks/UseStocks";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
@@ -36,21 +37,25 @@ export const Play: React.FC = () => {
   // ex: stage 1/5
   const [stage, setStage] = useState(0);
   const [score, setScore] = useState(0);
-  const { lives, setLives } = useContext<any>(LivesContext);
+  const { stocks, setStocks } = useContext<any>(StocksContext);
   const { Clips, getClips } = useContext<any>(ClipsContext);
+  const { loading, setLoading } = useContext<ILoading>(LoadingContext);
   const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);  
+
+  const stageRef = useRef<RefObject>(null);
   
   
   useEffect( () => {
-    const fetchData = async () => {
-      await getClips();
+    if (!loading){
+
+      const fetchData = async () => {
+        await getClips();
+      }
+      fetchData();
     }
-    // if (!Clips)
-      // getClips();
-    fetchData();
   }, [useEffect])
 
   useEffect(() => {
@@ -62,31 +67,45 @@ export const Play: React.FC = () => {
   //     playData.pop();
   // }, [])
 
-  const handleChoice = (choice:Choice, correctChoice:Choice) => {
-    if (choice.label === correctChoice.label){
-      setScore(score+1);
-      playData.push({
-        stage: stage,
-        wasCorrect: true,
-        choice: choice.label
-      })
-      toast.success("Correct")
-    } else {
-      playData.push({
-        stage: stage,
-        wasCorrect: false,
-        choice: choice.label,
-        correctChoice: correctChoice.label
-      })
-      toast.error(`Incorrect. Answer was ${correctChoice.label}`)
-      setLives(lives-1)
+  
+  const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
+    if (stageRef.current){
+      stageRef.current.Test(choice);
     }
-    setStage(stage+1);
+  }
+
+  const handleChoice = (choice:Choice, correctChoice:Choice) => {
+    displayCorrectChoice(choice, correctChoice);
+    if (choice.label === correctChoice.label){
+      toast.success("Correct")
+    }
+    else {
+      toast.error(`Incorrect. Answer was ${correctChoice.label}`)
+    }
+    setTimeout(() => {
+      if (choice.label === correctChoice.label){
+        setScore(score+1);
+        playData.push({
+          stage: stage,
+          wasCorrect: true,
+          choice: choice.label
+        })
+      } else {
+        playData.push({
+          stage: stage,
+          wasCorrect: false,
+          choice: choice.label,
+          correctChoice: correctChoice.label
+        })
+        setStocks(stocks-1)
+      }
+      setStage(stage+1);
+    }, 2000); //show correct choices for x time
   };
   
   useEffect(() => {
     const x:number | null = Number(localStorage.getItem('HS'));
-    if (lives === 0){
+    if (stocks === 0){
       console.log(`last highscore was ${x}`)
       if (x === null || x < score){
         setHS(true);
@@ -95,11 +114,14 @@ export const Play: React.FC = () => {
       }
       setShowChoiceResult(true);
     }
-  }, [lives])
+  }, [stocks])
 
 
   
   const currStage:StageType = useMemo(() => {
+    if (loading){
+      return noMore;
+    }
     if (clips.length === 0){
       getClips();
       return noMore;
@@ -136,10 +158,18 @@ export const Play: React.FC = () => {
     // clips = [];
     setStage(0);
     setScore(0);
-    setLives(3);
+    setStocks(3);
     setShowChoiceResult(false);
     setHS(false);
   }
+
+  const hands:ReactNode[] = useMemo(() => {
+    const _hands = [];
+    for (let i = 0; i < stocks; i++){
+      _hands.push(<img src={'/hand.png'} />)
+    }
+    return _hands;
+  }, [stocks])
 
   return (
     <>
@@ -148,10 +178,16 @@ export const Play: React.FC = () => {
           
           { !stop && !showChoiceResult &&
           <>
-            <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-              <h1>{playData.length > 0 && score > 0 && `Score ${score}`}</h1>
+            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+              <h1>{`${score}%`}</h1>
             </div> 
-            <Stage stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
+            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+              {/* <h1>{`Stocks ${stocks}`}</h1> */}
+              {hands.map((hand) => {
+                return hand;
+              })}
+            </div> 
+            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
           </>
           }

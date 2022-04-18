@@ -1,17 +1,18 @@
 import { MDBBtn } from "mdb-react-ui-kit"
 import { useContext } from "react";
 import { Link } from "react-router-dom"
-import { LivesContext } from "../hooks/UseLives";
+import { STARTING_STOCKS } from "../App";
+import { StocksContext } from "../hooks/UseStocks";
 
 export const Home: React.FC = () => {
-  const { setLives } = useContext<any>(LivesContext);
+  const { setStocks } = useContext<any>(StocksContext);
   return (
     <>
 			<div className="d-flex justify-content-center align-items-center m-5" style={{height: "85vh"}}>
 				<div className="row justify-content-center">
 				<h1 className="white-text" style={{textAlign: "center"}}>MeleeGuessr</h1>
 				<Link className="w-100" to="/play">
-					<MDBBtn onClick={() => setLives(3)} className="w-100" style={{height: '50px'}} color="light" size="lg">Play</MDBBtn>
+					<MDBBtn onClick={() => setStocks(STARTING_STOCKS)} className="w-100" style={{height: '50px'}} color="light" size="lg">Play</MDBBtn>
 				</Link>
 				</div>
 			</div>

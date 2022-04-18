@@ -27,3 +27,8 @@ server/slp
 
 # server dependencies
 /server/node_modules
+
+#script generated files
+/Scripts/jsons
+/Scripts/__pycache__
+/Scripts/slippi/__pycache__

@@ -1,7 +1,16 @@
+# v0.4.0
+# Site
+* % and Stocks instead of score and lives
+* Displays loading indicator while fetching clip (metadata)
+* Updated index.html metadata
+* Choices turn green/red after choosing to show correct answer
+* Clips automatically load in after `2` seconds
+
 # v0.3.0
 ## Server
-* Serves clips to client
-* `/video/clip` 
+* Serves clip metadata to client `/clips` 
+* Serves videos to client `/video/clip` loads `/assets/clip.mp4`
+
 
 ## Site
 * Clips load from server

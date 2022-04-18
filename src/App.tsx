@@ -2,7 +2,7 @@ import React, { StrictMode, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import NavbarPage from './components/Navbar';
-import { LivesContext } from './hooks/UseLives';
+import { StocksContext } from './hooks/UseStocks';
 import { Home } from './pages/Home';
 import { Play } from './pages/Play';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,16 +11,23 @@ import { ClipsContext } from './hooks/Clips';
 import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
-import { shuffleArray } from './utils/Shuffle';
+import { LoadingContext } from './hooks/UseLoading';
+
+export const STARTING_STOCKS = 4;
 
 const App: React.FC = () => {
-  const [lives, setLives] = useState(3);
+  const [stocks, setStocks] = useState(STARTING_STOCKS);
   const [clips, setClips] = useState<Clip[]>([]);
+  const [loading, setLoading] = useState(false);
+
+
   const getClips = async () => {
+    setLoading(true);
+    // await new Promise(resolve => {setTimeout(() => resolve(null), 5000)});
+    
     const res:any = await fetch("http://localhost:4000/clips");
     const _clips = await res.json();
     // console.log(_clips);
-    console.log('here')
     // const shuffledClips = shuffleArray(_clips);
     const fixedClips = _clips.map((clip:any) => {
       if (!Player[clip['player']])
@@ -36,6 +43,7 @@ const App: React.FC = () => {
       }
     })
 
+    setLoading(false);
     setClips(fixedClips);
   }
 
@@ -48,19 +56,21 @@ const App: React.FC = () => {
           style: {}
         }}
       />
-      <LivesContext.Provider value={{lives: lives, setLives: setLives}}>
-        <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="*" element={<NavbarPage />} />
-            </Routes>
-            <Routes>
-              <Route path="/" element={ <Home /> } />
-              <Route path="/play" element={ <Play /> } />
-            </Routes>
-          </BrowserRouter>
-        </ClipsContext.Provider>
-      </LivesContext.Provider>
+      <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
+        <LoadingContext.Provider value={{loading: loading, setLoading: setLoading}}>
+          <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="*" element={<NavbarPage />} />
+              </Routes>
+              <Routes>
+                <Route path="/" element={ <Home /> } />
+                <Route path="/play" element={ <Play /> } />
+              </Routes>
+            </BrowserRouter>
+          </ClipsContext.Provider>
+        </LoadingContext.Provider>
+      </StocksContext.Provider>
     </StrictMode>
   );
 }
