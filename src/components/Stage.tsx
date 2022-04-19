@@ -100,7 +100,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     <>
       <div className="row justify-content-center p-0">
         { loading ? <div className="loader"></div> :
-        <video key={stage.clipSrc} className="clip" autoPlay loop muted={muted} playsInline>
+        <video key={stage.clipSrc} className="clip" autoPlay loop muted playsInline>
           <source src={`http://localhost:4000/video/${neutral ? 'neut' : ''}${stage.clipSrc}`} type="video/mp4" />
         </video> }
       </div>

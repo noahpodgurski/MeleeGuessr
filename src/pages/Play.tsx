@@ -129,16 +129,11 @@ export const Play: React.FC = () => {
     }
 
     const [clip, slicedIndex] = RandomChoice(clips);
-    // setClips((clips) => {
-    //   clips.splice(slicedIndex, 1);
-    //   return clips;
-    // })
     setClips((clips) => {
       return clips.filter((filteredClip) => {
         return filteredClip !== clip;
       })
     })
-
     const incorrectChoices:Choice[] = [];
   
     const randomPlayers:string[] = shuffleArray(Object.keys(Player));
@@ -156,7 +151,7 @@ export const Play: React.FC = () => {
       correctChoice: clip.player,
       incorrectChoices: incorrectChoices
     }
-  }, [Clips, stage, score, loading, playData.length])
+  }, [getClips, stage])
 
   const reset = () => {
     playData = [];
@@ -173,7 +168,7 @@ export const Play: React.FC = () => {
   const hands:ReactNode[] = useMemo(() => {
     const _hands = [];
     for (let i = 0; i < stocks; i++){
-      _hands.push(<img src={'/hand.png'} />)
+      _hands.push(<img key={`hand${i}`} src={'/hand.png'} />)
     }
     return _hands;
   }, [stocks])

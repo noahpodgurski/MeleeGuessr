@@ -1,12 +1,9 @@
-import { MDBBtn } from "mdb-react-ui-kit";
-import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { RefObject, Stage, StageType } from "../components/Stage";
 import { Player } from "../consts/Player";
 import { ClipsContext } from "../hooks/Clips";
 import { ILoading, LoadingContext } from "../hooks/UseLoading";
-import { StocksContext } from "../hooks/UseStocks";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
@@ -28,12 +25,10 @@ export const ViewClips: React.FC = () => {
   // ex: stage 1/5
   const [stage, setStage] = useState(0);
   const [score, setScore] = useState(0);
-  const { stocks, setStocks } = useContext<any>(StocksContext);
   const { Clips, getClips } = useContext<any>(ClipsContext);
-  const { loading, setLoading } = useContext<ILoading>(LoadingContext);
+  const { loading } = useContext<ILoading>(LoadingContext);
   const [clips, setClips] = useState<Clip[]>([])
-  const [showChoiceResult, setShowChoiceResult] = useState(false);
-  const [HS, setHS] = useState(false);
+  const [showChoiceResult,] = useState(false);
   const [stop,] = useState(false);  
 
   const stageRef = useRef<RefObject>(null);
@@ -58,12 +53,6 @@ export const ViewClips: React.FC = () => {
   // }, [])
 
   
-  const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
-    if (stageRef.current){
-      stageRef.current.Test(choice);
-    }
-  }
-
   const handleChoice = (choice:Choice, correctChoice:Choice) => {
     setScore(score-1);
     playData.push({
@@ -84,32 +73,21 @@ export const ViewClips: React.FC = () => {
       return null;
     }
 
-    const [clip, slicedIndex] = RandomChoice(clips);
+    const [clip,] = RandomChoice(clips);
     setClips((clips) => {
       return clips.filter((filteredClip) => {
-        return filteredClip === clip;
+        return filteredClip !== clip;
       })
     })
 
-    const incorrectChoices:Choice[] = [];
-  
-    const randomPlayers:string[] = shuffleArray(Object.keys(Player));
-    for (const player of randomPlayers){
-      // player doesn't have any characters or if the player has characters
-      if (player !== clip.player.label && (!Player[player].characters || Player[player].characters?.includes(clip.character))){
-        incorrectChoices.push(Player[player]);
-        if (incorrectChoices.length >= 3)
-          break;
-      }
-    };
     return {
       clipSrc: clip.clipSrc,
       character: clip.character,
       correctChoice: clip.player,
       slp: clip.slp,
-      incorrectChoices: incorrectChoices
+      incorrectChoices: []
     }
-  }, [Clips, getClips])
+  }, [getClips, stage])
 
   return (
     <>

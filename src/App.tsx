@@ -23,8 +23,8 @@ const App: React.FC = () => {
 
 
   const getClips = async () => {
-    if (clips.length == 0){
-    // if (true){
+    // if (clips.length == 0){
+    if (true){
 
       console.log('get clips')
       setLoading(true);
