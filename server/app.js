@@ -5,9 +5,6 @@ const cors  = require('cors');
 
 const app = express();
 
-// app.get('/video', (req, res) => {
-//   res.sendFile('assets/test.mp4', { root: __dirname });
-// })
 app.use(cors());
 
 app.use((req, res, next) => {
@@ -39,9 +36,15 @@ app.get('/clips', (req, res) => {
     if (err)
       console.log(err)
     else
+      // console.log(JSON.parse(data))
       res.json(JSON.parse(data))
   });
 })
+
+
+// app.get('/video', (req, res) => {
+//   res.sendFile('assets/test.mp4', { root: __dirname });
+// })
 
 // app.get('/video/test', (req, res, next) => {
 //   // if (fs.existsSync('./assets/test.mp4')) {
@@ -62,48 +65,6 @@ app.get('/clips', (req, res) => {
 //   // } 
 // })
 
-
-// // endpoint to fetch a single video's metadata
-// app.get('/video/:id/data', (req, res) => {
-//   // const id = parseInt(req.params.id, 10);
-//   // res.json(videos[id]);
-//   res.json({fakeData: "this is fake metadata"})
-// });
-
-
-
-// app.get('/video/:id', (req, res) => {
-//   console.log('requested')
-//   const path = `assets/${req.params.id}.mp4`;
-//   const stat = fs.statSync(path);
-//   const fileSize = stat.size;
-//   const range = req.headers.range;
-//   console.log(path)
-//   if (range) {
-//       const parts = range.replace(/bytes=/, "").split("-");
-//       const start = parseInt(parts[0], 10);
-//       const end = parts[1]
-//           ? parseInt(parts[1], 10)
-//           : fileSize-1;
-//       const chunksize = (end-start) + 1;
-//       const file = fs.createReadStream(path, {start, end});
-//       const head = {
-//           'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-//           'Accept-Ranges': 'bytes',
-//           'Content-Length': chunksize,
-//           'Content-Type': 'video/mp4',
-//       };
-//       res.writeHead(206, head);
-//       file.pipe(res);
-//   } else {
-//       const head = {
-//           'Content-Length': fileSize,
-//           'Content-Type': 'video/mp4',
-//       };
-//       res.writeHead(200, head);
-//       fs.createReadStream(path).pipe(res);
-//   }
-// });
 
 app.listen(4000, () => {
   console.log("Server online");

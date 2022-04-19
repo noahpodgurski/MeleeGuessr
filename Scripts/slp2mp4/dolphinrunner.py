@@ -231,7 +231,7 @@ class DolphinRunner:
 
         return video_file, audio_file
 
-    def run(self, slp_file, num_frames):
+    def run(self, slp_file, num_frames, renderNeutral):
         """
         Run Dolphin, dumping frames and audio and returning when done
         Returns path_of_video_file, path_of_audio_file
@@ -240,8 +240,14 @@ class DolphinRunner:
         self.prep_dolphin_settings()
         self.prep_user_dir()
 
+        if renderNeutral:
+            meleeIso = self.conf.melee_iso_neut
+        else:
+            meleeIso = self.conf.melee_iso
+
         # Create a slippi 'comm' file to tell dolphin which file to play
         with CommFile(self.comm_file, slp_file, self.job_id):
+            #overwrite with custom file if it exists
             if self.combos_file:
                 self.comm_file = self.combos_file
 
@@ -250,7 +256,7 @@ class DolphinRunner:
                 self.conf.dolphin_bin,
                 '-i', self.comm_file,       # The comm file tells dolphin which slippi file to play (see above)
                 '-b',                       # Exit dolphin when emulation ends
-                '-e', self.conf.melee_iso,  # ISO to use
+                '-e', meleeIso,  # ISO to use
                 '-u', self.user_dir         # specify User dir
                 ]
             print(' '.join(cmd))

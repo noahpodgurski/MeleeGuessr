@@ -1,6 +1,8 @@
 {
     "melee_iso": "E:/Backups/Melee ISO's/Super Smash Bros. Melee (v1.02).iso",
+    "melee_iso_neut": "E:/Backups/Melee ISO's/MeleeNeutral.iso",
     "dolphin_dir": "C:/Users/Noah/AppData/Roaming/Slippi Launcher/playback",
+    "gfx_config": "C:/Users/Noah/AppData/Roaming/Slippi Launcher/playback/User/Config/GFX.ini",
     "ffmpeg": "C:/Users/Noah/Documents/Programming/ffmpeg/bin/ffmpeg.exe",
     "resolution": "720p",
     "widescreen": true,

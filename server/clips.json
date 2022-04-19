@@ -1,102 +1,370 @@
 [
   {
-    "clipSrc": "clip0",
-    "player": "",
-    "character": 9
-  },
-  {
-    "clipSrc": "clip1",
-    "player": "",
-    "character": 0
-  },
-  {
     "clipSrc": "clip2",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip2",
+    "player": "Hax$",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Genesis-7\\BTSSmash-Game_20200126T181722.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip3",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip3",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Genesis-7\\BTSSmash-Game_20200126T190146.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip4",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip4",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash-Game_20190922T170907.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip5",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip5",
+    "player": "Axe",
+    "character": 13,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash-Game_20190922T174022.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip6",
-    "player": "",
-    "character": 20
+    "neutclipSrc": "neutclip6",
+    "player": "PewPewU",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash-Game_20190922T174559.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip7",
-    "player": "",
-    "character": 2
+    "neutclipSrc": "neutclip7",
+    "player": "Axe",
+    "character": 13,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash-Game_20190922T190423.slp",
+    "gameStation": "BTSSmash"
   },
   {
     "clipSrc": "clip8",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip8",
+    "player": "ARMY",
+    "character": 14,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash2-Game_20190922T113804.slp",
+    "gameStation": "BTSSmash2"
   },
   {
     "clipSrc": "clip9",
-    "player": "",
-    "character": 2
+    "neutclipSrc": "neutclip9",
+    "player": "Fiction",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash2-Game_20190922T130520.slp",
+    "gameStation": "BTSSmash2"
   },
   {
     "clipSrc": "clip10",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip10",
+    "player": "Fiction",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Mainstage 2019\\BTSSmash2-Game_20190922T130805.slp",
+    "gameStation": "BTSSmash2"
   },
   {
     "clipSrc": "clip11",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip11",
+    "player": "Hax$",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T122820.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip12",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip12",
+    "player": "Wizzrobe",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T142223.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip13",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip13",
+    "player": "N0ne",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T142919.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip14",
-    "player": "",
-    "character": 2
+    "neutclipSrc": "neutclip14",
+    "player": "Leffen",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip15",
-    "player": "",
-    "character": 0
+    "neutclipSrc": "neutclip15",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip16",
-    "player": "",
-    "character": 9
+    "neutclipSrc": "neutclip16",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "gameStation": "BTSsmash"
   },
   {
     "clipSrc": "clip17",
-    "player": "",
-    "character": 2
+    "neutclipSrc": "neutclip17",
+    "player": "S2J",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Shine 2019\\BTSsmash-Game_20190825T161242.slp",
+    "gameStation": "BTSsmash"
   },
   {
-    "clipSrc": "clip18",
-    "player": "",
-    "character": 20
+    "clipSrc": "clip20",
+    "neutclipSrc": "neutclip20",
+    "player": "Swedish Delight",
+    "character": 19,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T152110.slp",
+    "gameStation": "BTSSmash"
   },
   {
-    "clipSrc": "clip19",
-    "player": "",
-    "character": 19
+    "clipSrc": "clip21",
+    "neutclipSrc": "neutclip21",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T152456.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip22",
+    "neutclipSrc": "neutclip22",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T165958.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip23",
+    "neutclipSrc": "neutclip23",
+    "player": "Mew2King",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T182803.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip24",
+    "neutclipSrc": "neutclip24",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T190049.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip27",
+    "neutclipSrc": "neutclip27",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T200215.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip28",
+    "neutclipSrc": "neutclip28",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash-Game_20191006T200538.slp",
+    "gameStation": "BTSSmash"
+  },
+  {
+    "clipSrc": "clip29",
+    "neutclipSrc": "neutclip29",
+    "player": "N0ne",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\The BIg House 9\\BTSSmash3-Game_20191006T151355.slp",
+    "gameStation": "BTSSmash3"
+  },
+  {
+    "clipSrc": "clip35",
+    "neutclipSrc": "neutclip35",
+    "player": "N0ne",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T104648.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip36",
+    "neutclipSrc": "neutclip36",
+    "player": "N0ne",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T104648.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip38",
+    "neutclipSrc": "neutclip38",
+    "player": "aMSa",
+    "character": 17,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T133353.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip42",
+    "neutclipSrc": "neutclip42",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T172816.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip43",
+    "neutclipSrc": "neutclip43",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T173552.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip44",
+    "neutclipSrc": "neutclip44",
+    "player": "Zain",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 8\\Day 4-Game_20190616T173936.slp",
+    "gameStation": "Day 4"
+  },
+  {
+    "clipSrc": "clip48",
+    "neutclipSrc": "neutclip48",
+    "player": "N0ne",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 1-Game_20210716T002855.slp",
+    "gameStation": "Day 1"
+  },
+  {
+    "clipSrc": "clip49",
+    "neutclipSrc": "neutclip49",
+    "player": "Kodorin",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 1-Game_20210716T004807.slp",
+    "gameStation": "Day 1"
+  },
+  {
+    "clipSrc": "clip50",
+    "neutclipSrc": "neutclip50",
+    "player": "Kodorin",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 1-Game_20210716T005144.slp",
+    "gameStation": "Day 1"
+  },
+  {
+    "clipSrc": "clip53",
+    "neutclipSrc": "neutclip53",
+    "player": "Mang0",
+    "character": 20,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T001743.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip54",
+    "neutclipSrc": "neutclip54",
+    "player": "Moky",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T025740.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip55",
+    "neutclipSrc": "neutclip55",
+    "player": "LSD",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T030001.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip56",
+    "neutclipSrc": "neutclip56",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T033447.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip58",
+    "neutclipSrc": "neutclip58",
+    "player": "Kodorin",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T063433.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip59",
+    "neutclipSrc": "neutclip59",
+    "player": "Kodorin",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 2-Game_20210717T065335.slp",
+    "gameStation": "Day 2"
+  },
+  {
+    "clipSrc": "clip60",
+    "neutclipSrc": "neutclip60",
+    "player": "LSD",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T001648.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip62",
+    "neutclipSrc": "neutclip62",
+    "player": "Wizzrobe",
+    "character": 0,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T042252.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip63",
+    "neutclipSrc": "neutclip63",
+    "player": "Kodorin",
+    "character": 9,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T052418.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip64",
+    "neutclipSrc": "neutclip64",
+    "player": "iBDW",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T063436.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip65",
+    "neutclipSrc": "neutclip65",
+    "player": "Mang0",
+    "character": 20,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T072157.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip66",
+    "neutclipSrc": "neutclip66",
+    "player": "Plup",
+    "character": 19,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T083221.slp",
+    "gameStation": "Day 3"
+  },
+  {
+    "clipSrc": "clip67",
+    "neutclipSrc": "neutclip67",
+    "player": "Plup",
+    "character": 2,
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Summit 11\\Day 3-Game_20210718T083518.slp",
+    "gameStation": "Day 3"
   }
 ]

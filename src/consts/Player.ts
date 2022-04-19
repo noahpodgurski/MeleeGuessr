@@ -63,8 +63,8 @@ export const Player: PlayerType = {
     color: 'success',
     characters: [Character.Fox]
   },
-  'moky': {
-    label: 'moky',
+  'Moky': {
+    label: 'Moky',
     characters: [Character.Fox]
   },
   'Trif': {
@@ -131,8 +131,8 @@ export const Player: PlayerType = {
     label: 'Wizzrobe',
     characters: [Character.Falcon]
   },
-  'n0ne': {
-    label: 'n0ne',
+  'N0ne': {
+    label: 'N0ne',
     characters: [Character.Falcon]
   },
   'Gahtzu': {
@@ -142,6 +142,22 @@ export const Player: PlayerType = {
   'S2J': {
     label: 'S2J',
     characters: [Character.Falcon]
+  },
+  'Kodorin': {
+    label: 'Kodorin',
+    characters: [Character.Marth]
+  },
+  'ARMY': {
+    label: 'ARMY',
+    characters: [Character.IC]
+  },
+  'aMSa': {
+    label: 'aMSa',
+    characters: [Character.Yoshi]
+  },
+  'Axe': {
+    label: 'Axe',
+    characters: [Character.Pikachu]
   },
 
 

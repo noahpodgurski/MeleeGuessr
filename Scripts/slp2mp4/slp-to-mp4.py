@@ -5,6 +5,7 @@ from slippi import Game
 from config import Config
 from dolphinrunner import DolphinRunner
 from ffmpegrunner import FfmpegRunner
+import editDolphinConfig
 
 VERSION = '1.0.0'
 USAGE = """\
@@ -32,6 +33,7 @@ FPS = 60
 MIN_GAME_LENGTH = 30 * FPS
 DURATION_BUFFER = 70              # Record for 70 additional frames
 MELEE_GUESSR_BUFFER = 100
+RENDERS_NEUTRAL = [False, True] #make one clip rendered normally (False), and neutral costumes (True)
 
 # Paths to files in (this) script's directory
 SCRIPT_DIR, _ = os.path.split(os.path.abspath(__file__))
@@ -63,7 +65,7 @@ def clean():
         os.remove(file)
 
 # Evaluate whether file should be run. The open in dolphin and combine video and audio with ffmpeg.
-def record_file_slp(slp_file, outfile, OVERWRITE_COMMS=None):
+def record_file_slp(slp_file, outfile, outfileNeut, OVERWRITE_COMMS=None):
     conf = Config()
 
     # Parse file with py-slippi to determine number of frames
@@ -87,14 +89,27 @@ def record_file_slp(slp_file, outfile, OVERWRITE_COMMS=None):
 
     DOLPHIN_USER_DIR = os.path.join(conf.dolphin_dir, 'User')
     # Dump frames
-    with DolphinRunner(conf, DOLPHIN_USER_DIR, SCRIPT_DIR, uuid.uuid4(), OVERWRITE_COMMS) as dolphin_runner:
-        video_file, audio_file = dolphin_runner.run(slp_file, num_frames)
+    for renderNeut in RENDERS_NEUTRAL:
+        if renderNeut:
+            outfileName = outfileNeut
+            # make HiresTextures = True in GFX.ini
+            editDolphinConfig.setCustomTexture(conf.gfx_config, True)
 
-        # Encode
-        ffmpeg_runner = FfmpegRunner(conf.ffmpeg)
-        ffmpeg_runner.run(video_file, audio_file, outfile)
+        else:
+            outfileName = outfile
+        with DolphinRunner(conf, DOLPHIN_USER_DIR, SCRIPT_DIR, uuid.uuid4(), OVERWRITE_COMMS) as dolphin_runner:
 
-        print('Created {}'.format(outfile))
+            video_file, audio_file = dolphin_runner.run(slp_file, num_frames, renderNeut)
+
+            # Encode
+            ffmpeg_runner = FfmpegRunner(conf.ffmpeg)
+            ffmpeg_runner.run(video_file, audio_file, outfileName)
+
+            print('Created {}'.format(outfileName))
+
+        if renderNeut:
+            # make HiresTextures = False in GFX.ini
+            editDolphinConfig.setCustomTexture(conf.gfx_config, False)
 
 
 # In the out folder, run through each subdirectory and count the number of mp4 files. Add these files to
@@ -192,31 +207,42 @@ def main():
         print(USAGE)
         sys.exit()
 
-    slp_file = os.path.abspath(sys.argv[1])
+    # slp_file = os.path.abspath(sys.argv[1])
+    slp_file = sys.argv[1]
     clean()
     os.makedirs(OUT_DIR, exist_ok=True)
 
     # Handle all the outfile argument possibilities
     outfile = ''
+    outfileNeut = ''
     if len(sys.argv) > 2:
         outfile_name = ''
+        outfile_name_neut = 'neut'
         outdir = ''
         if sys.argv[2].endswith('.mp4'):
             outdir, outfile_name = os.path.split(sys.argv[2])
+            _, outfile_name_neut = os.path.split(sys.argv[2])
+            outfile_name_neut = "neut" + outfile_name_neut
         else:
             outdir = sys.argv[2]
             outfile_name, _ = os.path.splitext(os.path.basename(slp_file))
             outfile_name += '.mp4'
+            outfile_name_neut, _ = os.path.splitext(os.path.basename(slp_file))
+            outfile_name_neut += '.mp4'
 
         # We need to remove '..' etc from the path before making directories
         outdir = os.path.abspath(outdir)
         os.makedirs(outdir, exist_ok=True)
         outfile = os.path.join(outdir, outfile_name)
+        outfileNeut = os.path.join(outdir, outfile_name_neut)
     else:
         outfile, _ = os.path.splitext(os.path.basename(slp_file))
         outfile += '.mp4'
         outfile = os.path.join(OUT_DIR, outfile)
 
+        outfileNeut, _ = "neut" + os.path.splitext(os.path.basename(slp_file))
+        outfileNeut += '.mp4'
+        outfileNeut = os.path.join(OUT_DIR, outfileNeut)
 
     try:
         OVERWRITE_COMMS = sys.argv[3]
@@ -227,7 +253,7 @@ def main():
         conf = Config()
         record_folder_slp(slp_file, conf, OVERWRITE_COMMS)
     else:
-        record_file_slp(slp_file, outfile, OVERWRITE_COMMS)
+        record_file_slp(slp_file, outfile, outfileNeut, OVERWRITE_COMMS)
 
 
 if __name__ == '__main__':

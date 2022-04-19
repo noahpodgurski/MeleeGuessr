@@ -25,13 +25,13 @@ let playData:PlayData[] = [];
 // let clips:Clip[] = [];
 
 
-const noMore: StageType = 
-{
-  clipSrc: "./clips/testClip.mp4",
-  character: "Peach",
-  correctChoice: Player.Armada,
-  incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
-};
+// const noMore: StageType = 
+// {
+//   clipSrc: "./clips/testClip.mp4",
+//   character: "Peach",
+//   correctChoice: Player.Armada,
+//   incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
+// };
 
 export const Play: React.FC = () => {
   // ex: stage 1/5
@@ -49,7 +49,7 @@ export const Play: React.FC = () => {
   
   
   useEffect( () => {
-    if (!loading){
+    if (!loading && !clips){
 
       const fetchData = async () => {
         await getClips();
@@ -59,7 +59,9 @@ export const Play: React.FC = () => {
   }, [useEffect])
 
   useEffect(() => {
-    setClips(Clips);
+    const _clips = Clips.filter((clip:Clip) => { return clip.player.label !== "TEST" });
+    // console.log(_clips)
+    setClips(_clips);
   }, [Clips])
 
   // useEffect(() => {
@@ -110,7 +112,6 @@ export const Play: React.FC = () => {
       if (x === null || x < score){
         setHS(true);
         localStorage.setItem('HS', score.toLocaleString());
-        console.log('here')
       }
       setShowChoiceResult(true);
     }
@@ -118,18 +119,24 @@ export const Play: React.FC = () => {
 
 
   
-  const currStage:StageType = useMemo(() => {
+  const currStage:StageType|null = useMemo(() => {
     if (loading){
-      return noMore;
+      return null;
     }
     if (clips.length === 0){
       getClips();
-      return noMore;
+      return null;
     }
 
     const [clip, slicedIndex] = RandomChoice(clips);
+    // setClips((clips) => {
+    //   clips.splice(slicedIndex, 1);
+    //   return clips;
+    // })
     setClips((clips) => {
-      return clips.splice(slicedIndex, 1);
+      return clips.filter((filteredClip) => {
+        return filteredClip !== clip;
+      })
     })
 
     const incorrectChoices:Choice[] = [];
@@ -137,7 +144,7 @@ export const Play: React.FC = () => {
     const randomPlayers:string[] = shuffleArray(Object.keys(Player));
     for (const player of randomPlayers){
       // player doesn't have any characters or if the player has characters
-      if (player !== clip.player.label && (!Player[player].characters || Player[player].characters?.includes(clip.character))){
+      if (player !== clip.player.label && player !== Player['TEST'].label && (!Player[player].characters || Player[player].characters?.includes(clip.character))){
         incorrectChoices.push(Player[player]);
         if (incorrectChoices.length >= 3)
           break;
@@ -149,7 +156,7 @@ export const Play: React.FC = () => {
       correctChoice: clip.player,
       incorrectChoices: incorrectChoices
     }
-  }, [playData.length, getClips])
+  }, [Clips, stage, score, loading, playData.length])
 
   const reset = () => {
     playData = [];
@@ -187,7 +194,7 @@ export const Play: React.FC = () => {
                 return hand;
               })}
             </div> 
-            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
+            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} neutral={true}/>
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
           </>
           }

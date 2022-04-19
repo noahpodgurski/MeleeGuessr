@@ -32,3 +32,5 @@ server/slp
 /Scripts/jsons
 /Scripts/__pycache__
 /Scripts/slippi/__pycache__
+/Scripts/out/
+/Scripts/out - Copy

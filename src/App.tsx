@@ -12,6 +12,7 @@ import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import { LoadingContext } from './hooks/UseLoading';
+import { ViewClips } from './pages/ViewClips';
 
 export const STARTING_STOCKS = 4;
 
@@ -22,29 +23,37 @@ const App: React.FC = () => {
 
 
   const getClips = async () => {
-    setLoading(true);
-    // await new Promise(resolve => {setTimeout(() => resolve(null), 5000)});
-    
-    const res:any = await fetch("http://localhost:4000/clips");
-    const _clips = await res.json();
-    // console.log(_clips);
-    // const shuffledClips = shuffleArray(_clips);
-    const fixedClips = _clips.map((clip:any) => {
-      if (!Player[clip['player']])
+    if (clips.length == 0){
+    // if (true){
+
+      console.log('get clips')
+      setLoading(true);
+      // await new Promise(resolve => {setTimeout(() => resolve(null), 5000)});
+      
+      const res:any = await fetch("http://localhost:4000/clips");
+      const _clips = await res.json();
+      // console.log(_clips);
+      // const shuffledClips = shuffleArray(_clips);
+      const fixedClips:Clip[] = _clips.map((clip:any) => {
+        if (!Player[clip['player']])
         // throw `${clip['player']} is not a Player object`
         // set TEST for now
         clip['player'] = "TEST";
-      return {
-        ...clip,
-        // convert character enum to <Character>
-        character: CharacterIds[clip.character],
-        // convert player STRING to <Player> ...somehow
-        player: Player[clip['player']]
-      }
-    })
-
-    setLoading(false);
-    setClips(fixedClips);
+        return {
+          ...clip,
+          slp: clip.slp,
+          // convert character enum to <Character>
+          character: CharacterIds[clip.character],
+          // convert player STRING to <Player> ...somehow
+          player: Player[clip['player']]
+        }
+      }) || []
+      setLoading(false);
+      // setClips(fixedClips);
+      setClips(fixedClips);
+    } else {
+      console.log('length is 0')
+    }
   }
 
   return (
@@ -66,6 +75,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={ <Home /> } />
                 <Route path="/play" element={ <Play /> } />
+                <Route path="/clips" element={ <ViewClips /> } />
               </Routes>
             </BrowserRouter>
           </ClipsContext.Provider>

@@ -1,14 +1,12 @@
 import sys
-sys.path.append('../slippi')
+# sys.path.append('../slippi') #use local slippi
 import slippi
 import json
 
 MAKE_COSTUMES_NEUTRAL = False
 THE_SEARCH_BUFFER = 50
 
-fileUrl = "./slp2mp4/highlights.json";
-
-if __name__ == "__main__":
+def addCharacterToJson(fileUrl):
 	with open(fileUrl, "r") as f:
 		data = json.load(f)
 		for file in data['queue']:
