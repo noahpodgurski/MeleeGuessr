@@ -1,5 +1,5 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import React, { forwardRef, useContext } from "react";
+import { forwardRef, useContext } from "react";
 import { Ref, useImperativeHandle } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { randomColor } from "../consts/Colors";
@@ -34,7 +34,7 @@ export interface RefObject {
 export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const { stage, handleChoice, stageIndex, viewClipsOnly=false, neutral=false } = props;
   const [showAnswers, setShowAnswers] = useState(false);
-  const { loading, setLoading } = useContext<ILoading>(LoadingContext);
+  const { loading, } = useContext<ILoading>(LoadingContext);
   const [muted, setMuted] = useState(false);
   const [val, setVal] = useState(0);
 

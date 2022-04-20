@@ -76,6 +76,10 @@ def splitHighlights():
 
 
 if __name__ == "__main__":
+	backup = input("Did you backup server/clips.json?")
+	if backup != 'y':
+		quit()
+
 	# clean(f"{PATH}/out")
 	# #1. run combo parser (clippi for now)
 

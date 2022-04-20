@@ -1,5 +1,13 @@
+# v0.5.0
+## Scripts
+* Added a few scripts to automate process of converting .slp into neutral/normal highlights
+
+## Site
+* Various Bugfixes
+* Added `/clips` endpoint for viewing clips (normal) with all data shown (use in tandem with `clipDatasetBuilder.py` for entering player information)
+
 # v0.4.0
-# Site
+## Site
 * % and Stocks instead of score and lives
 * Displays loading indicator while fetching clip (metadata)
 * Updated index.html metadata

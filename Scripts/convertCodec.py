@@ -2,9 +2,9 @@ import os
 
 FFMPEG = "C:/Users/Noah/Documents/Programming/ffmpeg/bin/ffmpeg.exe"
 
-def convert(inFile, outFile):
-	command = f"{FFMPEG} -y -i {inFile} -vcodec h264 {outFile}"
-	os.system(command)
+def getCommand(inFile, outFile):
+	return f"{FFMPEG} -y -i {inFile} -vcodec h264 {outFile}"
+	# os.system(command)
 
 
 

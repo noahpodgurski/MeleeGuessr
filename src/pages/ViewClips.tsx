@@ -7,7 +7,6 @@ import { ILoading, LoadingContext } from "../hooks/UseLoading";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
-import { shuffleArray } from "../utils/Shuffle";
 
 type PlayData = {
   stage: number;

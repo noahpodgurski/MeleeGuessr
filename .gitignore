@@ -34,3 +34,5 @@ server/slp
 /Scripts/slippi/__pycache__
 /Scripts/out/
 /Scripts/out - Copy
+__pycache__
+User/
