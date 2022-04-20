@@ -58,13 +58,6 @@ const App: React.FC = () => {
 
   return (
     <StrictMode>
-      <Toaster 
-        position="bottom-center"
-        toastOptions={{
-          duration: 2000,
-          style: {}
-        }}
-      />
       <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
         <LoadingContext.Provider value={{loading: loading, setLoading: setLoading}}>
           <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>

@@ -1,4 +1,4 @@
-import { MDBBtn } from "mdb-react-ui-kit";
+import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -33,6 +33,9 @@ let playData:PlayData[] = [];
 //   incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
 // };
 
+const BASE_POINTS = 1;
+const NO_HINT_POINTS = 2;
+
 export const Play: React.FC = () => {
   // ex: stage 1/5
   const [stage, setStage] = useState(0);
@@ -43,9 +46,13 @@ export const Play: React.FC = () => {
   const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
-  const [stop,] = useState(false);  
+  const [stop,] = useState(false);
+  const [mute, setMute] = useState(false);
+  const [hint, setHint] = useState(false);
 
   const stageRef = useRef<RefObject>(null);
+  const clipRef = useRef<HTMLVideoElement>(null);
+  const neutclipRef = useRef<HTMLVideoElement>(null);
   
   
   useEffect( () => {
@@ -69,6 +76,24 @@ export const Play: React.FC = () => {
   //     playData.pop();
   // }, [])
 
+  const toggleMute = async () => {
+    if (clipRef && clipRef.current){
+      let x = clipRef.current.muted;
+      console.log(`setting to ${clipRef.current.muted ? 'true' : ''}`)
+      clipRef.current.muted = !clipRef.current.muted
+      localStorage.setItem('mute', clipRef.current.muted ? 'true' : '')
+    }
+  }
+
+  const toggleHint = () => {
+    if (clipRef && clipRef.current){
+      // if (clipRef.current.hidden)
+        // toast.success("Player's preferred colors revealed!")
+      clipRef.current.hidden = false;
+    }
+    if (neutclipRef && neutclipRef.current)
+      neutclipRef.current.hidden = true;
+  }
   
   const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
     if (stageRef.current){
@@ -77,16 +102,10 @@ export const Play: React.FC = () => {
   }
 
   const handleChoice = (choice:Choice, correctChoice:Choice) => {
-    displayCorrectChoice(choice, correctChoice);
-    if (choice.label === correctChoice.label){
-      toast.success("Correct")
-    }
-    else {
-      toast.error(`Incorrect. Answer was ${correctChoice.label}`)
-    }
     setTimeout(() => {
       if (choice.label === correctChoice.label){
-        setScore(score+1);
+        let hasHint = neutclipRef?.current?.hidden; //if neutclip is hidden
+        setScore(score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS));
         playData.push({
           stage: stage,
           wasCorrect: true,
@@ -101,6 +120,7 @@ export const Play: React.FC = () => {
         })
         setStocks(stocks-1)
       }
+      // setHint(false);
       setStage(stage+1);
     }, 2000); //show correct choices for x time
   };
@@ -162,7 +182,7 @@ export const Play: React.FC = () => {
     setScore(0);
     setStocks(3);
     setShowChoiceResult(false);
-    setHS(false);
+    // setHS(false);
   }
 
   const hands:ReactNode[] = useMemo(() => {
@@ -180,16 +200,21 @@ export const Play: React.FC = () => {
           
           { !stop && !showChoiceResult &&
           <>
-            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-              <h1>{`${score}%`}</h1>
-            </div> 
-            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-              {/* <h1>{`Stocks ${stocks}`}</h1> */}
+            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
               {hands.map((hand) => {
                 return hand;
               })}
+              <h1>{`${score}%`}</h1>
             </div> 
-            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} neutral={true}/>
+            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+              <div className="">
+              <MDBBtn onClick={() => toggleHint()} className="hint" color="info">Hint?</MDBBtn>
+              <MDBBtnGroup>
+                <MDBCheckbox onClick={toggleMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={mute} />
+              </MDBBtnGroup>
+              </div>
+            </div> 
+            <Stage ref={stageRef} clipRef={clipRef} neutclipRef={neutclipRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
           </>
           }

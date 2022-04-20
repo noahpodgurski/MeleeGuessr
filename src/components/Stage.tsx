@@ -2,11 +2,13 @@ import { MDBBtn } from "mdb-react-ui-kit";
 import { forwardRef, useContext } from "react";
 import { Ref, useImperativeHandle } from "react";
 import { useEffect, useMemo, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { randomColor } from "../consts/Colors";
 import { Player } from "../consts/Player";
 import { ILoading, LoadingContext } from "../hooks/UseLoading";
 import { Choice } from "../models/Choice";
 import { shuffleArray } from "../utils/Shuffle";
+import { Choices } from "./Choices";
 import './Stage.css';
 
 export type StageType = {
@@ -23,7 +25,8 @@ interface StageProps {
   handleChoice: (choice:Choice, correctChoice:Choice) => void
   stageIndex: number;
   viewClipsOnly?: boolean;
-  neutral?: boolean;
+  clipRef: Ref<HTMLVideoElement>;
+  neutclipRef: Ref<HTMLVideoElement>;
 }
 
 export interface RefObject {
@@ -32,36 +35,17 @@ export interface RefObject {
 
 // export const Stage: React.FC<StageProps> = ({stage, handleChoice, stageIndex}) => {
 export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
-  const { stage, handleChoice, stageIndex, viewClipsOnly=false, neutral=false } = props;
-  const [showAnswers, setShowAnswers] = useState(false);
+  const { stage, handleChoice, stageIndex, viewClipsOnly=false, clipRef, neutclipRef } = props;
+  
   const { loading, } = useContext<ILoading>(LoadingContext);
-  const [muted, setMuted] = useState(false);
   const [val, setVal] = useState(0);
 
   console.log(stage)
-  console.log('stage')
+  // console.log('stage')
 
   useEffect(() => {
     setVal(val+1);
   }, [loading])
-
-  const randomChoices = useMemo<Choice[]>(() => {
-    if (stage){
-      if (showAnswers){
-        const choices = stage.incorrectChoices.map((choice) => {
-          if (choice.label !== stage.correctChoice.label)
-            return {...choice, color: 'danger'};
-          else
-            return {...choice, color: 'success'};
-        })
-        return choices;
-      }
-      const choices = stage.incorrectChoices;
-      if (!choices.includes(stage.correctChoice))
-      choices.push(stage.correctChoice);
-      return shuffleArray(choices); 
-    }
-  }, [stage, showAnswers])
 
   // const requestMetadata = async () => {
   //   const res = await fetch(`${stage.clipSrc}/data`);
@@ -71,11 +55,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
 
   useImperativeHandle(ref, () => ({ Test }));
   const Test = async (choice:Choice) => { 
-    setShowAnswers(true);
+    // setShowAnswers(true);
 
-    setTimeout(() => {
-      setShowAnswers(false);
-    }, 2000);
+    // setTimeout(() => {
+    //   setShowAnswers(false);
+    // }, 2000);
   }
 
   // useEffect(() => {
@@ -84,8 +68,18 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   //   });
   // }, [stageIndex]);
   // console.log(stage)
-
   
+  const intHandleChoice = (choice:Choice, correctChoice:Choice) => {
+     if (choice.label === correctChoice.label){
+      toast.success("Correct")
+    }
+    else {
+      toast.error(`Incorrect. Answer was ${correctChoice.label}`)
+    }
+    // setShowAnswers(true);
+    handleChoice(choice, correctChoice);
+  }
+
   if (!stage){
     return (
       <>
@@ -96,24 +90,46 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     )
   }
 
+
+  console.log(localStorage.getItem('mute'))
+  console.log(!!localStorage.getItem('mute'))
+
+
+  const VideoClip: React.FC = ({}) => {
+    return ( 
+      <>
+        <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden autoPlay muted={!!localStorage.getItem('mute')} loop playsInline>
+          <source src={`http://localhost:4000/video/${stage.clipSrc}`} type="video/mp4" />
+        </video>
+        <video ref={neutclipRef} key={`neut${stage.clipSrc}`} className={`clip`} autoPlay loop muted playsInline>
+          <source src={`http://localhost:4000/video/neut${stage.clipSrc}`} type="video/mp4" />
+        </video>
+      </>
+    )
+  }
+  
+
   return (
     <>
+      <Toaster 
+        position="top-center"
+        toastOptions={{
+          duration: 3000,
+          style: {}
+        }}
+      />
+
       <div className="row justify-content-center p-0">
-        { loading ? <div className="loader"></div> :
-        <video key={stage.clipSrc} className="clip" autoPlay loop muted playsInline>
-          <source src={`http://localhost:4000/video/${neutral ? 'neut' : ''}${stage.clipSrc}`} type="video/mp4" />
-        </video> }
+        { loading ? <div className="loader"></div> : <VideoClip /> }
       </div>
       <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
         {/* { !loading && <h2 className="white-text">{JSON.stringify(videoData)}</h2> } */}
         { !loading && <h2 className="white-text">Who is the {stage.character}?</h2> }
       </div>
       { viewClipsOnly ? <MDBBtn onClick={() => handleChoice(Player.TEST, stage.correctChoice)} color="success">Next</MDBBtn>
-      : <div className="btn-group shadow-0 mt-3 justify-content-center" role="group" aria-label="Basic example">
-        { !loading && randomChoices.map((choice, i) => {
-          return <button key={`${stageIndex}/${i}`} onClick={() => handleChoice(choice, stage.correctChoice)} type="button" className={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}${randomColor()}`} data-mdb-color="dark">{choice.label}</button>
-        })}
-      </div> }
+      : <>
+        <Choices stage={stage} loading={loading} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
+      </> }
     </>
   )
 });
