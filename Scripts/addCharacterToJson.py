@@ -12,9 +12,9 @@ def readJson(jsonFile):
 	return data
 
 # file should be .json
-def addCharacterToJson(file):
+def addCharacterToJson(jsonFile):
 	playerCodeMap = {}
-	data = readJson(file)
+	data = readJson(jsonFile)
 	for file in data['queue']:
 		try:
 			game = slippi.Game(file['path'])
@@ -100,7 +100,7 @@ def addCharacterToJson(file):
 	with open("./playerCodeMap.json", "w") as f:
 		json.dump(playerCodeMap, f, indent=2)
 
-	with open(fileUrl, "w") as f:
+	with open(jsonFile, "w") as f:
 		json.dump(data, f, indent=2)
 
 if __name__ == "__main__":
