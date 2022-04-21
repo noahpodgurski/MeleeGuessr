@@ -11,6 +11,10 @@
 
 }
 
+.full-page {
+  height: 80vh;
+}
+
 /* remove legend icon */
 .no-icon .recharts-legend-wrapper .recharts-surface {
   display: none !important;
@@ -31,3 +35,45 @@
 .Toastify__progress-bar {
   display: none;
 }
+
+.hand {
+  height: 1.5rem;
+}
+
+.melee-num {
+  height: 1.5rem;
+}
+
+.melee-percent {
+  height: 1rem;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+} 
+
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+} 
+
+/* .hint .fadeout {
+  opacity: 0;
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  animation-duration: 1s;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+} */

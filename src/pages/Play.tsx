@@ -1,19 +1,22 @@
 import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { MeleeFont } from "../components/MeleeFont";
 import { RefObject, Stage, StageType } from "../components/Stage";
 // import { Clips } from "../hooks/Clips";
 import { Player } from "../consts/Player";
-import { ClipsContext } from "../hooks/Clips";
+import { choiceTime } from "../consts/Time";
+import { ClipsContext, IClips } from "../hooks/Clips";
 import { ILoading, LoadingContext } from "../hooks/UseLoading";
 import { StocksContext } from "../hooks/UseStocks";
+import { Character } from "../models/Character";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
 import { shuffleArray } from "../utils/Shuffle";
+import { Result } from "./Result";
 
-type PlayData = {
+export type PlayData = {
   stage: number;
   wasCorrect: boolean;
   choice: string;
@@ -41,20 +44,20 @@ export const Play: React.FC = () => {
   const [stage, setStage] = useState(0);
   const [score, setScore] = useState(0);
   const { stocks, setStocks } = useContext<any>(StocksContext);
-  const { Clips, getClips } = useContext<any>(ClipsContext);
-  const { loading, setLoading } = useContext<ILoading>(LoadingContext);
+  const { Clips, getClips } = useContext<IClips>(ClipsContext);
+  const { loading } = useContext<ILoading>(LoadingContext);
   const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);
-  const [mute, setMute] = useState(false);
-  const [hint, setHint] = useState(false);
 
   const stageRef = useRef<RefObject>(null);
-  const clipRef = useRef<HTMLVideoElement>(null);
-  const neutclipRef = useRef<HTMLVideoElement>(null);
   
-  
+  // useEffect(() => {
+  //   console.log('RESET')
+  //   reset();
+  // }, [useEffect])
+
   useEffect( () => {
     if (!loading && !clips){
 
@@ -63,11 +66,11 @@ export const Play: React.FC = () => {
       }
       fetchData();
     }
-  }, [useEffect])
+  // }, [useEffect])
+  }, [clips, getClips, loading])
 
   useEffect(() => {
-    const _clips = Clips.filter((clip:Clip) => { return clip.player.label !== "TEST" });
-    // console.log(_clips)
+    const _clips = Clips.filter((clip:Clip) => { return clip?.player.label !== "TEST" });
     setClips(_clips);
   }, [Clips])
 
@@ -76,35 +79,20 @@ export const Play: React.FC = () => {
   //     playData.pop();
   // }, [])
 
-  const toggleMute = async () => {
-    if (clipRef && clipRef.current){
-      let x = clipRef.current.muted;
-      console.log(`setting to ${clipRef.current.muted ? 'true' : ''}`)
-      clipRef.current.muted = !clipRef.current.muted
-      localStorage.setItem('mute', clipRef.current.muted ? 'true' : '')
-    }
-  }
 
-  const toggleHint = () => {
-    if (clipRef && clipRef.current){
-      // if (clipRef.current.hidden)
-        // toast.success("Player's preferred colors revealed!")
-      clipRef.current.hidden = false;
-    }
-    if (neutclipRef && neutclipRef.current)
-      neutclipRef.current.hidden = true;
-  }
   
-  const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
-    if (stageRef.current){
-      stageRef.current.Test(choice);
-    }
-  }
+  // calls child function!
+  // const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
+  //   if (stageRef.current){
+  //     stageRef.current.Test(choice);
+  //   }
+  // }
 
   const handleChoice = (choice:Choice, correctChoice:Choice) => {
+    let hasHint = stageRef.current?.hasHint();
     setTimeout(() => {
       if (choice.label === correctChoice.label){
-        let hasHint = neutclipRef?.current?.hidden; //if neutclip is hidden
+        // let hasHint = neutclipRef?.current?.hidden; //if neutclip is hidden
         setScore(score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS));
         playData.push({
           stage: stage,
@@ -122,9 +110,10 @@ export const Play: React.FC = () => {
       }
       // setHint(false);
       setStage(stage+1);
-    }, 2000); //show correct choices for x time
+    }, choiceTime); //show correct choices for x time
   };
   
+  // update high score
   useEffect(() => {
     const x:number | null = Number(localStorage.getItem('HS'));
     if (stocks === 0){
@@ -135,20 +124,23 @@ export const Play: React.FC = () => {
       }
       setShowChoiceResult(true);
     }
-  }, [stocks])
+  }, [stocks, score])
 
 
   
   const currStage:StageType|null = useMemo(() => {
-    if (loading){
+    if (loading && !clips){
       return null;
-    }
+    }    
     if (clips.length === 0){
       getClips();
       return null;
     }
-
-    const [clip, slicedIndex] = RandomChoice(clips);
+    
+    
+    const [clip,] = RandomChoice(clips) as [Clip|null, number];
+    console.log(clip?.clipSrc)
+    console.log(clips.length)
     setClips((clips) => {
       return clips.filter((filteredClip) => {
         return filteredClip !== clip;
@@ -156,22 +148,29 @@ export const Play: React.FC = () => {
     })
     const incorrectChoices:Choice[] = [];
   
+    // populate random incorrect choices
     const randomPlayers:string[] = shuffleArray(Object.keys(Player));
     for (const player of randomPlayers){
       // player doesn't have any characters or if the player has characters
-      if (player !== clip.player.label && player !== Player['TEST'].label && (!Player[player].characters || Player[player].characters?.includes(clip.character))){
+      if (player !== clip?.player.label && 
+        player !== Player['TEST'].label && 
+        // if player's character's include the clip's character
+        (Player[player].characters?.includes(clip?.character || Character.Bowser)
+        // TODO
+          // or if player's CONDITIONAL character's match up with the opp char (opp char not yet implemented in clips.json)
+        )){
         incorrectChoices.push(Player[player]);
         if (incorrectChoices.length >= 3)
           break;
       }
     };
     return {
-      clipSrc: clip.clipSrc,
-      character: clip.character,
-      correctChoice: clip.player,
+      clipSrc: clip?.clipSrc || "",
+      character: clip?.character || Character.Bowser,
+      correctChoice: clip?.player || Player.TEST,
       incorrectChoices: incorrectChoices
     }
-  }, [getClips, stage])
+  }, [score, stocks, loading, Clips])
 
   const reset = () => {
     playData = [];
@@ -188,7 +187,7 @@ export const Play: React.FC = () => {
   const hands:ReactNode[] = useMemo(() => {
     const _hands = [];
     for (let i = 0; i < stocks; i++){
-      _hands.push(<img key={`hand${i}`} src={'/hand.png'} />)
+      _hands.push(<img className="hand" alt="hand" key={`hand${i}`} src={'/hand.png'} />)
     }
     return _hands;
   }, [stocks])
@@ -204,17 +203,20 @@ export const Play: React.FC = () => {
               {hands.map((hand) => {
                 return hand;
               })}
-              <h1>{`${score}%`}</h1>
+              <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
+                <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
+                </div>
+              {/* <h1>{`${score}%`}</h1> */}
             </div> 
             <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
               <div className="">
-              <MDBBtn onClick={() => toggleHint()} className="hint" color="info">Hint?</MDBBtn>
+              <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?</MDBBtn>
               <MDBBtnGroup>
-                <MDBCheckbox onClick={toggleMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={mute} />
+                <MDBCheckbox onClick={stageRef.current?.tMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={!!localStorage.getItem('isMuted')} />
               </MDBBtnGroup>
               </div>
             </div> 
-            <Stage ref={stageRef} clipRef={clipRef} neutclipRef={neutclipRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
+            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
           </>
           }
@@ -232,30 +234,8 @@ export const Play: React.FC = () => {
           } */}
           { (stop || showChoiceResult) && 
             <>
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                { HS && <h1>High Score!</h1> }
-                <h2>Final Score {score}/{playData.length} Correct</h2>
-              </div>
-              { playData.map((data, i) => {
-                return (
-                  <div key={i} className="row w-100 secondary-text" style={{textAlign: "center"}}>
-                    <h3>#{i+1}. {data.wasCorrect ? "Correct" : "Incorrect"}, You chose {data.choice}</h3>
-                  </div> 
-                )
-              }) }
+              <Result HS={HS} score={score} playData={playData} reset={reset} />   
             </>
-          }
-          { !stop && showChoiceResult &&
-            <div className="d-flex choice-data">
-              <div className="w-25 justify-content-center" >
-
-                  {/* <ChoiceData choiceData={mockChoiceData} correctChoice={currStage.correctChoice} /> */}
-                <div className="row" style={{textAlign: "center"}}>
-                  <MDBBtn size="lg" color="success" onClick={reset}>Retry?</MDBBtn>
-                  {/* <MDBBtn className="mt-2" color="danger" onClick={() => setStop(true)}>Stop</MDBBtn> */}
-                </div>
-              </div>
-            </div>
           }
 				</div>
 			</div>

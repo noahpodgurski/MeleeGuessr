@@ -36,3 +36,4 @@ server/slp
 /Scripts/out - Copy
 __pycache__
 User/
+Scripts/slp2mp4/User-*

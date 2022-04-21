@@ -13,6 +13,7 @@ import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import { LoadingContext } from './hooks/UseLoading';
 import { ViewClips } from './pages/ViewClips';
+import { useEffect } from 'react';
 
 export const STARTING_STOCKS = 4;
 
@@ -52,9 +53,17 @@ const App: React.FC = () => {
       // setClips(fixedClips);
       setClips(fixedClips);
     } else {
+      setClips(clips);
       console.log('length is 0')
     }
   }
+
+  // useEffect(() => {
+  //   console.log('here to get clips')
+  //   // if (clips.length === 0){
+  //     getClips();
+  //   // }
+  // }, [useEffect])
 
   return (
     <StrictMode>

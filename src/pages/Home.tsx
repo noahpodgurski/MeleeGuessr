@@ -8,7 +8,7 @@ export const Home: React.FC = () => {
   const { setStocks } = useContext<any>(StocksContext);
   return (
     <>
-			<div className="d-flex justify-content-center align-items-center m-5" style={{height: "85vh"}}>
+			<div className="full-page d-flex justify-content-center align-items-center m-5">
 				<div className="row justify-content-center">
 				<h1 className="white-text" style={{textAlign: "center"}}>MeleeGuessr</h1>
 				<Link className="w-100" to="/play">

@@ -1,5 +1,6 @@
 import { Ref, forwardRef, useState, useMemo } from "react";
 import { randomColor } from "../consts/Colors";
+import { choiceTime } from "../consts/Time";
 import { Choice } from "../models/Choice";
 import { shuffleArray } from "../utils/Shuffle";
 import { RefObject, StageType } from "./Stage";
@@ -21,7 +22,7 @@ export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => 
     intHandleChoice(choice, correctChoice);
     setTimeout(() => {
       setShowAnswers(false);
-    }, 2000)
+    }, choiceTime)
   }
 
   const randomChoices = useMemo<Choice[]>(() => {

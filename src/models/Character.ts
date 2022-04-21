@@ -55,3 +55,35 @@ export const AllCharacters:Character[] = [
   Character.Marth,
   Character.Roy
 ]
+
+export const Spacies:Character[] = [
+  Character.Falcon,
+  Character.Falco,
+  Character.Fox,
+]
+
+export const Floaties:Character[] = [
+  Character.DrMario,
+  Character.Mario,
+  Character.Luigi,
+  Character.Bowser,
+  Character.Peach,
+  Character.Yoshi,
+  Character.DK,
+  Character.Ganondorf,
+  Character.Ness,
+  Character.IC,
+  Character.Kirby,
+  Character.Samus,
+  Character.Zelda,
+  Character.Sheik,
+  Character.Link,
+  Character.YLink,
+  Character.Pichu,
+  Character.Pikachu,
+  Character.Jigglypuff,
+  Character.Mewtwo,
+  Character.GAW,
+  Character.Marth,
+  Character.Roy
+]

@@ -1,9 +1,7 @@
-import { Character } from "../models/Character";
 import { Clip } from "../models/Clip";
-import { Player } from "../consts/Player";
 import { createContext } from "react";
 
-interface IClips {
+export interface IClips {
   Clips: Clip[];
   getClips: () => Promise<void>;
 }

@@ -30,16 +30,8 @@ export const ViewClips: React.FC = () => {
   const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult,] = useState(false);
   const [stop,] = useState(false);  
-  const [neutral, setNeutral] = useState(false);
 
   const stageRef = useRef<RefObject>(null);
-  const clipRef = useRef<HTMLVideoElement>(null);
-  const neutclipRef = useRef<HTMLVideoElement>(null);
-
-  const toggleEasyMode = (e:any) => {
-    console.log(e.target.checked)
-    setNeutral(e.target.checked);
-  }
   
   useEffect(() => {
     const _clips = Clips.filter((clip:Clip) => { return clip.player !== Player.TEST });
@@ -102,14 +94,14 @@ export const ViewClips: React.FC = () => {
       <div className="d-flex justify-content-center align-items-center mt-5" style={{height: "100%"}}>
 				<div className="row justify-content-center w-100">
           
-          <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Easy Mode?' onClick={toggleEasyMode} />
+          <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Easy Mode?' />
           { !stop && !showChoiceResult &&
           <>
             <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
               <h1>{currStage?.clipSrc}</h1>
               <p>{currStage?.slp}</p>
             </div> 
-            <Stage ref={stageRef} clipRef={clipRef} neutclipRef={neutclipRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} viewClipsOnly={true} />
+            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} viewClipsOnly={true} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
           </>
           }

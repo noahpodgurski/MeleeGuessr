@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const cors  = require('cors');
+require('dotenv').config();
 
 const app = express();
 
@@ -66,6 +67,10 @@ app.get('/clips', (req, res) => {
 // })
 
 
-app.listen(4000, () => {
-  console.log("Server online");
-})
+// app.listen(4000, () => {
+//   console.log("Server online");
+// })
+
+app.listen(process.env.PORT, process.env.IP, function() {
+  console.log(`Server Online at  ${process.env.IP}:${process.env.PORT}`);
+});
