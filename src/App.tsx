@@ -5,15 +5,12 @@ import NavbarPage from './components/Navbar';
 import { StocksContext } from './hooks/UseStocks';
 import { Home } from './pages/Home';
 import { Play } from './pages/Play';
-import 'react-toastify/dist/ReactToastify.css';
-import { Toaster } from 'react-hot-toast';
 import { ClipsContext } from './hooks/Clips';
 import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import { LoadingContext } from './hooks/UseLoading';
 import { ViewClips } from './pages/ViewClips';
-import { useEffect } from 'react';
 
 export const STARTING_STOCKS = 4;
 
@@ -28,7 +25,7 @@ const App: React.FC = () => {
     if (true){
 
       console.log('get clips')
-      setLoading(true);
+      // setLoading(true);
       // await new Promise(resolve => {setTimeout(() => resolve(null), 5000)});
       
       const res:any = await fetch("/clips");

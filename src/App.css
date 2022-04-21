@@ -27,15 +27,6 @@
   justify-content: center;
 }
 
-.Toastify > div > div {
-  background: #444444 !important;
-  color: #bbbb;
-}
-
-.Toastify__progress-bar {
-  display: none;
-}
-
 .hand {
   height: 1.5rem;
 }
