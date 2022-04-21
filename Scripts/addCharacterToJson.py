@@ -59,10 +59,14 @@ def addCharacterToJson(jsonFile):
 		#deduce winner
 		if char1StartStocks - char1EndStocks < char2StartStocks - char2EndStocks: #char1 wins
 			char = chars[0]
+			oppChar = chars[1]
 			player = players[0]
+			oppPlayer = players[1]
 		elif char1StartStocks - char1EndStocks > char2StartStocks - char2EndStocks: #char2 wins
 			char = chars[1]
+			oppChar = chars[0]
 			player = players[1]
+			oppPlayer = players[0]
 		else:
 			print(char1StartStocks, char2StartStocks)
 			print(char1EndStocks, char2EndStocks)
@@ -73,11 +77,15 @@ def addCharacterToJson(jsonFile):
 				char1Stocks, char2Stocks = game.frames[i].ports[ports[0]].leader.post.stocks, game.frames[i].ports[ports[1]].leader.post.stocks
 				if char1Stocks != char1EndStocks or char1Stocks == char1StartStocks: #char1 died last, char2 wins
 					char = chars[1]
+					oppChar = chars[0]
 					player = players[1]
+					oppPlayer = players[0]
 					break
 				elif char2Stocks != char2EndStocks or char1Stocks == char1StartStocks: #char2 died last, char1 wins
 					char = chars[0]
+					oppChar = chars[1]
 					player = players[0]
+					oppPlayer = players[1]
 					break
 			if not char:
 				print(f"something's not right with {file}.. skipping")
@@ -88,13 +96,17 @@ def addCharacterToJson(jsonFile):
 		if char and char.value:
 			print(f'character is {char}')
 			file['character'] = char.value
+			file['oppChar'] = oppChar.value
 		else:
 			file['character'] = ''
+			file['oppChar'] = ''
 		if player and player.name:
 			print(f'player is {player.name}')
 			file['player'] = player.name
+			file['oppPlayer'] = oppPlayer.name
 		else:
 			file['player'] = ''
+			file['oppPlayer'] = ''
 	
 	print(playerCodeMap)
 	with open("./playerCodeMap.json", "w") as f:

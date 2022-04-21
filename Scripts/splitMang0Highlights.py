@@ -11,17 +11,17 @@ For converting .slp files to HTML5 compatible clips of highlights - with charact
 4. Create clips json object - attaches character (&player) data
 """
 
-import sys
-# sys.path.append('../slippi')
-import slippi
 import json
+import threading
 import uuid
 import os
-import convertCodec
-import subprocess
 import glob
+import logging
+
 import addCharacterToJson
-from art import *
+import createClipsJson
+import convertSlpToClip
+
 
 
 
@@ -49,8 +49,8 @@ def clean(dir):
         os.remove(file)
 
 def splitHighlights():
-    if not CLIP_OFFSET or not CLIP_STOP:
-        clean(f"{PATH}/jsons/")
+    # if not CLIP_OFFSET or not CLIP_STOP:
+    #     clean(f"{PATH}/jsons/")
 
     count = 0
     with open(HIGHLIGHTS_PATH, "r") as f:
@@ -78,79 +78,52 @@ def splitHighlights():
 
 
 if __name__ == "__main__":
+    # #1. run combo parser (clippi for now)
+
+
     # backup = input("Did you backup server/clips.json?")
     # if backup != 'y':
     #     quit()
 
-    clean(f"{OUT_PATH}")
-    # #1. run combo parser (clippi for now)
+    x1 = input(f"Do you want to clear {OUT_PATH}? ")
+    if x1 == "y":
+        clean(f"{OUT_PATH}")
+
 
     # #2a. add character to .json
-    addCharacterToJson.addCharacterToJson(HIGHLIGHTS_PATH)
+    x2 = input(f"Do you want to add character/player data to highlights.json? ")
+    if x2 == "y":
+        addCharacterToJson.addCharacterToJson(HIGHLIGHTS_PATH)
 
     # #2b. split highlights into separate files
     data, count = splitHighlights() 
 
-    #3a. run slp2mp4 on each highlight
-    for i in range(count-CLIP_OFFSET):
-        if i+CLIP_OFFSET >= CLIP_STOP:
-            break
-        tprint(f"clip {i+CLIP_OFFSET} / {count}")
-        #                                                                                                           this doesn't matter
-        #                                                                                                       but needs to point to valid
-        #                                                                                                       slp file to trick slp2mp4
-        p1 = subprocess.Popen(f"py {PATH}/slp2mp4/slp-to-mp4.py {SLP_PATH}/test.slp {OUT_PATH}/clip{i+CLIP_OFFSET}.mp4 {PATH}/jsons/highlight-{i+CLIP_OFFSET}.json")
-        code = p1.wait()
+    #3a. convert each .slp to clip
+    x3 = input(f"Do you want to run the slp/clip converter? (This takes a whileee) ")
+    if x3 == "y":
+        numThreads = 8
 
-        #3b. convert each file to h264
-        command1 = convertCodec.getCommand(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4", f"{OUT_PATH}/clip{i+CLIP_OFFSET}converted.mp4")
-        command2 = convertCodec.getCommand(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4", f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}converted.mp4")
-        p1 = subprocess.Popen(command1)
-        p2 = subprocess.Popen(command2)
-        p1.wait()
-        p2.wait()
+        def thread_func(thread_num):
+            for i in range(thread_num, count, numThreads):
+                convertSlpToClip.convertSlpToClip(i, count)
 
-        #3c. prune dir
-        try:
-            # remove all normal clips and rename converted to clip
-            if os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") and os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}converted.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}converted.mp4"):
-                os.remove(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4")
-                os.rename(f"{OUT_PATH}/clip{i+CLIP_OFFSET}converted.mp4", f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4")
-                os.remove(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4")
-                os.rename(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}converted.mp4", f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4")
-            # only keep each if we have both clip and neutclip
-            elif os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") and not os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4"):
-                os.remove(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4")
-            elif not os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4"):
-                os.remove(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4")
-        except:
-            print(f"Could not clean clip{i+CLIP_OFFSET}.. it probably didn't get created")
+
+        threads = list()
+        for index in range(numThreads):
+            logging.info("Main    : create and start thread %d.", index)
+            x = threading.Thread(target=thread_func, args=(index,))
+            threads.append(x)
+            x.start()
+
+        for index, thread in enumerate(threads):
+            logging.info("Main    : before joining thread %d.", index)
+            thread.join()
+            logging.info("Main    : thread %d done", index)
+
+
+    # RERENDER ALL MISSING FILES
+
 
     # 4. create clips json object
-    print("creating clips.json...")
-    clips = []
-    for i, highlight in enumerate(data['queue']):
-        print(os.path.exists(f"{OUT_PATH}/clip{i}.mp4"))
-        if os.path.exists(f"{OUT_PATH}/clip{i}.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i}.mp4"):
-            clips.append({
-                "clipSrc": f"clip{i}",
-                "neutclipSrc": f"neutclip{i}",
-                "player": "",
-                "character": highlight['character'],
-                "slp": highlight['path'],
-                'gameStation': highlight['gameStation'],
-            })
-
-    #get past player data
-    with open(f"../server/clips.json", "r") as f:
-        oldClips = json.load(f)
-
-    #populate with past player data
-    for i, clip in enumerate(oldClips):
-        if clip.get('player'):
-            if clip['slp'] == clips[i]['slp']:
-                clips[i]['player'] = clip['player']
-
-    #update player data
-    with open(f"../server/clips.json", "w") as file:
-        json.dump(clips, file, indent=2)
+    createClipsJson.createClipsJson(data, count)
+    
