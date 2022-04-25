@@ -13,6 +13,33 @@ app.use((req, res, next) => {
   next();
 })
 
+app.get('/health', (req, res) => {
+  res.json({
+    "TargetHealthDescriptions": [
+        {
+            "HealthCheckPort": "80",
+            "Target": {
+                "Id": "i-ceddcd4d",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "healthy"
+            }
+        },
+        {
+            "HealthCheckPort": "80",
+            "Target": {
+                "Id": "i-0f76fade",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "healthy"
+            }
+        }
+    ]
+  })
+})
+
 
 app.get('/video/:fileName', (req, res) => {
   const fileName = req.params.fileName;
@@ -71,6 +98,6 @@ app.get('/clips', (req, res) => {
 //   console.log("Server online");
 // })
 
-app.listen(process.env.PORT, process.env.IP, function() {
-  console.log(`Server Online at  ${process.env.IP}:${process.env.PORT}`);
+app.listen(process.env.PORT, function() {
+  console.log(`Server Online at  localhost:${process.env.PORT}`);
 });
