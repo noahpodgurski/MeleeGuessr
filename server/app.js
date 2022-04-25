@@ -4,6 +4,7 @@ const path = require('path');
 const cors  = require('cors');
 require('dotenv').config();
 
+const CLIP_SRC = process.env.CLIP_SRC || "../assets/";
 const app = express();
 
 app.use(cors());
@@ -44,10 +45,10 @@ app.get('/health', (req, res) => {
 app.get('/video/:fileName', (req, res) => {
   const fileName = req.params.fileName;
   // create a read stream for the video hello.mp4
-  const rs = fs.createReadStream(`./assets/${fileName}.mp4`);
+  const rs = fs.createReadStream(`${CLIP_SRC}${fileName}.mp4`);
 
   // get size of the video file
-  const { size } = fs.statSync(`./assets/${fileName}.mp4`);
+  const { size } = fs.statSync(`${CLIP_SRC}${fileName}.mp4`);
 
   // set header
   // including size of file and type of file
