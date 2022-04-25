@@ -171,11 +171,12 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     return ( 
       <>
         <video ref={neutclipRef} key={`neut${stage.clipSrc}`} className={`clip`} autoPlay loop muted playsInline>
-          <source src={`/video/neut${stage.clipSrc}`} type="video/mp4" />
+          {/* <source src={`/video/neut${stage.clipSrc}`} type="video/mp4" /> */}
+          <source src={`/videomango/neut${stage.clipSrc}`} type="video/mp4" />
         </video>
         <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden autoPlay loop playsInline>
         {/* <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden autoPlay loop playsInline> */}
-          <source src={`/video/${stage.clipSrc}`} type="video/mp4" />
+          <source src={`/videomango/${stage.clipSrc}`} type="video/mp4" />
         </video>
       </>
     )

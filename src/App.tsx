@@ -28,7 +28,8 @@ const App: React.FC = () => {
       // setLoading(true);
       // await new Promise(resolve => {setTimeout(() => resolve(null), 5000)});
       
-      const res:any = await fetch("/clips");
+      const res:any = await fetch("/clipsmango");
+      // const res:any = await fetch("/clips");
       const _clips = await res.json();
       // console.log(_clips);
       // const shuffledClips = shuffleArray(_clips);

@@ -42,6 +42,34 @@ app.get('/clips', (req, res) => {
   });
 })
 
+app.get('/videomango/:fileName', (req, res) => {
+  const fileName = req.params.fileName;
+  // create a read stream for the video hello.mp4
+  const rs = fs.createReadStream(`./mango/${fileName}.mp4`);
+
+  // get size of the video file
+  const { size } = fs.statSync(`./mango/${fileName}.mp4`);
+
+  // set header
+  // including size of file and type of file
+  res.setHeader("Content-Type", "video/mp4");
+  res.setHeader("Content-Length", size);
+
+  // start streaming the video
+  // using the pipe() method
+  rs.pipe(res);
+})
+
+app.get('/clipsmango', (req, res) => {
+  fs.readFile('./mango.json', 'utf8', (err, data) => {
+    if (err)
+      console.log(err)
+    else
+      // console.log(JSON.parse(data))
+      res.json(JSON.parse(data))
+  });
+})
+
 
 // app.get('/video', (req, res) => {
 //   res.sendFile('assets/test.mp4', { root: __dirname });
