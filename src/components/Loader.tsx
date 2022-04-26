@@ -7,11 +7,11 @@ interface props {
 export const Loader = forwardRef((props: props, ref: Ref<HTMLDivElement>) => {
   return (
 		<div ref={ref} className="loader-container">
-			<div className="gel center-gel">
+			{/* <div className="gel center-gel">
 				<div className="hex-brick h1"></div>
 				<div className="hex-brick h2"></div>
 				<div className="hex-brick h3"></div>
-			</div>
+			</div> */}
 			<div className="gel c1 r1">
 				<div className="hex-brick h1"></div>
 				<div className="hex-brick h2"></div>
