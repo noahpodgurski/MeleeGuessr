@@ -6,4 +6,6 @@ export type Clip = {
   player: Choice;
   character: Character;
   slp?: string;
+  oppChar?: Character;
+  oppPlayer?: Choice;
 }

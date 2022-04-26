@@ -1,3 +1,18 @@
+# v0.7.0
+## Server
+* Clips load from S3 bucket instead
+* Removed (only sending clips.json) - now stored on front end
+* Added many clips from mang0 (netplay) .slp files
+
+## Site
+* Bugfixes (mostly with playback (loading, mute, hint, smoother feel))
+* New loader
+* Probably a lot of other stuff I can't remember right now...
+
+# v0.6.0
+## ?
+* Undocumented changes...
+
 # v0.5.0
 ## Scripts
 * Added a few scripts to automate process of converting .slp into neutral/normal highlights

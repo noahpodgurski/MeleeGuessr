@@ -39,7 +39,8 @@ PATH = os.getcwd()
 OUT_PATH = r"E:/MeleeGuessrSlp/OUT/"
 SLP_PATH = r"E:/MeleeGuessrSlp/Tournament/test" #this doesn't matter - should probably remove from slp2mp4
 # HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Tournament/test.json"
-HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Player/Mang0/highlights.json"
+# HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Player/Mang0/highlights.json"
+HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/OUT/clips.json"
 
 CLIP_OFFSET = 0 #starting clip index
 CLIP_STOP = 0 #stopping clip index leave 0 for normal behavior

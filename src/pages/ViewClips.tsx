@@ -87,7 +87,7 @@ export const ViewClips: React.FC = () => {
       slp: clip.slp,
       incorrectChoices: []
     }
-  }, [getClips, stage])
+  }, [getClips])
 
   return (
     <>

@@ -10,6 +10,7 @@ export const Player: PlayerType = {
   label: 'Hungrybox',
   characters: [Character.Jigglypuff,],
   flag: 'us',
+  aliases: ["Hbox", "HGod", "Clutchbox", "Clutchgod"],
   score: 100},
 'Leffen': { 
   label: 'Leffen',
@@ -156,11 +157,6 @@ export const Player: PlayerType = {
   characters: [Character.IC],
   flag: 'us',
   score: 79.6},
-'AbsentPage': { 
-  label: 'AbsentPage',
-  characters: [Character.Fox,],
-  flag: 'us',
-  score: 78.9},
 'Bananas': { 
   label: 'Bananas',
   characters: [Character.IC],
@@ -365,11 +361,6 @@ export const Player: PlayerType = {
   characters: [Character.Marth,],
   flag: 'us',
   score: 45.5},
-'Joyboy': { 
-  label: 'Joyboy',
-  characters: [Character.Fox,],
-  flag: 'us',
-  score: 44.8},
 'KoDoRiN': { 
   label: 'KoDoRiN',
   aliases: ['||||||||||||'],
@@ -486,11 +477,6 @@ export const Player: PlayerType = {
   characters: [Character.IC],
   flag: 'us',
   score: 29.8},
-'HTwa': { 
-  label: 'HTwa',
-  characters: [Character.Sheik, Character.Fox,],
-  flag: 'us',
-  score: 28},
 'Kage': { 
   label: 'Kage',
   characters: [Character.Ganondorf,],
@@ -550,10 +536,6 @@ export const Player: PlayerType = {
   },
   'LSD': {
     label: 'LSD',
-    characters: [Character.Marth]
-  },
-  'Kodorin': {
-    label: 'Kodorin',
     characters: [Character.Marth]
   },
   'Wobbles': {
