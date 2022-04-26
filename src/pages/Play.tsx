@@ -25,7 +25,7 @@ export type PlayData = {
 }
 
 let playData:PlayData[] = [];
-// let clips:Clip[] = [];
+let clips:Clip[] = [];
 
 
 // const noMore: StageType = 
@@ -46,10 +46,10 @@ export const Play: React.FC = () => {
   const { stocks, setStocks } = useContext<any>(StocksContext);
   const { Clips, getClips } = useContext<IClips>(ClipsContext);
   const { loading } = useContext<ILoading>(LoadingContext);
-  const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);
+  const [currStage, setCurrStage] = useState<StageType|null>(null);
 
   const stageRef = useRef<RefObject>(null);
   
@@ -58,21 +58,44 @@ export const Play: React.FC = () => {
   //   reset();
   // }, [useEffect])
 
-  useEffect( () => {
-    if (!loading && !clips){
+  // useEffect(() => {
+  //   console.log('useeffet')
+  //   console.log(clips)
+  //   if (clips.length === 0)
+  //     getClips()
+  //   updateStage();
+  // }, [useEffect])
 
+  useEffect( () => {
+    if (clips.length === 0){
       const fetchData = async () => {
         await getClips();
       }
       fetchData();
     }
   // }, [useEffect])
-  }, [clips, getClips, loading])
+  }, [loading])
+
+
+  const schliceClip = () => {
+    console.log(clips.length)
+    if (clips.length !== 0){
+      const [clip, slicedIndex] = RandomChoice(clips) as [Clip, number];
+      clips.splice(slicedIndex, 1);
+      updateStage(clip);
+    }
+  }
 
   useEffect(() => {
     const _clips = Clips.filter((clip:Clip) => { return clip?.player.label !== "TEST" });
-    setClips(_clips);
+    // setClips(_clips);
+    clips = _clips;
+    schliceClip();
   }, [Clips])
+
+  useEffect(() => {
+    schliceClip();
+  }, [stage, score, stocks, playData.length])
 
   // useEffect(() => {
   //   while (playData.length > 0)
@@ -128,54 +151,69 @@ export const Play: React.FC = () => {
 
 
   
-  const currStage:StageType|null = useMemo(() => {
-    if (loading && !clips){
-      return null;
-    }    
-    if (clips.length === 0){
-      getClips();
-      return null;
+  const updateStage = (clip:Clip) => {
+    if (loading){
+      return;
     }
     
-    
-    const [clip,] = RandomChoice(clips) as [Clip|null, number];
-    console.log(clip?.clipSrc)
-    console.log(clips.length)
-    setClips((clips) => {
-      return clips.filter((filteredClip) => {
-        return filteredClip !== clip;
-      })
-    })
     const incorrectChoices:Choice[] = [];
   
     // populate random incorrect choices
     const randomPlayers:string[] = shuffleArray(Object.keys(Player));
     for (const player of randomPlayers){
-      // player doesn't have any characters or if the player has characters
+      const characters = Player[player].characters || [];
+      const conditionalCharacters = Player[player].conditionalCharacters || {};
+      const clipChar = clip?.character || Character.Bowser;
+      const oppChar = clip?.oppChar || Character.Bowser;
+      const oppPlayer = clip?.oppPlayer || Character.Bowser;
+
+      const _ = conditionalCharacters[clipChar] || [];
+
+      // if (player === "Mew2King"){
+      //   console.log('player is not correct answer')
+      //   console.log(player !== clip?.player.label)
+      //   console.log('not Test')
+      //   console.log(player !== Player['TEST'].label)
+      //   console.log('players char include the clip char')
+      //   console.log(characters.includes(clipChar))
+      //   console.log('of if players conditional chars match up with the opp char')
+      //   console.log(_.includes(oppChar))
+      //   console.log("============================")
+      //   console.log(`clipChar: ${clipChar}`)
+      //   console.log(`player: ${player}`)
+      //   console.log(`oppChar: ${oppChar}`)
+      //   console.log(`oppPlayer: ${oppPlayer}`)
+      // }
+
+
+      // player is not correct answer
       if (player !== clip?.player.label && 
+        // not TEST
         player !== Player['TEST'].label && 
         // if player's character's include the clip's character
-        (Player[player].characters?.includes(clip?.character || Character.Bowser)
-        // TODO
-          // or if player's CONDITIONAL character's match up with the opp char (opp char not yet implemented in clips.json)
-        )){
+        (characters.includes(clipChar) ||
+        // or if player's CONDITIONAL character's match up with the opp char (opp char not yet implemented in clips.json)
+        (_.includes(oppChar)))
+        ){
         incorrectChoices.push(Player[player]);
+        
+      
         if (incorrectChoices.length >= 3)
           break;
       }
     };
-    return {
+    setCurrStage({
       clipSrc: clip?.clipSrc || "",
-      character: clip?.character || Character.Bowser,
+      character: clip?.character || "",
       correctChoice: clip?.player || Player.TEST,
       incorrectChoices: incorrectChoices
-    }
-  }, [score, stocks, loading, Clips])
+    })
+  }
 
   const reset = () => {
     playData = [];
     
-    setClips(Clips);
+    clips = [];
     // clips = [];
     setStage(0);
     setScore(0);
