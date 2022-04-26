@@ -4,6 +4,7 @@ const path = require('path');
 const cors  = require('cors');
 require('dotenv').config();
 
+const CLIP_SRC = process.env.CLIP_SRC || "../assets/";
 const app = express();
 
 app.use(cors());
@@ -13,14 +14,41 @@ app.use((req, res, next) => {
   next();
 })
 
+app.get('/health', (req, res) => {
+  res.json({
+    "TargetHealthDescriptions": [
+        {
+            "HealthCheckPort": "80",
+            "Target": {
+                "Id": "i-ceddcd4d",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "healthy"
+            }
+        },
+        {
+            "HealthCheckPort": "80",
+            "Target": {
+                "Id": "i-0f76fade",
+                "Port": 80
+            },
+            "TargetHealth": {
+                "State": "healthy"
+            }
+        }
+    ]
+  })
+})
+
 
 app.get('/video/:fileName', (req, res) => {
   const fileName = req.params.fileName;
   // create a read stream for the video hello.mp4
-  const rs = fs.createReadStream(`./assets/${fileName}.mp4`);
+  const rs = fs.createReadStream(`${CLIP_SRC}${fileName}.mp4`);
 
   // get size of the video file
-  const { size } = fs.statSync(`./assets/${fileName}.mp4`);
+  const { size } = fs.statSync(`${CLIP_SRC}${fileName}.mp4`);
 
   // set header
   // including size of file and type of file
@@ -99,6 +127,6 @@ app.get('/clipsmango', (req, res) => {
 //   console.log("Server online");
 // })
 
-app.listen(process.env.PORT, process.env.IP, function() {
-  console.log(`Server Online at  ${process.env.IP}:${process.env.PORT}`);
+app.listen(process.env.PORT, function() {
+  console.log(`Server Online at  localhost:${process.env.PORT}`);
 });
