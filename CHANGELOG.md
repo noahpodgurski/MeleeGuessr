@@ -1,4 +1,4 @@
-# v0.7.0
+# v1.0.0
 ## Server
 * Clips load from S3 bucket instead
 * Removed (only sending clips.json) - now stored on front end
