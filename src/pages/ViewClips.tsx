@@ -4,7 +4,6 @@ import { useState } from "react";
 import { RefObject, Stage, StageType } from "../components/Stage";
 import { Player } from "../consts/Player";
 import { ClipsContext } from "../hooks/Clips";
-import { ILoading, LoadingContext } from "../hooks/UseLoading";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import { RandomChoice } from "../utils/RandomChoice";
@@ -26,7 +25,6 @@ export const ViewClips: React.FC = () => {
   const [stage, setStage] = useState(0);
   const [score, setScore] = useState(0);
   const { Clips, getClips } = useContext<any>(ClipsContext);
-  const { loading } = useContext<ILoading>(LoadingContext);
   const [clips, setClips] = useState<Clip[]>([])
   const [showChoiceResult,] = useState(false);
   const [stop,] = useState(false);  
@@ -65,9 +63,6 @@ export const ViewClips: React.FC = () => {
 
   
   const currStage:StageType | null = useMemo(() => {
-    if (loading){
-      return null;
-    }
     if (clips.length === 0){
       getClips();
       return null;

@@ -7,7 +7,6 @@ import { RefObject, Stage, StageType } from "../components/Stage";
 import { Player } from "../consts/Player";
 import { choiceTime } from "../consts/Time";
 import { ClipsContext, IClips } from "../hooks/Clips";
-import { ILoading, LoadingContext } from "../hooks/UseLoading";
 import { StocksContext } from "../hooks/UseStocks";
 import { Character } from "../models/Character";
 import { Choice } from "../models/Choice";
@@ -45,7 +44,6 @@ export const Play: React.FC = () => {
   const [score, setScore] = useState(0);
   const { stocks, setStocks } = useContext<any>(StocksContext);
   const { Clips, getClips } = useContext<IClips>(ClipsContext);
-  const { loading } = useContext<ILoading>(LoadingContext);
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);
@@ -73,8 +71,8 @@ export const Play: React.FC = () => {
       }
       fetchData();
     }
-  // }, [useEffect])
-  }, [loading])
+  }, [useEffect])
+  // }, [loading])
 
 
   const schliceClip = () => {
@@ -151,11 +149,7 @@ export const Play: React.FC = () => {
 
 
   
-  const updateStage = (clip:Clip) => {
-    if (loading){
-      return;
-    }
-    
+  const updateStage = (clip:Clip) => {    
     const incorrectChoices:Choice[] = [];
   
     // populate random incorrect choices
