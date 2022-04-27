@@ -33,7 +33,7 @@ export const ViewClips: React.FC = () => {
   
   useEffect(() => {
     const _clips = Clips.filter((clip:Clip) => { return clip.player !== Player.TEST });
-    console.log(_clips)
+    // console.log(_clips)
     setClips(_clips)
   }, [Clips])
 

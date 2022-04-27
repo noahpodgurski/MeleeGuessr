@@ -76,7 +76,7 @@ export const Play: React.FC = () => {
 
 
   const schliceClip = () => {
-    console.log(clips.length)
+    // console.log(clips.length)
     if (clips.length !== 0){
       const [clip, slicedIndex] = RandomChoice(clips) as [Clip, number];
       clips.splice(slicedIndex, 1);
@@ -138,7 +138,7 @@ export const Play: React.FC = () => {
   useEffect(() => {
     const x:number | null = Number(localStorage.getItem('HS'));
     if (stocks === 0){
-      console.log(`last highscore was ${x}`)
+      // console.log(`last highscore was ${x}`)
       if (x === null || x < score){
         setHS(true);
         localStorage.setItem('HS', score.toLocaleString());

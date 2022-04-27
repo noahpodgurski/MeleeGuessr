@@ -43,7 +43,7 @@ const App: React.FC = () => {
     if (clips.length === 0){
     // if (true){
 
-      console.log('get clips')
+      // console.log('get clips')
       const _clips = res;
       // const shuffledClips = shuffleArray(_clips);
       const fixedClips:Clip[] = _clips.map((clip:any) => {
@@ -82,7 +82,7 @@ const App: React.FC = () => {
         }
       })
 
-      console.log(counts);
+      // console.log(counts);
 
       let avg = 0;
       let count = 0;
@@ -91,7 +91,7 @@ const App: React.FC = () => {
         count++;
       }
       avg /= count
-      console.log(avg);
+      // console.log(avg);
       
       const filteredCounts:ICount = {};
       const filteredClips = fixedClips.filter((clip:Clip) => {
@@ -107,8 +107,8 @@ const App: React.FC = () => {
         return false;
       })
       // setClips(fixedClips);
-      console.log(fixedClips)
-      console.log(filteredClips)
+      // console.log(fixedClips)
+      // console.log(filteredClips)
       setClips(filteredClips);
     } else {
       // setClips(clips);
