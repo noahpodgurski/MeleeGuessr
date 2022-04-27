@@ -1,6 +1,7 @@
 import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
+import { STARTING_STOCKS } from "../App";
 import { MeleeFont } from "../components/MeleeFont";
 import { RefObject, Stage, StageType } from "../components/Stage";
 // import { Clips } from "../hooks/Clips";
@@ -71,7 +72,7 @@ export const Play: React.FC = () => {
       }
       fetchData();
     }
-  }, [useEffect])
+  }, [stocks])
   // }, [loading])
 
 
@@ -85,11 +86,14 @@ export const Play: React.FC = () => {
   }
 
   useEffect(() => {
-    const _clips = Clips.filter((clip:Clip) => { return clip?.player.label !== "TEST" });
-    // setClips(_clips);
-    clips = _clips;
-    schliceClip();
-  }, [Clips])
+    if (stocks === STARTING_STOCKS){
+
+      const _clips = Clips.filter((clip:Clip) => { return clip?.player.label !== "TEST" });
+      // setClips(_clips);
+      clips = _clips;
+      schliceClip();
+    }
+  }, [Clips, stocks])
 
   useEffect(() => {
     schliceClip();
@@ -149,7 +153,7 @@ export const Play: React.FC = () => {
 
 
   
-  const updateStage = (clip:Clip) => {    
+  const updateStage = (clip:Clip) => {
     const incorrectChoices:Choice[] = [];
   
     // populate random incorrect choices
@@ -206,14 +210,13 @@ export const Play: React.FC = () => {
 
   const reset = () => {
     playData = [];
-    
     clips = [];
-    // clips = [];
+    
     setStage(0);
     setScore(0);
-    setStocks(3);
+    setStocks(STARTING_STOCKS);
     setShowChoiceResult(false);
-    // setHS(false);
+    setHS(false);
   }
 
   const hands:ReactNode[] = useMemo(() => {
