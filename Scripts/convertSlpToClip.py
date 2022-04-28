@@ -3,10 +3,10 @@ import subprocess
 from art import *
 import convertCodec
 
-from splitMang0Highlights import FPS, PATH, SLP_PATH, OUT_PATH
+from splitMang0Highlights import FPS, PATH, SLP_PATH, OUT_PATH, CLIP_OFFSET
 
 def convertSlpToClip(i, count):
-    tprint(f"clip {i} / {count}")
+    tprint(f"clip {i-CLIP_OFFSET} / {count}")
     #                                                                                                           this doesn't matter
     #                                                                                                       but needs to point to valid
     #                                                                                                       slp file to trick slp2mp4

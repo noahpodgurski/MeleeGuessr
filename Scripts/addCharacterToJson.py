@@ -37,6 +37,9 @@ def addCharacterToJson(jsonFile):
 		print(ports)
 		print(players)
 		print(f"{chars[0]} vs {chars[1]}")
+		if len(players) == 0:
+			players = ["", ""]
+
 		if 26 in [x.value for x in chars]:
 			continue #master hand :[
 

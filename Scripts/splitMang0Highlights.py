@@ -37,12 +37,12 @@ PATH = os.getcwd()
 # }
 
 OUT_PATH = r"E:/MeleeGuessrSlp/OUT/"
-SLP_PATH = r"E:/MeleeGuessrSlp/Tournament/test" #this doesn't matter - should probably remove from slp2mp4
+SLP_PATH = r"E:/MeleeGuessrSlp/Tournament/Parsed/test" #this doesn't matter - should probably remove from slp2mp4
 # HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Tournament/test.json"
 # HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Player/Mang0/highlights.json"
-HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/OUT/clips.json"
+HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Tournament/Unparsed/highlights.json"
 
-CLIP_OFFSET = 0 #starting clip index
+CLIP_OFFSET = 10000 #starting clip index
 CLIP_STOP = 0 #stopping clip index leave 0 for normal behavior
 
 def clean(dir):
@@ -72,7 +72,7 @@ def splitHighlights():
                 'player': highlight.get('player')
             }
 
-            with open(f"{PATH}/jsons/highlight-{i}.json", "w") as commFile:
+            with open(f"{PATH}/jsons/highlight-{i+CLIP_OFFSET}.json", "w") as commFile:
                 json.dump(commData, commFile, indent=2)
                 count += 1
     return data, count
@@ -102,11 +102,11 @@ if __name__ == "__main__":
     #3a. convert each .slp to clip
     x3 = input(f"Do you want to run the slp/clip converter? (This takes a whileee) ")
     if x3 == "y":
-        numThreads = 8
+        numThreads = 4
 
         def thread_func(thread_num):
             for i in range(thread_num, count, numThreads):
-                convertSlpToClip.convertSlpToClip(i, count)
+                convertSlpToClip.convertSlpToClip(i+CLIP_OFFSET, count)
 
 
         threads = list()
@@ -126,5 +126,5 @@ if __name__ == "__main__":
 
 
     # 4. create clips json object
-    createClipsJson.createClipsJson(data, count)
+    createClipsJson.createClipsJson(data, count, CLIP_OFFSET)
     

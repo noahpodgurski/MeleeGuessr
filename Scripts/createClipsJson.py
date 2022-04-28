@@ -7,7 +7,7 @@ import convertSlpToClip
 from splitMang0Highlights import OUT_PATH
 import convertCodec
 
-def createClipsJson(data, count):
+def createClipsJson(data, count, CLIP_OFFSET=0):
     print("creating clips.json...")
     clips = []
     x = input("Do you want to rerender missing clips? ")
@@ -17,12 +17,12 @@ def createClipsJson(data, count):
         missingFiles = []
     for i, highlight in enumerate(data['queue']):
         if rerender:
-            if not os.path.exists(f"{OUT_PATH}/clip{i}.mp4") or not os.path.exists(f"{OUT_PATH}/neutclip{i}.mp4"):
-                print(f"neut(?)clip{i} is missing, rerendering...")
-                missingFiles.append(i)
-            if not convertCodec.ish264(f"{OUT_PATH}/clip{i}.mp4") or not convertCodec.ish264(f"{OUT_PATH}/neutclip{i}.mp4"):
-                print(f"neut(?)clip{i} is incorrect codec, rerendering...")
-                missingFiles.append(i)
+            if not os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") or not os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4"):
+                print(f"neut(?)clip{i+CLIP_OFFSET} is missing, rerendering...")
+                missingFiles.append(i+CLIP_OFFSET)
+            if not convertCodec.ish264(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") or not convertCodec.ish264(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4"):
+                print(f"neut(?)clip{i+CLIP_OFFSET} is incorrect codec, rerendering...")
+                missingFiles.append(i+CLIP_OFFSET)
 
             numThreads = 4
 
@@ -44,13 +44,13 @@ def createClipsJson(data, count):
                 logging.info("Main    : thread %d done", index)
 
 
-        if os.path.exists(f"{OUT_PATH}/clip{i}.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i}.mp4") and convertCodec.ish264(f"{OUT_PATH}/clip{i}.mp4") and convertCodec.ish264(f"{OUT_PATH}/neutclip{i}.mp4"):
+        if os.path.exists(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") and os.path.exists(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4") and convertCodec.ish264(f"{OUT_PATH}/clip{i+CLIP_OFFSET}.mp4") and convertCodec.ish264(f"{OUT_PATH}/neutclip{i+CLIP_OFFSET}.mp4"):
             if not highlight.get('character'):
-                print(f"{i} doesn't have a character... skipping")
+                print(f"{i+CLIP_OFFSET} doesn't have a character... skipping")
                 continue
             clips.append({
-                "clipSrc": f"clip{i}",
-                "neutclipSrc": f"neutclip{i}",
+                "clipSrc": f"clip{i+CLIP_OFFSET}",
+                "neutclipSrc": f"neutclip{i+CLIP_OFFSET}",
                 "slp": highlight['path'],
                 'gameStation': highlight.get('gameStation'),
                 "character": highlight['character'],
@@ -75,4 +75,3 @@ def createClipsJson(data, count):
     #update player data
     with open(f"{OUT_PATH}/clips.json", "w") as file:
         json.dump(clips, file, indent=2)
-
