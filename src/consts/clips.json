@@ -15766,5 +15766,105 @@
     "oppChar": 19,
     "player": "Zain",
     "oppPlayer": "Swedish Delight"
+  },
+  {
+    "clipSrc": "clip10012",
+    "neutclipSrc": "neutclip10012",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash\\Game_8C56C58C3FBD_20220417T205312 1.slp",
+    "gameStation": "btssmash",
+    "character": 2,
+    "oppChar": 0,
+    "player": "iBDW",
+    "oppPlayer": "N0ne"
+  },
+  {
+    "clipSrc": "clip10015",
+    "neutclipSrc": "neutclip10015",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220415T114844.slp",
+    "gameStation": "unknown",
+    "character": 2,
+    "oppChar": 20,
+    "player": "Gooms",
+    "oppPlayer": "dkuo"
+  },
+  {
+    "clipSrc": "clip10023",
+    "neutclipSrc": "neutclip10023",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220416T182946.slp",
+    "gameStation": "unknown",
+    "character": 20,
+    "oppChar": 0,
+    "player": "Magi",
+    "oppPlayer": "N0ne"
+  },
+  {
+    "clipSrc": "clip10024",
+    "neutclipSrc": "neutclip10024",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220416T183136.slp",
+    "gameStation": "unknown",
+    "character": 20,
+    "oppChar": 0,
+    "player": "Magi",
+    "oppPlayer": "N0ne"
+  },
+  {
+    "clipSrc": "clip10025",
+    "neutclipSrc": "neutclip10025",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220416T203743.slp",
+    "gameStation": "unknown",
+    "character": 19,
+    "oppChar": 0,
+    "player": "Plup",
+    "oppPlayer": "Salt"
+  },
+  {
+    "clipSrc": "clip10026",
+    "neutclipSrc": "neutclip10026",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_00224CCD4B5E_20220415T125804.slp",
+    "gameStation": "btssmash2",
+    "character": 1,
+    "oppChar": 20,
+    "player": "Ringler",
+    "oppPlayer": "persephone"
+  },
+  {
+    "clipSrc": "clip10033",
+    "neutclipSrc": "neutclip10033",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T153207.slp",
+    "gameStation": "btssmash2",
+    "character": 9,
+    "oppChar": 20,
+    "player": "Zain",
+    "oppPlayer": "Logos"
+  },
+  {
+    "clipSrc": "clip10034",
+    "neutclipSrc": "neutclip10034",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T171315.slp",
+    "gameStation": "btssmash2",
+    "character": 14,
+    "oppChar": 0,
+    "player": "Slug",
+    "oppPlayer": "Salt"
+  },
+  {
+    "clipSrc": "clip10036",
+    "neutclipSrc": "neutclip10036",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T182627.slp",
+    "gameStation": "btssmash2",
+    "character": 19,
+    "oppChar": 0,
+    "player": "Spark",
+    "oppPlayer": "S2j"
+  },
+  {
+    "clipSrc": "clip10037",
+    "neutclipSrc": "neutclip10037",
+    "slp": "E:\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T183555.slp",
+    "gameStation": "btssmash2",
+    "character": 20,
+    "oppChar": 20,
+    "player": "Fiction",
+    "oppPlayer": "Ginger"
   }
 ]
