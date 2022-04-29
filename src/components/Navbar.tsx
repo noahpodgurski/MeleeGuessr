@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   MDBBtn,
+  MDBIcon,
   MDBModal,
   MDBModalBody,
   MDBModalContent,
@@ -27,8 +28,10 @@ const NavbarPage: React.FC = () => {
         </MDBNavbarNav>
         <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0'>
           <MDBNavbarItem>
-            <MDBNavbarLink active aria-current='page' href='#' onClick={toggleShowModal}>
-              Login/Register
+            <MDBNavbarLink style={{paddingRight: "20px"}} active aria-current='page' href='#' onClick={toggleShowModal}>
+              <MDBBtn size="sm" color="light" floating tag='a'>
+                <MDBIcon fas icon='user' size='1x'/>
+              </MDBBtn>
             </MDBNavbarLink>
           </MDBNavbarItem>
           {/* <MDBNavbarItem>

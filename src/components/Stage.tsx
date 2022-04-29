@@ -220,9 +220,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       />
 
       <div className="row justify-content-center p-0 socket loader">
-        {/* <div className="socket loader"> */}
-            <Loader ref={loaderRef} />
-          {/* } */}
+        <Loader ref={loaderRef} />
         <VideoClip />
       </div>
       <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
