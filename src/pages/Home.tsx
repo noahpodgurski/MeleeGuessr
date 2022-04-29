@@ -1,5 +1,4 @@
 import { MDBBtn } from "mdb-react-ui-kit"
-import { useEffect } from "react";
 import { useContext, useMemo } from "react";
 import { Link } from "react-router-dom"
 import { STARTING_STOCKS } from "../App";
@@ -10,7 +9,7 @@ export const Home: React.FC = () => {
   const { setStocks } = useContext<any>(StocksContext);	
 	const greeting = useMemo(() => {
 		return randomGreeting();
-	}, [useEffect])
+	}, [])
   return (
     <>
 			<div className="full-page d-flex justify-content-center align-items-center m-2">

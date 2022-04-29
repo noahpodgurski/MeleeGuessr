@@ -44,14 +44,9 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const neutclipRef = useRef<HTMLVideoElement>(null);
   
   const loaderRef = useRef<HTMLDivElement>(null);
-  // const { loading, } = useContext<ILoading>(LoadingContext);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // if (!loading){
       loaderRef.current?.classList.remove('hidden');
-      // setLoading(true);
-    // }
   }, [stage])
 
   useEffect(() => {
@@ -88,14 +83,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const hasHint = () => { 
     return hint; //if neutclip is hidden
   }
-
-  // useEffect(() => {
-  //   requestMetadata().then(() => {
-  //     setLoading(false);
-  //   });
-  // }, [stageIndex]);
-
-
   
   const toggleMute = () => {
     if (clipRef && clipRef.current){      
@@ -224,12 +211,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
         <VideoClip />
       </div>
       <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
-        {/* { !loading && <h2 className="white-text">{JSON.stringify(videoData)}</h2> } */}
         { <h2 className="white-text">Who is the {stage.character}?</h2> }
       </div>
       { viewClipsOnly ? <MDBBtn onClick={() => handleChoice(Player.TEST, stage.correctChoice)} color="success">Next</MDBBtn>
       : <>
-        <Choices stage={stage} loading={loading} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
+        <Choices stage={stage} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
       </> }
     </>
   )
