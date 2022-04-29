@@ -5,7 +5,7 @@ import { STARTING_STOCKS } from "../App";
 import { StocksContext } from "../hooks/UseStocks";
 
 export const Home: React.FC = () => {
-  const { setStocks } = useContext<any>(StocksContext);
+  const { setStocks } = useContext<any>(StocksContext);	
   return (
     <>
 			<div className="full-page d-flex justify-content-center align-items-center m-5">
@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
 					<MDBBtn onClick={() => setStocks(STARTING_STOCKS)} className="w-100" style={{height: '50px'}} color="light" size="lg">Play</MDBBtn>
 				</Link>
 				</div>
-			</div>
+			</div>			
     </>
   )
 }

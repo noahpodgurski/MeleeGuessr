@@ -1,6 +1,7 @@
 import React, { StrictMode, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './Modal.scss';
 import NavbarPage from './components/Navbar';
 import { StocksContext } from './hooks/UseStocks';
 import { Home } from './pages/Home';

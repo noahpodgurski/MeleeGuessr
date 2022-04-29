@@ -161,9 +161,10 @@ export const Play: React.FC = () => {
     for (const player of randomPlayers){
       const characters = Player[player].characters || [];
       const conditionalCharacters = Player[player].conditionalCharacters || {};
+      // todo - make clip.character REQUIRED
       const clipChar = clip?.character || Character.Bowser;
       const oppChar = clip?.oppChar || Character.Bowser;
-      const oppPlayer = clip?.oppPlayer || Character.Bowser;
+      // const oppPlayer = clip?.oppPlayer || Character.Bowser;
 
       const _ = conditionalCharacters[clipChar] || [];
 
@@ -234,21 +235,22 @@ export const Play: React.FC = () => {
           
           { !stop && !showChoiceResult &&
           <>
-            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
-              {hands.map((hand) => {
-                return hand;
-              })}
-              <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
-                <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
+            <div className="d-flex justify-content-between" style={{maxWidth: "1200px"}}>
+              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
+                {hands.map((hand) => {
+                  return hand;
+                })}
+                <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
+                  <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
                 </div>
-              {/* <h1>{`${score}%`}</h1> */}
-            </div> 
-            <div className="col-6 white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-              <div className="">
-              <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?</MDBBtn>
-              <MDBBtnGroup>
-                <MDBCheckbox onClick={stageRef.current?.tMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={!!localStorage.getItem('isMuted')} />
-              </MDBBtnGroup>
+              </div> 
+              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+                <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?</MDBBtn>
+              </div> 
+              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+                <MDBBtnGroup>
+                  <MDBCheckbox btnColor="danger" onClick={stageRef.current?.tMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={!!localStorage.getItem('isMuted')} />
+                </MDBBtnGroup>
               </div>
             </div> 
             <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />

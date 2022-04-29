@@ -42,7 +42,7 @@ SLP_PATH = r"E:/MeleeGuessrSlp/Tournament/Parsed/test" #this doesn't matter - sh
 # HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Player/Mang0/highlights.json"
 HIGHLIGHTS_PATH = "E:/MeleeGuessrSlp/Tournament/Unparsed/highlights.json"
 
-CLIP_OFFSET = 10000 #starting clip index
+CLIP_OFFSET = 10038 #starting clip index
 CLIP_STOP = 0 #stopping clip index leave 0 for normal behavior
 
 def clean(dir):
@@ -79,6 +79,11 @@ def splitHighlights():
 
 
 if __name__ == "__main__":
+    a1 = input(f"Did you update the CLIP_OFFSET var? (Check the highest num on S3 and update accordingly) Currently {CLIP_OFFSET}")
+    if a1 != "y":
+        print("Go do that first fool!")
+        return
+
     # #1. run combo parser (clippi for now)
 
 
