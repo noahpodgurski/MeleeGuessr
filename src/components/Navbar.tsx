@@ -31,17 +31,15 @@ const NavbarPage: React.FC = () => {
         <MDBNavbarNav fullWidth={false} className='mr-auto mb-2 mb-lg-0'>
           <MDBNavbarBrand tag="span">
             <Link to="/">
-              <strong className="white-text" style={{marginLeft: '20px'}}>MeleeGuessr</strong>
+              <strong className="logo brand" style={{marginLeft: '20px'}}>MeleeGuessr</strong>
             </Link>
           </MDBNavbarBrand>
         </MDBNavbarNav>
         <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0'>
-          <MDBNavbarItem>
-            <MDBNavbarItem style={{paddingRight: "20px"}} active aria-current='page' onClick={toggleModal}>
-              <MDBBtn size="sm" color="light" floating tag='a'>
-                <MDBIcon fas icon='user' size='1x'/>
-              </MDBBtn>
-            </MDBNavbarItem>
+          <MDBNavbarItem style={{paddingRight: "20px"}} active aria-current='page' onClick={toggleModal}>
+            <MDBBtn size="sm" color="light" floating tag={user ? "button" : "a"} >
+              { user ? user.username[0] : <MDBIcon fas icon='user' size='1x'/> }
+            </MDBBtn>
           </MDBNavbarItem>
         </MDBNavbarNav>
       </MDBNavbar>

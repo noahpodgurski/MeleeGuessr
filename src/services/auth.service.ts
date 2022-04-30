@@ -1,5 +1,5 @@
 const axios = require('axios');
-const API_URL = "http://localhost:4000/";
+const API_URL = "http://localhost:4000/"; //todo change server ip and port forward
 const register = (email:string, username:string, password:string) => {
   return axios.post(API_URL + "register", {
     email,

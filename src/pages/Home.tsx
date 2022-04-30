@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
     <>
 			<div className="full-page d-flex justify-content-center align-items-center m-2">
 				<div className="row justify-content-center">
-				<h1 className="white-text" style={{textAlign: "center"}}>MeleeGuessr</h1>
+				<h1 className="logo" style={{textAlign: "center", fontSize: "rem"}}>MeleeGuessr</h1>
 				<Link className="w-100" to="/play">
 					<MDBBtn onClick={() => setStocks(STARTING_STOCKS)} className="w-100" style={{height: '50px'}} color="light" size="lg">Play</MDBBtn>
 				</Link>

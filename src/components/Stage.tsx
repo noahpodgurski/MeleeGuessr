@@ -43,8 +43,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const clipRef = useRef<HTMLVideoElement>(null);
   const neutclipRef = useRef<HTMLVideoElement>(null);
   const { user } = useContext<IUser>(UserContext);
-
-  console.log(user)
   
   const loaderRef = useRef<HTMLDivElement>(null);
 
@@ -197,7 +195,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       </>
     )
   }
-  
 
   return (
     <>

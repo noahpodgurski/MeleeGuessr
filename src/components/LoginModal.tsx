@@ -28,7 +28,6 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
     if (endpoint === "/login"){
       AuthService.login(email, password)
       .then((data:any) => {
-        console.log(data);
         if (data.status === "ok"){
           // navigate("/play"); //navigate somewhere after login?
           toggleShowModal();
