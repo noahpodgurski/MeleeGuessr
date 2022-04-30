@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import {
   MDBBtn,
   MDBIcon,
-  MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav
+  MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarNav
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import { LoginModal } from "./LoginModal";
+import { IUser, UserContext } from "../hooks/UseUser";
+import { ProfileModal } from "./ProfileModal";
+
 
 const NavbarPage: React.FC = () => {
-	const [showModal, setShowModal] = useState(false);
-  const toggleShowModal = () => setShowModal(!showModal);
+  const [showModal, setShowLoginModal] = useState(false);
+  const toggleShowLoginModal = () => setShowLoginModal(!showModal);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const toggleShowProfileModal = () => setShowProfileModal(!showProfileModal);
+  const { user, updateUser } = useContext<IUser>(UserContext);
+
+  const toggleModal = useCallback(() => {
+    if (user){
+      toggleShowProfileModal()
+    } else {
+      toggleShowLoginModal();
+    }
+  }, [user, toggleShowProfileModal, toggleShowLoginModal]);
+  
   return (
       <>
       <MDBNavbar color="dark" dark expand="md">
@@ -21,14 +36,17 @@ const NavbarPage: React.FC = () => {
           </MDBNavbarBrand>
         </MDBNavbarNav>
         <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0'>
-          <MDBNavbarItem style={{paddingRight: "20px"}} active aria-current='page' onClick={toggleShowModal}>
-            <MDBBtn size="sm" color="light" floating tag='a'>
-              <MDBIcon fas icon='user' size='1x'/>
-            </MDBBtn>
+          <MDBNavbarItem>
+            <MDBNavbarItem style={{paddingRight: "20px"}} active aria-current='page' onClick={toggleModal}>
+              <MDBBtn size="sm" color="light" floating tag='a'>
+                <MDBIcon fas icon='user' size='1x'/>
+              </MDBBtn>
+            </MDBNavbarItem>
           </MDBNavbarItem>
         </MDBNavbarNav>
       </MDBNavbar>
-      <LoginModal showModal={showModal} setShowModal={setShowModal} toggleShowModal={toggleShowModal} />
+      <ProfileModal showModal={showProfileModal} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
+      <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
     </>
     );
   }

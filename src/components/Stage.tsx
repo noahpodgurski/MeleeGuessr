@@ -1,10 +1,10 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { forwardRef, useRef } from "react";
 import { Ref, useImperativeHandle } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Player } from "../consts/Player";
-import { choiceTime } from "../consts/Time";
+import { IUser, UserContext } from "../hooks/UseUser";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
 import { Loader } from "./Loader";
@@ -42,6 +42,9 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const { stage, handleChoice, stageIndex, viewClipsOnly=false } = props;
   const clipRef = useRef<HTMLVideoElement>(null);
   const neutclipRef = useRef<HTMLVideoElement>(null);
+  const { user } = useContext<IUser>(UserContext);
+
+  console.log(user)
   
   const loaderRef = useRef<HTMLDivElement>(null);
 
@@ -65,7 +68,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       // else
       // clipRef.current.volume = 1;
     }
-  }, [stage, clipRef])
+  }, [stage, clipRef, user])
 
   // const requestMetadata = async () => {
   //   const res = await fetch(`${stage.clipSrc}/data`);
@@ -198,14 +201,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
 
   return (
     <>
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          duration: choiceTime,
-          style: {}
-        }}
-      />
-
       <div className="row justify-content-center p-0 socket loader">
         <Loader ref={loaderRef} />
         <VideoClip />

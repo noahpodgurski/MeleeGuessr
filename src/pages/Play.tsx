@@ -4,14 +4,15 @@ import { useState } from "react";
 import { STARTING_STOCKS } from "../App";
 import { MeleeFont } from "../components/MeleeFont";
 import { RefObject, Stage, StageType } from "../components/Stage";
-// import { Clips } from "../hooks/Clips";
 import { Player } from "../consts/Player";
 import { choiceTime } from "../consts/Time";
 import { ClipsContext, IClips } from "../hooks/Clips";
 import { StocksContext } from "../hooks/UseStocks";
+import { IUser, UserContext } from "../hooks/UseUser";
 import { Character } from "../models/Character";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
+import UserService from "../services/user.service";
 import { RandomChoice } from "../utils/RandomChoice";
 import { shuffleArray } from "../utils/Shuffle";
 import { Result } from "./Result";
@@ -49,6 +50,7 @@ export const Play: React.FC = () => {
   const [HS, setHS] = useState(false);
   const [stop,] = useState(false);
   const [currStage, setCurrStage] = useState<StageType|null>(null);
+  const { user } = useContext<IUser>(UserContext);
 
   const stageRef = useRef<RefObject>(null);
   
@@ -133,6 +135,18 @@ export const Play: React.FC = () => {
         })
         setStocks(stocks-1)
       }
+      
+      // update stat
+      if (user?.id){
+        UserService.updateStats({
+          userId: user?.id, //string
+          wasCorrect: choice.label === correctChoice.label, //bool
+          //      is correct                              if so add the amt of points we'd add (above) or send current score
+          score: (choice.label === correctChoice.label) ? score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS) : score, //num
+          final: choice.label !== correctChoice.label && stocks === 1 //bool
+        })
+      }
+
       // setHint(false);
       setStage(stage+1);
     }, choiceTime); //show correct choices for x time

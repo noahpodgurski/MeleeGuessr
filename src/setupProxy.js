@@ -17,5 +17,13 @@ module.exports = (app) => {
       target: SERVER_IP,
       changeOrigin: true,
     })
+  );
+
+  app.use( //i feel like this shouldn't work todo
+    ['/api/*'], 
+    createProxyMiddleware({
+      target: SERVER_IP,
+      changeOrigin: true,
+    })
   )
 };

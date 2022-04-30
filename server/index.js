@@ -5,13 +5,9 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const connectEnsureLogin = require('connect-ensure-login');
 
-const authenticateUser = require('./passport');
 const User = require('./user');
+const Stat = require('./stat');
 
 // const MongoDBStore = require("connect-mongo")(session);
 
@@ -35,50 +31,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/', express.static(path.join(__dirname, 'static')));
-
-
-app.use(session({
-  secret: SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: dbUrl }),
-  cookie: {
-      maxAge: 1000* 60 * 60 * 24
-  }
-}))
-
-// passport session
-app.use(passport.initialize())
-app.use(passport.session())
-authenticateUser(passport);
-
-// const store = new MongoDBStore({
-//   url: dbUrl,
-//   secret,
-//   touchAfter: 24 * 60 * 60
-// });
-
-// store.on("error", function (e) {
-//   console.log("SESSION STORE ERROR", e)
-// })
-
-// const sessionConfig = {
-//   store,
-//   name: 'session',
-//   secret,
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//       httpOnly: true,
-//       // secure: true,
-//       expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-//       maxAge: 1000 * 60 * 60 * 24 * 7
-//   }
-// }
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/login', async(req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   const { email, password } = req.body;
 
@@ -91,13 +51,13 @@ app.post('/login', async(req, res) => {
   }
   
   const user = await User.findOne({email}).lean();
-  console.log(user);
-  if (await bcrypt.compare(password, user.password)){
+  if (user && user.password && await bcrypt.compare(password, user.password)){
     //the user,pass combo is a match
     const token = jwt.sign(
       { 
         id: user._id, 
-        email: user.email
+        email: user.email,
+        username: user.username
       }, 
       SECRET
     );
@@ -109,12 +69,16 @@ app.post('/login', async(req, res) => {
 })
 
 app.post('/register', async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
-  const { email, password } = req.body;
+  const { email, username, password } = req.body;
 
   if (!email || typeof email !== 'string'){
     return res.json({status: 'error', message: 'Invalid email' });
+  }
+
+  if (!username || typeof username !== "string"){
+    return res.json({status: "error", message: "Invalid username" });
   }
 
   if (password.length < 8){
@@ -124,15 +88,16 @@ app.post('/register', async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(password, 12);
     
-    console.log(email)
-    console.log(hashedPass)
+    // console.log(email)
+    // console.log(hashedPass)
     const response = await User.create({
-      email,
+      email: email,
+      username: username,
       password: hashedPass
     })
 
-    console.log('response')
-    console.log(response)
+    // console.log('response')
+    // console.log(response)
   
   } catch(err) {
     //duplicate email
@@ -145,33 +110,69 @@ app.post('/register', async (req, res) => {
   res.json({status: 'ok', message: 'Successfully Registered'});
 })
 
-app.get('/test', connectEnsureLogin.ensureLoggedIn(), (req, res) => {
-  res.json({message: "secret!"});
+
+app.post('/update-stats', async(req, res) => {
+  const { stat } = req.body;
+
+  if (!stat.userId){
+    return res.json({ status: "error", message: "Something went wrong..." });
+  }
+
+  console.log(stat)
+  
+  const _stat = await Stat.findOne({userId: stat.userId}).lean();
+  console.log('here')
+  if (_stat && _stat.userId){
+    console.log('found one!')
+    await Stat.updateOne({userId: stat.userId}, {
+      correct: _stat.correct + (stat.wasCorrect ? 1 : 0),
+      incorrect: _stat.incorrect + (stat.wasCorrect ? 0 : 1),
+      highScore: (_stat.highScore < stat.score) ? stat.score : _stat.highScore,
+      games: stat.final ? _stat.games+1 : _stat.games
+    })
+    // stat already exists, update it
+    //the user,pass combo is a match
+    // const token = jwt.sign(
+    //   { 
+    //     id: user._id, 
+    //     email: user.email,
+    //     username: user.username
+    //   }, 
+    //   SECRET
+    // );
+
+    // return res.json({ status: 'ok', message: 'Successfully logged in', token });
+  } else {
+    // stat doesn't exist yet, create new
+    const response = await Stat.create({
+      userId: stat.userId,
+      correct: stat.wasCorrect ? 1 : 0,
+      incorrect: stat.wasCorrect ? 0 : 1,
+      highScore: stat.wasCorrect ? 1 : 0,
+      games: stat.final ? 1 : 0
+    })
+  }
+
+  console.log(_stat)
+  res.json({status: 'success', message: 'beep boop' })
+});
+
+
+app.get('/get-stats', async(req, res) => {
+  const { userId } = req.query;
+  console.log(userId)
+  if (!userId || typeof userId !== 'string'){
+    return res.json({status: 'error', message: 'Error grabbing stats' });
+  }
+  
+  const stat = await Stat.findOne({userId}).lean();
+  console.log(stat)
+  if (stat){
+    return res.json({ status: 'ok', message: 'Successfully grabbed data', stat });
+  }
+  
+  res.json({status: 'error', message: 'Invalid email/password' })
 })
-
-
-// const { getToken, COOKIE_OPTIONS, getRefreshToken } = require("./authenticate")
-// app.post('/login', passport.authenticate('local'), (req, res) => {
-//   console.log('HERE')
-//   console.log(req.user)
-//   const token = getToken({ _id: req.user._id })
-//   const refreshToken = getRefreshToken({ _id: req.user._id })
-//   User.findById(req.user._id).then(
-//     user => {
-//       user.refreshToken.push({ refreshToken })
-//       user.save((err, user) => {
-//         if (err) {
-//           res.statusCode = 500
-//           res.send(err)
-//         } else {
-//           res.cookie("refreshToken", refreshToken, COOKIE_OPTIONS)
-//           res.send({ success: true, token })
-//         }
-//       })
-//     },
-//     err => next(err)
-//   )
-// })
 
 app.listen(PORT, () => {
   console.log(`Server online :${PORT}`)

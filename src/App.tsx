@@ -11,6 +11,14 @@ import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import { ViewClips } from './pages/ViewClips';
+import Profile from './pages/Profile';
+import { useEffect } from 'react';
+import { UserContext } from './hooks/UseUser';
+import { User } from './models/User';
+import decode from 'jwt-decode';
+import AuthService from './services/auth.service';
+import { Toaster } from 'react-hot-toast';
+import { choiceTime } from './consts/Time';
 const res = require('./consts/clips.json');
 
 export const STARTING_STOCKS = 4;
@@ -38,7 +46,21 @@ const findAlias = (player:string) => {
 const App: React.FC = () => {
   const [stocks, setStocks] = useState(STARTING_STOCKS);
   const [clips, setClips] = useState<Clip[]>([]);
+  const [user, setUser] = useState<User|null>(null);
 
+  useEffect(() => {
+    updateUser(); //necessary?
+  }, [useEffect])
+
+  const updateUser = () => {
+    const currentUser = AuthService.getCurrentUser();
+    try {
+      const t:User = decode(currentUser);
+      setUser(t);
+    } catch(err){
+      setUser(null);
+    }
+  };
 
   const getClips = async () => {
     if (clips.length === 0){
@@ -107,9 +129,6 @@ const App: React.FC = () => {
         } 
         return false;
       })
-      // setClips(fixedClips);
-      // console.log(fixedClips)
-      // console.log(filteredClips)
       setClips(filteredClips);
     } else {
       // setClips(clips);
@@ -120,16 +139,26 @@ const App: React.FC = () => {
     <StrictMode>
       <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
         <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="*" element={<NavbarPage />} />
-            </Routes>
-            <Routes>
-              <Route path="/" element={ <Home /> } />
-              <Route path="/play" element={ <Play /> } />
-              <Route path="/viewclips" element={ <ViewClips /> } />
-            </Routes>
-          </BrowserRouter>
+          <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
+            <Toaster 
+              position="top-center"
+              toastOptions={{
+                duration: choiceTime,
+                style: {}
+              }}
+            />
+            <BrowserRouter>
+              <Routes>
+                <Route path="*" element={<NavbarPage />} />
+              </Routes>
+              <Routes>
+                <Route path="/" element={ <Home /> } />
+                <Route path="/play" element={ <Play /> } />
+                <Route path="/profile" element={ <Profile /> } />
+                <Route path="/viewclips" element={ <ViewClips /> } />
+              </Routes>
+            </BrowserRouter>
+          </UserContext.Provider>
         </ClipsContext.Provider>
       </StocksContext.Provider>
     </StrictMode>
