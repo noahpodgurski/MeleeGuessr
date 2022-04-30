@@ -11,7 +11,6 @@ import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import { ViewClips } from './pages/ViewClips';
-import Profile from './pages/Profile';
 import { useEffect } from 'react';
 import { UserContext } from './hooks/UseUser';
 import { User } from './models/User';
@@ -19,6 +18,7 @@ import decode from 'jwt-decode';
 import AuthService from './services/auth.service';
 import { Toaster } from 'react-hot-toast';
 import { choiceTime } from './consts/Time';
+import Leaderboards from './pages/Leaderboards';
 const res = require('./consts/clips.json');
 
 export const STARTING_STOCKS = 4;
@@ -154,7 +154,7 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={ <Home /> } />
                 <Route path="/play" element={ <Play /> } />
-                <Route path="/profile" element={ <Profile /> } />
+                <Route path="/leaderboards" element={ <Leaderboards /> } />
                 <Route path="/viewclips" element={ <ViewClips /> } />
               </Routes>
             </BrowserRouter>

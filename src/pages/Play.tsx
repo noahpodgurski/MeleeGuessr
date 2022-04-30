@@ -140,6 +140,7 @@ export const Play: React.FC = () => {
       if (user?.id){
         UserService.updateStats({
           userId: user?.id, //string
+          username: user?.username,
           wasCorrect: choice.label === correctChoice.label, //bool
           //      is correct                              if so add the amt of points we'd add (above) or send current score
           score: (choice.label === correctChoice.label) ? score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS) : score, //num

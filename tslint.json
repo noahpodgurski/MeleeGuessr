@@ -5,7 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
-        "exhaustive-deps": "off"
+        "react-hooks/exhaustive-deps": "error"
     },
     "rulesDirectory": []
 }

@@ -31,8 +31,21 @@ const getStats = (userId:string) => {
     });
 };
 
+const getAllStats = () => {
+  return axios
+    .get(API_URL + "get-all-stats",
+    {},
+    {
+      "Content-Type": "application/json"
+    })
+    .then((response:any) => {
+      return response.data;
+    });
+};
+
 const UserService = {
   updateStats,
   getStats,
+  getAllStats
 }
 export default UserService;
