@@ -1,10 +1,10 @@
 import { PostStat } from "../models/Stat";
 const axios = require('axios');
-// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
-
+const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+// if not prod server_ip = "" todo
 const updateStats = (stat:PostStat) => {
   return axios
-    .post("/update-stats", 
+    .post(`${SERVER_IP}/update-stats`,
     {
       stat,
     },
@@ -18,7 +18,7 @@ const updateStats = (stat:PostStat) => {
 
 const getStats = (userId:string) => {
   return axios
-    .get("/get-stats",
+    .get(`${SERVER_IP}/get-stats`,
     {
       params: { userId: userId },
     },
@@ -32,7 +32,7 @@ const getStats = (userId:string) => {
 
 const getAllStats = () => {
   return axios
-    .get("/get-all-stats",
+    .get(`${SERVER_IP}/get-all-stats`,
     {},
     {
       "Content-Type": "application/json"

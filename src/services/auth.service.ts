@@ -1,7 +1,8 @@
 const axios = require('axios');
-// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+// if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
-  return axios.post("/register", {
+  return axios.post(`${SERVER_IP}/register`, {
     email,
     username,
     password,
@@ -16,7 +17,7 @@ const register = (email:string, username:string, password:string) => {
 
 const login = (email:string, password:string) => {
   return axios
-    .post("/login", 
+    .post(`${SERVER_IP}/login`, 
     {
       email,
       password,
