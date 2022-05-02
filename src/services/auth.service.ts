@@ -1,7 +1,7 @@
 const axios = require('axios');
-const API_URL = "http://localhost:4000/"; //todo change server ip and port forward
+// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
 const register = (email:string, username:string, password:string) => {
-  return axios.post(API_URL + "register", {
+  return axios.post("/register", {
     email,
     username,
     password,
@@ -16,7 +16,7 @@ const register = (email:string, username:string, password:string) => {
 
 const login = (email:string, password:string) => {
   return axios
-    .post(API_URL + "login", 
+    .post("/login", 
     {
       email,
       password,
@@ -34,7 +34,7 @@ const login = (email:string, password:string) => {
 
 const logout = () => {
   localStorage.removeItem("user");
-  // return axios.post(API_URL + "signout").then((response:any) => {
+  // return axios.post(SERVER_IP + "signout").then((response:any) => {
   //   return response.data;
   // });
 };

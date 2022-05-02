@@ -45,9 +45,37 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const { user } = useContext<IUser>(UserContext);
   
   const loaderRef = useRef<HTMLDivElement>(null);
+  const inactiveRef = useRef<HTMLDivElement>(null);
+
+  const isFocused = useRef<boolean>(true)
+
+  const setFocused = () => {
+    isFocused.current = true;
+    inactiveRef.current?.classList.add('hidden');
+  }
+  
+  const setUnfocused = () => {
+    isFocused.current = false;
+  }
 
   useEffect(() => {
-      loaderRef.current?.classList.remove('hidden');
+    window.addEventListener('focus', setFocused);
+    window.addEventListener('blur', setUnfocused);
+
+    return () => {
+      window.removeEventListener('focus', setFocused);
+      window.removeEventListener('blur', setUnfocused);
+    }
+  }, []);
+
+  useEffect(() => {
+    loaderRef.current?.classList.remove('hidden');
+    const interval = setInterval(() => {
+    if (clipRef.current?.paused || neutclipRef.current?.paused){
+        inactiveRef.current?.classList.remove('hidden');
+      }
+    }, 5000)
+    return () => {clearInterval(interval)}
   }, [stage])
 
   useEffect(() => {
@@ -126,7 +154,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }
   
   const intHandleChoice = (choice:Choice, correctChoice:Choice) => {
-    hint = neutclipRef?.current?.hidden || false;
+    hint = neutclipRef.current?.hidden || false;
     if (toggleHint)
       toggleHint(false);
      if (choice.label === correctChoice.label){
@@ -156,9 +184,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
             // );
             
             if (buffered.end(0) / clipRef.current.duration > BUFFERED_RATIO_MIN && neutbuffered.end(0) / neutclipRef.current.duration > BUFFERED_RATIO_MIN){
-              clipRef.current.play()
-              neutclipRef.current.play()
-              loaderRef.current?.classList.add('hidden');
+              if (isFocused.current){
+                clipRef.current.play()
+                neutclipRef.current.play()
+                loaderRef.current?.classList.add('hidden');
+              }
             }
           }
         } catch(err) {
@@ -170,6 +200,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     return () => {
       clearInterval(interval);
     }
+    // eslint-disable-next-line
   }, [useEffect])
 
   if (!stage){
@@ -182,7 +213,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     )
   }
 
-  const VideoClip: React.FC = ({}) => {
+  const VideoClip: React.FC = () => {
     return ( 
       <>
         <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline>
@@ -198,6 +229,9 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
 
   return (
     <>
+      <div ref={inactiveRef} className="inactive-warning hidden red-text d-flex justify-content-center align-items-center" style={{textAlign: 'center'}}>
+        <h1>Click to resume</h1>
+      </div>
       <div className="row justify-content-center p-0 socket loader">
         <Loader ref={loaderRef} />
         <VideoClip />

@@ -1,4 +1,4 @@
-import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
+import { MDBBtn, MDBBtnGroup, MDBCheckbox, MDBTooltip } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { STARTING_STOCKS } from "../App";
@@ -21,21 +21,11 @@ export type PlayData = {
   stage: number;
   wasCorrect: boolean;
   choice: string;
-  // only if not correct
   correctChoice?: string;
 }
 
 let playData:PlayData[] = [];
 let clips:Clip[] = [];
-
-
-// const noMore: StageType = 
-// {
-//   clipSrc: "./clips/testClip.mp4",
-//   character: "Peach",
-//   correctChoice: Player.Armada,
-//   incorrectChoices: [Player.Llod, Player.Polish, Player.Mew2King]
-// };
 
 const BASE_POINTS = 1;
 const NO_HINT_POINTS = 2;
@@ -48,25 +38,11 @@ export const Play: React.FC = () => {
   const { Clips, getClips } = useContext<IClips>(ClipsContext);
   const [showChoiceResult, setShowChoiceResult] = useState(false);
   const [HS, setHS] = useState(false);
-  const [stop,] = useState(false);
   const [currStage, setCurrStage] = useState<StageType|null>(null);
   const { user } = useContext<IUser>(UserContext);
 
   const stageRef = useRef<RefObject>(null);
   
-  // useEffect(() => {
-  //   console.log('RESET')
-  //   reset();
-  // }, [useEffect])
-
-  // useEffect(() => {
-  //   console.log('useeffet')
-  //   console.log(clips)
-  //   if (clips.length === 0)
-  //     getClips()
-  //   updateStage();
-  // }, [useEffect])
-
   useEffect( () => {
     if (clips.length === 0){
       const fetchData = async () => {
@@ -74,6 +50,7 @@ export const Play: React.FC = () => {
       }
       fetchData();
     }
+    // eslint-disable-next-line
   }, [stocks])
   // }, [loading])
 
@@ -95,10 +72,12 @@ export const Play: React.FC = () => {
       clips = _clips;
       schliceClip();
     }
+    // eslint-disable-next-line
   }, [Clips, stocks])
 
   useEffect(() => {
     schliceClip();
+    // eslint-disable-next-line
   }, [stage, score, stocks, playData.length])
 
   // useEffect(() => {
@@ -183,23 +162,6 @@ export const Play: React.FC = () => {
 
       const _ = conditionalCharacters[clipChar] || [];
 
-      // if (player === "Mew2King"){
-      //   console.log('player is not correct answer')
-      //   console.log(player !== clip?.player.label)
-      //   console.log('not Test')
-      //   console.log(player !== Player['TEST'].label)
-      //   console.log('players char include the clip char')
-      //   console.log(characters.includes(clipChar))
-      //   console.log('of if players conditional chars match up with the opp char')
-      //   console.log(_.includes(oppChar))
-      //   console.log("============================")
-      //   console.log(`clipChar: ${clipChar}`)
-      //   console.log(`player: ${player}`)
-      //   console.log(`oppChar: ${oppChar}`)
-      //   console.log(`oppPlayer: ${oppPlayer}`)
-      // }
-
-
       // player is not correct answer
       if (player !== clip?.player.label && 
         // not TEST
@@ -248,7 +210,7 @@ export const Play: React.FC = () => {
       <div className="d-flex justify-content-center align-items-center mt-5" style={{height: "100%"}}>
 				<div className="row justify-content-center w-100">
           
-          { !stop && !showChoiceResult &&
+          { !showChoiceResult ?
           <>
             <div className="d-flex justify-content-between" style={{maxWidth: "1200px"}}>
               <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
@@ -260,7 +222,8 @@ export const Play: React.FC = () => {
                 </div>
               </div> 
               <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?</MDBBtn>
+                <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?
+                </MDBBtn>
               </div> 
               <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
                 <MDBBtnGroup>
@@ -270,24 +233,7 @@ export const Play: React.FC = () => {
             </div> 
             <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
             {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
-          </>
-          }
-          {/* { !stop && showChoiceResult &&
-            <div className="d-flex choice-data">
-              <div className="w-100">
-
-                  <ChoiceData choiceData={mockChoiceData} correctChoice={currStage.correctChoice} />
-                <div className="row w-100">
-                  <MDBBtn onClick={nextStage}>Next</MDBBtn>
-                  <MDBBtn className="mt-2" color="danger" onClick={() => setStop(true)}>Stop</MDBBtn>
-                </div>
-              </div>
-            </div>
-          } */}
-          { (stop || showChoiceResult) && 
-            <>
-              <Result HS={HS} score={score} playData={playData} reset={reset} />   
-            </>
+          </> : <Result HS={HS} score={score} playData={playData} reset={reset} />
           }
 				</div>
 			</div>

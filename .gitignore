@@ -22,12 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# slp
-server/slp
-
-# server dependencies
-/server/node_modules
-
 #script generated files
 /Scripts/jsons
 /Scripts/__pycache__

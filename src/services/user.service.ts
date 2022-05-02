@@ -1,11 +1,10 @@
 import { PostStat } from "../models/Stat";
-
 const axios = require('axios');
-const API_URL = "http://localhost:4000/"; //todo change this to frontend and add to proxy
+// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
 
 const updateStats = (stat:PostStat) => {
   return axios
-    .post(API_URL + "update-stats", 
+    .post("/update-stats", 
     {
       stat,
     },
@@ -19,7 +18,7 @@ const updateStats = (stat:PostStat) => {
 
 const getStats = (userId:string) => {
   return axios
-    .get(API_URL + "get-stats",
+    .get("/get-stats",
     {
       params: { userId: userId },
     },
@@ -33,7 +32,7 @@ const getStats = (userId:string) => {
 
 const getAllStats = () => {
   return axios
-    .get(API_URL + "get-all-stats",
+    .get("/get-all-stats",
     {},
     {
       "Content-Type": "application/json"
