@@ -9,6 +9,8 @@ const updateStats = (stat:PostStat) => {
       stat,
     },
     {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
       "Content-Type": "application/json"
     })
     .then((response:any) => {
@@ -23,6 +25,8 @@ const getStats = (userId:string) => {
       params: { userId: userId },
     },
     {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
       "Content-Type": "application/json"
     })
     .then((response:any) => {
@@ -35,6 +39,8 @@ const getAllStats = () => {
     .get("/get-all-stats",
     {},
     {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
       "Content-Type": "application/json"
     })
     .then((response:any) => {
