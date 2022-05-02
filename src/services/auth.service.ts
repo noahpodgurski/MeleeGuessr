@@ -7,7 +7,7 @@ const register = (email:string, username:string, password:string) => {
     password,
   },
   {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   })
   .then((response:any) => {
     return response.data;
@@ -22,7 +22,7 @@ const login = (email:string, password:string) => {
       password,
     },
     {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     })
     .then((response:any) => {
       if (response.data.token) {
