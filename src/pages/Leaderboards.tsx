@@ -6,7 +6,7 @@ import { GetStat } from "../models/Stat";
 import { useEffect } from "react";
 
 export type LeaderboardData = {
-  user: string;
+  user: string; 
   highScore: number;
 }
 
