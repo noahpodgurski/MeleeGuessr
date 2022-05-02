@@ -5,7 +5,6 @@
     ],
     "jsRules": {},
     "rules": {
-        "exhaustive-deps": "off"
     },
     "rulesDirectory": []
 }

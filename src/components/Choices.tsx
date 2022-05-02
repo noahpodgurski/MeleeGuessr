@@ -6,14 +6,14 @@ import { RefObject, StageType } from "./Stage";
 
 interface ChoicesProps {
   stage: StageType;
-  loading: boolean;
+  loading?: boolean;
   stageIndex: number;
   intHandleChoice: (choice:Choice, correctChoice:Choice) => void;
 }
 
 
 export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => {
-  const { stage, loading, stageIndex, intHandleChoice } = props;
+  const { stage, loading=false, stageIndex, intHandleChoice } = props;
   const [showAnswers, setShowAnswers] = useState(false);
 
   const intintHandleChoice = (choice:Choice, correctChoice:Choice) => {

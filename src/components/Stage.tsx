@@ -1,10 +1,10 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { forwardRef, useRef } from "react";
 import { Ref, useImperativeHandle } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Player } from "../consts/Player";
-import { choiceTime } from "../consts/Time";
+import { IUser, UserContext } from "../hooks/UseUser";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
 import { Loader } from "./Loader";
@@ -42,16 +42,40 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const { stage, handleChoice, stageIndex, viewClipsOnly=false } = props;
   const clipRef = useRef<HTMLVideoElement>(null);
   const neutclipRef = useRef<HTMLVideoElement>(null);
+  const { user } = useContext<IUser>(UserContext);
   
   const loaderRef = useRef<HTMLDivElement>(null);
-  // const { loading, } = useContext<ILoading>(LoadingContext);
-  const [loading, setLoading] = useState(true);
+  const inactiveRef = useRef<HTMLDivElement>(null);
+
+  const isFocused = useRef<boolean>(true)
+
+  const setFocused = () => {
+    isFocused.current = true;
+    inactiveRef.current?.classList.add('hidden');
+  }
+  
+  const setUnfocused = () => {
+    isFocused.current = false;
+  }
 
   useEffect(() => {
-    // if (!loading){
-      loaderRef.current?.classList.remove('hidden');
-      // setLoading(true);
-    // }
+    window.addEventListener('focus', setFocused);
+    window.addEventListener('blur', setUnfocused);
+
+    return () => {
+      window.removeEventListener('focus', setFocused);
+      window.removeEventListener('blur', setUnfocused);
+    }
+  }, []);
+
+  useEffect(() => {
+    loaderRef.current?.classList.remove('hidden');
+    const interval = setInterval(() => {
+    if (clipRef.current?.paused || neutclipRef.current?.paused){
+        inactiveRef.current?.classList.remove('hidden');
+      }
+    }, 5000)
+    return () => {clearInterval(interval)}
   }, [stage])
 
   useEffect(() => {
@@ -70,7 +94,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       // else
       // clipRef.current.volume = 1;
     }
-  }, [stage, clipRef])
+  }, [stage, clipRef, user])
 
   // const requestMetadata = async () => {
   //   const res = await fetch(`${stage.clipSrc}/data`);
@@ -88,14 +112,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const hasHint = () => { 
     return hint; //if neutclip is hidden
   }
-
-  // useEffect(() => {
-  //   requestMetadata().then(() => {
-  //     setLoading(false);
-  //   });
-  // }, [stageIndex]);
-
-
   
   const toggleMute = () => {
     if (clipRef && clipRef.current){      
@@ -138,7 +154,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }
   
   const intHandleChoice = (choice:Choice, correctChoice:Choice) => {
-    hint = neutclipRef?.current?.hidden || false;
+    hint = neutclipRef.current?.hidden || false;
     if (toggleHint)
       toggleHint(false);
      if (choice.label === correctChoice.label){
@@ -168,9 +184,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
             // );
             
             if (buffered.end(0) / clipRef.current.duration > BUFFERED_RATIO_MIN && neutbuffered.end(0) / neutclipRef.current.duration > BUFFERED_RATIO_MIN){
-              clipRef.current.play()
-              neutclipRef.current.play()
-              loaderRef.current?.classList.add('hidden');
+              if (isFocused.current){
+                clipRef.current.play()
+                neutclipRef.current.play()
+                loaderRef.current?.classList.add('hidden');
+              }
             }
           }
         } catch(err) {
@@ -182,6 +200,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     return () => {
       clearInterval(interval);
     }
+    // eslint-disable-next-line
   }, [useEffect])
 
   if (!stage){
@@ -194,7 +213,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     )
   }
 
-  const VideoClip: React.FC = ({}) => {
+  const VideoClip: React.FC = () => {
     return ( 
       <>
         <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline>
@@ -207,29 +226,22 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       </>
     )
   }
-  
 
   return (
     <>
-      <Toaster 
-        position="top-center"
-        toastOptions={{
-          duration: choiceTime,
-          style: {}
-        }}
-      />
-
+      <div ref={inactiveRef} className="inactive-warning hidden red-text d-flex justify-content-center align-items-center" style={{textAlign: 'center'}}>
+        <h1>Click to resume</h1>
+      </div>
       <div className="row justify-content-center p-0 socket loader">
         <Loader ref={loaderRef} />
         <VideoClip />
       </div>
       <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
-        {/* { !loading && <h2 className="white-text">{JSON.stringify(videoData)}</h2> } */}
         { <h2 className="white-text">Who is the {stage.character}?</h2> }
       </div>
       { viewClipsOnly ? <MDBBtn onClick={() => handleChoice(Player.TEST, stage.correctChoice)} color="success">Next</MDBBtn>
       : <>
-        <Choices stage={stage} loading={loading} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
+        <Choices stage={stage} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
       </> }
     </>
   )
