@@ -1,32 +1,26 @@
 const axios = require('axios');
-// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+// if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
-  return axios.post("/register", {
-    email,
-    username,
-    password,
-  },
-  {
-    "Content-Type": "application/json"
-  })
+  const params = new URLSearchParams();
+  params.append('email', email);
+  params.append('username', username);
+  params.append('password', password);
+  return axios.post(`${SERVER_IP}/register`, params)
   .then((response:any) => {
     return response.data;
   });
 };
 
 const login = (email:string, password:string) => {
+  const params = new URLSearchParams();
+  params.append('email', email);
+  params.append('password', password);
   return axios
-    .post("/login", 
-    {
-      email,
-      password,
-    },
-    {
-      "Content-Type": "application/json"
-    })
+    .post(`${SERVER_IP}/login`, params)
     .then((response:any) => {
-      if (response.data.token) {
-        localStorage.setItem("user", JSON.stringify(response.data.token));
+      if (response.data.data) {
+        localStorage.setItem("user", JSON.stringify(response.data.data));
       }
       return response.data;
     });

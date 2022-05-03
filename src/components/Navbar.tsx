@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useState } from "react";
 import {
   MDBBtn,
   MDBIcon,
-  MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav
+  MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarNav
 } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
 import { LoginModal } from "./LoginModal";
@@ -12,8 +12,10 @@ import { ProfileModal } from "./ProfileModal";
 
 const NavbarPage: React.FC = () => {
   const [showModal, setShowLoginModal] = useState(false);
-  const toggleShowLoginModal = () => setShowLoginModal(!showModal);
-  const [showProfileModal, setShowProfileModal] = useState(false);
+   // eslint-disable-next-line
+   const toggleShowLoginModal = () => setShowLoginModal(!showModal);
+   const [showProfileModal, setShowProfileModal] = useState(false);
+   // eslint-disable-next-line
   const toggleShowProfileModal = () => setShowProfileModal(!showProfileModal);
   const { user, updateUser } = useContext<IUser>(UserContext);
 

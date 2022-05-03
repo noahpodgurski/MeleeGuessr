@@ -1,4 +1,4 @@
-import { MDBBtn, MDBBtnGroup, MDBCheckbox, MDBTooltip } from "mdb-react-ui-kit";
+import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { STARTING_STOCKS } from "../App";
@@ -200,7 +200,7 @@ export const Play: React.FC = () => {
   const hands:ReactNode[] = useMemo(() => {
     const _hands = [];
     for (let i = 0; i < stocks; i++){
-      _hands.push(<img className="hand" alt="hand" key={`hand${i}`} src={'/hand.png'} />)
+      _hands.push(<img className="hand" alt="hand" key={`hand${i}`} src={'/logo.png'} />)
     }
     return _hands;
   }, [stocks])

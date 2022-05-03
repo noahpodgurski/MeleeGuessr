@@ -6,7 +6,7 @@ import { GetStat } from "../models/Stat";
 import { useEffect } from "react";
 
 export type LeaderboardData = {
-  user: string;
+  user: string; 
   highScore: number;
 }
 
@@ -16,15 +16,12 @@ const Leaderboards: React.FC = () => {
 
   useEffect(() => {
     UserService.getAllStats()
-    .then((data:any) => {
-      console.log(data);
-      console.log(data.stats.map((row:GetStat) => {
-        return { user: row.username, highScore: row.highScore }
-      }))
-      setData(data.stats.map((row:GetStat) => {
+    .then((response:any) => {
+      setData(response.data.map((row:GetStat) => {
         return { user: row.username, highScore: row.highScore }
       }))
     })
+     // eslint-disable-next-line
   }, [useEffect]);
     
   let test = {

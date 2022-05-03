@@ -10,7 +10,6 @@ import { ClipsContext } from './hooks/Clips';
 import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
-import { ViewClips } from './pages/ViewClips';
 import { useEffect } from 'react';
 import { UserContext } from './hooks/UseUser';
 import { User } from './models/User';
@@ -50,6 +49,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     updateUser(); //necessary?
+     // eslint-disable-next-line
   }, [useEffect])
 
   const updateUser = () => {
@@ -155,7 +155,6 @@ const App: React.FC = () => {
                 <Route path="/" element={ <Home /> } />
                 <Route path="/play" element={ <Play /> } />
                 <Route path="/leaderboards" element={ <Leaderboards /> } />
-                <Route path="/viewclips" element={ <ViewClips /> } />
               </Routes>
             </BrowserRouter>
           </UserContext.Provider>
