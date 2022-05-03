@@ -13,7 +13,7 @@ interface ChoicesProps {
 
 
 export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => {
-  const { stage, loading=false, stageIndex, intHandleChoice } = props;
+  const { stage, stageIndex, intHandleChoice } = props;
   const [showAnswers, setShowAnswers] = useState(false);
 
   const intintHandleChoice = (choice:Choice, correctChoice:Choice) => {

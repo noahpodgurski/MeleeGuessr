@@ -21,6 +21,7 @@ const Leaderboards: React.FC = () => {
         return { user: row.username, highScore: row.highScore }
       }))
     })
+     // eslint-disable-next-line
   }, [useEffect]);
     
   let test = {

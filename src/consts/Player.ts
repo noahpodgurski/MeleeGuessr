@@ -1,4 +1,4 @@
-import { AllCharacters, Character, Floaties, Spacies } from "../models/Character";
+import { AllCharacters, Character, Floaties } from "../models/Character";
 import { Choice } from "../models/Choice";
 
 export interface PlayerType {

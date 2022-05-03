@@ -1,4 +1,4 @@
-import { MDBBtn, MDBBtnGroup, MDBCheckbox, MDBTooltip } from "mdb-react-ui-kit";
+import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import { STARTING_STOCKS } from "../App";
