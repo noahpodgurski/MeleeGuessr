@@ -16,8 +16,8 @@ const Leaderboards: React.FC = () => {
 
   useEffect(() => {
     UserService.getAllStats()
-    .then((data:any) => {
-      setData(data.stats.map((row:GetStat) => {
+    .then((response:any) => {
+      setData(response.data.map((row:GetStat) => {
         return { user: row.username, highScore: row.highScore }
       }))
     })

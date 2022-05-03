@@ -3,14 +3,10 @@ const axios = require('axios');
 const SERVER_IP = process.env.REACT_APP_SERVER_IP;
 // if not prod server_ip = "" todo
 const updateStats = (stat:PostStat) => {
+  const params = new URLSearchParams();
+  params.append('stat', JSON.stringify(stat));
   return axios
-    .post(`${SERVER_IP}/update-stats`,
-    {
-      stat,
-    },
-    {
-      "Content-Type": "application/json"
-    })
+    .post(`${SERVER_IP}/update-stats`, params)
     .then((response:any) => {
       return response.data;
     });

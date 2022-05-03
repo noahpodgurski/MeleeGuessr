@@ -22,7 +22,7 @@ export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, 
     if (user && showModal){
       UserService.getStats(user.id)
       .then((response:any) => {
-        setStat(response.stat);
+        setStat(response.data);
       })
       .catch((err:any) => {
         toast.error(err)
