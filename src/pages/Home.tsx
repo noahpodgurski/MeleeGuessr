@@ -14,6 +14,7 @@ export const Home: React.FC = () => {
     <>
 			<div className="full-page d-flex justify-content-center align-items-center m-2">
 				<div>
+					Beta {process.env.REACT_APP_PUBLIC_VERSION}
 					<div className="row justify-content-center">
 						<h1 className="logo" style={{textAlign: "center", fontSize: "rem"}}>MeleeGuessr</h1>
 						<Link className="w-100" to="/play">
