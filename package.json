@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "3.5.1",
+    "@capacitor/app": "1.1.1",
+    "@capacitor/core": "3.5.1",
+    "@capacitor/haptics": "1.1.4",
+    "@capacitor/keyboard": "1.2.2",
+    "@capacitor/status-bar": "1.0.8",
+    "@ionic/core": "^6.1.4",
+    "@ionic/react": "^6.1.4",
     "axios": "^0.27.2",
     "jwt-decode": "^3.1.2",
     "mdb-react-ui-kit": "^3.0.0",
@@ -18,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && ionic cap copy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/cli": "3.5.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^13.5.0",

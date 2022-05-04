@@ -45,7 +45,7 @@ export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => 
   }, [stage, showAnswers])
 
   return (
-    <div className="btn-group shadow-0 mt-3 justify-content-center" role="group" aria-label="Basic example">
+    <div className="btn-group shadow-0 mt-3 p-0 justify-content-center" role="group" aria-label="Basic example" style={{overflowY: 'hidden'}}>
     { randomChoices.map((choice, i) => {
       return <button key={`${stageIndex}/${i}`} onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" className={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}danger`} data-mdb-color="dark">{choice.label}</button>
       // return <button key={`${stageIndex}/${i}`} onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" className={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}${randomColor()}`} data-mdb-color="dark">{choice.label}</button>
