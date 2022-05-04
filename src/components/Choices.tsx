@@ -17,11 +17,13 @@ export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => 
   const [showAnswers, setShowAnswers] = useState(false);
 
   const intintHandleChoice = (choice:Choice, correctChoice:Choice) => {
-    setShowAnswers(true);
-    intHandleChoice(choice, correctChoice);
-    setTimeout(() => {
-      setShowAnswers(false);
-    }, choiceTime)
+    if (!showAnswers){
+      setShowAnswers(true);
+      intHandleChoice(choice, correctChoice);
+      setTimeout(() => {
+        setShowAnswers(false);
+      }, choiceTime)
+    }
   }
 
   const randomChoices = useMemo<Choice[]>(() => {
