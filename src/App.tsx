@@ -1,4 +1,4 @@
-import React, { StrictMode, useState } from 'react';
+import React, { StrictMode, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import './Modal.scss';
@@ -18,6 +18,8 @@ import AuthService from './services/auth.service';
 import { Toaster } from 'react-hot-toast';
 import { choiceTime } from './consts/Time';
 import Leaderboards from './pages/Leaderboards';
+import { LoadingContext } from './hooks/UseLoader';
+import { Loader } from './components/Loader';
 const res = require('./consts/clips.json');
 
 export const STARTING_STOCKS = 4;
@@ -46,11 +48,20 @@ const App: React.FC = () => {
   const [stocks, setStocks] = useState(STARTING_STOCKS);
   const [clips, setClips] = useState<Clip[]>([]);
   const [user, setUser] = useState<User|null>(null);
+  const loaderRef = useRef<HTMLDivElement>(null);
+
+  const setLoading = (loading:boolean) => {
+    if (loading)
+      loaderRef?.current?.classList.remove('hidden');
+    else
+      loaderRef?.current?.classList.add('hidden');
+  }
 
   useEffect(() => {
+    setLoading(false);
     updateUser(); //necessary?
      // eslint-disable-next-line
-  }, [useEffect])
+  }, [useEffect]) 
 
   const updateUser = () => {
     const currentUser = AuthService.getCurrentUser();
@@ -140,23 +151,26 @@ const App: React.FC = () => {
       <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
         <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
           <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
-            <Toaster 
-              position="top-center"
-              toastOptions={{
-                duration: choiceTime,
-                style: {}
-              }}
-            />
-            <BrowserRouter>
-              <Routes>
-                <Route path="*" element={<NavbarPage />} />
-              </Routes>
-              <Routes>
-                <Route path="/" element={ <Home /> } />
-                <Route path="/play" element={ <Play /> } />
-                <Route path="/leaderboards" element={ <Leaderboards /> } />
-              </Routes>
-            </BrowserRouter>
+            <LoadingContext.Provider value={{loaderRef: loaderRef, setLoading: setLoading}}>
+              <Loader ref={loaderRef} />
+              <Toaster 
+                position="top-center"
+                toastOptions={{
+                  duration: choiceTime,
+                  style: {}
+                }}
+              />
+              <BrowserRouter>
+                <Routes>
+                  <Route path="*" element={<NavbarPage />} />
+                </Routes>
+                <Routes>
+                  <Route path="/" element={ <Home /> } />
+                  <Route path="/play" element={ <Play /> } />
+                  <Route path="/leaderboards" element={ <Leaderboards /> } />
+                </Routes>
+              </BrowserRouter>
+            </LoadingContext.Provider>
           </UserContext.Provider>
         </ClipsContext.Provider>
       </StocksContext.Provider>

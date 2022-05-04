@@ -36,6 +36,9 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
         } else {
           toast.error(data.message)
         }
+      })
+      .catch((err:any) => {
+        toast.error(err.response.data.message);
       });
     }
 
@@ -46,6 +49,7 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
       }
       AuthService.register(email, username, password)
       .then((data:any) => {
+        console.log(data.data)
         if (data.status === "ok"){
           // navigate("/play");
           setEmail("");
@@ -57,6 +61,9 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
         } else {
           toast.error(data.message)
         }
+      })
+      .catch((err:any) => {
+        toast.error(err.response.data.message);
       });
     } else if (endpoint === "/forgot"){
       // do forgot stuff here todo

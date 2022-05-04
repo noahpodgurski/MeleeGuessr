@@ -2,6 +2,7 @@ import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitl
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import { ILoading, LoadingContext } from "../hooks/UseLoader";
 import { IUser, UserContext } from "../hooks/UseUser";
 import { GetStat } from "../models/Stat";
 import AuthService from "../services/auth.service";
@@ -16,19 +17,23 @@ interface IProfileModal {
 
 export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, toggleShowModal, updateUser }) => {  
   const { user } = useContext<IUser>(UserContext);
+  const { setLoading } = useContext<ILoading>(LoadingContext);
   const [stat, setStat] = useState<GetStat>();
 
   useEffect(() => {
     if (user && showModal){
+      setLoading(true);
       UserService.getStats(user.id)
       .then((response:any) => {
+        setLoading(false);
         setStat(response.data);
       })
       .catch((err:any) => {
+        setLoading(false);
         toast.error(err)
       });
     }
-  }, [user, showModal])
+  }, [user, showModal, setLoading])
   
   const logout = () => {
     AuthService.logout();

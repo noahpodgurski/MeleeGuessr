@@ -4,10 +4,10 @@ import { forwardRef, useRef } from "react";
 import { Ref, useImperativeHandle } from "react";
 import toast from "react-hot-toast";
 import { Player } from "../consts/Player";
+import { ILoading, LoadingContext } from "../hooks/UseLoader";
 import { IUser, UserContext } from "../hooks/UseUser";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
-import { Loader } from "./Loader";
 import './Stage.css';
 
 export type StageType = {
@@ -43,15 +43,14 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const clipRef = useRef<HTMLVideoElement>(null);
   const neutclipRef = useRef<HTMLVideoElement>(null);
   const { user } = useContext<IUser>(UserContext);
+  const { setLoading } = useContext<ILoading>(LoadingContext);
   
-  const loaderRef = useRef<HTMLDivElement>(null);
   const inactiveRef = useRef<HTMLDivElement>(null);
-
-  const isFocused = useRef<boolean>(true)
+  const isFocused = useRef<boolean>(true);
 
   const setFocused = () => {
     isFocused.current = true;
-    inactiveRef.current?.classList.add('hidden');
+    setLoading(false);
   }
   
   const setUnfocused = () => {
@@ -66,10 +65,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       window.removeEventListener('focus', setFocused);
       window.removeEventListener('blur', setUnfocused);
     }
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    loaderRef.current?.classList.remove('hidden');
+    setLoading(true);
     const interval = setInterval(() => {
     if (clipRef.current?.paused || neutclipRef.current?.paused){
         inactiveRef.current?.classList.remove('hidden');
@@ -187,7 +187,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
               if (isFocused.current){
                 clipRef.current.play()
                 neutclipRef.current.play()
-                loaderRef.current?.classList.add('hidden');
+                setLoading(false);
               }
             }
           }
@@ -233,7 +233,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
         <h1>Click to resume</h1>
       </div> */}
       <div className="row justify-content-center p-0 socket loader">
-        <Loader ref={loaderRef} />
         <VideoClip />
       </div>
       <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
