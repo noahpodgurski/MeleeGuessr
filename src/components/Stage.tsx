@@ -69,6 +69,8 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }, []);
 
   useEffect(() => {
+    clipRef.current?.pause()
+    neutclipRef.current?.pause()
     setLoading(true);
     const interval = setInterval(() => {
     if (clipRef.current?.paused || neutclipRef.current?.paused){
