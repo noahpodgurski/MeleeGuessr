@@ -78,6 +78,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       }
     }, 5000)
     return () => {clearInterval(interval)}
+    // eslint-disable-next-line
   }, [stage])
 
   useEffect(() => {
