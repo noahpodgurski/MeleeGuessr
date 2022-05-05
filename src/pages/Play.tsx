@@ -42,6 +42,7 @@ export const Play: React.FC = () => {
   const { user } = useContext<IUser>(UserContext);
 
   const stageRef = useRef<RefObject>(null);
+  const hintButtonRef = useRef<any>(null);
   
   useEffect( () => {
     if (clips.length === 0){
@@ -128,6 +129,7 @@ export const Play: React.FC = () => {
       }
 
       // setHint(false);
+      hintButtonRef.current?.removeAttribute("disabled")
       setStage(stage+1);
     }, choiceTime); //show correct choices for x time
   };
@@ -221,8 +223,12 @@ export const Play: React.FC = () => {
                   <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
                 </div>
               </div> 
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn onClick={stageRef.current?.tHint} className="hint" color="info">Hint?
+              <div className="white-text align-items-center disabled" style={{height: "auto", textAlign: "center"}}>
+                <MDBBtn ref={hintButtonRef} onClick={() => {
+                  stageRef.current?.tHint(); 
+                  hintButtonRef.current?.setAttribute("disabled", true); 
+                  }
+                } className="hint" color="info">Hint?
                 </MDBBtn>
               </div> 
               <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
