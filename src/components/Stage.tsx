@@ -176,26 +176,39 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }
   
   useEffect(() => {
-    const interval = setInterval(async () => {
+    const timingInterval = setInterval(async () => {
       if (clipRef.current && neutclipRef.current){
         // console.log(clipRef.current.currentTime-neutclipRef.current.currentTime);
         let diff = Math.abs(clipRef.current.currentTime-neutclipRef.current.currentTime);
         if (diff > DIFF_BUFF){
           if (clipRef.current.currentTime > neutclipRef.current.currentTime){
-            // console.log(`clip is ahead, pausing for ${diff}`)
-            clipRef.current.pause()
-            await timeout(diff);
-            // console.log('resume')
-            clipRef.current.play()
+            if (clipRef.current.hidden && !clipRef.current.paused && diff < 5){ //only if hidden
+              // console.log(`clip is ahead, pausing for ${diff}`)
+              setLoading(true);
+              clipRef.current.pause()
+              await timeout(diff);
+              // console.log('resume')
+              setLoading(false);
+              clipRef.current.play()
+            }
           }
           else {
-            // console.log(`neut clip is ahead, pausing for ${diff}`)
-            neutclipRef.current.pause()
-            await timeout(diff);
-            // console.log('resume')
-            neutclipRef.current.play()
+            if (!neutclipRef.current.paused && diff < 5) {
+              // console.log(`neut clip is ahead, pausing for ${diff}`)
+              setLoading(true);
+              neutclipRef.current.pause()
+              await timeout(diff);
+              // console.log('resume')
+              setLoading(false);
+              neutclipRef.current.play()
+            }
           }
         }
+      }
+    }, 100)
+
+    const interval = setInterval(() => {
+      if (clipRef.current && neutclipRef.current){
         try {
           var buffered = clipRef.current.buffered;
           var neutbuffered = neutclipRef.current.buffered;
@@ -223,6 +236,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     }, 1000)
 
     return () => {
+      clearInterval(timingInterval);
       clearInterval(interval);
     }
     // eslint-disable-next-line
