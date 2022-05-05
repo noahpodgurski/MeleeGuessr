@@ -102,9 +102,9 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
                       <MDBInput required tabIndex={2} value={username} onChange={(v) => setUsername(v.target.value)} size="lg" className="login-form" autoComplete="current-username" contrast style={{background: "#2d313a", color: 'white'}} label='Username'  id='username' type='username' name="username" />
                     </div>}
                   {/* <MDBBtn color="link">Forgot password?</MDBBtn> */}
-                    <div>
+                    {/* <div>
                       <MDBBtn tabIndex={5} onClick={() => setEndpoint('/forgot')} color="link" className="forgot-pass">Forgot password?</MDBBtn>
-                    </div>
+                    </div> */}
                   </div>
               </div>
               <div className="d-flex justify-content-between m-4">
