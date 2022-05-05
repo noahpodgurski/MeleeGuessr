@@ -194,13 +194,15 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
           }
           else {
             if (!neutclipRef.current.paused && diff < 5) {
-              // console.log(`neut clip is ahead, pausing for ${diff}`)
-              setLoading(true);
-              neutclipRef.current.pause()
-              await timeout(diff);
-              // console.log('resume')
-              setLoading(false);
-              neutclipRef.current.play()
+              if (clipRef.current.hidden){
+                // console.log(`neut clip is ahead, pausing for ${diff}`)
+                setLoading(true);
+                neutclipRef.current.pause()
+                await timeout(diff);
+                // console.log('resume')
+                setLoading(false);
+                neutclipRef.current.play()
+              }
             }
           }
         }
