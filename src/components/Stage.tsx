@@ -170,10 +170,32 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     handleChoice(choice, correctChoice);
   }
 
+  const DIFF_BUFF = 0.1;
+  const timeout = (delay: number) => {
+    return new Promise( res => setTimeout(res, delay*1000) );
+  }
   
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
       if (clipRef.current && neutclipRef.current){
+        // console.log(clipRef.current.currentTime-neutclipRef.current.currentTime);
+        let diff = Math.abs(clipRef.current.currentTime-neutclipRef.current.currentTime);
+        if (diff > DIFF_BUFF){
+          if (clipRef.current.currentTime > neutclipRef.current.currentTime){
+            // console.log(`clip is ahead, pausing for ${diff}`)
+            clipRef.current.pause()
+            await timeout(diff);
+            // console.log('resume')
+            clipRef.current.play()
+          }
+          else {
+            // console.log(`neut clip is ahead, pausing for ${diff}`)
+            neutclipRef.current.pause()
+            await timeout(diff);
+            // console.log('resume')
+            neutclipRef.current.play()
+          }
+        }
         try {
           var buffered = clipRef.current.buffered;
           var neutbuffered = neutclipRef.current.buffered;
