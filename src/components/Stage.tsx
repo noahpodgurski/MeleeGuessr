@@ -148,7 +148,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   const toggleHint = (showToast:boolean=true) => {
     if (clipRef && clipRef.current){
       // if (clipRef.current.hidden)
-      if (showToast)
+      if (showToast && clipRef.current.hidden)
         toast.success("Player's preferred colors revealed!")
       clipRef.current.hidden = false;
     }
@@ -235,7 +235,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
           // console.log(err)
         }
       }
-    }, 1000)
+    }, 1000);
 
     return () => {
       clearInterval(timingInterval);
