@@ -507,7 +507,11 @@ export const Player: PlayerType = {
   characters: [Character.Jigglypuff,],
   flag: 'us',
   score: 24.3},
-
+'N3zModGod': { 
+  label: 'N3zModGod',
+  characters: [Character.Yoshi,],
+  flag: 'us',
+}, 
 
   'Armada': {
     label: 'Armada',

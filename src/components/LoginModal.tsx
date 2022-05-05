@@ -1,6 +1,7 @@
 import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBBtn, MDBModalBody, MDBInput } from "mdb-react-ui-kit"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { ILoading, LoadingContext } from "../hooks/UseLoader";
 import AuthService from "../services/auth.service";
 
 interface ILoginModal {
@@ -16,6 +17,7 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
   const [password, setPassword] = useState("");
   const [endpoint, setEndpoint] = useState("/login");
   const [register, setRegister] = useState(false);
+  const { setLoading } = useContext<ILoading>(LoadingContext)
   // const navigate = useNavigate();
 
   const handleSubmit = (e:any) => {
@@ -24,20 +26,24 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
       toast.error("Unknown error")
       return;
     }
+    setLoading(true);
 
     if (endpoint === "/login"){
       AuthService.login(email, password)
       .then((data:any) => {
         if (data.status === "ok"){
+          setLoading(false);
           // navigate("/play"); //navigate somewhere after login?
           toggleShowModal();
           toast.success(data.message)
           updateUser();
         } else {
+          setLoading(false);
           toast.error(data.message)
         }
       })
       .catch((err:any) => {
+        setLoading(false);
         toast.error(err.response.data.message);
       });
     }
@@ -47,9 +53,10 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
         toast.error("Unknown error");
         return;
       }
+      setLoading(true);
       AuthService.register(email, username, password)
       .then((data:any) => {
-        console.log(data.data)
+        setLoading(false);
         if (data.status === "ok"){
           // navigate("/play");
           setEmail("");
@@ -63,9 +70,11 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
         }
       })
       .catch((err:any) => {
+        setLoading(false);
         toast.error(err.response.data.message);
       });
     } else if (endpoint === "/forgot"){
+      setLoading(false);
       // do forgot stuff here todo
     }
   }

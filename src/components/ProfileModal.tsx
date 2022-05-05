@@ -64,7 +64,10 @@ export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, 
                     <h4>Games: {stat?.games}</h4>
                 </div>
               </div>
-              <div className="d-flex justify-content-end m-4">
+              <div className="d-flex justify-content-between m-4">
+              <a target="_blank" rel="noreferrer" href="https://www.paypal.com/donate/?business=TMLZ8JYEQBCY2&no_recurring=0&currency_code=USD">
+                <MDBBtn size="lg" color="success" outline>Donate</MDBBtn>
+              </a>
                 <MDBBtn onClick={logout} size="lg" color="danger" type="submit">Logout</MDBBtn>
               </div>
           </MDBModalBody>

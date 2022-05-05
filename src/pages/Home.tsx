@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
 	}, [])
   return (
     <>
-			<div className="full-page d-flex justify-content-center align-items-center m-2">
+			<div className="full-page d-flex justify-content-center align-items-center m-2" style={{overflow: 'hidden'}}>
 				<div>
 					Beta {process.env.REACT_APP_PUBLIC_VERSION}
 					<div className="row justify-content-center">
@@ -29,7 +29,7 @@ export const Home: React.FC = () => {
 				</div>
 			</div>
 			
-			<div className="mt-2 row justify-content-center" style={{textAlign: "center"}}>
+			<div className="w-100" style={{textAlign: "center", overflow: 'hidden'}}>
 				<h5>{greeting}</h5>
 			</div>			
     </>
