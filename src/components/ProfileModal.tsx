@@ -30,7 +30,15 @@ export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, 
       })
       .catch((err:any) => {
         setLoading(false);
-        toast.error(err)
+        toast.error("Failed to retrieve stats")
+        setStat({
+          userId: user.id,
+          username: user.username,
+          correct: 0,
+          incorrect: 0,
+          highScore: 0,
+          games: 0
+        })
       });
     }
   }, [user, showModal, setLoading])
