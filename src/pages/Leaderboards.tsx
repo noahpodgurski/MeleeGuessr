@@ -23,7 +23,7 @@ const Leaderboards: React.FC = () => {
     .then((response:any) => {
       setLoading(false);
       setData(response.data.map((row:GetStat) => {
-        return { user: row.username, highScore: row.highScore }
+        return { user: row.username, highScore: `${row.highScore}%` }
       }))
     })
     .catch((err:any) => {

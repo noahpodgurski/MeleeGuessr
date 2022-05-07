@@ -1,14 +1,18 @@
+import toast from "react-hot-toast";
 import { PostStat } from "../models/Stat";
 const axios = require('axios');
 const SERVER_IP = process.env.REACT_APP_SERVER_IP;
 // if not prod server_ip = "" todo
 const updateStats = (stat:PostStat) => {
-  const params = new URLSearchParams();
+  const params = new URLSearchParams()
   params.append('stat', JSON.stringify(stat));
   return axios
     .post(`${SERVER_IP}/update-stats`, params)
     .then((response:any) => {
       return response.data;
+    })
+    .catch((err:any) => {
+      toast.error("Unexpected error...")
     });
 };
 
