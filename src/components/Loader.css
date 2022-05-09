@@ -7,6 +7,10 @@
   /* margin-top: -120px; */
 }
 
+.table-wrapper-scroll-y {
+  max-height: 50vh;
+}
+
 .loader-container {
   position: absolute;
   top: 50%;
