@@ -1,6 +1,6 @@
 {
   "name": "MeleeGuessr",
-  "version": "1.0.0",
+  "version": "1.1",
   "private": true,
   "dependencies": {
     "@capacitor/android": "3.5.1",
