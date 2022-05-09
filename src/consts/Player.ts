@@ -92,11 +92,6 @@ export const Player: PlayerType = {
   characters: [Character.Fox,],
   flag: 'us',
   score: 90.3},
-'moky': { 
-  label: 'moky',
-  characters: [Character.Fox,],
-  flag: 'ca',
-  score: 89.2},
 'n0ne': { 
   label: 'n0ne',
   characters: [Character.Falcon,],
