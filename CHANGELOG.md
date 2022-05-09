@@ -1,3 +1,15 @@
+# 1.2
+* Fix aspect ratio (4:3)
+* Made clips play quieter
+
+# 1.1
+* Removed loading icon after initial load
+* Fix leaderboard sort and height
+* Remove banned and duplicate players
+
+# 1.0
+* Release
+
 # v1.0.0
 ## Server
 * Clips load from S3 bucket instead

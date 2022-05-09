@@ -1,9 +1,17 @@
 .clip {
-  width: 100vw;
-  max-height: 60vh;
   padding: 0;
-  /* max-width: 100vw;
-  max-height: 60vh; */
+  /* works best on mobile */
+  object-fit: fill;
+  max-height: 60vh;
+  max-width: calc(60vh*1.3333);
+  height: calc(100vw * .75);
+  width: 100vw;
+}
+
+.socket.loader {
+  max-height: 60vh;
+  height: calc(100vw * .75);
+  width: 100vw;
 }
 
 .hidden { 

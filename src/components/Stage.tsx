@@ -33,6 +33,7 @@ export interface RefObject {
 }
 
 const VOLUME_MIN = 0.0001;
+const VOLUME = 0.3;
 const BUFFERED_RATIO_MIN = 0.15;
 
 var hint = false;
@@ -87,7 +88,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
         if (!!localStorage.getItem('isMuted')){
           clipRef.current.volume = VOLUME_MIN;
         } else {
-          clipRef.current.volume = 1;
+          clipRef.current.volume = VOLUME;
         }
       
 
@@ -120,10 +121,10 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     if (clipRef && clipRef.current){      
       if (clipRef.current.volume === VOLUME_MIN && !!localStorage.getItem('isMuted')){ //IS MUTED
         // console.log('setting unmuted')
-        clipRef.current.volume = 1;
+        clipRef.current.volume = VOLUME;
         localStorage.setItem('isMuted', '')  //set not muted
       }
-      else if (clipRef.current.volume === 1 && !localStorage.getItem('isMuted')) {
+      else if (clipRef.current.volume === VOLUME && !localStorage.getItem('isMuted')) {
         // console.log('setting muted')
         clipRef.current.volume = VOLUME_MIN; //is not muted
         localStorage.setItem('isMuted', 'true') //set muted
@@ -131,7 +132,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       else {
         // console.log('desync')
         if (!!localStorage.getItem('isMuted')){
-          clipRef.current.volume = 1;
+          clipRef.current.volume = VOLUME;
           localStorage.setItem('isMuted', '');
         } else {
           clipRef.current.volume = VOLUME_MIN;
@@ -170,7 +171,7 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     handleChoice(choice, correctChoice);
   }
 
-  const DIFF_BUFF = 0.1;
+  const DIFF_BUFF = 0.2;
   const timeout = (delay: number) => {
     return new Promise( res => setTimeout(res, delay*1000) );
   }
@@ -184,11 +185,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
           if (clipRef.current.currentTime > neutclipRef.current.currentTime){
             if (clipRef.current.hidden && !clipRef.current.paused && diff < 5){ //only if hidden
               // console.log(`clip is ahead, pausing for ${diff}`)
-              setLoading(true);
+              // setLoading(true);
               clipRef.current.pause()
               await timeout(diff);
               // console.log('resume')
-              setLoading(false);
+              // setLoading(false);
               clipRef.current.play()
             }
           }
@@ -196,11 +197,11 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
             if (!neutclipRef.current.paused && diff < 5) {
               if (clipRef.current.hidden){
                 // console.log(`neut clip is ahead, pausing for ${diff}`)
-                setLoading(true);
+                // setLoading(true);
                 neutclipRef.current.pause()
                 await timeout(diff);
                 // console.log('resume')
-                setLoading(false);
+                // setLoading(false);
                 neutclipRef.current.play()
               }
             }
