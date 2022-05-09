@@ -281,11 +281,6 @@ export const Player: PlayerType = {
   characters: [Character.Fox,],
   flag: 'us',
   score: 58.7},
-'La Luna': { 
-  label: 'La Luna',
-  characters: [Character.Marth,],
-  flag: 'us',
-  score: 57.5},
 'Colbol': { 
   label: 'Colbol',
   characters: [Character.Fox, Character.Marth,],
@@ -538,8 +533,8 @@ export const Player: PlayerType = {
     label: 'Llod',
     characters: [Character.Peach]
   },
-  'LSD': {
-    label: 'LSD',
+  'Logan': {
+    label: 'Logan',
     characters: [Character.Marth]
   },
   'Wobbles': {
