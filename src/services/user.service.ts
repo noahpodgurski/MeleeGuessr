@@ -42,9 +42,24 @@ const getAllStats = () => {
     });
 };
 
+const reportClip = (clip:string | undefined) => {
+  if (!clip) return;
+  const params = new URLSearchParams()
+  params.append('clipSrc', clip);
+  return axios
+    .post(`${SERVER_IP}/report-clip`, params)
+    .then((response:any) => {
+      return response.data;
+    })
+    .catch((err:any) => {
+      toast.error("Unexpected error...")
+    });
+};
+
 const UserService = {
   updateStats,
   getStats,
-  getAllStats
+  getAllStats,
+  reportClip
 }
 export default UserService;

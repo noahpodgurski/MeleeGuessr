@@ -1,3 +1,6 @@
+# 1.3
+* Report button
+
 # 1.2
 * Fix aspect ratio (4:3)
 * Made clips play quieter
