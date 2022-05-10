@@ -1,6 +1,8 @@
 import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { STARTING_STOCKS } from "../App";
 import { MeleeFont } from "../components/MeleeFont";
 import { RefObject, Stage, StageType } from "../components/Stage";
@@ -43,6 +45,7 @@ export const Play: React.FC = () => {
 
   const stageRef = useRef<RefObject>(null);
   const hintButtonRef = useRef<any>(null);
+  const reportButtonRef = useRef<any>(null);
   
   useEffect( () => {
     if (clips.length === 0){
@@ -129,7 +132,8 @@ export const Play: React.FC = () => {
       }
 
       // setHint(false);
-      hintButtonRef.current?.removeAttribute("disabled")
+      hintButtonRef.current?.removeAttribute("disabled");
+      reportButtonRef.current?.removeAttribute("disabled");
       setStage(stage+1);
     }, choiceTime); //show correct choices for x time
   };
@@ -188,6 +192,21 @@ export const Play: React.FC = () => {
     })
   }
 
+  const reportClip = () => {
+    reportButtonRef.current?.setAttribute("disabled", true);
+    UserService.reportClip(currStage?.clipSrc)
+    .then((data:any) => {
+      if (data.status === "success"){
+        toast.success(data.message)
+      } else {
+        toast.error(data.message)
+      }
+    })
+    .catch((err:any) => {
+      toast.error(err.response.data.message);
+    });
+  }
+
   const reset = () => {
     playData = [];
     clips = [];
@@ -222,13 +241,17 @@ export const Play: React.FC = () => {
                 <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
                   <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
                 </div>
-              </div> 
-              <div className="white-text align-items-center disabled" style={{height: "auto", textAlign: "center"}}>
+              </div>
+              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
                 <MDBBtn ref={hintButtonRef} onClick={() => {
                   stageRef.current?.tHint(); 
                   hintButtonRef.current?.setAttribute("disabled", true); 
                   }
                 } className="hint" color="info">Hint?
+                </MDBBtn>
+              </div> 
+              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
+                <MDBBtn ref={reportButtonRef} onClick={reportClip} className="hint" color="warning">Report
                 </MDBBtn>
               </div> 
               <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
