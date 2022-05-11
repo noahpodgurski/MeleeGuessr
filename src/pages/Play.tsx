@@ -2,7 +2,6 @@ import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { STARTING_STOCKS } from "../App";
 import { MeleeFont } from "../components/MeleeFont";
 import { RefObject, Stage, StageType } from "../components/Stage";
