@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
   return (
     <>
 			<Alert variant='warning'>
-				If you enjoy the site, and would like to continue using it, please consider becoming a {<a target="_blank" href="https://www.patreon.com/noahp">patreon</a>}, the server costs to stream video are <strong>expensive</strong>. Even $5/month would be a massive help - Noah
+				If you enjoy the site, and would like to continue using it, please consider becoming a {<a rel="noreferrer" target="_blank" href="https://www.patreon.com/noahp">patreon</a>}, the server costs to stream video are <strong>expensive</strong>. Even $5/month would be a massive help - Noah
 			</Alert>
 			<div className="full-page d-flex justify-content-center align-items-center m-2" style={{overflow: 'hidden'}}>
 				<div>
