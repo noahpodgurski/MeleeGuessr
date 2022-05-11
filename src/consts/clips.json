@@ -4020,16 +4020,6 @@
     "oppPlayer": "GUTZ"
   },
   {
-    "clipSrc": "clip469",
-    "neutclipSrc": "neutclip469",
-    "slp": "E:\\MeleeGuessrSlp\\Player\\Mang0\\Game_20210505T191256.slp",
-    "gameStation": null,
-    "character": 2,
-    "oppChar": 20,
-    "player": "null",
-    "oppPlayer": "mang"
-  },
-  {
     "clipSrc": "clip470",
     "neutclipSrc": "neutclip470",
     "slp": "E:\\MeleeGuessrSlp\\Player\\Mang0\\Game_20210505T191256.slp",
@@ -12008,16 +11998,6 @@
     "oppChar": 9,
     "player": "mang",
     "oppPlayer": "@boyo_boost"
-  },
-  {
-    "clipSrc": "clip1469",
-    "neutclipSrc": "neutclip1469",
-    "slp": "E:\\MeleeGuessrSlp\\Player\\Mang0\\Game_20220113T130843.slp",
-    "gameStation": null,
-    "character": 2,
-    "oppChar": 20,
-    "player": "L",
-    "oppPlayer": "mang"
   },
   {
     "clipSrc": "clip1470",
