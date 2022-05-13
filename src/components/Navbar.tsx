@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { LoginModal } from "./LoginModal";
 import { IUser, UserContext } from "../hooks/UseUser";
 import { ProfileModal } from "./ProfileModal";
+import { Alert } from "react-bootstrap";
 
 
 const NavbarPage: React.FC = () => {
@@ -45,6 +46,10 @@ const NavbarPage: React.FC = () => {
           </MDBNavbarItem>
         </MDBNavbarNav>
       </MDBNavbar>
+      <Alert variant='danger'>
+				Unfortunately the servers are too expensive for me to maintain by myself so the website will be shutting down on 5/15/22, only 7 days after launch. Thanks for playing! - Noah
+			</Alert>
+			
       <ProfileModal showModal={showProfileModal} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
       <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
     </>
