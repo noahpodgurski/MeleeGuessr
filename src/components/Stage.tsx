@@ -256,15 +256,14 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }
 
   const VideoClip: React.FC = () => {
-    const test = "clip81";
     return ( 
       <>
-        <video ref={neutclipRef} key={`neut${test}`} preload="auto" className={`clip`} loop muted playsInline autoPlay>
-          <source src={`https://meleeguessr-clips.s3.amazonaws.com/neut${test}.mp4`} type="video/mp4" />
+        <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline autoPlay>
+          <source src={`https://meleeguessr-clips.s3.amazonaws.com/neut${stage.clipSrc}.mp4`} type="video/mp4" />
         </video>
-        <video ref={clipRef} key={test} className={`clip`} preload="auto" hidden loop playsInline autoPlay>
-        {/* <video ref={clipRef} key={test} className={`clip`} hidden loop playsInline> */}
-          <source src={`https://meleeguessr-clips.s3.amazonaws.com/${test}.mp4`} type="video/mp4" />
+        <video ref={clipRef} key={stage.clipSrc} className={`clip`} preload="auto" hidden loop playsInline autoPlay>
+        {/* <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden loop playsInline> */}
+          <source src={`https://meleeguessr-clips.s3.amazonaws.com/${stage.clipSrc}.mp4`} type="video/mp4" />
         </video>
       </>
     )
