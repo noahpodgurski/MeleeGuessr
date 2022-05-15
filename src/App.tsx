@@ -20,6 +20,7 @@ import { choiceTime } from './consts/Time';
 import Leaderboards from './pages/Leaderboards';
 import { LoadingContext } from './hooks/UseLoader';
 import { Loader } from './components/Loader';
+import { Offline } from './pages/Offline';
 const res = require('./consts/clips.json');
 
 export const STARTING_STOCKS = 4;
@@ -152,7 +153,7 @@ const App: React.FC = () => {
         <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
           <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
             <LoadingContext.Provider value={{loaderRef: loaderRef, setLoading: setLoading}}>
-              <Loader ref={loaderRef} />
+              {/* <Loader ref={loaderRef} /> */}
               <Toaster 
                 position="top-center"
                 toastOptions={{
@@ -161,13 +162,14 @@ const App: React.FC = () => {
                 }}
               />
               <BrowserRouter>
-                <Routes>
+                {/* <Routes>
                   <Route path="*" element={<NavbarPage />} />
-                </Routes>
+                </Routes> */}
                 <Routes>
-                  <Route path="/" element={ <Home /> } />
-                  <Route path="/play" element={ <Play /> } />
-                  <Route path="/leaderboards" element={ <Leaderboards /> } />
+                  <Route path="*" element={<Offline />} />
+                  {/* <Route path="/" element={ <Home /> } /> */}
+                  {/* <Route path="/play" element={ <Play /> } />
+                  <Route path="/leaderboards" element={ <Leaderboards /> } /> */}
                 </Routes>
               </BrowserRouter>
             </LoadingContext.Provider>
