@@ -57,11 +57,11 @@ const App: React.FC = () => {
       loaderRef?.current?.classList.add('hidden');
   }
 
-  useEffect(() => {
-    setLoading(false);
-    updateUser(); //necessary?
-     // eslint-disable-next-line
-  }, [useEffect]) 
+  // useEffect(() => {
+  //   setLoading(false);
+  //   updateUser(); //necessary?
+  //    // eslint-disable-next-line
+  // }, [useEffect]) 
 
   const updateUser = () => {
     const currentUser = AuthService.getCurrentUser();
@@ -145,36 +145,20 @@ const App: React.FC = () => {
       // setClips(clips);
     }
   }
-
+  console.log('app')
   return (
-    <StrictMode>
-      <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
-        <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
-          <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
-            <LoadingContext.Provider value={{loaderRef: loaderRef, setLoading: setLoading}}>
-              <Loader ref={loaderRef} />
-              <Toaster 
-                position="top-center"
-                toastOptions={{
-                  duration: choiceTime,
-                  style: {}
-                }}
-              />
-              <BrowserRouter>
-                <Routes>
-                  <Route path="*" element={<NavbarPage />} />
-                </Routes>
-                <Routes>
-                  <Route path="/" element={ <Home /> } />
-                  <Route path="/play" element={ <Play /> } />
-                  <Route path="/leaderboards" element={ <Leaderboards /> } />
-                </Routes>
-              </BrowserRouter>
-            </LoadingContext.Provider>
-          </UserContext.Provider>
-        </ClipsContext.Provider>
-      </StocksContext.Provider>
-    </StrictMode>
+    <>
+      
+        <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
+          <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
+            <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
+              <LoadingContext.Provider value={{loaderRef: loaderRef, setLoading: setLoading}}>
+                <Play />
+              </LoadingContext.Provider>
+            </UserContext.Provider>
+          </ClipsContext.Provider>
+        </StocksContext.Provider>
+    </>
   );
 }
 

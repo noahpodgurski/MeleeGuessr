@@ -9,6 +9,7 @@ import { IUser, UserContext } from "../hooks/UseUser";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
 import './Stage.css';
+import Youtube from 'react-youtube';
 
 export type StageType = {
   clipSrc: string; //url? or video file?
@@ -254,17 +255,19 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       </>
     )
   }
+  console.log('stage')
 
   const VideoClip: React.FC = () => {
     return ( 
       <>
-        <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline autoPlay>
+      <Youtube videoId="3LjkvL82k_g" opts={{playerVars: {autoplay: 1}}} />
+        
+        {/* <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline autoPlay>
           <source src={`https://meleeguessr-clips.s3.amazonaws.com/neut${stage.clipSrc}.mp4`} type="video/mp4" />
         </video>
         <video ref={clipRef} key={stage.clipSrc} className={`clip`} preload="auto" hidden loop playsInline autoPlay>
-        {/* <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden loop playsInline> */}
           <source src={`https://meleeguessr-clips.s3.amazonaws.com/${stage.clipSrc}.mp4`} type="video/mp4" />
-        </video>
+        </video> */}
       </>
     )
   }

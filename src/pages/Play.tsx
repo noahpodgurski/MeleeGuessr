@@ -13,6 +13,7 @@ import { IUser, UserContext } from "../hooks/UseUser";
 import { Character } from "../models/Character";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
+import Youtube from 'react-youtube'
 import UserService from "../services/user.service";
 import { RandomChoice } from "../utils/RandomChoice";
 import { shuffleArray } from "../utils/Shuffle";
@@ -225,46 +226,11 @@ export const Play: React.FC = () => {
     return _hands;
   }, [stocks])
 
+  console.log('play')
+
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center mt-5" style={{height: "100%"}}>
-				<div className="row justify-content-center w-100">
-          
-          { !showChoiceResult ?
-          <>
-            <div className="d-flex justify-content-between" style={{maxWidth: "1200px"}}>
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
-                {hands.map((hand) => {
-                  return hand;
-                })}
-                <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
-                  <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
-                </div>
-              </div>
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn ref={hintButtonRef} onClick={() => {
-                  stageRef.current?.tHint(); 
-                  hintButtonRef.current?.setAttribute("disabled", true); 
-                  }
-                } className="hint" color="info">Hint?
-                </MDBBtn>
-              </div> 
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn ref={reportButtonRef} onClick={reportClip} className="hint" color="warning">Report
-                </MDBBtn>
-              </div> 
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtnGroup>
-                  <MDBCheckbox btnColor="danger" onClick={stageRef.current?.tMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={!!localStorage.getItem('isMuted')} />
-                </MDBBtnGroup>
-              </div>
-            </div> 
-            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
-            {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
-          </> : <Result HS={HS} score={score} playData={playData} reset={reset} />
-          }
-				</div>
-			</div>
+      <Youtube videoId="3LjkvL82k_g" opts={{playerVars: {autoplay: 1}}} />
     </>
   );
 };
