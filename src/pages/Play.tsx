@@ -1,270 +1,234 @@
-import { MDBBtn, MDBBtnGroup, MDBCheckbox } from "mdb-react-ui-kit";
-import { ReactNode, useContext, useEffect, useMemo, useRef } from "react";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { createSignal, createEffect, createMemo, createContext, onCleanup } from "solid-js";
+import { Stage } from "../components/Stage";
 import { STARTING_STOCKS } from "../App";
 import { MeleeFont } from "../components/MeleeFont";
-import { RefObject, Stage, StageType } from "../components/Stage";
+import { ClipsContext, IClips } from "../components/common/Clips";
+import { Character } from '../models/Character';
 import { Player } from "../consts/Player";
-import { choiceTime } from "../consts/Time";
-import { ClipsContext, IClips } from "../hooks/Clips";
-import { StocksContext } from "../hooks/UseStocks";
-import { IUser, UserContext } from "../hooks/UseUser";
-import { Character } from "../models/Character";
+import { StocksContext } from "../components/common/Stocks";
+import { IUser, UserContext } from "../components/common/User";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import UserService from "../services/user.service";
-import { RandomChoice } from "../utils/RandomChoice";
+
+import { choiceTime } from "../consts/Time";
 import { shuffleArray } from "../utils/Shuffle";
+import { RandomChoice } from "../utils/RandomChoice";
 import { Result } from "./Result";
+import { RefObject, StageType } from "~/components/Stage";
+import { fetchAnimations } from "~/viewer/animationCache";
+import { Viewer } from "~/components/viewer/Viewer";
+
+import "~/state/fileStore";
+import "~/state/replayStore";
+import "~/state/selectionStore";
+import { load } from "~/state/fileStore";
+import toast from "solid-toast";
+import { currentSelectionStore } from "~/state/selectionStore";
 
 export type PlayData = {
   stage: number;
   wasCorrect: boolean;
   choice: string;
   correctChoice?: string;
-}
+};
 
-let playData:PlayData[] = [];
-let clips:Clip[] = [];
+let playData: PlayData[] = [];
+let clips: Clip[] = [];
 
 const BASE_POINTS = 1;
 const NO_HINT_POINTS = 2;
 
-export const Play: React.FC = () => {
-  // ex: stage 1/5
-  const [stage, setStage] = useState(0);
-  const [score, setScore] = useState(0);
-  const { stocks, setStocks } = useContext<any>(StocksContext);
-  const { Clips, getClips } = useContext<IClips>(ClipsContext);
-  const [showChoiceResult, setShowChoiceResult] = useState(false);
-  const [HS, setHS] = useState(false);
-  const [currStage, setCurrStage] = useState<StageType|null>(null);
-  const { user } = useContext<IUser>(UserContext);
-
-  const stageRef = useRef<RefObject>(null);
-  const hintButtonRef = useRef<any>(null);
-  const reportButtonRef = useRef<any>(null);
+export const Play = () => {
+  void fetchAnimations(20); // Falco
+  void fetchAnimations(2); // Fox
+  void fetchAnimations(0); // Falcon
+  void fetchAnimations(9); // Marth
   
-  useEffect( () => {
-    if (clips.length === 0){
+  const [stage, setStage] = createSignal(0);
+  const [score, setScore] = createSignal(0);
+  const [showChoiceResult, setShowChoiceResult] = createSignal(false);
+  const [HS, setHS] = createSignal(false);
+  const [currStage, setCurrStage] = createSignal<StageType | null>(null);
+  
+  createEffect(() => {
+    if (clips.length === 0) {
       const fetchData = async () => {
-        await getClips();
-      }
+        // await getClips(); //todo
+      };
       fetchData();
     }
-    // eslint-disable-next-line
-  }, [stocks])
-  // }, [loading])
-
+  });
 
   const schliceClip = () => {
-    // console.log(clips.length)
-    if (clips.length !== 0){
+    if (clips.length !== 0) {
       const [clip, slicedIndex] = RandomChoice(clips) as [Clip, number];
       clips.splice(slicedIndex, 1);
       updateStage(clip);
     }
-  }
+  };
 
-  useEffect(() => {
-    if (stocks === STARTING_STOCKS){
-
-      const _clips = Clips.filter((clip:Clip) => { return clip?.player.label !== "TEST" });
-      // setClips(_clips);
+  createEffect(() => {
+    if (StocksContext.stocks === STARTING_STOCKS) {
+      const _clips = ClipsContext.Clips.filter((clip: Clip) => clip?.player.label !== "TEST");
       clips = _clips;
       schliceClip();
     }
-    // eslint-disable-next-line
-  }, [Clips, stocks])
+  });
 
-  useEffect(() => {
+  createEffect(() => {
     schliceClip();
-    // eslint-disable-next-line
-  }, [stage, score, stocks, playData.length])
+  });
 
-  // useEffect(() => {
-  //   while (playData.length > 0)
-  //     playData.pop();
-  // }, [])
-
-
-  
-  // calls child function!
-  // const displayCorrectChoice = async (choice:Choice, correctChoice:Choice) => {
-  //   if (stageRef.current){
-  //     stageRef.current.Test(choice);
-  //   }
-  // }
-
-  const handleChoice = (choice:Choice, correctChoice:Choice) => {
-    let hasHint = stageRef.current?.hasHint();
+  const handleChoice = (choice: Choice, correctChoice: Choice) => {
     setTimeout(() => {
-      if (choice.label === correctChoice.label){
-        // let hasHint = neutclipRef?.current?.hidden; //if neutclip is hidden
-        setScore(score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS));
+      if (choice.label === correctChoice.label) {
+        setScore(score() + BASE_POINTS);
         playData.push({
-          stage: stage,
+          stage: stage(),
           wasCorrect: true,
-          choice: choice.label
-        })
+          choice: choice.label,
+        });
       } else {
         playData.push({
-          stage: stage,
+          stage: stage(),
           wasCorrect: false,
           choice: choice.label,
-          correctChoice: correctChoice.label
-        })
-        setStocks(stocks-1)
-      }
-      
-      // update stat
-      if (user?.id){
-        UserService.updateStats({
-          userId: user.id, //string
-          username: user.username,
-          wasCorrect: choice.label === correctChoice.label, //bool
-          //      is correct                              if so add the amt of points we'd add (above) or send current score
-          score: (choice.label === correctChoice.label) ? score + BASE_POINTS + (hasHint ? 0 : NO_HINT_POINTS) : score, //num
-          final: choice.label !== correctChoice.label && stocks === 1 //bool
-        })
+          correctChoice: correctChoice.label,
+        });
+        StocksContext.stocks--;
       }
 
-      // setHint(false);
-      hintButtonRef.current?.removeAttribute("disabled");
-      reportButtonRef.current?.removeAttribute("disabled");
-      setStage(stage+1);
-    }, choiceTime); //show correct choices for x time
+      if (UserContext.user?.id) {
+        UserService.updateStats({
+          userId: UserContext.user.id,
+          username: UserContext.user.username,
+          wasCorrect: choice.label === correctChoice.label,
+          score: choice.label === correctChoice.label ? score() + BASE_POINTS : score(),
+          final: choice.label !== correctChoice.label && StocksContext.stocks === 1,
+        });
+      }
+      setStage(stage() + 1);
+    }, choiceTime);
   };
-  
-  // update high score
-  useEffect(() => {
-    const x:number | null = Number(localStorage.getItem('HS'));
-    if (stocks === 0){
-      // console.log(`last highscore was ${x}`)
-      if (x === null || x < score){
+
+  createEffect(() => {
+    const x = Number(localStorage.getItem("HS"));
+    if (StocksContext.stocks === 0) {
+      if (x === null || x < score()) {
         setHS(true);
-        localStorage.setItem('HS', score.toLocaleString());
+        localStorage.setItem("HS", score().toLocaleString());
       }
       setShowChoiceResult(true);
     }
-  }, [stocks, score])
+  });
 
+  const updateStage = (clip: Clip) => {
+    const incorrectChoices: Choice[] = [];
 
-  
-  const updateStage = (clip:Clip) => {
-    const incorrectChoices:Choice[] = [];
-  
-    // populate random incorrect choices
-    const randomPlayers:string[] = shuffleArray(Object.keys(Player));
-    for (const player of randomPlayers){
+    const randomPlayers: string[] = shuffleArray(Object.keys(Player));
+    for (const player of randomPlayers) {
       const characters = Player[player].characters || [];
       const conditionalCharacters = Player[player].conditionalCharacters || {};
-      // todo - make clip.character REQUIRED
       const clipChar = clip?.character || Character.Bowser;
       const oppChar = clip?.oppChar || Character.Bowser;
-      // const oppPlayer = clip?.oppPlayer || Character.Bowser;
 
       const _ = conditionalCharacters[clipChar] || [];
 
-      // player is not correct answer
-      if (player !== clip?.player.label && 
-        // not TEST
-        player !== Player['TEST'].label && 
-        // if player's character's include the clip's character
-        (characters.includes(clipChar) ||
-        // or if player's CONDITIONAL character's match up with the opp char (opp char not yet implemented in clips.json)
-        (_.includes(oppChar)))
-        ){
+      if (
+        player !== clip?.player.label &&
+        player !== Player["TEST"].label &&
+        (characters.includes(clipChar) || _.includes(oppChar))
+      ) {
         incorrectChoices.push(Player[player]);
-        
-      
-        if (incorrectChoices.length >= 3)
-          break;
+
+        if (incorrectChoices.length >= 3) break;
       }
-    };
+    }
     setCurrStage({
       clipSrc: clip?.clipSrc || "",
       character: clip?.character || "",
       correctChoice: clip?.player || Player.TEST,
-      incorrectChoices: incorrectChoices
-    })
+      incorrectChoices: incorrectChoices,
+    });
+  };
+
+  // const url = new URLSearchParams(location.search).get("replayUrl");
+  const url = "../slp-test/test.slp";
+  const startFrame = 0;
+  if (url !== null) {
+    try {
+      void fetch(url)
+        .then(async (response) => await response.blob())
+        .then((blob) => new File([blob], url.split("/").at(-1) ?? "url.slp"))
+        .then(async (file) => {
+          toast.promise(load([file], startFrame), {
+            loading: "Parsing files...",
+            success: "Successfully loaded files",
+            error: "error"
+          })
+          await load([file], startFrame)
+          const _file = currentSelectionStore().data.filteredStubs;
+          if (_file.length > 0) {
+            await currentSelectionStore().select(_file[0]);
+          }
+        });
+    } catch (e) {
+      console.error("Error: could not load replay", url, e);
+    }
   }
 
   const reportClip = () => {
-    reportButtonRef.current?.setAttribute("disabled", true);
-    UserService.reportClip(currStage?.clipSrc)
-    .then((data:any) => {
-      if (data.status === "success"){
-        toast.success(data.message)
-      } else {
-        toast.error(data.message)
-      }
-    })
-    .catch((err:any) => {
-      toast.error(err.response.data.message);
-    });
-  }
+    // UserService.reportClip(currStage()?.clipSrc)
+    //   .then((data: any) => {
+    //     if (data.status === "success") {
+    //       createToast({
+    //         title: data.message,
+    //         duration: 2000,
+    //         placement: "top-end"
+    //       })
+    //     } else {
+    //       createToast({
+    //         title: data.message,
+    //         duration: 2000,
+    //         placement: "top-end"
+    //       })
+    //     }
+    //   })
+    //   .catch((err: any) => {
+    //     createToast({
+    //       title: err.response.data.message,
+    //       duration: 2000,
+    //       placement: "top-end"
+    //     })
+    //   });
+  };
 
   const reset = () => {
     playData = [];
     clips = [];
-    
+
     setStage(0);
     setScore(0);
-    setStocks(STARTING_STOCKS);
+    StocksContext.stocks = STARTING_STOCKS;
     setShowChoiceResult(false);
     setHS(false);
-  }
+  };
 
-  const hands:ReactNode[] = useMemo(() => {
+  const hands = createMemo(() => {
     const _hands = [];
-    for (let i = 0; i < stocks; i++){
-      _hands.push(<img className="hand" alt="hand" key={`hand${i}`} src={'/logo.png'} />)
+    for (let i = 0; i < StocksContext.stocks; i++) {
+      _hands.push(<img class="hand" alt="hand" src={"/logo.png"} />);
     }
     return _hands;
-  }, [stocks])
+  });
 
   return (
-    <>
-      <div className="d-flex justify-content-center align-items-center mt-5" style={{height: "100%"}}>
-				<div className="row justify-content-center w-100">
-          
-          { !showChoiceResult ?
-          <>
-            <div className="d-flex justify-content-between" style={{maxWidth: "1200px"}}>
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}> 
-                {hands.map((hand) => {
-                  return hand;
-                })}
-                <div className="d-flex justify-content-center align-items-end mt-2 mb-3">
-                  <MeleeFont number={score} /><img className="melee-percent" src="numbers/percent.png" alt="%" />
-                </div>
-              </div>
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn ref={hintButtonRef} onClick={() => {
-                  stageRef.current?.tHint(); 
-                  hintButtonRef.current?.setAttribute("disabled", true); 
-                  }
-                } className="hint" color="info">Hint?
-                </MDBBtn>
-              </div> 
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtn ref={reportButtonRef} onClick={reportClip} className="hint" color="warning">Report
-                </MDBBtn>
-              </div> 
-              <div className="white-text align-items-center" style={{height: "auto", textAlign: "center"}}>
-                <MDBBtnGroup>
-                  <MDBCheckbox btnColor="danger" onClick={stageRef.current?.tMute} name='btnCheck' btn id='btn-check' wrapperTag='span' label='Mute' defaultChecked={!!localStorage.getItem('isMuted')} />
-                </MDBBtnGroup>
-              </div>
-            </div> 
-            <Stage ref={stageRef} stage={currStage} handleChoice={handleChoice} stageIndex={stage} />
-            {/* <MDBBtn className="mt-2 w-50" color="danger" onClick={() => setShowChoiceResult(true)}>View Results</MDBBtn> */}
-          </> : <Result HS={HS} score={score} playData={playData} reset={reset} />
-          }
-				</div>
-			</div>
-    </>
+    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%" }}>
+      <div class="row justify-content-center w-100">
+        
+        <Viewer />
+      </div>
+    </div>
   );
 };

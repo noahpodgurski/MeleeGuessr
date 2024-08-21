@@ -1,44 +1,36 @@
-import React, { useCallback, useContext, useState } from "react";
-import {
-  MDBBtn,
-  MDBIcon,
-  MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarNav
-} from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
 import { LoginModal } from "./LoginModal";
-import { IUser, UserContext } from "../hooks/UseUser";
+import { IUser, UserContext } from "../components/common/User";
 import { ProfileModal } from "./ProfileModal";
-import { Alert } from "react-bootstrap";
+import { Component, createContext, createMemo, createSignal } from "solid-js";
 
 
-const NavbarPage: React.FC = () => {
-  const [showModal, setShowLoginModal] = useState(false);
+const NavbarPage: Component = () => {
+  const [showModal, setShowLoginModal] = createSignal(false);
    // eslint-disable-next-line
    const toggleShowLoginModal = () => setShowLoginModal(!showModal);
-   const [showProfileModal, setShowProfileModal] = useState(false);
+   const [showProfileModal, setShowProfileModal] = createSignal(false);
    // eslint-disable-next-line
   const toggleShowProfileModal = () => setShowProfileModal(!showProfileModal);
-  const { user, updateUser } = useContext<IUser>(UserContext);
-
-  const toggleModal = useCallback(() => {
-    if (user){
+  
+  const toggleModal = createMemo(() => {
+    if (UserContext.user){
       toggleShowProfileModal()
     } else {
       toggleShowLoginModal();
     }
-  }, [user, toggleShowProfileModal, toggleShowLoginModal]);
+  }, [UserContext.user, toggleShowProfileModal, toggleShowLoginModal]);
   
   return (
       <>
-      <MDBNavbar color="dark" dark expand="md">
-        <MDBNavbarNav fullWidth={false} className='mr-auto mb-2 mb-lg-0'>
+      {/* <MDBNavbar color="dark" dark expand="md">
+        <MDBNavbarNav fullWidth={false} class='mr-auto mb-2 mb-lg-0'>
           <MDBNavbarBrand tag="span">
             <Link to="/">
-              <strong className="logo brand" style={{marginLeft: '20px'}}>MeleeGuessr</strong>
+              <strong class="logo brand" style={{marginLeft: '20px'}}>MeleeGuessr</strong>
             </Link>
           </MDBNavbarBrand>
         </MDBNavbarNav>
-        <MDBNavbarNav right fullWidth={false} className='mb-2 mb-lg-0'>
+        <MDBNavbarNav right fullWidth={false} class='mb-2 mb-lg-0'>
           <MDBNavbarItem style={{marginRight: "20px", alignSelf: 'center'}} active aria-current='page' onClick={toggleModal}>
             <MDBBtn size="sm" color="light" floating tag={user ? "button" : "a"} >
               { user ? user.username[0] : <MDBIcon fas icon='user' size='1x'/> }
@@ -48,10 +40,10 @@ const NavbarPage: React.FC = () => {
       </MDBNavbar>
       <Alert variant='danger'>
 				Unfortunately the servers are too expensive for me to maintain by myself so the website will be shutting down on 5/15/22, only 7 days after launch. Thanks for playing! - Noah
-			</Alert>
+			</Alert> */}
 			
-      <ProfileModal showModal={showProfileModal} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
-      <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
+      {/* <ProfileModal showModal={showProfileModal()} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
+      <LoginModal showModal={showModal()} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} /> */}
     </>
     );
   }

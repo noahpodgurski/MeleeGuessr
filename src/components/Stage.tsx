@@ -1,11 +1,8 @@
-import { MDBBtn } from "mdb-react-ui-kit";
-import { useContext, useEffect } from "react";
-import { forwardRef, useRef } from "react";
-import { Ref, useImperativeHandle } from "react";
-import toast from "react-hot-toast";
+import { Component, createEffect } from 'solid-js';
+// import { createToast } from "./common/toaster";
 import { Player } from "../consts/Player";
-import { ILoading, LoadingContext } from "../hooks/UseLoader";
-import { IUser, UserContext } from "../hooks/UseUser";
+import { ILoading, LoadingContext } from "../components/common/Loader";
+import { IUser, UserContext } from "../components/common/User";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
 import './Stage.css';
@@ -39,26 +36,25 @@ const BUFFERED_RATIO_MIN = 0.15;
 var hint = false;
 
 // export const Stage: React.FC<StageProps> = ({stage, handleChoice, stageIndex}) => {
-export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
+export function Stage (props: StageProps) {
   const { stage, handleChoice, stageIndex, viewClipsOnly=false } = props;
-  const clipRef = useRef<HTMLVideoElement>(null);
-  const neutclipRef = useRef<HTMLVideoElement>(null);
-  const { user } = useContext<IUser>(UserContext);
-  const { setLoading } = useContext<ILoading>(LoadingContext);
+  // const clipRef = useRef<HTMLVideoElement>(null);
+  // const neutclipRef = useRef<HTMLVideoElement>(null);
   
-  const inactiveRef = useRef<HTMLDivElement>(null);
-  const isFocused = useRef<boolean>(true);
+  // const inactiveRef = useRef<HTMLDivElement>(null);
+  // const isFocused = useRef<boolean>(true);
+  const isFocused = {current: true}; //todo
 
   const setFocused = () => {
     isFocused.current = true;
-    setLoading(false);
+    LoadingContext.loading = false;
   }
   
   const setUnfocused = () => {
     isFocused.current = false;
   }
 
-  useEffect(() => {
+  createEffect(() => {
     window.addEventListener('focus', setFocused);
     window.addEventListener('blur', setUnfocused);
 
@@ -69,26 +65,26 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     //eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    clipRef.current?.pause()
-    neutclipRef.current?.pause()
-    setLoading(true);
+  createEffect(() => {
+    // clipRef.current?.pause()
+    // neutclipRef.current?.pause()
+    LoadingContext.loading = true;
     const interval = setInterval(() => {
-    if (clipRef.current?.paused || neutclipRef.current?.paused){
-        inactiveRef.current?.classList.remove('hidden');
-      }
+    // // if (clipRef.current?.paused || neutclipRef.current?.paused){
+        // inactiveRef.current?.classList.remove('hidden');
+      // }
     }, 5000)
     return () => {clearInterval(interval)}
     // eslint-disable-next-line
   }, [stage])
 
-  useEffect(() => {
-    if (clipRef.current){
-        // console.log('desync IN USEEFFECT')
+  createEffect(() => {
+    // if (clipRef.current){
+        // console.log('desync IN createEffect')
         if (!!localStorage.getItem('isMuted')){
-          clipRef.current.volume = VOLUME_MIN;
+          // clipRef.current.volume = VOLUME_MIN;
         } else {
-          clipRef.current.volume = VOLUME;
+          // clipRef.current.volume = VOLUME;
         }
       
 
@@ -97,8 +93,8 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       // clipRef.current.volume = VOLUME_MIN;
       // else
       // clipRef.current.volume = 1;
-    }
-  }, [stage, clipRef, user])
+    // }
+  }, [stage, UserContext.user])
 
   // const requestMetadata = async () => {
   //   const res = await fetch(`${stage.clipSrc}/data`);
@@ -106,7 +102,6 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   //   // setVideoData(data);
   // }
 
-  useImperativeHandle(ref, () => ({ tMute, tHint, hasHint }));
   const tMute = () => {
     toggleMute();
   }
@@ -118,24 +113,25 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
   }
   
   const toggleMute = () => {
-    if (clipRef && clipRef.current){      
-      if (clipRef.current.volume === VOLUME_MIN && !!localStorage.getItem('isMuted')){ //IS MUTED
+    // if (clipRef && clipRef.current){      
+      // if (clipRef.current.volume === VOLUME_MIN && !!localStorage.getItem('isMuted')){ //IS MUTED
         // console.log('setting unmuted')
-        clipRef.current.volume = VOLUME;
-        localStorage.setItem('isMuted', '')  //set not muted
-      }
-      else if (clipRef.current.volume === VOLUME && !localStorage.getItem('isMuted')) {
+        // clipRef.current.volume = VOLUME;
+      //   localStorage.setItem('isMuted', '')  //set not muted
+      // }
+      // else if (clipRef.current.volume === VOLUME && !localStorage.getItem('isMuted')) {
         // console.log('setting muted')
-        clipRef.current.volume = VOLUME_MIN; //is not muted
-        localStorage.setItem('isMuted', 'true') //set muted
-      }
-      else {
+        // clipRef.current.volume = VOLUME_MIN; //is not muted
+      //   localStorage.setItem('isMuted', 'true') //set muted
+      // }
+      // else
+      {
         // console.log('desync')
         if (!!localStorage.getItem('isMuted')){
-          clipRef.current.volume = VOLUME;
+          // clipRef.current.volume = VOLUME;
           localStorage.setItem('isMuted', '');
         } else {
-          clipRef.current.volume = VOLUME_MIN;
+          // clipRef.current.volume = VOLUME_MIN;
           localStorage.setItem('isMuted', 'true');
         }
       }
@@ -143,32 +139,46 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       // console.log(`setting to ${clipRef.current.muted ? 'true' : ''}`)
       // clipRef.current.muted = !clipRef.current.muted
       // localStorage.setItem('mute', clipRef.current.muted ? 'true' : '') 
-    }
+    // }
   }
 
   const toggleHint = (showToast:boolean=true) => {
-    if (clipRef && clipRef.current){
+    // if (clipRef && clipRef.current){
       // if (clipRef.current.hidden)
-      if (showToast && clipRef.current.hidden)
-        toast.success("Player's preferred colors revealed!")
-      clipRef.current.hidden = false;
-    }
-    if (neutclipRef && neutclipRef.current)
-      neutclipRef.current.hidden = true;
+      // if (showToast && clipRef.current.hidden)
+        // createToast({
+        //   title: "Player's preferred colors revealed!",
+        //   duration: 2000,
+        //   placement: "top-end"
+        // })
+      // clipRef.current.hidden = false;
+    // }
+    // if (neutclipRef && neutclipRef.current)
+      // neutclipRef.current.hidden = true;
   }
   
   const intHandleChoice = (choice:Choice, correctChoice:Choice) => {
-    hint = neutclipRef.current?.hidden || false;
+    // hint = neutclipRef.current?.hidden || false;
     if (toggleHint)
       toggleHint(false);
      if (choice.label === correctChoice.label){
-      toast.success("Correct")
+      // createToast({
+      //   title: "Correct",
+      //   duration: 2000,
+      //   placement: "top-end"
+
+      // })
     }
     else {
-      toast.error(`Incorrect. Answer was ${correctChoice.label}`)
+      // createToast({
+      //   title: `Incorrect. Answer was ${correctChoice.label}`,
+      //   duration: 2000,
+      //   placement: "top-end"
+
+      // })
     }
     // setShowAnswers(true);
-    handleChoice(choice, correctChoice);
+    // handleChoice(choice, correctChoice); //todo
   }
 
   const DIFF_BUFF = 0.2;
@@ -176,66 +186,67 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
     return new Promise( res => setTimeout(res, delay*1000) );
   }
   
-  useEffect(() => {
+  createEffect(() => {
     const timingInterval = setInterval(async () => {
-      if (clipRef.current && neutclipRef.current){
-        // console.log(clipRef.current.currentTime-neutclipRef.current.currentTime);
-        let diff = Math.abs(clipRef.current.currentTime-neutclipRef.current.currentTime);
-        if (diff > DIFF_BUFF){
-          if (clipRef.current.currentTime > neutclipRef.current.currentTime){
-            if (clipRef.current.hidden && !clipRef.current.paused && diff < 5){ //only if hidden
-              // console.log(`clip is ahead, pausing for ${diff}`)
-              // setLoading(true);
-              clipRef.current.pause()
-              await timeout(diff);
-              // console.log('resume')
-              // setLoading(false);
-              clipRef.current.play()
-            }
-          }
-          else {
-            if (!neutclipRef.current.paused && diff < 5) {
-              if (clipRef.current.hidden){
-                // console.log(`neut clip is ahead, pausing for ${diff}`)
-                // setLoading(true);
-                neutclipRef.current.pause()
-                await timeout(diff);
-                // console.log('resume')
-                // setLoading(false);
-                neutclipRef.current.play()
-              }
-            }
-          }
-        }
-      }
+      // if (clipRef.current && neutclipRef.current){
+      //   console.log(clipRef.current.currentTime-neutclipRef.current.currentTime);
+      //   let diff = Math.abs(clipRef.current.currentTime-neutclipRef.current.currentTime);
+      //   if (diff > DIFF_BUFF){
+      //     // if (clipRef.current.currentTime > neutclipRef.current.currentTime){
+      //       // if (clipRef.current.hidden && !clipRef.current.paused && diff < 5){ //only if hidden
+      //         console.log(`clip is ahead, pausing for ${diff}`)
+      //         LoadingContext.loading = true;
+      //         clipRef.current.pause()
+      //         await timeout(diff);
+      //         console.log('resume')
+      //         LoadingContext.loading = false;
+      //         clipRef.current.play()
+      //       }
+      //     }
+      //     else
+      //     //  {
+      //       // if (!neutclipRef.current.paused && diff < 5) {
+      //         // if (clipRef.current.hidden){
+      //           // console.log(`neut clip is ahead, pausing for ${diff}`)
+      //           // LoadingContext.loading = true;
+      //           // neutclipRef.current.pause()
+      //           await timeout(diff);
+      //           // console.log('resume')
+      //           // LoadingContext.loading = false;
+      //           // neutclipRef.current.play()
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
     }, 100)
 
     const interval = setInterval(() => {
-      if (clipRef.current && neutclipRef.current){
-        try {
-          var buffered = clipRef.current.buffered;
-          var neutbuffered = neutclipRef.current.buffered;
-          if (buffered && neutbuffered){
+      // // if (clipRef.current && neutclipRef.current){
+        // try {
+        //   // var buffered = clipRef.current.buffered;
+        //   // var neutbuffered = neutclipRef.current.buffered;
+        //   if (buffered && neutbuffered){
             
-            // console.log(
-            //   'clip buffered: ' + buffered.start(0) + ' - ' + buffered.end(0) + ' sec'
-            // );
-            // console.log(
-            //   'neutclip buffered: ' + neutbuffered.start(0) + ' - ' + neutbuffered.end(0) + ' sec'
-            // );
+        //     // console.log(
+        //     //   'clip buffered: ' + buffered.start(0) + ' - ' + buffered.end(0) + ' sec'
+        //     // );
+        //     // console.log(
+        //     //   'neutclip buffered: ' + neutbuffered.start(0) + ' - ' + neutbuffered.end(0) + ' sec'
+        //     // );
             
-            if (buffered.end(0) / clipRef.current.duration > BUFFERED_RATIO_MIN && neutbuffered.end(0) / neutclipRef.current.duration > BUFFERED_RATIO_MIN){
-              if (isFocused.current){
-                clipRef.current.play()
-                neutclipRef.current.play()
-                setLoading(false);
-              }
-            }
-          }
-        } catch(err) {
-          // console.log(err)
-        }
-      }
+        //     // // if (buffered.end(0) / clipRef.current.duration > BUFFERED_RATIO_MIN && neutbuffered.end(0) / neutclipRef.current.duration > BUFFERED_RATIO_MIN){
+        //       if (isFocused.current){
+        //         // clipRef.current.play()
+        //         // neutclipRef.current.play()
+        //         LoadingContext.loading = false;
+        //       }
+        //     }
+        //   }
+        // } catch(err) {
+        //   // console.log(err)
+        // }
+      // }
     }, 1000);
 
     return () => {
@@ -243,26 +254,26 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
       clearInterval(interval);
     }
     // eslint-disable-next-line
-  }, [useEffect])
+  }, [createEffect])
 
   if (!stage){
     return (
       <>
-        <div className="row justify-content-center p-0">
-          <div className="loader"></div>
+        <div class="row justify-content-center p-0">
+          <div class="loader"></div>
         </div>
       </>
     )
   }
 
-  const VideoClip: React.FC = () => {
+  const VideoClip: Component = () => {
     return ( 
       <>
-        <video ref={neutclipRef} key={`neut${stage.clipSrc}`} preload="auto" className={`clip`} loop muted playsInline autoPlay>
+        <video preload="auto" class={`clip`} loop muted>
           <source src={`https://meleeguessr-clips.s3.amazonaws.com/neut${stage.clipSrc}.mp4`} type="video/mp4" />
         </video>
-        <video ref={clipRef} key={stage.clipSrc} className={`clip`} preload="auto" hidden loop playsInline autoPlay>
-        {/* <video ref={clipRef} key={stage.clipSrc} className={`clip`} hidden loop playsInline> */}
+        <video class={`clip`} preload="auto" hidden loop>
+        {/* <video ref={clipRef} key={stage.clipSrc} class={`clip`} hidden loop playsInline> */}
           <source src={`https://meleeguessr-clips.s3.amazonaws.com/${stage.clipSrc}.mp4`} type="video/mp4" />
         </video>
       </>
@@ -271,19 +282,19 @@ export const Stage = forwardRef((props: StageProps, ref: Ref<RefObject>) => {
 
   return (
     <>
-      {/* <div ref={inactiveRef} className="inactive-warning hidden red-text d-flex justify-content-center align-items-center" style={{textAlign: 'center'}}>
+      {/* <div ref={inactiveRef} class="inactive-warning hidden red-text d-flex justify-content-center align-items-center" style={{textAlign: 'center'}}>
         <h1>Click to resume</h1>
       </div> */}
-      <div className="row justify-content-center p-0 socket loader">
+      <div class="row justify-content-center p-0 socket loader">
         <VideoClip />
       </div>
-      <div className="row justify-content-center mt-4" style={{textAlign: 'center'}}>
-        { <h2 className="white-text">Who is the {stage.character}?</h2> }
+      <div class="row justify-content-center mt-4" style={{"text-align": 'center'}}>
+        { <h2 class="white-text">Who is the {stage.character}?</h2> }
       </div>
-      { viewClipsOnly ? <MDBBtn onClick={() => handleChoice(Player.TEST, stage.correctChoice)} color="success">Next</MDBBtn>
+      {/* { viewClipsOnly ? <MDBBtn onClick={() => handleChoice(Player.TEST, stage.correctChoice)} color="success">Next</MDBBtn>
       : <>
         <Choices stage={stage} stageIndex={stageIndex} intHandleChoice={intHandleChoice} />
-      </> }
+      </> } */}
     </>
   )
-});
+};

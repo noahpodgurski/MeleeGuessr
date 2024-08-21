@@ -3,8 +3,8 @@
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 // const { BUCKET_IP, SERVER_IP } = require('./config');
-const BUCKET_IP = process.env.REACT_APP_BUCKET_IP;
-const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+const BUCKET_IP = "process.env.REACT_APP_BUCKET_IP";
+const SERVER_IP = "process.env.REACT_APP_SERVER_IP";
 
 module.exports = (app) => {
   app.use(

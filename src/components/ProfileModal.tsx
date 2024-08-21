@@ -1,12 +1,13 @@
-import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBBtn, MDBModalBody } from "mdb-react-ui-kit"
-import { useEffect, useState } from "react";
-import { useContext } from "react";
-import toast from "react-hot-toast";
-import { ILoading, LoadingContext } from "../hooks/UseLoader";
-import { IUser, UserContext } from "../hooks/UseUser";
+import { Box, Button, Modal, Typography } from "@suid/material";
+import { createContext, createEffect, createSignal } from 'solid-js';
 import { GetStat } from "../models/Stat";
+// import { createToast } from "./common/toaster";
 import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
+import { Component } from 'solid-js';
+import { ILoading, LoadingContext } from "./common/Loader";
+import { IUser, UserContext } from "./common/User";
+import useTheme from "@suid/material/styles/useTheme";
 
 interface IProfileModal {
   showModal: boolean;
@@ -15,64 +16,73 @@ interface IProfileModal {
   updateUser: () => void;
 }
 
-export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, toggleShowModal, updateUser }) => {  
-  const { user } = useContext<IUser>(UserContext);
-  const { setLoading } = useContext<ILoading>(LoadingContext);
-  const [stat, setStat] = useState<GetStat>();
+export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal, toggleShowModal, updateUser }) => {  
+  const [stat, setStat] = createSignal<GetStat>();
+  const theme = useTheme();
 
-  useEffect(() => {
-    if (user && showModal){
-      setLoading(true);
-      UserService.getStats(user.id)
+  createEffect(() => {
+    if (UserContext.user && showModal){
+      LoadingContext.loading = true;
+      UserService.getStats(UserContext.user.id)
       .then((response:any) => {
-        setLoading(false);
+        LoadingContext.loading = false;
         setStat(response.data);
       })
       .catch((err:any) => {
-        setLoading(false);
-        toast.error("Failed to retrieve stats")
-        setStat({
-          userId: user.id,
-          username: user.username,
-          correct: 0,
-          incorrect: 0,
-          highScore: 0,
-          games: 0
-        })
+        LoadingContext.loading = false;
+        // createToast({
+        //   title: "Failed to retrieve stats",
+        //   duration: 2000,
+        //   placement: "top-end"
+        // })
+        if (UserContext.user) {
+          setStat({
+            userId: UserContext.user.id,
+            username: UserContext.user.username,
+            correct: 0,
+            incorrect: 0,
+            highScore: 0,
+            games: 0
+          })
+        }
       });
     }
-  }, [user, showModal, setLoading])
+  }, [UserContext.user, showModal, LoadingContext.loading])
   
   const logout = () => {
     AuthService.logout();
     updateUser();
     toggleShowModal();
-    toast.success("Logged out")
+    // createToast({
+    //   title: "Logged out",
+    //   duration: 2000,
+    //   placement: "top-end"
+    // })
   }
   
   return (
     <>
-      <MDBModal className="dark-modal" show={showModal} setShow={setShowModal} tabIndex={-1}>
+      {/* <MDBModal class="dark-modal" show={showModal} setShow={setShowModal} tabIndex={-1}>
       <MDBModalDialog size="fullscreen-lg-down">
         <MDBModalContent>
           <MDBModalHeader>
             <MDBModalTitle>Account</MDBModalTitle>
-            <MDBBtn className='btn-close' color='none' onClick={toggleShowModal}></MDBBtn>
+            <MDBBtn class='btn-close' color='none' onClick={toggleShowModal}></MDBBtn>
           </MDBModalHeader>
           <MDBModalBody>
-              <div className="d-flex white-text justify-content-center align-items-center m-2" style={{textAlign: 'start'}}>
-                <div className="col-6">
-                    <h4>Username: {user?.username}</h4>
-                    <h4>Email: {user?.email}</h4>
+              <div class="d-flex white-text justify-content-center align-items-center m-2" style={{"text-align": 'start'}}>
+                <div class="col-6">
+                    <h4>Username: {UserContext.user?.username}</h4>
+                    <h4>Email: {UserContext.user?.email}</h4>
                 </div>
-                <div className="col-6">
-                    <h4>Correct: {stat?.correct}</h4>
-                    <h4>Incorrect: {stat?.incorrect}</h4>
-                    <h4>High Score: {stat?.highScore}%</h4>
-                    <h4>Games: {stat?.games}</h4>
+                <div class="col-6">
+                    <h4>Correct: {stat()?.correct}</h4>
+                    <h4>Incorrect: {stat()?.incorrect}</h4>
+                    <h4>High Score: {stat()?.highScore}%</h4>
+                    <h4>Games: {stat()?.games}</h4>
                 </div>
               </div>
-              <div className="d-flex justify-content-between m-4">
+              <div class="d-flex justify-content-between m-4">
               <a target="_blank" rel="noreferrer" href="https://www.paypal.com/donate/?business=TMLZ8JYEQBCY2&no_recurring=0&currency_code=USD">
                 <MDBBtn size="lg" color="success" outline>Donate</MDBBtn>
               </a>
@@ -81,7 +91,36 @@ export const ProfileModal: React.FC<IProfileModal> = ({showModal, setShowModal, 
           </MDBModalBody>
         </MDBModalContent>
       </MDBModalDialog>
-    </MDBModal>
+    </MDBModal> */}
+    <Modal
+        open={showModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: theme.palette.background.paper,
+            border: "2px solid #000",
+            boxShadow: "24px",
+            p: 4,
+          }}
+        >
+
+          <Button variant="contained">Contained</Button>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+    
   </>
   )
 }

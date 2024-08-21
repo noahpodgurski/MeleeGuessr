@@ -1,7 +1,8 @@
-import toast from "react-hot-toast";
+// import { createToast } from "../components/common/toaster";
 import { PostStat } from "../models/Stat";
-const axios = require('axios');
-const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+import axios from 'axios';
+// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+const SERVER_IP = "localhost";
 // if not prod server_ip = "" todo
 const updateStats = (stat:PostStat) => {
   const params = new URLSearchParams()
@@ -12,7 +13,11 @@ const updateStats = (stat:PostStat) => {
       return response.data;
     })
     .catch((err:any) => {
-      toast.error("Unexpected error...")
+      // createToast({
+      //   title: "Unexpected error...",
+      //   duration: 2000,
+      //   placement: "top-end",
+      // })
     });
 };
 
@@ -21,9 +26,9 @@ const getStats = (userId:string) => {
     .get(`${SERVER_IP}/get-stats`,
     {
       params: { userId: userId },
-    },
-    {
-      "Content-Type": "application/json"
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
     .then((response:any) => {
       return response.data;
@@ -33,9 +38,10 @@ const getStats = (userId:string) => {
 const getAllStats = () => {
   return axios
     .get(`${SERVER_IP}/get-all-stats`,
-    {},
     {
-      "Content-Type": "application/json"
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
     .then((response:any) => {
       return response.data;
@@ -52,7 +58,11 @@ const reportClip = (clip:string | undefined) => {
       return response.data;
     })
     .catch((err:any) => {
-      toast.error("Unexpected error...")
+      // createToast({
+      //   title: "Unexpected error...",
+      //   duration: 2000,
+      //   placement: "top-end",
+      // })
     });
 };
 

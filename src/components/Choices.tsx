@@ -1,4 +1,4 @@
-import { Ref, forwardRef, useState, useMemo } from "react";
+import { Ref, createSignal, createMemo } from "solid-js";
 import { choiceTime } from "../consts/Time";
 import { Choice } from "../models/Choice";
 import { shuffleArray } from "../utils/Shuffle";
@@ -12,9 +12,9 @@ interface ChoicesProps {
 }
 
 
-export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => {
+export const Choices = (props: ChoicesProps) => {
   const { stage, stageIndex, intHandleChoice } = props;
-  const [showAnswers, setShowAnswers] = useState(false);
+  const [showAnswers, setShowAnswers] = createSignal(false);
 
   const intintHandleChoice = (choice:Choice, correctChoice:Choice) => {
     if (!showAnswers){
@@ -26,9 +26,9 @@ export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => 
     }
   }
 
-  const randomChoices = useMemo<Choice[]>(() => {
+  const randomChoices = createMemo<Choice[]>(() => {
     if (stage){
-      if (showAnswers){
+      if (showAnswers()){
         const choices = stage.incorrectChoices.map((choice) => {
           if (choice.label !== stage.correctChoice.label)
             return {...choice, color: 'danger'};
@@ -39,17 +39,18 @@ export const Choices = forwardRef((props: ChoicesProps, ref: Ref<RefObject>) => 
       }
       const choices = stage.incorrectChoices;
       if (!choices.includes(stage.correctChoice))
-      choices.push(stage.correctChoice);
+        choices.push(stage.correctChoice);
       return shuffleArray(choices); 
     }
-  }, [stage, showAnswers])
+    return [];
+  }, [])
 
   return (
-    <div className="btn-group shadow-0 mt-3 p-0 justify-content-center" role="group" aria-label="Basic example" style={{overflowY: 'hidden'}}>
-    { randomChoices.map((choice, i) => {
-      return <button key={`${stageIndex}/${i}`} onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" className={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}danger`} data-mdb-color="dark">{choice.label}</button>
-      // return <button key={`${stageIndex}/${i}`} onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" className={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}${randomColor()}`} data-mdb-color="dark">{choice.label}</button>
+    <div class="btn-group shadow-0 mt-3 p-0 justify-content-center" role="group" aria-label="Basic example" style={{"overflow-y": 'hidden'}}>
+    { randomChoices().map((choice, i) => {
+      return <button onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" class={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}danger`} data-mdb-color="dark">{choice.label}</button>
+      // return <button onClick={() => intintHandleChoice(choice, stage.correctChoice)} type="button" class={choice.color ? `btn btn-${!showAnswers ? 'outline-' : ''}${choice.color}` : `btn btn-${!showAnswers ? 'outline-' : ''}${randomColor()}`} data-mdb-color="dark">{choice.label}</button>
     })}
   </div>
   )
-});
+};

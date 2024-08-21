@@ -1,8 +1,7 @@
-import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle, MDBBtn, MDBModalBody, MDBInput } from "mdb-react-ui-kit"
-import { useContext, useState } from "react";
-import toast from "react-hot-toast";
-import { ILoading, LoadingContext } from "../hooks/UseLoader";
+// import { createToast } from "./common/toaster";
+import { LoadingContext } from "../components/common/Loader";
 import AuthService from "../services/auth.service";
+import { Component, createContext, createSignal } from 'solid-js';
 
 interface ILoginModal {
   showModal: boolean;
@@ -11,52 +10,71 @@ interface ILoginModal {
   updateUser: () => void;
 }
 
-export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, toggleShowModal, updateUser}) => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [endpoint, setEndpoint] = useState("/login");
-  const [register, setRegister] = useState(false);
-  const { setLoading } = useContext<ILoading>(LoadingContext)
+export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, toggleShowModal, updateUser}) => {
+  const [email, setEmail] = createSignal("");
+  const [username, setUsername] = createSignal("");
+  const [password, setPassword] = createSignal("");
+  const [endpoint, setEndpoint] = createSignal("/login");
+  const [register, setRegister] = createSignal(false);
   // const navigate = useNavigate();
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    if (email === "" || password === ""){
-      toast.error("Unknown error")
+    if (email() === "" || password() === ""){
+      // createToast({
+      //   title: "Unknown error",
+      //     duration: 2000,
+      //     placement: "top-end"
+      // })
       return;
     }
-    setLoading(true);
+    LoadingContext.loading = true;
 
-    if (endpoint === "/login"){
-      AuthService.login(email, password)
+    if (endpoint() === "/login"){
+      AuthService.login(email(), password())
       .then((data:any) => {
         if (data.status === "ok"){
-          setLoading(false);
+          LoadingContext.loading = false;
           // navigate("/play"); //navigate somewhere after login?
           toggleShowModal();
-          toast.success(data.message)
+          // createToast({
+          //   title: data.message,
+          //   duration: 2000,
+          //   placement: "top-end"
+          // })
           updateUser();
         } else {
-          setLoading(false);
-          toast.error(data.message)
+          LoadingContext.loading = false;
+          // createToast({
+          //   title: data.message,
+          //   duration: 2000,
+          //   placement: "top-end"
+          // })
         }
       })
       .catch((err:any) => {
-        setLoading(false);
-        toast.error(err.response.data.message);
+        LoadingContext.loading = false;
+        // createToast({
+        //   title: err.response.data.message,
+        //   duration: 2000,
+        //   placement: "top-end"
+        // })
       });
     }
 
-    else if (endpoint === "/register"){
-      if (username === ""){
-        toast.error("Unknown error");
+    else if (endpoint() === "/register"){
+      if (username() === ""){
+        // createToast({
+        //   title: "Unknown error",
+        //     duration: 2000,
+        //     placement: "top-end"
+        // })
         return;
       }
-      setLoading(true);
-      AuthService.register(email, username, password)
+      LoadingContext.loading = true;
+      AuthService.register(email(), username(), password())
       .then((data:any) => {
-        setLoading(false);
+        LoadingContext.loading = false;
         if (data.status === "ok"){
           // navigate("/play");
           setEmail("");
@@ -64,50 +82,58 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
           setPassword("");
           setRegister(false);
           toggleShowModal();
-          toast.success(data.message)
+          // createToast({
+          //   title: data.message,
+          //   duration: 2000,
+          //   placement: "top-end"
+          // })
         } else {
-          toast.error(data.message)
+          // createToast({
+          //   title: data.message,
+          //   duration: 2000,
+          //   placement: "top-end"
+          // })
         }
       })
       .catch((err:any) => {
-        setLoading(false);
-        toast.error(err.response.data.message);
+        LoadingContext.loading = false;
+        // createToast({
+        //   title: err.response.data.message,
+        //   duration: 2000,
+        //   placement: "top-end"
+        // })
       });
-    } else if (endpoint === "/forgot"){
-      setLoading(false);
+    } else if (endpoint() === "/forgot"){
+      LoadingContext.loading = false;
       // do forgot stuff here todo
     }
   }
   
   return (
     <>
-      <MDBModal className="dark-modal" show={showModal} setShow={setShowModal} tabIndex={9}>
+      {/* <MDBModal class="dark-modal" show={showModal} setShow={setShowModal} tabIndex={9}>
       <MDBModalDialog size="fullscreen-lg-down">
         <MDBModalContent>
           <MDBModalHeader>
             <MDBModalTitle>Login</MDBModalTitle>
-            <MDBBtn className='btn-close' color='none' onClick={toggleShowModal} tabIndex={10}></MDBBtn>
+            <MDBBtn class='btn-close' color='none' onClick={toggleShowModal} tabIndex={10}></MDBBtn>
           </MDBModalHeader>
           <MDBModalBody>
             <form onSubmit={handleSubmit}>
-              <div className="d-flex justify-content-center align-items-center m-2">
-                  <div className="row justify-content-center">
-                    <div className="m-1">
-                      <MDBInput required tabIndex={0} value={email} onChange={(v) => setEmail(v.target.value)} size="lg" className="login-form" autoComplete="email" contrast style={{background: "#2d313a", color: 'white'}} label='Email' id='email' type='email' name="email" />
+              <div class="d-flex justify-content-center align-items-center m-2">
+                  <div class="row justify-content-center">
+                    <div class="m-1">
+                      <MDBInput required tabIndex={0} value={email} onChange={(v) => setEmail(v.target.value)} size="lg" class="login-form" autoComplete="email" contrast style={{background: "#2d313a", color: 'white'}} label='Email' id='email' type='email' name="email" />
                     </div>
-                    <div className="m-1">
-                      <MDBInput required tabIndex={1} value={password} onChange={(v) => setPassword(v.target.value)} size="lg" className="login-form" autoComplete="current-password" contrast style={{background: "#2d313a", color: 'white'}} label='Password'  id='password' type='password' name="password" minLength={8} />
+                    <div class="m-1">
+                      <MDBInput required tabIndex={1} value={password} onChange={(v) => setPassword(v.target.value)} size="lg" class="login-form" autoComplete="current-password" contrast style={{background: "#2d313a", color: 'white'}} label='Password'  id='password' type='password' name="password" minLength={8} />
                     </div>
-                    { register && <div className="m-1">
-                      <MDBInput required tabIndex={2} value={username} onChange={(v) => setUsername(v.target.value)} size="lg" className="login-form" autoComplete="current-username" contrast style={{background: "#2d313a", color: 'white'}} label='Username'  id='username' type='username' name="username" />
+                    { register && <div class="m-1">
+                      <MDBInput required tabIndex={2} value={username} onChange={(v) => setUsername(v.target.value)} size="lg" class="login-form" autoComplete="current-username" contrast style={{background: "#2d313a", color: 'white'}} label='Username'  id='username' type='username' name="username" />
                     </div>}
-                  {/* <MDBBtn color="link">Forgot password?</MDBBtn> */}
-                    {/* <div>
-                      <MDBBtn tabIndex={5} onClick={() => setEndpoint('/forgot')} color="link" className="forgot-pass">Forgot password?</MDBBtn>
-                    </div> */}
                   </div>
               </div>
-              <div className="d-flex justify-content-between m-4">
+              <div class="d-flex justify-content-between m-4">
                 { register ? <MDBBtn tabIndex={3} onClick={() => setEndpoint('/register')} size="lg" outline color='light' type="submit">Create Account</MDBBtn> : 
                   <MDBBtn tabIndex={3} onClick={() => setRegister(true)} size="lg" outline color='light'>Create Account</MDBBtn>
                 }
@@ -117,7 +143,7 @@ export const LoginModal: React.FC<ILoginModal> = ({showModal, setShowModal, togg
           </MDBModalBody>
         </MDBModalContent>
       </MDBModalDialog>
-    </MDBModal>
+    </MDBModal> */}
   </>
   )
 }

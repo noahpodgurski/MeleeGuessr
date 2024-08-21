@@ -1,5 +1,5 @@
-const axios = require('axios');
-const SERVER_IP = process.env.REACT_APP_SERVER_IP;
+import axios from "axios";
+const SERVER_IP = "localhost";
 // if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
   const params = new URLSearchParams();

@@ -1,26 +1,22 @@
-import React, { StrictMode, useRef, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import "./index.css";
+import "@thisbeyond/solid-select/style.css";
+import { createSignal, createContext, onMount } from 'solid-js';
+import { render } from 'solid-js/web';
+import { Router, Route } from '@solidjs/router';
 import './App.scss';
 import './Modal.scss';
 import NavbarPage from './components/Navbar';
-import { StocksContext } from './hooks/UseStocks';
 import { Home } from './pages/Home';
 import { Play } from './pages/Play';
-import { ClipsContext } from './hooks/Clips';
+import Leaderboards from './pages/Leaderboards';
 import { Clip } from './models/Clip';
 import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
-import { useEffect } from 'react';
-import { UserContext } from './hooks/UseUser';
-import { User } from './models/User';
-import decode from 'jwt-decode';
 import AuthService from './services/auth.service';
-import { Toaster } from 'react-hot-toast';
-import { choiceTime } from './consts/Time';
-import Leaderboards from './pages/Leaderboards';
-import { LoadingContext } from './hooks/UseLoader';
-import { Loader } from './components/Loader';
-const res = require('./consts/clips.json');
+import { User } from './models/User';
+// const res = require('./consts/clips.json');
+// import res from "./consts/clips.json";
+import { Toaster } from "solid-toast";
 
 export const STARTING_STOCKS = 4;
 
@@ -28,154 +24,117 @@ interface ICount {
   [key: string]: number;
 }
 
-const findAlias = (player:string) => {
-  for (let m in Player){
-    if (m.toLowerCase() === player.toLowerCase()){
+const findAlias = (player: string) => {
+  for (let m in Player) {
+    if (m.toLowerCase() === player.toLowerCase()) {
       return m;
     }
-    if (Player[m].aliases){
+    if (Player[m].aliases) {
       let aliases = Player[m].aliases || [];
-      for (let alias in aliases){
-        if (aliases[alias].toLowerCase() === player.toLowerCase())
-          return m;
+      for (let alias in aliases) {
+        if (aliases[alias].toLowerCase() === player.toLowerCase()) return m;
       }
     }
   }
   return null;
 }
 
-const App: React.FC = () => {
-  const [stocks, setStocks] = useState(STARTING_STOCKS);
-  const [clips, setClips] = useState<Clip[]>([]);
-  const [user, setUser] = useState<User|null>(null);
-  const loaderRef = useRef<HTMLDivElement>(null);
+// Create contexts
+const StocksContext = createContext();
+const ClipsContext = createContext();
+const UserContext = createContext();
+const LoadingContext = createContext();
 
-  const setLoading = (loading:boolean) => {
-    if (loading)
-      loaderRef?.current?.classList.remove('hidden');
-    else
-      loaderRef?.current?.classList.add('hidden');
-  }
+export const App = () => {
+  const [stocks, setStocks] = createSignal(STARTING_STOCKS);
+  const [clips, setClips] = createSignal<Clip[]>([]);
+  const [user, setUser] = createSignal<User | null>(null);
 
-  useEffect(() => {
+  const setLoading = (loading: boolean) => {
+    // if (loading) loaderRef?.classList.remove('hidden');
+    // else loaderRef?.classList.add('hidden');
+  };
+
+  onMount(() => {
     setLoading(false);
-    updateUser(); //necessary?
-     // eslint-disable-next-line
-  }, [useEffect]) 
+    updateUser();
+  });
 
   const updateUser = () => {
     const currentUser = AuthService.getCurrentUser();
     try {
-      const t:User = decode(currentUser);
-      setUser(t);
-    } catch(err){
+      // const t: User = decode(currentUser);
+      // setUser(t);
+    } catch (err) {
       setUser(null);
     }
   };
 
   const getClips = async () => {
-    if (clips.length === 0){
-    // if (true){
+    // if (clips().length === 0) {
+    //   const _clips = res;
+    //   const fixedClips: Clip[] = _clips.map((clip: any) => {
+    //     if (!Player[clip['player']]) {
+    //       let _player = findAlias(clip['player']);
+    //       if (!_player) {
+    //         clip['player'] = 'TEST';
+    //       } else {
+    //         clip['player'] = _player;
+    //       }
+    //     }
 
-      // console.log('get clips')
-      const _clips = res;
-      // const shuffledClips = shuffleArray(_clips);
-      const fixedClips:Clip[] = _clips.map((clip:any) => {
-        if (!Player[clip['player']]){
-          // find alias
-          let _player = findAlias(clip['player'])
-          if (!_player){
-            // console.log(`cant find ${clip['player']}`)
-            // throw `${clip['player']} is not a Player object`
-            // set TEST for now
-            clip['player'] = "TEST";
-          } else {
-            clip['player'] = _player;
-          }
-        }
-        
-        return {
-          ...clip,
-          slp: clip.slp,
-          // convert character enum to <Character>
-          character: CharacterIds[clip.character],
-          // convert player STRING to <Player> ...somehow
-          player: Player[clip['player']],
+    //     return {
+    //       ...clip,
+    //       slp: clip.slp,
+    //       character: CharacterIds[clip.character],
+    //       player: Player[clip['player']],
+    //       oppChar: CharacterIds[clip.oppChar],
+    //       oppPlayer: clip['oppPlayer']
+    //     };
+    //   }) || [];
 
-          oppChar: CharacterIds[clip.oppChar],
-          oppPlayer: clip['oppPlayer']
-        }
-      }) || []
+    //   const counts: ICount = {};
+    //   fixedClips.forEach((clip: Clip) => {
+    //     if (counts[clip.player.label]) {
+    //       counts[clip.player.label] += 1;
+    //     } else {
+    //       counts[clip.player.label] = 1;
+    //     }
+    //   });
 
-      const counts:ICount = {}
-      fixedClips.forEach((clip:Clip) => {
-        if (counts[clip.player.label]){
-          counts[clip.player.label] += 1;
-        } else {
-          counts[clip.player.label] = 1;
-        }
-      })
+    //   let avg = 0;
+    //   let count = 0;
+    //   for (let player in counts) {
+    //     avg += counts[player];
+    //     count++;
+    //   }
+    //   avg /= count;
 
-      // console.log(counts);
-
-      let avg = 0;
-      let count = 0;
-      for (let player in counts){
-        avg += counts[player];
-        count++;
-      }
-      avg /= count
-      // console.log(avg);
-      
-      const filteredCounts:ICount = {};
-      const filteredClips = fixedClips.filter((clip:Clip) => {
-        // filter out for even distribution of correct player guesses
-        if (!filteredCounts[clip.player.label]){
-          filteredCounts[clip.player.label] = 1;
-          return true;
-        }
-        if (filteredCounts[clip.player.label] < avg){
-          filteredCounts[clip.player.label] += 1;
-          return true;
-        } 
-        return false;
-      })
-      setClips(filteredClips);
-    } else {
-      // setClips(clips);
-    }
-  }
+    //   const filteredCounts: ICount = {};
+    //   const filteredClips = fixedClips.filter((clip: Clip) => {
+    //     if (!filteredCounts[clip.player.label]) {
+    //       filteredCounts[clip.player.label] = 1;
+    //       return true;
+    //     }
+    //     if (filteredCounts[clip.player.label] < avg) {
+    //       filteredCounts[clip.player.label] += 1;
+    //       return true;
+    //     }
+    //     return false;
+    //   });
+    //   setClips(filteredClips);
+    // }
+  };
 
   return (
-    <StrictMode>
-      <StocksContext.Provider value={{stocks: stocks, setStocks: setStocks}}>
-        <ClipsContext.Provider value={{Clips: clips, getClips: getClips}}>
-          <UserContext.Provider value={{user: user, setUser: setUser, updateUser: updateUser}}>
-            <LoadingContext.Provider value={{loaderRef: loaderRef, setLoading: setLoading}}>
-              <Loader ref={loaderRef} />
-              <Toaster 
-                position="top-center"
-                toastOptions={{
-                  duration: choiceTime,
-                  style: {}
-                }}
-              />
-              <BrowserRouter>
-                <Routes>
-                  <Route path="*" element={<NavbarPage />} />
-                </Routes>
-                <Routes>
-                  <Route path="/" element={ <Home /> } />
-                  <Route path="/play" element={ <Play /> } />
-                  <Route path="/leaderboards" element={ <Leaderboards /> } />
-                </Routes>
-              </BrowserRouter>
-            </LoadingContext.Provider>
-          </UserContext.Provider>
-        </ClipsContext.Provider>
-      </StocksContext.Provider>
-    </StrictMode>
+    <>
+      <Router>
+        <Route path="*" component={NavbarPage} />
+        <Route path="/" component={Home} />
+        <Route path="/play" component={Play} />
+        <Route path="/leaderboards" component={Leaderboards} />
+      </Router>
+      <Toaster />
+    </>
   );
-}
-
-export default App;
+};
