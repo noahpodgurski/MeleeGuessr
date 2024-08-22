@@ -25,6 +25,7 @@ export function Players() {
   );
 }
 
+//todo shields look a bit big
 function Shield(props: { renderData: RenderData }) {
   // [0,60]
   const shieldHealth = createMemo(

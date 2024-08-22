@@ -1,12 +1,10 @@
-import { createSignal, createEffect, createMemo, createContext, onCleanup } from "solid-js";
-import { Stage } from "../components/Stage";
+import { createSignal, createEffect, createMemo } from "solid-js";
 import { STARTING_STOCKS } from "../App";
-import { MeleeFont } from "../components/MeleeFont";
-import { ClipsContext, IClips } from "../components/common/Clips";
+import { ClipsContext } from "../components/common/Clips";
 import { Character } from '../models/Character';
 import { Player } from "../consts/Player";
 import { StocksContext } from "../components/common/Stocks";
-import { IUser, UserContext } from "../components/common/User";
+import { UserContext } from "../components/common/User";
 import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
 import UserService from "../services/user.service";
@@ -14,17 +12,15 @@ import UserService from "../services/user.service";
 import { choiceTime } from "../consts/Time";
 import { shuffleArray } from "../utils/Shuffle";
 import { RandomChoice } from "../utils/RandomChoice";
-import { Result } from "./Result";
-import { RefObject, StageType } from "~/components/Stage";
-import { fetchAnimations } from "~/viewer/animationCache";
+import { StageType } from "~/components/Stage";
 import { Viewer } from "~/components/viewer/Viewer";
 
 import "~/state/fileStore";
 import "~/state/replayStore";
 import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
-import toast from "solid-toast";
 import { currentSelectionStore } from "~/state/selectionStore";
+import { replayStore } from "~/state/replayStore";
 
 export type PlayData = {
   stage: number;
@@ -40,10 +36,6 @@ const BASE_POINTS = 1;
 const NO_HINT_POINTS = 2;
 
 export const Play = () => {
-  void fetchAnimations(20); // Falco
-  void fetchAnimations(2); // Fox
-  void fetchAnimations(0); // Falcon
-  void fetchAnimations(9); // Marth
   
   const [stage, setStage] = createSignal(0);
   const [score, setScore] = createSignal(0);
@@ -155,7 +147,7 @@ export const Play = () => {
 
   // const url = new URLSearchParams(location.search).get("replayUrl");
   const url = "../slp-test/test.slp";
-  const startFrame = 0;
+  const startFrame = replayStore.startFrame;
   if (url !== null) {
     try {
       void fetch(url)

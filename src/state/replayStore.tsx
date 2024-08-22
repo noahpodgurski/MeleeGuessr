@@ -60,6 +60,8 @@ export interface ReplayStore {
   isFullscreen: boolean;
   customAction: ActionName;
   customAttack: AttackName;
+
+  startFrame: number;
 }
 export const defaultReplayStoreState: ReplayStore = {
   highlights: Object.fromEntries(
@@ -76,6 +78,8 @@ export const defaultReplayStoreState: ReplayStore = {
   isFullscreen: false,
   customAction: "Passive",
   customAttack: "Up Tilt",
+
+  startFrame: 0,
 };
 
 const [replayState, setReplayState] = createStore<ReplayStore>(
@@ -83,76 +87,6 @@ const [replayState, setReplayState] = createStore<ReplayStore>(
 );
 
 export const replayStore = replayState;
-
-export function selectCustomAttack(attackName: AttackName) {
-  setReplayState("customAttack", attackName);
-  if (replayState.replayData) {
-    setReplayState("highlights", (highlights) => ({
-      ...highlights,
-      customAttack: search(replayState.replayData!, [
-        { predicate: landsAttack(replayState.customAttack) },
-      ]),
-    }));
-  }
-}
-
-export function selectCustomAction(actionName: ActionName) {
-  setReplayState("customAction", actionName);
-  if (replayState.replayData) {
-    setReplayState("highlights", (highlights) => ({
-      ...highlights,
-      customAction: search(replayState.replayData!, [
-        { predicate: action(replayState.customAction) },
-      ]),
-    }));
-  }
-}
-
-export function selectHighlight(nameAndHighlight: [string, Highlight]) {
-  batch(() => {
-    setReplayState("selectedHighlight", nameAndHighlight);
-    setReplayState(
-      "frame",
-      wrapFrame(replayState, nameAndHighlight[1].startFrame - 30)
-    );
-  });
-}
-
-export function nextHighlight() {
-  const highlights = Object.entries(replayState.highlights).flatMap(
-    ([name, highlights]) =>
-      highlights.map((highlight) => [name, highlight] as const)
-  );
-  const currentIndex =
-    replayState.selectedHighlight !== undefined
-      ? highlights.findIndex(
-          ([name, highlight]) => replayState.selectedHighlight![1] === highlight
-        )
-      : -1;
-  const nextIndex = wrapHighlight(replayState, currentIndex + 1);
-  batch(() => {
-    setReplayState("selectedHighlight", highlights[nextIndex]);
-    setReplayState("frame", highlights[nextIndex][1].startFrame - 30);
-  });
-}
-
-export function previousHighlight() {
-  const highlights = Object.entries(replayState.highlights).flatMap(
-    ([name, highlights]) =>
-      highlights.map((highlight) => [name, highlight] as const)
-  );
-  const currentIndex =
-    replayState.selectedHighlight !== undefined
-      ? highlights.findIndex(
-          ([name, highlight]) => replayState.selectedHighlight![1] === highlight
-        )
-      : 1;
-  const previousIndex = wrapHighlight(replayState, currentIndex - 1);
-  batch(() => {
-    setReplayState("selectedHighlight", highlights[previousIndex]);
-    setReplayState("frame", highlights[previousIndex][1].startFrame - 30);
-  });
-}
 
 export function speedNormal(): void {
   batch(() => {
@@ -195,7 +129,7 @@ export function pause(): void {
 
 function refresh() {
   stop();
-  dispose();
+  // dispose();
 }
 
 export function jump(target: number): void {
@@ -247,21 +181,11 @@ createRoot(disposer => {
     const replayData = parseReplay(
       decode(await selected[0].arrayBuffer(), { useTypedArrays: true })
     );
+    
+    //todo get from .slp metadata
+    setReplayState("startFrame", 2542);
   
-    const highlights = Object.fromEntries(
-      Object.entries(queries).map(([name, query]) => [
-        name,
-        search(replayData, ...query),
-      ])
-    );
-  
-    highlights.customAction = search(replayData, [
-      { predicate: action(replayState.customAction) },
-    ]);
-  
-    highlights.customAttack = search(replayData, [
-      { predicate: landsAttack(replayState.customAttack) },
-    ]);
+    const highlights = {}
   
     setReplayState({
       replayData,
@@ -270,9 +194,9 @@ createRoot(disposer => {
       renderDatas: [],
     });
   
-    if (fileStore.urlStartFrame === undefined || fileStore.urlStartFrame === 0) {
-      start();
-    }
+    // if (fileStore.urlStartFrame === undefined || fileStore.urlStartFrame === 0) {
+      start(); //always start
+    // }
   });
   
   
@@ -545,14 +469,7 @@ export function getPlayerColor(
 function wrapFrame(replayState: ReplayStore, frame: number): number {
   if (!replayState.replayData) return frame;
   return (
-    (frame + replayState.replayData.frames.length) %
-    replayState.replayData.frames.length
+    Math.max(replayStore.startFrame, (frame + replayState.replayData.frames.length) %
+    replayState.replayData.frames.length)
   );
-}
-
-function wrapHighlight(replayState: ReplayStore, highlight: number): number {
-  const length = Object.entries(replayState.highlights).flatMap(
-    ([name, highlights]) => highlights
-  ).length;
-  return (highlight + length) % length;
 }

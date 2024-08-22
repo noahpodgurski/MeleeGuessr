@@ -5,9 +5,7 @@ import {
   adjust,
   jump,
   jumpPercent,
-  nextHighlight,
   pause,
-  previousHighlight,
   speedFast,
   speedNormal,
   speedSlow,
@@ -91,12 +89,8 @@ export function Controls() {
         void currentSelectionStore().previousFile();
         break;
       case "'":
-      case '"':
-        nextHighlight();
         break;
       case ";":
-      case ":":
-        previousHighlight();
         break;
       case "d":
       case "D":
@@ -117,6 +111,8 @@ export function Controls() {
         break;
     }
   }
+
+  console.log(replayStore.startFrame)
 
   let seekbarInput!: HTMLInputElement;
 
@@ -162,7 +158,8 @@ export function Controls() {
           -
         </MinusIcon>
         <label for="seekbar" class="font-mono text-sm">
-          {replayStore.isDebug ? replayStore.frame - 123 : replayStore.frame}
+          {/* {replayStore.isDebug ? replayStore.frame - 123 : replayStore.frame} */}
+          {replayStore.frame - replayStore.startFrame}
         </label>
         <PlusIcon
           class="h-6 w-6"
@@ -189,6 +186,7 @@ export function Controls() {
         type="range"
         ref={seekbarInput}
         value={replayStore.frame}
+        min={replayStore.startFrame}
         max={replayStore.replayData!.frames.length - 1}
         onInput={() => jump(seekbarInput.valueAsNumber)}
       />

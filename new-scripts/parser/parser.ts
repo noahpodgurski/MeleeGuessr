@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import type {
   Frame,
   GameEnding,
@@ -9,7 +7,6 @@ import type {
   PlayerState,
   ReplayData,
 } from "../common/types";
-import { encode } from '@shelacek/ubjson';
 
 // This is a basic parser for use in the browser. It is based off of the replay
 // format spec up to 3.9.0.0. It is incomplete, I have left out things I don't
@@ -23,7 +20,7 @@ import { encode } from '@shelacek/ubjson';
 interface CommandPayloadSizes {
   [commandByte: number]: number;
 }
-const firstVersion = "0.1.0.0";
+export const firstVersion = "0.1.0.0";
 
 export function parseGameSettings({ metadata, raw }: any): GameSettings {
   const rawData = new DataView(
@@ -114,7 +111,7 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
   };
 }
 
-function handlePreFrameUpdateEvent(
+export function handlePreFrameUpdateEvent(
   rawData: DataView,
   offset: number,
   replayVersion: string,
@@ -141,386 +138,7 @@ function handlePreFrameUpdateEvent(
   }
 }
 
-//splice out unneeded frames of a .slp file
-//start, end
-export function clipReplayOG({ metadata, raw }: any, start: number, end: number): ReplayData {
-  const rawData = new DataView(
-    raw.buffer,
-    raw.byteOffset
-    // baseJson.raw.byteLength
-  );
-  const slicedData = new Uint8Array(2000000);
-  // The first two events are always Event Payloads and Game Start.
-  const commandPayloadSizes = parseEventPayloadsEvent(rawData, 0x00);
-
-  const frames: Frame[] = [];
-
-  const gameSettings = parseGameStartEvent(
-    rawData,
-    0x01 + commandPayloadSizes[0x35],
-    metadata
-  );
-
-  let gameEnding: GameEnding | undefined;
-  const replayVersion = gameSettings.replayFormatVersion;
-  let offset =
-  0x00 + commandPayloadSizes[0x35] + 0x01 + commandPayloadSizes[0x36] + 0x01;
-  // inputs/states may come multiple times for a given player on a given
-  // frame due to rollbacks. Because we are overwriting, we will just save the
-  // last one which will be the official "finalized" one.
-  console.log(`Starting offset is ${offset}`);
-  let frameCount = 0;
-  let framesSkipped = 0; //frames until start is met
-  let framesCounted = 0; //frames until end-start is met
-
-  let offsetSinceLastFrameEnd = 0;
-  let savedFrames = 0;
-
-  let slicedDataOffset = 0;
-  slicedData.set(new Uint8Array(rawData.buffer, 0, offset), slicedDataOffset);
-  slicedDataOffset += offset;
-
-  let extraneousOffset = 0; //offset to slice off after
-
-  // rawData.byteLength
-  let push = true;
-  while (offset < rawData.byteLength) {
-    if (savedFrames > end-start) push = false;
-    
-    const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
-    // console.log(command.toString(16));
-    // '16': 516, message splitter event
-    // 0x35 '53': 28,  event payloads
-    // 0x36 '54': 420, game start
-    // 0x37 '55': 63,  pre-frame
-    // 0x38 '56': 72,  post-frame
-    // 0x39 '57': 2,   game end
-    // 0x3a '58': 8,   frame start
-    // 0x3b '59': 42,  item update
-    // 0x3c '60': 8,   frame bookend
-    // 0x3d '61': 31256 gecko list
-
-    const l = commandPayloadSizes[command];
-    if (offset === 1306) {
-      console.log('THIS IS IT')
-    }
-    switch (command) {
-      case 0x10:
-        if (push) {
-          console.log(`OTHER: ${command}: setting at: ${offset}, ${l}, ${slicedDataOffset}`)
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l), slicedDataOffset);
-          offsetSinceLastFrameEnd = 0;
-          slicedDataOffset += l + 0x01;
-        }
-        break;
-      case 0x37: //2 3
-        // console.log('37')
-        handlePreFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x38: //4 5
-        // console.log('38')
-        handlePostFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x39:
-        // console.log('39')
-        const ADD_GAME_END = false;
-        if (ADD_GAME_END) {
-          if (push && offset+l <= rawData.byteLength) {
-            console.log(`${command}: (GAME END) setting at: ${offset}, ${l}, ${slicedDataOffset}`)
-            slicedData.set(new Uint8Array(rawData.buffer, offset, l), slicedDataOffset);
-            gameEnding = parseGameEndEvent(rawData, offset, replayVersion);
-            slicedDataOffset += l + 0x01;
-          }
-        } else {
-          if (!push) extraneousOffset -= l + 0x01;
-          console.log(`${command}: (GAME END) setting at: ${offset}, ${l}, ${slicedDataOffset}`)
-          if (offset+offsetSinceLastFrameEnd+l <= rawData.byteLength)
-            slicedData.set(new Uint8Array(rawData.buffer, offset, l), slicedDataOffset);
-          gameEnding = parseGameEndEvent(rawData, offset, replayVersion);
-          slicedDataOffset += l + 0x01;
-        }
-        break;
-      case 0x3a: //1
-        // console.log('3a')
-        // console.log(commandHistory);
-        handleFrameStartEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x3b:
-        // console.log('3b')
-        handleItemUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x3c:
-        if (push) {
-          console.log(`${command}: setting at: ${offset}, ${l}, ${slicedDataOffset}`)
-          console.log(`wow we detected a frame end. very cool: ${frameCount} || (${start}, ${end})`)
-          //frame loop is done
-          //do we want to end these frames?
-          if (frameCount >= start && frameCount < end && offset+offsetSinceLastFrameEnd+l <= rawData.byteLength) {
-            console.log(`so now were setting at: ${offset}, ${offsetSinceLastFrameEnd+l}, ${slicedDataOffset}`)
-            slicedData.set(new Uint8Array(rawData.buffer, offset, offsetSinceLastFrameEnd+l), slicedDataOffset);
-            slicedDataOffset += offsetSinceLastFrameEnd + 0x01;
-            savedFrames++;
-          }
-          offsetSinceLastFrameEnd = 0;
-        }
-        frameCount++;
-        //frame bookend
-        break;
-    }
-    if (!push) extraneousOffset += l + 0x01;
-    offsetSinceLastFrameEnd += l + 0x01
-    offset += l + 0x01;
-  }
-  console.log(`${frameCount} total frames`)
-  console.log(`${frames.length} total frames`)
-  console.log(`${savedFrames} frames saved`)
-  // console.log(`s1: ${start1Offset}, e1: ${end1Offest}, s2: ${start2Offest}, e2: ${end2Offset}`)
-  // cutSlp(start1Offset, end1Offest, start2Offest, end2Offset);
-
-  // console.log(slicedData);
-  console.log(`slicing from 0 to ${slicedDataOffset}`)
-  // console.log(slicedDataOffset+extraneousOffset)
-  // console.log(encode(slicedData));
-  writeCutSlp(slicedData.slice(0, slicedDataOffset));
-
-  if (gameEnding === undefined) {
-    console.warn("Game end event not found");
-    // throw new Error("Game Ending not found");
-  }
-  return {
-    settings: gameSettings,
-    frames: frames,
-    ending: gameEnding as GameEnding,
-  };
-}
-
-export function clipReplay({ metadata, raw }: any, start: number, end: number): ReplayData {
-  const rawData = new DataView(
-    raw.buffer,
-    raw.byteOffset
-    // baseJson.raw.byteLength
-  );
-  const slicedData = new Uint8Array(10000000); //10MB
-  
-  const length = readUint(
-    rawData,
-    32,
-    firstVersion,
-    firstVersion,
-    0x0b
-  );
-
-  // The first two events are always Event Payloads and Game Start.
-  const commandPayloadSizes = parseEventPayloadsEvent(rawData, 0x00);
-
-  const frames: Frame[] = [];
-
-  const gameSettings = parseGameStartEvent(
-    rawData,
-    0x01 + commandPayloadSizes[0x35],
-    metadata
-  );
-
-  let gameEnding: GameEnding | undefined;
-  const replayVersion = gameSettings.replayFormatVersion;
-  let offset =
-  0x00 + commandPayloadSizes[0x35] + 0x01 + commandPayloadSizes[0x36] + 0x01;
-  // inputs/states may come multiple times for a given player on a given
-  // frame due to rollbacks. Because we are overwriting, we will just save the
-  // last one which will be the official "finalized" one.
-  console.log(`Starting offset is ${offset}`);
-  let frameCount = 0;
-  let savedFrames = 0;
-
-  let slicedDataOffset = 0;
-  slicedData.set(new Uint8Array(rawData.buffer, 0, offset), slicedDataOffset);
-  slicedDataOffset += offset;
-
-  // rawData.byteLength
-  let push = true;
-  let go = true;
-  while (go && offset <= rawData.byteLength) {
-    if (savedFrames > end-start) push = false;
-    if (offset === rawData.byteLength-1) push = true;
-    
-    const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
-    // console.log(command.toString(16));
-    // '16': 516, message splitter event
-    // 0x35 '53': 28,  event payloads
-    // 0x36 '54': 420, game start
-    // 0x37 '55': 63,  pre-frame
-    // 0x38 '56': 72,  post-frame
-    // 0x39 '57': 2,   game end
-    // 0x3a '58': 8,   frame start
-    // 0x3b '59': 42,  item update
-    // 0x3c '60': 8,   frame bookend
-    // 0x3d '61': 31256 gecko list
-
-    const l = commandPayloadSizes[command];
-    switch (command) {
-      default:
-        go = false;
-        break;
-      //   console.log(`command: ${command} l is ${l}`)
-      case 0x10:
-        console.log(`OTHER: ${command}: setting at: ${offset}, ${l}, ${slicedDataOffset}`)
-        slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-        slicedDataOffset += l + 0x01;
-        break;
-      case 0x37: //pre frame
-        if (push) {
-          // console.log('37')
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        handlePreFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x38: //post frame
-        // console.log('38')
-        if (push) {
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        handlePostFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x39: //game end
-        // console.log('39')
-        if (push) {
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        break;
-      case 0x3a: //frame start
-        // console.log('3a')
-        // console.log(commandHistory);
-        if (push) {
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        handleFrameStartEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x3b: //item update
-        // console.log('3b')
-        if (push) {
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        handleItemUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x3c: //frame bookend
-        if (push) {
-          savedFrames++;
-          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-          slicedDataOffset += l + 0x01;
-        }
-        frameCount++;
-        //frame bookend
-        break;
-    }
-    if (go)
-      offset += l + 0x01;
-  }
-  console.log(`${frameCount} total frames`)
-  console.log(`${frames.length} total frames`)
-  console.log(`${savedFrames} frames saved`)
-  // console.log(`s1: ${start1Offset}, e1: ${end1Offest}, s2: ${start2Offest}, e2: ${end2Offset}`)
-  // cutSlp(start1Offset, end1Offest, start2Offest, end2Offset);
-
-  // console.log(slicedData);
-  console.log(`slicing from 0 to ${slicedDataOffset}`)
-  // console.log(slicedDataOffset+extraneousOffset)
-  // console.log(encode(slicedData));
-  console.log(`slicedDataOffset: ${slicedDataOffset}`)
-  console.log(`rawData.byteOffset: ${rawData.byteOffset}`)
-  console.log(`rawData.byteLength: ${rawData.byteLength}`)
-  console.log(`metadata length??: ${rawData.byteLength-offset}`)
-  console.log("================")
-  console.log(`length data was set to ${length}, should be changed to ${slicedDataOffset}`)
-
-  //redo length at offset 0x0b
-  const newArrayBuffer = new ArrayBuffer(4);
-  const newDataView = new DataView(newArrayBuffer);
-  newDataView.setUint32(0, slicedDataOffset, false);
-  const newByteArray = new Uint8Array(newArrayBuffer);
-  slicedData.set(newByteArray, 0x0b)
-  const fullData = Buffer.concat([
-    slicedData.slice(0, slicedDataOffset), 
-    new Uint8Array(rawData.buffer, offset, rawData.byteLength+rawData.byteOffset-offset)
-  ]);
-  
-  writeCutSlp(fullData);
-
-  // 7851 total frames
-  // 7849 total frames
-  // 7851 frames saved
-  // slicing from 0 to 3269451
-  // slicedDataOffset: 3269451
-  // rawData.byteOffset: 15
-  // rawData.byteLength: 3269682
-  // metadata length??: 231
-
-  if (gameEnding === undefined) {
-    console.warn("Game end event not found");
-    // throw new Error("Game Ending not found");
-  }
-  return {
-    settings: gameSettings,
-    frames: frames,
-    ending: gameEnding as GameEnding,
-  };
-}
-
-function writeCutSlp(arrayBuffer: Uint8Array) {
-  const outputFilePath = path.join(__dirname, '../test.slp'); // Path to your output file
-  fs.writeFile(outputFilePath, arrayBuffer, (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-    } else {
-      console.log('File successfully written:', outputFilePath);
-    }
-  })
-}
-
-function cutSlp(start1: number, end1: number, start2: number, end2: number) {
-  const inputFilePath = path.join(__dirname, '../test.slp'); // Path to your input file
-  const outputFilePath = path.join(__dirname, '../sliced.slp'); // Path to your output file
-
-  // Read the file into a Buffer
-  fs.readFile(inputFilePath, (err, data) => {
-    if (err) {
-      console.error('Error reading file:', err);
-      return;
-    }
-
-    // Ensure the range to splice is within bounds
-    if (start1 < 0 || end1 > data.length || start1 >= end1) {
-      console.error('Invalid 1 range for splicing.');
-      return;
-    }
-
-    if (start2 < 0 || end2 > data.length || start2 >= end2) {
-      console.error('Invalid 2 range for splicing.');
-      return;
-    }
-
-    // Create a new buffer without the spliced bytes
-    const beforeCombo = data.slice(0, start1);
-    const duringCombo = data.slice(end1, start2);
-    const afterCombo = data.slice(end1, start2);
-    const resultBuffer = Buffer.concat([beforeCombo, duringCombo, afterCombo]);
-
-    // Write the modified buffer to a new file
-    fs.writeFile(outputFilePath, resultBuffer, (err) => {
-      if (err) {
-        console.error('Error writing file:', err);
-      } else {
-        console.log('File successfully written:', outputFilePath);
-      }
-    });
-  });
-}
-
-function handlePostFrameUpdateEvent(
+export function handlePostFrameUpdateEvent(
   rawData: DataView,
   offset: number,
   replayVersion: string,
@@ -538,7 +156,7 @@ function handlePostFrameUpdateEvent(
   }
 }
 
-function handleFrameStartEvent(
+export function handleFrameStartEvent(
   rawData: DataView,
   offset: number,
   replayVersion: string,
@@ -554,7 +172,7 @@ function handleFrameStartEvent(
   frames[frameNumber].randomSeed = randomSeed;
 }
 
-function handleItemUpdateEvent(
+export function handleItemUpdateEvent(
   rawData: DataView,
   offset: number,
   replayVersion: string,
@@ -589,7 +207,7 @@ function initPlayerIfNeeded(
   }
 }
 
-function parseEventPayloadsEvent(
+export function parseEventPayloadsEvent(
   rawData: DataView,
   offset: number
 ): CommandPayloadSizes {
@@ -634,7 +252,7 @@ function parseEventPayloadsEvent(
   return commandPayloadSizes;
 }
 
-function parseGameStartEvent(
+export function parseGameStartEvent(
   rawData: DataView,
   offset: number,
   metadata?: any
@@ -1313,7 +931,7 @@ function parseGameEndEvent(
   }
 }
 
-function readUint(
+export function readUint(
   rawData: DataView,
   size: 8 | 16 | 32,
   replayVersion: string,
