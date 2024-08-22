@@ -3,8 +3,8 @@ import { decode } from "@shelacek/ubjson";
 import fs from 'fs';
 import { clipReplay, parseGameSettings, parseReplay } from "./parser/parser";
 
-function schliceSlp() {
-  fs.open('test.slp', 'r', (err, fd) => {
+function schliceSlpOG() {
+  fs.open('source.slp', 'r', (err, fd) => {
     if (err) {
       console.error('Error opening file:', err);
       return;
@@ -37,7 +37,59 @@ function schliceSlp() {
         const settings = parseGameSettings(
           decode(arrayBuffer, { useTypedArrays: true })
         );
-        const replay = clipReplay(decode(arrayBuffer, { useTypedArrays: true }), 0, 1000);
+        const replay = clipReplay(decode(arrayBuffer, { useTypedArrays: true }), 0, 500);
+        // const replay = clipReplay(decode(arrayBuffer, { useTypedArrays: true }), 500, 800);
+        // console.log(x)
+        // console.log(settings);
+        // console.log(replay);
+  
+        // Don't forget to close the file descriptor
+        fs.close(fd, (err) => {
+          if (err) console.error('Error closing file:', err);
+        });
+      });
+    });
+  });
+}
+
+function schliceSlp() {
+  fs.open('source.slp', 'r', (err, fd) => {
+    if (err) {
+      console.error('Error opening file:', err);
+      return;
+    }
+  
+    // Get the file stats to know the size
+    fs.fstat(fd, (err, stats) => {
+      if (err) {
+        console.error('Error getting file stats:', err);
+        return;
+      }
+  
+      // Create a Buffer to hold the file contents
+      const buffer = Buffer.alloc(stats.size);
+  
+      // Read the file into the buffer
+      fs.read(fd, buffer, 0, stats.size, null, (err, bytesRead, buffer) => {
+        if (err) {
+          console.error('Error reading file:', err);
+          return;
+        }
+  
+        // Convert the Buffer into an ArrayBuffer
+        const arrayBuffer = buffer.buffer.slice(
+          buffer.byteOffset,
+          buffer.byteOffset + buffer.byteLength
+        );
+  
+        // Now you have the ArrayBuffer
+        // const settings = parseGameSettings(
+        //   decode(arrayBuffer, { useTypedArrays: true })
+        // );
+        const data = decode(arrayBuffer, { useTypedArrays:true});
+        // console.log(data.raw)
+
+        const replay = clipReplay(data, 0, 500);
         // const replay = clipReplay(decode(arrayBuffer, { useTypedArrays: true }), 500, 800);
         // console.log(x)
         // console.log(settings);

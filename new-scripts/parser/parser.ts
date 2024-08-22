@@ -300,7 +300,16 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
     raw.byteOffset
     // baseJson.raw.byteLength
   );
-  const slicedData = new Uint8Array(10000000);
+  const slicedData = new Uint8Array(10000000); //10MB
+  
+  const length = readUint(
+    rawData,
+    32,
+    firstVersion,
+    firstVersion,
+    0x0b
+  );
+
   // The first two events are always Event Payloads and Game Start.
   const commandPayloadSizes = parseEventPayloadsEvent(rawData, 0x00);
 
@@ -329,8 +338,10 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
 
   // rawData.byteLength
   let push = true;
-  while (offset <= rawData.byteLength) {
+  let go = true;
+  while (go && offset <= rawData.byteLength) {
     if (savedFrames > end-start) push = false;
+    if (offset === rawData.byteLength-1) push = true;
     
     const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
     // console.log(command.toString(16));
@@ -347,12 +358,16 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
 
     const l = commandPayloadSizes[command];
     switch (command) {
+      default:
+        go = false;
+        break;
+      //   console.log(`command: ${command} l is ${l}`)
       case 0x10:
         console.log(`OTHER: ${command}: setting at: ${offset}, ${l}, ${slicedDataOffset}`)
         slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
         slicedDataOffset += l + 0x01;
         break;
-      case 0x37: //2 3
+      case 0x37: //pre frame
         if (push) {
           // console.log('37')
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
@@ -360,7 +375,7 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
         }
         handlePreFrameUpdateEvent(rawData, offset, replayVersion, frames);
         break;
-      case 0x38: //4 5
+      case 0x38: //post frame
         // console.log('38')
         if (push) {
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
@@ -368,12 +383,14 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
         }
         handlePostFrameUpdateEvent(rawData, offset, replayVersion, frames);
         break;
-      case 0x39:
+      case 0x39: //game end
         // console.log('39')
-        slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
-        slicedDataOffset += l + 0x01;
+        if (push) {
+          slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
+          slicedDataOffset += l + 0x01;
+        }
         break;
-      case 0x3a: //1
+      case 0x3a: //frame start
         // console.log('3a')
         // console.log(commandHistory);
         if (push) {
@@ -382,7 +399,7 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
         }
         handleFrameStartEvent(rawData, offset, replayVersion, frames);
         break;
-      case 0x3b:
+      case 0x3b: //item update
         // console.log('3b')
         if (push) {
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
@@ -390,7 +407,7 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
         }
         handleItemUpdateEvent(rawData, offset, replayVersion, frames);
         break;
-      case 0x3c:
+      case 0x3c: //frame bookend
         if (push) {
           savedFrames++;
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
@@ -400,7 +417,8 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
         //frame bookend
         break;
     }
-    offset += l + 0x01;
+    if (go)
+      offset += l + 0x01;
   }
   console.log(`${frameCount} total frames`)
   console.log(`${frames.length} total frames`)
@@ -415,14 +433,31 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
   console.log(`slicedDataOffset: ${slicedDataOffset}`)
   console.log(`rawData.byteOffset: ${rawData.byteOffset}`)
   console.log(`rawData.byteLength: ${rawData.byteLength}`)
+  console.log(`metadata length??: ${rawData.byteLength-offset}`)
+  console.log("================")
+  console.log(`length data was set to ${length}, should be changed to ${slicedDataOffset}`)
+
+  //redo length at offset 0x0b
+  const newArrayBuffer = new ArrayBuffer(4);
+  const newDataView = new DataView(newArrayBuffer);
+  newDataView.setUint32(0, slicedDataOffset, false);
+  const newByteArray = new Uint8Array(newArrayBuffer);
+  slicedData.set(newByteArray, 0x0b)
   const fullData = Buffer.concat([
     slicedData.slice(0, slicedDataOffset), 
-    new Uint8Array(rawData.buffer, slicedDataOffset, rawData.byteLength+rawData.byteOffset-slicedDataOffset)
+    new Uint8Array(rawData.buffer, offset, rawData.byteLength+rawData.byteOffset-offset)
   ]);
   
   writeCutSlp(fullData);
 
-
+  // 7851 total frames
+  // 7849 total frames
+  // 7851 frames saved
+  // slicing from 0 to 3269451
+  // slicedDataOffset: 3269451
+  // rawData.byteOffset: 15
+  // rawData.byteLength: 3269682
+  // metadata length??: 231
 
   if (gameEnding === undefined) {
     console.warn("Game end event not found");
@@ -436,7 +471,7 @@ export function clipReplay({ metadata, raw }: any, start: number, end: number): 
 }
 
 function writeCutSlp(arrayBuffer: Uint8Array) {
-  const outputFilePath = path.join(__dirname, '../sliced.slp'); // Path to your output file
+  const outputFilePath = path.join(__dirname, '../test.slp'); // Path to your output file
   fs.writeFile(outputFilePath, arrayBuffer, (err) => {
     if (err) {
       console.error('Error writing file:', err);
