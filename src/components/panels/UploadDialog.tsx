@@ -1,7 +1,7 @@
 import { createSignal, Match, Show, Switch } from "solid-js";
 import { PrimaryButton, WhiteButton } from "~/components/common/Button";
 import { SpinnerCircle } from "~/components/common/SpinnerCircle";
-import { uploadReplay } from "~/cloudClient";
+// import { uploadReplay } from "~/cloudClient";
 import { cloudLibrary, currentSelectionStore } from "~/state/selectionStore";
 import { Dialog } from "~/components/common/Dialog";
 import { ShareIcon } from "~/components/common/icons";
@@ -13,35 +13,6 @@ export function UploadDialog() {
   >("not started");
   const [url, setUrl] = createSignal("");
   const [error, setError] = createSignal("");
-
-  async function onUploadClicked() {
-    setState("loading");
-    const [file] = currentSelectionStore().data.selectedFileAndStub!;
-
-    // Don't bother re-uploading cloud files
-    if (currentSelectionStore() === cloudLibrary) {
-      setUrl(
-        `${window.location.origin}/${file.name.substring(
-          0,
-          file.name.length - 4
-        )}`
-      );
-      setState("done");
-      return;
-    }
-
-    const { id, data, error } = await uploadReplay(
-      file,
-      replayStore.replayData!
-    );
-    if (data != null) {
-      setUrl(`${window.location.origin}/${id}`);
-    } else {
-      setError("Error uploading file");
-      console.error(error);
-    }
-    setState("done");
-  }
 
   return (
     <div class="h-8">
@@ -102,7 +73,7 @@ export function UploadDialog() {
                   <Dialog.Close>
                     <WhiteButton>Cancel</WhiteButton>
                   </Dialog.Close>
-                  <PrimaryButton onClick={onUploadClicked}>
+                  <PrimaryButton onClick={() => {}}>
                     Upload
                   </PrimaryButton>
                 </Match>

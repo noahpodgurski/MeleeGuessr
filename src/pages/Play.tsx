@@ -162,11 +162,11 @@ export const Play = () => {
         .then(async (response) => await response.blob())
         .then((blob) => new File([blob], url.split("/").at(-1) ?? "url.slp"))
         .then(async (file) => {
-          toast.promise(load([file], startFrame), {
-            loading: "Parsing files...",
-            success: "Successfully loaded files",
-            error: "error"
-          })
+          // toast.promise(load([file], startFrame), {
+          //   loading: "Parsing files...",
+          //   success: "Successfully loaded files",
+          //   error: "error"
+          // })
           await load([file], startFrame)
           const _file = currentSelectionStore().data.filteredStubs;
           if (_file.length > 0) {

@@ -1,0 +1,19 @@
+{
+  "exclude": ["old/**"],
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "module": "commonjs",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "paths": { "~/*": ["./src/*"] },
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["vite/client", "node", "ts-node"],
+    "noEmit": true,
+    "resolveJsonModule": true
+  }
+}
