@@ -1,10 +1,12 @@
 import { SvgIcon } from "@suid/material";
-import { createMemo, For, Show } from "solid-js";
+import { createMemo, For, Show, useContext } from "solid-js";
 import { characterNameByExternalId } from "~/common/ids";
 import { RenderData, replayStore } from "~/state/replayStore";
 import { getPlayerOnFrame, getStartOfAction } from "~/viewer/viewerUtil";
+import { useDarkMode } from "../common/Dark";
 
 export function Players() {
+  const [darkMode, {toggle}] = useDarkMode() as any;
   return (
     <>
       <For each={replayStore.renderDatas}>
@@ -15,9 +17,9 @@ export function Players() {
               d={renderData.path}
               fill={renderData.innerColor}
               stroke-width={2}
-              stroke={renderData.outerColor}
+              stroke={darkMode() ? "#fcf2e0" : renderData.outerColor}
               />
-              {/* todo only show on player to guess */}
+              {/* todo only show one player to guess */}
             <path 
               // transform="translate(10, 10)"
               transform={`${renderData.transforms[0]} scale(1,-1) translate(-2.5, -40)`}

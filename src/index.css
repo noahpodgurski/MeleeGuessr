@@ -38,5 +38,9 @@ body {
 }
 
 .text-white {
-  color: #d9dedd;
+  color: #d9dedd !important;
+}
+
+.strike-through {
+  text-decoration: line-through !important;
 }

@@ -16,8 +16,10 @@ import {
   zoomOut,
 } from "~/state/replayStore";
 import { currentSelectionStore } from "~/state/selectionStore";
+import { useDarkMode } from "../common/Dark";
 
 export function Controls() {
+  const [darkMode,] = useDarkMode() as any;
   onMount(() => {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
@@ -112,12 +114,11 @@ export function Controls() {
     }
   }
 
-  console.log(replayStore.startFrame)
 
   let seekbarInput!: HTMLInputElement;
 
   return (
-    <div class="flex flex-wrap items-center justify-evenly gap-4 rounded-b border border-t-0 py-1 px-2 text-slate-800">
+    <div class={`flex flex-wrap items-center justify-evenly gap-4 rounded-b border border-t-0 py-1 px-2 text-slate-50`}>
       <Show
         when={replayStore.running}
         fallback={
@@ -192,7 +193,7 @@ export function Controls() {
       />
       <div
         class="material-icons cursor-pointer text-[32px]"
-        onClick={() => toggleFullscreen()}
+        onClick={() => toggleFullscreen()} //todo fix
         aria-label="Toggle fullscreen mode"
       >
         {replayStore.isFullscreen ? "fullscreen_exit" : "fullscreen"}

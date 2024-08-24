@@ -1,7 +1,9 @@
 import { createMemo } from "solid-js";
 import { replayStore } from "~/state/replayStore";
+import { useDarkMode } from "../common/Dark";
 
 export function Timer() {
+  const [darkMode,] = useDarkMode() as any;
   const meleeHundredths = [
     "00",
     "02",
@@ -84,7 +86,7 @@ export function Timer() {
       text-anchor="middle"
       y="-42%"
       textContent={time()}
-      class="fill-slate-800"
+      class={darkMode() ? "fill-slate-50" : "fill-slate-800"}
     />
   );
 }

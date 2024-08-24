@@ -17,7 +17,7 @@ import { User } from './models/User';
 // const res = require('./consts/clips.json');
 // import res from "./consts/clips.json";
 import { Toaster } from "solid-toast";
-
+import { DarkModeProvider } from "./components/common/Dark";
 export const STARTING_STOCKS = 4;
 
 interface ICount {
@@ -128,13 +128,15 @@ export const App = () => {
 
   return (
     <>
-      <Router>
-        <Route path="*" component={NavbarPage} />
-        <Route path="/" component={Home} />
-        <Route path="/play" component={Play} />
-        <Route path="/leaderboards" component={Leaderboards} />
-      </Router>
-      <Toaster />
+      <DarkModeProvider>
+        <Router>
+          <Route path="*" component={NavbarPage} />
+          <Route path="/" component={Home} />
+          <Route path="/play" component={Play} />
+          <Route path="/leaderboards" component={Leaderboards} />
+        </Router>
+        <Toaster />
+      </DarkModeProvider>
     </>
   );
 };

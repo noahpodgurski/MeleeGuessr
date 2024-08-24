@@ -1,8 +1,10 @@
 import { createMemo, For, Show } from "solid-js";
 import { characterNameByInternalId } from "~/common/ids";
 import { RenderData, replayStore } from "~/state/replayStore";
+import { useDarkMode } from "../common/Dark";
 
 export function PlayerHUD(props: { player: number }) {
+  const [darkMode,] = useDarkMode() as any;
   const renderData = createMemo(() =>
     replayStore.renderDatas.find(
       (renderData) =>
@@ -38,7 +40,7 @@ export function PlayerHUD(props: { player: number }) {
               cy={`-${position().y}%`}
               r={5}
               fill={renderData()!.innerColor}
-              stroke="black"
+              stroke={"rgba(150, 150, 150, .6)"}
             />
           )}
         </For>
@@ -49,7 +51,7 @@ export function PlayerHUD(props: { player: number }) {
           text-anchor="middle"
           textContent={`${Math.floor(renderData()!.playerState.percent)}%`}
           fill={renderData()!.innerColor}
-          stroke="black"
+          stroke={"rgba(128, 128, 128, .5)"}
         />
         <text
           style={{ font: "bold 15px sans-serif", transform: "scaleY(-1)" }}
@@ -58,7 +60,7 @@ export function PlayerHUD(props: { player: number }) {
           text-anchor="middle"
           textContent={name()}
           fill={renderData()!.innerColor}
-          stroke="black"
+          stroke={"rgba(128, 128, 128, .5)"}
         />
         <Show when={replayStore.isDebug}>
           <Debug position={position()} renderData={renderData()!} />
@@ -72,6 +74,7 @@ function Debug(props: {
   position: { x: number; y: number };
   renderData: RenderData;
 }) {
+  const [darkMode,] = useDarkMode() as any;
   return (
     <>
       <text
@@ -81,7 +84,7 @@ function Debug(props: {
         text-anchor="middle"
         textContent={`State ID: ${props.renderData.playerState.actionStateId}`}
         fill={props.renderData.innerColor}
-        stroke="black"
+        stroke={"rgba(128, 128, 128, .5)"}
       />
       <text
         style={{ font: "bold 15px sans-serif", transform: "scaleY(-1)" }}
@@ -92,7 +95,7 @@ function Debug(props: {
           props.renderData.playerState.actionStateFrameCounter.toFixed(4)
         )}`}
         fill={props.renderData.innerColor}
-        stroke="black"
+        stroke={"rgba(128, 128, 128, .5)"}
       />
       <text
         style={{ font: "bold 15px sans-serif", transform: "scaleY(-1)" }}
@@ -103,7 +106,7 @@ function Debug(props: {
           props.renderData.playerState.xPosition.toFixed(4)
         )}`}
         fill={props.renderData.innerColor}
-        stroke="black"
+        stroke={"rgba(128, 128, 128, .5)"}
       />
       <text
         style={{ font: "bold 15px sans-serif", transform: "scaleY(-1)" }}
@@ -114,7 +117,7 @@ function Debug(props: {
           props.renderData.playerState.yPosition.toFixed(4)
         )}`}
         fill={props.renderData.innerColor}
-        stroke="black"
+        stroke={"rgba(128, 128, 128, .5)"}
       />
       <text
         style={{ font: "bold 15px sans-serif", transform: "scaleY(-1)" }}
@@ -123,7 +126,7 @@ function Debug(props: {
         text-anchor="middle"
         textContent={props.renderData.animationName}
         fill={props.renderData.innerColor}
-        stroke="black"
+        stroke={"rgba(128, 128, 128, .5)"}
       />
     </>
   );

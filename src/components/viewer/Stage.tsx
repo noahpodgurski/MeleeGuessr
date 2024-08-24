@@ -1,6 +1,7 @@
 import { createMemo, For, Match, Switch } from "solid-js";
 import { stageNameByExternalId } from "~/common/ids";
 import { replayStore } from "~/state/replayStore";
+import { useDarkMode } from "../common/Dark";
 
 export function Stage() {
   const stageName = createMemo(
@@ -31,6 +32,7 @@ export function Stage() {
 }
 
 function Battlefield() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "-68.4, 0",
     " 68.4, 0",
@@ -64,10 +66,10 @@ function Battlefield() {
   return (
     <>
       <Grid blastzones={blastzones} />
-      <polyline points={mainStage.join(" ")} class="fill-slate-800" />
+      <polyline points={mainStage.join(" ")} class={darkMode() ? "fill-slate-50" : "fill-slate-800"} />
       <For each={platforms}>
         {(points) => (
-          <polyline points={points.join(" ")} class="stroke-slate-800" />
+          <polyline points={points.join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
         )}
       </For>
       <rect
@@ -76,13 +78,14 @@ function Battlefield() {
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );
 }
 
 function Dreamland() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "-76.5, -11",
     "-77.25, 0",
@@ -105,10 +108,10 @@ function Dreamland() {
   return (
     <>
       <Grid blastzones={blastzones} />
-      <polyline points={mainStage.join(" ")} class="fill-slate-800" />
+      <polyline points={mainStage.join(" ")} class={darkMode() ? "fill-slate-50" : "fill-slate-800"} />
       <For each={platforms}>
         {(points) => (
-          <polyline points={points.join(" ")} class="stroke-slate-800" />
+          <polyline points={points.join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
         )}
       </For>
       <rect
@@ -117,13 +120,14 @@ function Dreamland() {
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );
 }
 
 function FinalDestination() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "-85.6, 0",
     "85.6, 0",
@@ -148,20 +152,21 @@ function FinalDestination() {
   return (
     <>
       <Grid blastzones={blastzones} />
-      <polyline points={mainStage.join(" ")} class="fill-slate-800" />
+      <polyline points={mainStage.join(" ")} class={darkMode() ? "fill-slate-50" : "fill-slate-800"} />
       <rect
         x={blastzones[0][0]}
         y={blastzones[0][1]}
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );
 }
 
 function YoshisStory() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "-54, -91",
     "-54, -47",
@@ -288,11 +293,11 @@ function YoshisStory() {
       <Grid blastzones={blastzones} />
       <polyline
         points={mainStage.join(" ")}
-        class="fill-slate-800 stroke-slate-800"
+        class={darkMode() ? "fill-slate-600 stroke-slate-600" : "fill-slate-800 stroke-slate-800"}
       />
       <For each={platforms}>
         {(points) => (
-          <polyline points={points.join(" ")} class="stroke-slate-800" />
+          <polyline points={points.join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
         )}
       </For>
       <polyline points={randall().join(" ")} class="stroke-slate-400" />
@@ -302,13 +307,14 @@ function YoshisStory() {
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );
 }
 
 function FountainOfDreams() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "-63.33, 0.62",
     "-53.5, 0.62",
@@ -357,19 +363,19 @@ function FountainOfDreams() {
   return (
     <>
       <Grid blastzones={blastzones} />
-      <polyline points={mainStage.join(" ")} class="fill-slate-800" />
+      <polyline points={mainStage.join(" ")} class={darkMode() ? "fill-slate-50" : "fill-slate-800"} />
       <For each={platforms.slice(0, 2)}>
         {(points) => (
           <polyline
             points={points.join(" ")}
             stroke-dasharray="2,4"
-            class="stroke-slate-800"
+            class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
           />
         )}
       </For>
       <polyline
         points={platforms[platforms.length - 1].join(" ")}
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
       <rect
         x={blastzones[0][0]}
@@ -377,13 +383,14 @@ function FountainOfDreams() {
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );
 }
 
 function PokemonStadium() {
+  const [darkMode,] = useDarkMode() as any;
   const mainStage = [
     "87.75, 0",
     "87.75, -4",
@@ -414,10 +421,10 @@ function PokemonStadium() {
   return (
     <>
       <Grid blastzones={blastzones} />
-      <polyline points={mainStage.join(" ")} class="fill-slate-800" />
+      <polyline points={mainStage.join(" ")} class={darkMode() ? "fill-slate-50" : "fill-slate-800"} />
       <For each={platforms}>
         {(points) => (
-          <polyline points={points.join(" ")} class="stroke-slate-800" />
+          <polyline points={points.join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
         )}
       </For>
       <rect
@@ -426,7 +433,7 @@ function PokemonStadium() {
         width={blastzones[1][0] - blastzones[0][0]}
         height={blastzones[1][1] - blastzones[0][1]}
         fill="none"
-        class="stroke-slate-800"
+        class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"}
       />
     </>
   );

@@ -216,9 +216,8 @@ export const Play = () => {
   });
 
   return (
-    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%" }}>
+    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "100vh", margin: "auto"}}>
       <div class="row justify-content-center w-100">
-        
         <Viewer />
       </div>
     </div>
