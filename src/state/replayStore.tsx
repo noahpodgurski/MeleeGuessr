@@ -183,7 +183,7 @@ createRoot(disposer => {
     );
     
     //todo get from .slp metadata
-    setReplayState("startFrame", 0); //todo set from metadata
+    setReplayState("startFrame", fileStore.urlStartFrame ?? 0); //todo set from metadata
   
     const highlights = {}
   

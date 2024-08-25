@@ -27,7 +27,8 @@
 }
 
 .navbar-brand {
-  margin-left: 10%;
+  display: flex;
+  position: fixed;
   -webkit-transform: scale(1.5, 1);
   -moz-transform: scale(1.5, 1);
   -o-transform: scale(1.5, 1);

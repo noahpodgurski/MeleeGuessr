@@ -18,6 +18,8 @@ import { User } from './models/User';
 // import res from "./consts/clips.json";
 import { Toaster } from "solid-toast";
 import { DarkModeProvider } from "./components/common/Dark";
+import { createTheme, CssBaseline, ThemeProvider } from "@suid/material";
+import { purple, grey, blueGrey } from "@suid/material/colors";
 export const STARTING_STOCKS = 4;
 
 interface ICount {
@@ -126,11 +128,30 @@ export const App = () => {
     // }
   };
 
+  const navTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      // palette values for dark mode
+      background: {
+        default: purple[500],
+        
+      },
+      text: {
+        primary: '#fff',
+        secondary: grey[500],
+      },
+    },
+  })
+
   return (
     <>
       <DarkModeProvider>
+        <ThemeProvider theme={navTheme}>
+          <CssBaseline />
+          <NavbarPage />
+        </ThemeProvider>
         <Router>
-          <Route path="*" component={NavbarPage} />
+          <Route path="*" component={NavbarPage} {...updateUser} />
           <Route path="/" component={Home} />
           <Route path="/play" component={Play} />
           <Route path="/leaderboards" component={Leaderboards} />
