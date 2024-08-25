@@ -18,7 +18,7 @@ const prisma = new PrismaClient();
 export const loginHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     if (event.body === null) {
         return {
-            statusCode: 500,
+            statusCode: 400,
             body: JSON.stringify({
                 message: 'No login info provided',
             }),
@@ -32,7 +32,7 @@ export const loginHandler = async (event: APIGatewayProxyEvent): Promise<APIGate
         password = body.password;
     } catch (err) {
         return {
-            statusCode: 500,
+            statusCode: 400,
             body: JSON.stringify({
                 message: "No login info provided"
             }),
@@ -47,7 +47,7 @@ export const loginHandler = async (event: APIGatewayProxyEvent): Promise<APIGate
         };
     }
     
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
         where: { email }
     })
     console.log(user);

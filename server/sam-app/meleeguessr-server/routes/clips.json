@@ -1,0 +1,74 @@
+[
+  {
+    "path": "competent_aquamarine_egret.slp",
+    "startFrame": 1464,
+    "endFrame": 2366,
+    "playerName": {
+      "code": "MANG#0",
+      "name": "mang"
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "SPAR#587",
+      "name": "hug money"
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0
+  },
+  {
+    "path": "democratic_magenta_mammal.slp",
+    "startFrame": 9143,
+    "endFrame": 10244,
+    "playerName": {
+      "code": "SPAR#587",
+      "name": "hug money"
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "MANG#0",
+      "name": "mang"
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1
+  },
+  {
+    "path": "honest_olive_boar.slp",
+    "startFrame": 156,
+    "endFrame": 1192,
+    "playerName": {
+      "code": "SPAR#587",
+      "name": "hug money"
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "MANG#0",
+      "name": "mang"
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1
+  },
+  {
+    "path": "flexible_emerald_orca.slp",
+    "startFrame": 3432,
+    "endFrame": 4242,
+    "playerName": {
+      "code": "MANG#0",
+      "name": "mang"
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "SPAR#587",
+      "name": "hug money"
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0
+  }
+]

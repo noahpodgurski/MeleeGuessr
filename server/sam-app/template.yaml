@@ -67,6 +67,87 @@ Resources:
         Sourcemap: true
         EntryPoints:
         - app.ts
+
+  StatFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: meleeguessr-server/
+      Handler: app.stat
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        Stat:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /stat
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Loader:
+          - .prisma=file
+          - .so.node=file
+        AssetNames: '[name]'
+        Minify: true
+        Target: es2020
+        Sourcemap: true
+        EntryPoints:
+        - app.ts
+
+  PlayFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: meleeguessr-server/
+      Handler: app.play
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        Play:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /play
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Loader:
+          - .prisma=file
+          - .so.node=file
+        AssetNames: '[name]'
+        Minify: true
+        Target: es2020
+        Sourcemap: true
+        EntryPoints:
+        - app.ts
+
+  GuessFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: meleeguessr-server/
+      Handler: app.guess
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        Guess:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /guess
+            Method: post
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Loader:
+          - .prisma=file
+          - .so.node=file
+        AssetNames: '[name]'
+        Minify: true
+        Target: es2020
+        Sourcemap: true
+        EntryPoints:
+        - app.ts
       
 
   ApplicationResourceGroup:
@@ -82,6 +163,7 @@ Resources:
       ResourceGroupName:
         Ref: ApplicationResourceGroup
       AutoConfigurationEnabled: 'true'
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -105,3 +187,33 @@ Outputs:
   RegisterFunctionIamRole:
     Description: Implicit IAM Role created for Register function
     Value: !GetAtt RegisterFunctionRole.Arn
+
+  StatApi:
+    Description: API Gateway endpoint URL for Prod stage for Stat function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/stat/"
+  StatFunction:
+    Description: Stat Lambda Function ARN
+    Value: !GetAtt StatFunction.Arn
+  StatFunctionIamRole:
+    Description: Implicit IAM Role created for Stat function
+    Value: !GetAtt StatFunctionRole.Arn
+
+  PlayApi:
+    Description: API Gateway endpoint URL for Prod stage for Play function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/play/"
+  PlayFunction:
+    Description: Play Lambda Function ARN
+    Value: !GetAtt PlayFunction.Arn
+  PlayFunctionIamRole:
+    Description: Implicit IAM Role created for Play function
+    Value: !GetAtt PlayFunctionRole.Arn
+
+  GuessApi:
+    Description: API Gateway endpoint URL for Prod stage for Guess function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/guess/"
+  GuessFunction:
+    Description: Guess Lambda Function ARN
+    Value: !GetAtt GuessFunction.Arn
+  GuessFunctionIamRole:
+    Description: Implicit IAM Role created for Guess function
+    Value: !GetAtt GuessFunctionRole.Arn

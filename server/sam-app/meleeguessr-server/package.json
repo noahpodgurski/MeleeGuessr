@@ -9,7 +9,8 @@
     "lint": "eslint '*.ts' --quiet --fix",
     "compile": "tsc",
     "test": "npm run compile && npm run unit",
-    "sam-deploy": "sam build -u && sam deploy --guided"
+    "sam": "cd ../ && sam build && npm run copy:clips",
+    "copy:clips": "cp ./routes/clips.json ../.aws-sam\\build\\GuessFunction\\clips.json && cp ./routes/clips.json ../.aws-sam\\build\\LoginFunction\\clips.json && cp ./routes/clips.json ../.aws-sam\\build\\PlayFunction\\clips.json && cp ./routes/clips.json ../.aws-sam\\build\\RegisterFunction\\clips.json && cp ./routes/clips.json ../.aws-sam\\build\\StatFunction\\clips.json"
   },
   "dependencies": {
     "@jest/globals": "^29.2.0",

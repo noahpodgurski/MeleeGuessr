@@ -27,6 +27,8 @@ import fs from 'fs';
 import path from "path";
 import cliProgress from 'cli-progress';
 import byteSize from 'byte-size';
+import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-generator';
+import { FileData, getCharacterAndPlayerData } from './addCharacterToJson';
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
 const HIGHLIGHTS_FILE = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\highlights.json"
@@ -40,6 +42,20 @@ console.log(HIGHLIGHTS_FILE)
 console.log(CLIP_DIR)
 console.log(CLIP_FILE)
 console.log(CUT_DIR)
+
+export type Highlight = {
+    clipName?: string;
+    path: string;
+
+    gameStartAt: string;
+    startFrame: number;
+    endFrame: number;
+    character: number;
+    oppChar: number;
+    player: string;
+    oppPlayer: string;
+    portToGuess: number;
+}
 
 if (!fs.existsSync(CLIP_DIR)) {
     fs.mkdirSync(CLIP_DIR, { recursive: true });
@@ -55,40 +71,59 @@ if (!fs.existsSync(CUT_DIR)) {
     console.log('Directory already exists.');
 }
 
-  // 1. add character to json (done already)
+// 1. add character to json (done already)
 
 // 2. use cut-slp to cut each file in queue[i].path
-fs.readFile(HIGHLIGHTS_FILE, 'utf-8', async (err, fd) => {
-    if (err) {
-        console.error('Error opening file:', err);
-        return;
-    }
-    
-    const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-    let dataSaved = 0;
-    const gameMatchRegex = new RegExp(/(Game_.*\.slp)/g);
-    const highlights = JSON.parse(fd) as any;
-    bar1.start(highlights.queue.length, 0);
-    
-    for (let i = 0; i < highlights.queue.length; i++) {
-        bar1.update(i);
-        const highlight = highlights.queue[i];
-        const gameName = highlight.path.match(gameMatchRegex);
-        if (!gameName || !gameName[0]) {
-            console.log('unable to find a match');
-            throw Error(`unable to parse filename ${highlight.path}`);
+function cutSlp () {
+    const fileData: FileData[] = [];
+    fs.readFile(HIGHLIGHTS_FILE, 'utf-8', async (err, fd) => {
+        if (err) {
+            console.error('Error opening file:', err);
+            return;
         }
-        const outFile = path.join(CUT_DIR, gameName[0]);
-        // console.log(highlight.path, path.join(CUT_DIR, gameName[0]));
-        console.log(`schlicin clip ${highlight.path}`)
-        dataSaved += await schliceSlp(highlight.path, outFile, highlight.endFrame);
-        highlight.path = outFile;
-    }
+        
+        const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+        let dataSaved = 0;
+        const gameMatchRegex = new RegExp(/(Game_.*\.slp)/g);
+        const data = JSON.parse(fd);
+        bar1.start(data.queue.length, 0);
+        
+        const highlights = data.queue as Highlight[];
+        for (let i = 0; i < highlights.length; i++) {
+            bar1.update(i);
+            let highlight = highlights[i];
+            const gameName = highlight.path.match(gameMatchRegex);
+            if (!gameName || !gameName[0]) {
+                console.log('unable to find a match');
+                throw Error(`unable to parse filename ${highlight.path}`);
+            }
+            const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }) + ".slp";
+            const outFile = path.join(CUT_DIR, newName);
+            // console.log(highlight.path, path.join(CUT_DIR, gameName[0]));
+            console.log(`schlicin clip ${highlight.path}`)
+            dataSaved += await schliceSlp(highlight.path, outFile, highlight.endFrame);
+            
+            //rename to SaltyChickenBone.slp
+            highlight.clipName = newName;
+            highlight.path = outFile;
+            
+            //get character and player info
+            const data = await getCharacterAndPlayerData(highlight.path, highlight);
+            console.log(data)
+            if (!data) throw Error("unable to get character and player data");
+            fileData.push(data);
+        }
 
-    fs.writeFile(CLIP_FILE, JSON.stringify(highlights, null, 2), (err) => {});
-    
-    // stop the progress bar
-    bar1.stop();
-    const b = byteSize(dataSaved);
-    console.log(`Data saved: ${b.value}${b.unit}`)
-});
+
+        fs.writeFile(CLIP_FILE, JSON.stringify(fileData, null, 2), (err) => {});
+        
+        // stop the progress bar
+        bar1.stop();
+        const b = byteSize(dataSaved);
+        console.log(`Data saved: ${b.value}${b.unit}`)
+    });   
+}
+
+cutSlp();
+
+//todo make script to regenerate all names in s3 and update clips.json accordingly

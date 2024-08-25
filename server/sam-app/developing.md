@@ -1,3 +1,6 @@
+### Changing Prisma Schema ###
+run `npx prisma generate` in /meleeguessr-server
+
 ### Building & Deploying to AWS Lambda with SAM ###
 1. When ready to push, run `npm run test` which compiles and tests the functions
 

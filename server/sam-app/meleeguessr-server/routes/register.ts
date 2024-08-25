@@ -60,7 +60,7 @@ export const registerHandler = async (event: APIGatewayProxyEvent): Promise<APIG
     try {
         const hashedPass = await bcrypt.hash(password, 12);
         
-        await prisma.user.create({
+        await prisma.users.create({
             data: {
                 email: email,
                 username: username,

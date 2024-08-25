@@ -50,6 +50,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "ubjson": "^0.0.8",
+    "unique-names-generator": "^4.7.1",
     "vite": "^5.4.2",
     "vite-plugin-solid": "^2.10.2",
     "vite-tsconfig-paths": "^5.0.1",

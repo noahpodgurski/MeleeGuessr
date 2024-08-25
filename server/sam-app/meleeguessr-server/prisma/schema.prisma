@@ -50,7 +50,8 @@ enum Character {
   Roy
 }
 
-model clips {
+//dont need to store in DB - can just store clips.json on server prob
+model Clip {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   clipSrc String @unique
   player String
@@ -58,4 +59,26 @@ model clips {
   slp String?
   oppPlayer String
   oppChar Character
+}
+
+model Stat {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @unique @db.ObjectId
+  username String
+  correct Int
+  incorrect Int
+  highScore Int
+  games Int
+}
+
+model Session {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String? @unique @db.ObjectId
+  // todo add createdon
+  correct Int
+  incorrect Int
+  currentClip String // find currentClip in clips.json to match to correct answer
+  answer String
+  startFrame Int
+  portToGuess Int
 }
