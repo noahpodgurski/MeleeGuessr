@@ -115,6 +115,28 @@ export const Play = () => {
     }
   });
 
+  const doPlay = () => {
+    try {
+      void fetch(url)
+        .then(async (response) => await response.blob())
+        .then((blob) => new File([blob], url.split("/").at(-1) ?? "url.slp"))
+        .then(async (file) => {
+          // toast.promise(load([file], startFrame), {
+          //   loading: "Parsing files...",
+          //   success: "Successfully loaded files",
+          //   error: "error"
+          // })
+          await load([file], startFrame)
+          const _file = currentSelectionStore().data.filteredStubs;
+          if (_file.length > 0) {
+            await currentSelectionStore().select(_file[0]);
+          }
+        });
+    } catch (e) {
+      console.error("Error: could not load replay", url, e);
+    }
+  }
+
   const updateStage = (clip: Clip) => {
     const incorrectChoices: Choice[] = [];
 
@@ -145,7 +167,10 @@ export const Play = () => {
     });
   };
 
+  // 1. doPlay (request at /play)
+  // 2. 
   // const url = new URLSearchParams(location.search).get("replayUrl");
+
   const url = "../slp-test/test.slp";
   const startFrame = replayStore.startFrame;
   if (url !== null) {
