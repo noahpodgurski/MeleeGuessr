@@ -1,7 +1,6 @@
 import "./index.css";
 import "@thisbeyond/solid-select/style.css";
 import { createSignal, createContext, onMount } from 'solid-js';
-import { render } from 'solid-js/web';
 import { Router, Route } from '@solidjs/router';
 import './App.scss';
 import './Modal.scss';
@@ -10,7 +9,6 @@ import { Home } from './pages/Home';
 import { Play } from './pages/Play';
 import Leaderboards from './pages/Leaderboards';
 import { Clip } from './models/Clip';
-import { CharacterIds } from './consts/CharacterIds';
 import { Player } from './consts/Player';
 import AuthService from './services/auth.service';
 import { User } from './models/User';
@@ -19,7 +17,9 @@ import { User } from './models/User';
 import { Toaster } from "solid-toast";
 import { DarkModeProvider } from "./components/common/Dark";
 import { createTheme, CssBaseline, ThemeProvider } from "@suid/material";
-import { purple, grey, blueGrey } from "@suid/material/colors";
+import { purple, grey } from "@suid/material/colors";
+import { LoaderProvider } from "./components/common/Loader";
+import { Loader } from "./components/Loader";
 export const STARTING_STOCKS = 4;
 
 interface ICount {
@@ -45,7 +45,6 @@ const findAlias = (player: string) => {
 const StocksContext = createContext();
 const ClipsContext = createContext();
 const UserContext = createContext();
-const LoadingContext = createContext();
 
 export const App = () => {
   const [stocks, setStocks] = createSignal(STARTING_STOCKS);
@@ -146,17 +145,20 @@ export const App = () => {
   return (
     <>
       <DarkModeProvider>
-        <ThemeProvider theme={navTheme}>
-          <CssBaseline />
-          <NavbarPage />
-        </ThemeProvider>
-        <Router>
-          <Route path="*" component={NavbarPage} {...updateUser} />
-          <Route path="/" component={Home} />
-          <Route path="/play" component={Play} />
-          <Route path="/leaderboards" component={Leaderboards} />
-        </Router>
-        <Toaster />
+        <LoaderProvider>
+          <Loader />
+          <ThemeProvider theme={navTheme}>
+            <CssBaseline />
+            <NavbarPage />
+          </ThemeProvider>
+          <Router>
+            <Route path="*" component={NavbarPage} {...updateUser} />
+            <Route path="/" component={Home} />
+            <Route path="/play" component={Play} />
+            <Route path="/leaderboards" component={Leaderboards} />
+          </Router>
+          <Toaster toastOptions={{position: 'top-center'}} />
+        </LoaderProvider>
       </DarkModeProvider>
     </>
   );

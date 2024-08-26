@@ -1,8 +1,10 @@
 import { LoginModal } from "./LoginModal";
-import { IUser, UserContext } from "../components/common/User";
+import { IUser } from "../components/common/User";
 import { ProfileModal } from "./ProfileModal";
 import { Component, createContext, createEffect, createMemo, createSignal } from "solid-js";
 import { Box, AppBar, Toolbar, IconButton, Typography, Button, Link } from "@suid/material";
+import { userStore } from "~/state/userStore";
+import { AiOutlineUser } from "solid-icons/ai";
 
 
 const NavbarPage: Component<any> = ({ updateUser }) => {
@@ -10,14 +12,8 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
    const toggleShowLoginModal = () => setShowLoginModal(!showModal());
    const [showProfileModal, setShowProfileModal] = createSignal(false);
   const toggleShowProfileModal = () => setShowProfileModal(!showProfileModal());
+  console.log(userStore.data);
   
-  // createEffect(() => {
-  //   if (UserContext.user){
-  //     setShowProfileModal(showProfileModal() === false);
-  //   } else {
-  //     setShowLoginModal(showModal() === false);
-  //   }
-  // });
   
   return (
       <>
@@ -35,7 +31,13 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <Link href="/" sx={{display: 'flex', 'alignItems': 'center'}}><h1 class="navbar-brand logo">MeleeGuessr</h1></Link>
             </Typography>
-            <Button onClick={() => setShowLoginModal(!showModal())} color="inherit">Login</Button>
+            
+			      { userStore.data !== null ?
+              <Button  onClick={() => setShowProfileModal(!showProfileModal())} >
+                <AiOutlineUser />
+              </Button> :
+              <Button onClick={() => setShowLoginModal(!showModal())} color="inherit">Login</Button>
+            }
           </Toolbar>
         </AppBar>
       </Box>
@@ -58,9 +60,8 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
       <Alert variant='danger'>
 				Unfortunately the servers are too expensive for me to maintain by myself so the website will be shutting down on 5/15/22, only 7 days after launch. Thanks for playing! - Noah
 			</Alert> */}
-			
-      {/* <ProfileModal showModal={showProfileModal()} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} /> */}
-      <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
+        <ProfileModal showModal={showProfileModal} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
+        <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
     </>
     );
   }

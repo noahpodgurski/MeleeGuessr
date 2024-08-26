@@ -2,7 +2,8 @@ import { Component, createEffect, createSignal } from 'solid-js';
 import './Table.scss';
 import UserService from "../services/user.service";
 import { GetStat } from "../models/Stat";
-import { LoadingContext } from "../components/common/Loader";
+import { useLoader } from "../components/common/Loader";
+import toast from 'solid-toast';
 // import { createToast } from "../components/common/toaster";
 
 export type LeaderboardData = {
@@ -13,12 +14,14 @@ export type LeaderboardData = {
 
 const Leaderboards: Component = () => {
   const [data, setData] = createSignal<LeaderboardData[]>([]);
+  const [, {setLoading}] = useLoader() as any;
 
   createEffect(() => {
-    LoadingContext.loading = true;
+    setLoading(true);
     UserService.getAllStats()
-    .then((response:any) => {
-      LoadingContext.loading = false;
+    .then((response) => {
+      toast(response.data.message);
+      setLoading(false);
       setData(response.data
         .sort((row1:GetStat, row2:GetStat) => row2.highScore - row1.highScore )
         .map((row:GetStat) => {
@@ -26,12 +29,7 @@ const Leaderboards: Component = () => {
       }))
     })
     .catch((err:any) => {
-      LoadingContext.loading = false;
-      // createToast({
-      //   title: err.response.data.message,
-      //   duration: 2000,
-      //   placement: "top-end"
-      // })
+      setLoading(false);
     })
      // eslint-disable-next-line
   }, [createEffect]);

@@ -1,7 +1,7 @@
 import { Component, createEffect } from 'solid-js';
 // import { createToast } from "./common/toaster";
 import { Player } from "../consts/Player";
-import { ILoading, LoadingContext } from "../components/common/Loader";
+import { useLoader } from "../components/common/Loader";
 import { IUser, UserContext } from "../components/common/User";
 import { Choice } from "../models/Choice";
 import { Choices } from "./Choices";
@@ -38,6 +38,7 @@ var hint = false;
 // export const Stage: React.FC<StageProps> = ({stage, handleChoice, stageIndex}) => {
 export function Stage (props: StageProps) {
   const { stage, handleChoice, stageIndex, viewClipsOnly=false } = props;
+  const [, {setLoading}] = useLoader() as any;
   // const clipRef = useRef<HTMLVideoElement>(null);
   // const neutclipRef = useRef<HTMLVideoElement>(null);
   
@@ -47,7 +48,7 @@ export function Stage (props: StageProps) {
 
   const setFocused = () => {
     isFocused.current = true;
-    LoadingContext.loading = false;
+    setLoading(false);
   }
   
   const setUnfocused = () => {
@@ -68,7 +69,7 @@ export function Stage (props: StageProps) {
   createEffect(() => {
     // clipRef.current?.pause()
     // neutclipRef.current?.pause()
-    LoadingContext.loading = true;
+    setLoading(true);
     const interval = setInterval(() => {
     // // if (clipRef.current?.paused || neutclipRef.current?.paused){
         // inactiveRef.current?.classList.remove('hidden');

@@ -1,7 +1,6 @@
 import * as menu from "@zag-js/menu";
 import { normalizeProps, useMachine } from "@zag-js/solid";
 import { createMemo, createUniqueId, Show } from "solid-js";
-import { loadFromCloud } from "~/cloudClient";
 import { PrimaryButton } from "~/components/common/Button";
 import { filterFiles } from "~/common/util";
 import { load } from "~/state/fileStore";

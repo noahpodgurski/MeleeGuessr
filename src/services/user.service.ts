@@ -30,8 +30,8 @@ const getStats = (userId:string) => {
         "Content-Type": "application/json"
       }
     })
-    .then((response:any) => {
-      return response.data;
+    .then((response) => {
+      return response;
     });
 };
 
@@ -43,8 +43,8 @@ const getAllStats = () => {
         "Content-Type": "application/json"
       }
     })
-    .then((response:any) => {
-      return response.data;
+    .then((response) => {
+      return response;
     });
 };
 
@@ -54,8 +54,8 @@ const reportClip = (clip:string | undefined) => {
   params.append('clipSrc', clip);
   return axios
     .post(`${SERVER_IP}/report-clip`, params)
-    .then((response:any) => {
-      return response.data;
+    .then((response) => {
+      return response;
     })
     .catch((err:any) => {
       // createToast({

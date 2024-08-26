@@ -6,7 +6,11 @@ export interface IUser {
 }
 
 // const UserContext = createContext<IUser>();
-export const UserContext = createMutable<IUser>({ user: null });
+export const UserContext = createMutable<IUser>({ user: {
+  id: 'test',
+  email: 'test@testy.com',
+  username: 'test'
+} });
 
 // function Base(props: { children: JSX.Element }) {
 

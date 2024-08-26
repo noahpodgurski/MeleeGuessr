@@ -1,9 +1,10 @@
 // import { createToast } from "./common/toaster";
 import { Button, Modal, Box, Typography, Input, TextField, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme, Grid } from "@suid/material";
-import { LoadingContext } from "../components/common/Loader";
+import { useLoader } from "../components/common/Loader";
 import AuthService from "../services/auth.service";
 import { Accessor, Component, createContext, createSignal } from 'solid-js';
 import { AiFillCloseCircle } from 'solid-icons/ai'
+import toast from "solid-toast";
 
 interface ILoginModal {
   showModal: Accessor<boolean>;
@@ -19,6 +20,7 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
   const [endpoint, setEndpoint] = createSignal("/login");
   const [register, setRegister] = createSignal(false);
   const theme = useTheme();
+  const [, {setLoading}] = useLoader() as any
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   // const navigate = useNavigate();
 
@@ -32,83 +34,55 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
       // })
       return;
     }
-    LoadingContext.loading = true;
+    setLoading(true)
 
     if (endpoint() === "/login"){
       AuthService.login(email(), password())
-      .then((data:any) => {
-        if (data.status === "ok"){
-          LoadingContext.loading = false;
+      .then((response) => {
+        const data = response.data;
+        setLoading(false)
+        toast(data.message);
+        if (response.status === 200){
           // navigate("/play"); //navigate somewhere after login?
           toggleShowModal();
-          // createToast({
-          //   title: data.message,
-          //   duration: 2000,
-          //   placement: "top-end"
-          // })
           updateUser();
         } else {
-          LoadingContext.loading = false;
-          // createToast({
-          //   title: data.message,
-          //   duration: 2000,
-          //   placement: "top-end"
-          // })
         }
       })
       .catch((err:any) => {
-        LoadingContext.loading = false;
-        // createToast({
-        //   title: err.response.data.message,
-        //   duration: 2000,
-        //   placement: "top-end"
-        // })
+        console.log(err);
+        console.log('err from login cb')
+        setLoading(false)
       });
     }
 
     else if (endpoint() === "/register"){
       if (username() === ""){
-        // createToast({
-        //   title: "Unknown error",
-        //     duration: 2000,
-        //     placement: "top-end"
-        // })
+        toast("Please fill out all required fields");
         return;
       }
-      LoadingContext.loading = true;
+      setLoading(true)
       AuthService.register(email(), username(), password())
-      .then((data:any) => {
-        LoadingContext.loading = false;
-        if (data.status === "ok"){
+      .then((response) => {
+        toast(response.data.message)
+        setLoading(false)
+        if (response.status === 200){
           // navigate("/play");
           setEmail("");
           setUsername("");
           setPassword("");
           setRegister(false);
           toggleShowModal();
-          // createToast({
-          //   title: data.message,
-          //   duration: 2000,
-          //   placement: "top-end"
-          // })
         } else {
-          // createToast({
-          //   title: data.message,
-          //   duration: 2000,
-          //   placement: "top-end"
-          // })
         }
       })
       .catch((err:any) => {
-        LoadingContext.loading = false;
-        // createToast({
-        //   title: err.response.data.message,
-        //   duration: 2000,
-        //   placement: "top-end"
-        // })
+        console.log(err)
+        console.log('err from register cb')
+        setLoading(false)
       });
     } else if (endpoint() === "/forgot"){
-      LoadingContext.loading = false;
+      setLoading(false)
       // do forgot stuff here todo
     }
   }
@@ -176,7 +150,7 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
           </div>
         </DialogActions>
           </form>
-      </Dialog>
+    </Dialog>
   </>
   )
 }

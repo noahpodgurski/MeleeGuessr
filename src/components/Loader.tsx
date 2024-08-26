@@ -1,11 +1,10 @@
+import { useLoader } from "./common/Loader";
 import "./Loader.css"
-interface props {
-  
-}
 
 export const Loader = () => {
-  return (
-		<div class="loader-container">			
+	const [loading] = useLoader();
+	return (
+		<div class="loader-container" hidden={!loading()}>			
 			<div class="gel c7 r2">
 				<div class="hex-brick h1"></div>
 				<div class="hex-brick h2"></div>
@@ -157,6 +156,6 @@ export const Loader = () => {
 				<div class="hex-brick h2"></div>
 				<div class="hex-brick h3"></div>
 			</div>
-    </div>
+		</div>
   );
 }
