@@ -1,7 +1,6 @@
 import { LoginModal } from "./LoginModal";
-import { IUser } from "../components/common/User";
 import { ProfileModal } from "./ProfileModal";
-import { Component, createContext, createEffect, createMemo, createSignal } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { Box, AppBar, Toolbar, IconButton, Typography, Button, Link } from "@suid/material";
 import { userStore } from "~/state/userStore";
 import { AiOutlineUser } from "solid-icons/ai";
@@ -12,13 +11,12 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
    const toggleShowLoginModal = () => setShowLoginModal(!showModal());
    const [showProfileModal, setShowProfileModal] = createSignal(false);
   const toggleShowProfileModal = () => setShowProfileModal(!showProfileModal());
-  console.log(userStore.data);
   
   
   return (
       <>
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="absolute">
+        <AppBar position="relative">
           <Toolbar>
             <IconButton
               size="large"
@@ -38,28 +36,9 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
               </Button> :
               <Button onClick={() => setShowLoginModal(!showModal())} color="inherit">Login</Button>
             }
-          </Toolbar>
-        </AppBar>
-      </Box>
-      {/* <MDBNavbar color="dark" dark expand="md">
-        <MDBNavbarNav fullWidth={false} class='mr-auto mb-2 mb-lg-0'>
-          <MDBNavbarBrand tag="span">
-            <Link to="/">
-              <strong class="logo brand" style={{marginLeft: '20px'}}>MeleeGuessr</strong>
-            </Link>
-          </MDBNavbarBrand>
-        </MDBNavbarNav>
-        <MDBNavbarNav right fullWidth={false} class='mb-2 mb-lg-0'>
-          <MDBNavbarItem style={{marginRight: "20px", alignSelf: 'center'}} active aria-current='page' onClick={toggleModal}>
-            <MDBBtn size="sm" color="light" floating tag={user ? "button" : "a"} >
-              { user ? user.username[0] : <MDBIcon fas icon='user' size='1x'/> }
-            </MDBBtn>
-          </MDBNavbarItem>
-        </MDBNavbarNav>
-      </MDBNavbar>
-      <Alert variant='danger'>
-				Unfortunately the servers are too expensive for me to maintain by myself so the website will be shutting down on 5/15/22, only 7 days after launch. Thanks for playing! - Noah
-			</Alert> */}
+            </Toolbar>
+          </AppBar>
+        </Box>
         <ProfileModal showModal={showProfileModal} setShowModal={setShowProfileModal} toggleShowModal={toggleShowProfileModal} updateUser={updateUser} />
         <LoginModal showModal={showModal} setShowModal={setShowLoginModal} toggleShowModal={toggleShowLoginModal} updateUser={updateUser} />
     </>

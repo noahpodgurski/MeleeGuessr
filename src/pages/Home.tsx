@@ -2,7 +2,7 @@ import { STARTING_STOCKS } from "../App";
 import { randomGreeting } from "../consts/Greetings";
 import { StocksContext } from "../components/common/Stocks";
 import { Component, createEffect, createMemo } from "solid-js";
-import { Button, Container, Grid } from "@suid/material";
+import { Button, Container, Grid, Typography } from "@suid/material";
 import toast from "solid-toast";
 import { useLoader } from "~/components/common/Loader";
 
@@ -14,9 +14,9 @@ export const Home: Component = () => {
 	const [loading, {setLoading}] = useLoader() as any;
   return (
     <>
-		<Grid container minHeight="100vh" justifyContent="center" alignItems="center">
+		<Grid container minHeight="90vh" justifyContent="center" alignItems="center">
 			<Container maxWidth="sm">
-			{/* Beta {process.env.REACT_APP_PUBLIC_VERSION} */}
+				<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v2.0</Typography>
 				<h1 class="logo" style={{"text-align": "center", "font-size": "2.5rem"}}>MeleeGuessr</h1>
 				<div class="centered">
 					<Button sx={{mb: 1}} color="secondary" href="/play" onClick={() => StocksContext.stocks = STARTING_STOCKS} variant="contained" style={{height: '50px', width: "200px"}}>

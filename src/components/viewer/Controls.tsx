@@ -17,9 +17,10 @@ import {
 } from "~/state/replayStore";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { useDarkMode } from "../common/Dark";
+import { AiFillBulb, AiTwotoneBulb } from "solid-icons/ai";
 
 export function Controls() {
-  const [darkMode,] = useDarkMode() as any;
+  const [darkMode, {toggle}] = useDarkMode() as any;
   onMount(() => {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
@@ -116,6 +117,7 @@ export function Controls() {
 
 
   let seekbarInput!: HTMLInputElement;
+  console.log(`controls: ${darkMode}`)
 
   return (
     <div class={`flex flex-wrap items-center justify-evenly gap-4 rounded-b border border-t-0 py-1 px-2 text-slate-50`}>
@@ -191,13 +193,7 @@ export function Controls() {
         max={replayStore.replayData!.frames.length - 1}
         onInput={() => jump(seekbarInput.valueAsNumber)}
       />
-      <div
-        class="material-icons cursor-pointer text-[32px]"
-        onClick={() => toggleFullscreen()} //todo fix
-        aria-label="Toggle fullscreen mode"
-      >
-        {replayStore.isFullscreen ? "fullscreen_exit" : "fullscreen"}
-      </div>
+      {darkMode() ? <AiTwotoneBulb onClick={toggle} /> : <AiFillBulb onClick={toggle} />}
     </div>
   );
 }

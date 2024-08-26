@@ -88,6 +88,10 @@ const [replayState, setReplayState] = createStore<ReplayStore>(
 
 export const replayStore = replayState;
 
+export function setStartFrame(startFrame: number): void {
+  setReplayState("startFrame", startFrame);
+}
+
 export function speedNormal(): void {
   batch(() => {
     setReplayState("fps", 60);

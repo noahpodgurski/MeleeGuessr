@@ -19,10 +19,10 @@ export function PlayerHUD(props: { player: number }) {
   const name = createMemo(() =>
     renderData()
       ? [
-          renderData()!.playerSettings.displayName,
-          renderData()!.playerSettings.connectCode,
+          // renderData()!.playerSettings.displayName,
+          // renderData()!.playerSettings.connectCode,
           renderData()!.playerSettings.nametag,
-          renderData()!.playerSettings.displayName,
+          // renderData()!.playerSettings.displayName,
           characterNameByInternalId[
             renderData()!.playerState.internalCharacterId
           ],

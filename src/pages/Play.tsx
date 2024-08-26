@@ -20,7 +20,9 @@ import "~/state/replayStore";
 import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
 import { currentSelectionStore } from "~/state/selectionStore";
-import { replayStore } from "~/state/replayStore";
+import { replayStore, setStartFrame } from "~/state/replayStore";
+import { play, playStore } from "~/state/playStore";
+import { loadFromCloud } from "~/cloudClient";
 
 export type PlayData = {
   stage: number;
@@ -43,13 +45,15 @@ export const Play = () => {
   const [HS, setHS] = createSignal(false);
   const [currStage, setCurrStage] = createSignal<StageType | null>(null);
   
-  createEffect(() => {
-    if (clips.length === 0) {
-      const fetchData = async () => {
-        // await getClips(); //todo
-      };
-      fetchData();
-    }
+  createEffect(async () => {
+    await play();
+    doPlay();
+    // if (clips.length === 0) {
+    //   // const fetchData = async () => {
+    //   //   // await getClips(); //todo
+    //   // };
+    //   // fetchData();
+    // }
   });
 
   const schliceClip = () => {
@@ -115,26 +119,39 @@ export const Play = () => {
     }
   });
 
-  const doPlay = () => {
-    try {
-      void fetch(url)
-        .then(async (response) => await response.blob())
-        .then((blob) => new File([blob], url.split("/").at(-1) ?? "url.slp"))
-        .then(async (file) => {
-          // toast.promise(load([file], startFrame), {
-          //   loading: "Parsing files...",
-          //   success: "Successfully loaded files",
-          //   error: "error"
-          // })
-          await load([file], startFrame)
-          const _file = currentSelectionStore().data.filteredStubs;
-          if (_file.length > 0) {
-            await currentSelectionStore().select(_file[0]);
-          }
-        });
-    } catch (e) {
-      console.error("Error: could not load replay", url, e);
+  const doPlay = async () => {
+    // 1. doPlay (request at /play)
+    // 2. 
+    // const url = new URLSearchParams(location.search).get("replayUrl");
+
+    // const url = "../slp-test/test.slp";
+    if (!playStore.currentClip) return;
+    const url = playStore.currentClip.path;
+    const startFrame = playStore.currentClip.startFrame;
+    setStartFrame(startFrame);
+    if (url !== null) {
+      try {
+        void fetch(`https://meleeguessr-v2-clips.s3.amazonaws.com/${url}`)
+          .then(async (response) => await response.blob())
+          .then((blob) => new File([blob], url))
+          .then(async (file) => {
+            // toast.promise(load([file], startFrame), {
+            //   loading: "Parsing files...",
+            //   success: "Successfully loaded files",
+            //   error: "error"
+            // })
+
+            await load([file], startFrame)
+            const _file = currentSelectionStore().data.filteredStubs;
+            if (_file.length > 0) {
+              await currentSelectionStore().select(_file[0]);
+            }
+          });
+      } catch (e) {
+        console.error("Error: could not load replay", url, e);
+      }
     }
+
   }
 
   const updateStage = (clip: Clip) => {
@@ -166,34 +183,6 @@ export const Play = () => {
       incorrectChoices: incorrectChoices,
     });
   };
-
-  // 1. doPlay (request at /play)
-  // 2. 
-  // const url = new URLSearchParams(location.search).get("replayUrl");
-
-  const url = "../slp-test/test.slp";
-  const startFrame = replayStore.startFrame;
-  if (url !== null) {
-    try {
-      void fetch(url)
-        .then(async (response) => await response.blob())
-        .then((blob) => new File([blob], url.split("/").at(-1) ?? "url.slp"))
-        .then(async (file) => {
-          // toast.promise(load([file], startFrame), {
-          //   loading: "Parsing files...",
-          //   success: "Successfully loaded files",
-          //   error: "error"
-          // })
-          await load([file], startFrame)
-          const _file = currentSelectionStore().data.filteredStubs;
-          if (_file.length > 0) {
-            await currentSelectionStore().select(_file[0]);
-          }
-        });
-    } catch (e) {
-      console.error("Error: could not load replay", url, e);
-    }
-  }
 
   const reportClip = () => {
     // UserService.reportClip(currStage()?.clipSrc)

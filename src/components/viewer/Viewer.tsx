@@ -17,17 +17,6 @@ export function Viewer() {
   const [darkMode, {toggle}] = useDarkMode() as any;
   return (
     <div class="flex flex-col overflow-y-auto pb-4">
-      <ToggleButton
-        value="check"
-        class={darkMode() ? "text-white strike-through" : "text-white"}
-        color={darkMode() ? "error" : "primary"}
-        selected={darkMode()}
-        onChange={() => {
-          toggle()
-        }}
-      >
-        Dark Mode
-      </ToggleButton>
       <Show when={replayStore.replayData}>
         <svg class={`rounded-t border ${darkMode() ? "bg-zinc-800" : "bg-slate-50"}`} viewBox="-365 -300 730 600">
           {/* up = positive y axis */}
