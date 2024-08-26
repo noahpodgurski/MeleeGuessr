@@ -1,5 +1,5 @@
 import axios from "axios";
-const SERVER_IP = "https://4n2r6yqfoe.execute-api.us-east-1.amazonaws.com/Prod";
+const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod";
 // if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
   const params = new URLSearchParams();

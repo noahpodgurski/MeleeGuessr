@@ -1,8 +1,9 @@
 // import { createToast } from "./common/toaster";
-import { Button, Modal, Box, Typography, Input, TextField, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from "@suid/material";
+import { Button, Modal, Box, Typography, Input, TextField, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, useMediaQuery, useTheme, Grid } from "@suid/material";
 import { LoadingContext } from "../components/common/Loader";
 import AuthService from "../services/auth.service";
 import { Accessor, Component, createContext, createSignal } from 'solid-js';
+import { AiFillCloseCircle } from 'solid-icons/ai'
 
 interface ILoginModal {
   showModal: Accessor<boolean>;
@@ -17,6 +18,8 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
   const [password, setPassword] = createSignal("");
   const [endpoint, setEndpoint] = createSignal("/login");
   const [register, setRegister] = createSignal(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   // const navigate = useNavigate();
 
   const handleSubmit = (e:any) => {
@@ -118,9 +121,20 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
         open={showModal()}
         fullWidth={true}
         maxWidth="sm"
+        fullScreen={fullScreen()}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Login
+          <Grid container direction="row" alignContent="space-between" justifyContent="space-between">
+              Login
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={toggleShowModal}
+                aria-label="close"
+                >
+                <AiFillCloseCircle />
+              </IconButton>
+          </Grid>
         </DialogTitle>
         <IconButton
           aria-label="close"
