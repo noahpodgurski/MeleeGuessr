@@ -20,6 +20,7 @@ import { createTheme, CssBaseline, ThemeProvider } from "@suid/material";
 import { purple, grey } from "@suid/material/colors";
 import { LoaderProvider } from "./components/common/Loader";
 import { Loader } from "./components/Loader";
+import { loadUser } from "./state/userStore";
 export const STARTING_STOCKS = 4;
 
 interface ICount {
@@ -59,6 +60,7 @@ export const App = () => {
   onMount(() => {
     setLoading(false);
     updateUser();
+    loadUser();
   });
 
   const updateUser = () => {

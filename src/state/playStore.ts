@@ -3,6 +3,7 @@ const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod";
 // todo - move to .env or something
 
 import { createStore } from "solid-js/store";
+import { userStore } from "./userStore";
 export interface PlayStore {
     currentClip?: {
         path: string,
@@ -29,10 +30,18 @@ const [state, setState] = createStore<PlayStore>();
 
 export const playStore = state;
 export async function play(): Promise<AxiosResponse> {
-  return await axios.get(`${SERVER_IP}/play`)
+  let headers: any = {};
+  let params: any = {};
+  if (userStore.data) {
+    headers.authorization = `Bearer ${userStore.data}`;
+  }
+  params.sessionId = playStore.sessionId || localStorage.getItem("session");
+
+  return await axios.get(`${SERVER_IP}/play`, {headers, params})
   .then((response) => {
     setState("currentClip", response.data.data.currentClip);
     setState("sessionId", response.data.data.sessionId);
+    localStorage.setItem("session", response.data.data.sessionId); //todo do jwt for this too
     return response;
   });
 }

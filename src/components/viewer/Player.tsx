@@ -24,7 +24,7 @@ export function Players() {
               //render question mark
               <path 
               // transform="translate(10, 10)"
-              transform={`${renderData.transforms[0]} scale(1,-1) translate(-2.5, -40)`}
+              transform={`${renderData.transforms[0]} scale(.5,-.5) translate(-2.5, -40)`}
               fill-opacity={.4}
               fill="red"
               // transform="scale(.1 -.1) translate(-500 -500)"

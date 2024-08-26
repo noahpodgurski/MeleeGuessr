@@ -1,26 +1,6 @@
 import { ReplayData } from "~/common/types";
 import { ReplayStub } from "~/state/selectionStore";
 
-interface ReplayRow {
-  id: number;
-  created_at: string;
-  file_name: string;
-  played_on: string;
-  num_frames: number;
-  external_stage_id: number;
-  is_teams: boolean;
-  players: {
-    player_index: number;
-    connect_code: string;
-    display_name: string;
-    nametag: string;
-    external_character_id: number;
-    team_id: number;
-  }[];
-}
-
-type InsertRow = Omit<ReplayRow, "created_at" | "id">;
-
 export async function downloadReplay(
   name: string
 ): Promise<{ data: Blob | null; error: Error | null }> {

@@ -11,7 +11,8 @@ export const Home: Component = () => {
 		return randomGreeting();
 	}, [])
 
-	const [loading, {setLoading}] = useLoader() as any;
+	const [, {setLoading}] = useLoader() as any;
+	setLoading(false);
   return (
     <>
 		<Grid container minHeight="90vh" justifyContent="center" alignItems="center">

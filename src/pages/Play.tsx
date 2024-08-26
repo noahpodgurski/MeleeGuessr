@@ -20,9 +20,9 @@ import "~/state/replayStore";
 import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
 import { currentSelectionStore } from "~/state/selectionStore";
-import { replayStore, setStartFrame } from "~/state/replayStore";
+import { setStartFrame } from "~/state/replayStore";
 import { play, playStore } from "~/state/playStore";
-import { loadFromCloud } from "~/cloudClient";
+import { useLoader } from "~/components/common/Loader";
 
 export type PlayData = {
   stage: number;
@@ -44,10 +44,15 @@ export const Play = () => {
   const [showChoiceResult, setShowChoiceResult] = createSignal(false);
   const [HS, setHS] = createSignal(false);
   const [currStage, setCurrStage] = createSignal<StageType | null>(null);
+  const [, {setLoading}] = useLoader();
   
   createEffect(async () => {
-    await play();
-    doPlay();
+    if (!playStore.currentClip) {
+      setLoading(true);
+      await play();
+      await doPlay();
+      setLoading(false);
+    }
     // if (clips.length === 0) {
     //   // const fetchData = async () => {
     //   //   // await getClips(); //todo

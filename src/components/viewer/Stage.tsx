@@ -293,14 +293,14 @@ function YoshisStory() {
       <Grid blastzones={blastzones} />
       <polyline
         points={mainStage.join(" ")}
-        class={darkMode() ? "fill-slate-600 stroke-slate-600" : "fill-slate-800 stroke-slate-800"}
+        class={darkMode() ? "fill-slate-50 stroke-slate-50" : "fill-slate-800 stroke-slate-800"}
       />
       <For each={platforms}>
         {(points) => (
           <polyline points={points.join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
         )}
       </For>
-      <polyline points={randall().join(" ")} class="stroke-slate-400" />
+      <polyline points={randall().join(" ")} class={darkMode() ? "stroke-slate-50" : "stroke-slate-800"} />
       <rect
         x={blastzones[0][0]}
         y={blastzones[0][1]}
