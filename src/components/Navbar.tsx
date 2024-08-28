@@ -17,7 +17,7 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
       <>
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="relative">
-          <Toolbar>
+          <Toolbar variant="dense">
             <IconButton
               size="large"
               edge="start"
@@ -32,7 +32,7 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
             
 			      { userStore.data !== null ?
               <Button  onClick={() => setShowProfileModal(!showProfileModal())} >
-                <AiOutlineUser />
+                <AiOutlineUser size={24} />
               </Button> :
               <Button onClick={() => setShowLoginModal(!showModal())} color="inherit">Login</Button>
             }

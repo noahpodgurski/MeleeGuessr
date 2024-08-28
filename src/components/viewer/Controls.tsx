@@ -117,7 +117,6 @@ export function Controls() {
 
 
   let seekbarInput!: HTMLInputElement;
-  console.log(`controls: ${darkMode}`)
 
   return (
     <div class={`flex flex-wrap items-center justify-evenly gap-4 rounded-b border border-t-0 py-1 px-2 text-slate-50`}>

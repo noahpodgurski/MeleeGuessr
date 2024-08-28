@@ -21,8 +21,11 @@ import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { setStartFrame } from "~/state/replayStore";
-import { play, playStore } from "~/state/playStore";
+import { makeGuess, play, playStore } from "~/state/playStore";
 import { useLoader } from "~/components/common/Loader";
+import { characterNameByExternalId } from "~/common/ids";
+import { Button } from "@suid/material";
+import { Choices } from "~/components/Choices";
 
 export type PlayData = {
   stage: number;
@@ -61,57 +64,7 @@ export const Play = () => {
     // }
   });
 
-  const schliceClip = () => {
-    if (clips.length !== 0) {
-      const [clip, slicedIndex] = RandomChoice(clips) as [Clip, number];
-      clips.splice(slicedIndex, 1);
-      updateStage(clip);
-    }
-  };
-
-  createEffect(() => {
-    if (StocksContext.stocks === STARTING_STOCKS) {
-      const _clips = ClipsContext.Clips.filter((clip: Clip) => clip?.player.label !== "TEST");
-      clips = _clips;
-      schliceClip();
-    }
-  });
-
-  createEffect(() => {
-    schliceClip();
-  });
-
-  const handleChoice = (choice: Choice, correctChoice: Choice) => {
-    setTimeout(() => {
-      if (choice.label === correctChoice.label) {
-        setScore(score() + BASE_POINTS);
-        playData.push({
-          stage: stage(),
-          wasCorrect: true,
-          choice: choice.label,
-        });
-      } else {
-        playData.push({
-          stage: stage(),
-          wasCorrect: false,
-          choice: choice.label,
-          correctChoice: correctChoice.label,
-        });
-        StocksContext.stocks--;
-      }
-
-      if (UserContext.user?.id) {
-        UserService.updateStats({
-          userId: UserContext.user.id,
-          username: UserContext.user.username,
-          wasCorrect: choice.label === correctChoice.label,
-          score: choice.label === correctChoice.label ? score() + BASE_POINTS : score(),
-          final: choice.label !== correctChoice.label && StocksContext.stocks === 1,
-        });
-      }
-      setStage(stage() + 1);
-    }, choiceTime);
-  };
+  
 
   createEffect(() => {
     const x = Number(localStorage.getItem("HS"));
@@ -129,14 +82,16 @@ export const Play = () => {
     // 2. 
     // const url = new URLSearchParams(location.search).get("replayUrl");
 
-    // const url = "../slp-test/test.slp";
     if (!playStore.currentClip) return;
-    const url = playStore.currentClip.path;
+    // const url = "../slp-test/test.slp";
+    const debug = false;
+    const url = debug ? '../slp-test/test.slp' : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
     const startFrame = playStore.currentClip.startFrame;
+    console.log(startFrame)
     setStartFrame(startFrame);
     if (url !== null) {
       try {
-        void fetch(`https://meleeguessr-v2-clips.s3.amazonaws.com/${url}`)
+        void fetch(url)
           .then(async (response) => await response.blob())
           .then((blob) => new File([blob], url))
           .then(async (file) => {
@@ -146,7 +101,7 @@ export const Play = () => {
             //   error: "error"
             // })
 
-            await load([file], startFrame)
+            await load([file], debug ? 0 : startFrame)
             const _file = currentSelectionStore().data.filteredStubs;
             if (_file.length > 0) {
               await currentSelectionStore().select(_file[0]);
@@ -159,62 +114,6 @@ export const Play = () => {
 
   }
 
-  const updateStage = (clip: Clip) => {
-    const incorrectChoices: Choice[] = [];
-
-    const randomPlayers: string[] = shuffleArray(Object.keys(Player));
-    for (const player of randomPlayers) {
-      const characters = Player[player].characters || [];
-      const conditionalCharacters = Player[player].conditionalCharacters || {};
-      const clipChar = clip?.character || Character.Bowser;
-      const oppChar = clip?.oppChar || Character.Bowser;
-
-      const _ = conditionalCharacters[clipChar] || [];
-
-      if (
-        player !== clip?.player.label &&
-        player !== Player["TEST"].label &&
-        (characters.includes(clipChar) || _.includes(oppChar))
-      ) {
-        incorrectChoices.push(Player[player]);
-
-        if (incorrectChoices.length >= 3) break;
-      }
-    }
-    setCurrStage({
-      clipSrc: clip?.clipSrc || "",
-      character: clip?.character || "",
-      correctChoice: clip?.player || Player.TEST,
-      incorrectChoices: incorrectChoices,
-    });
-  };
-
-  const reportClip = () => {
-    // UserService.reportClip(currStage()?.clipSrc)
-    //   .then((data: any) => {
-    //     if (data.status === "success") {
-    //       createToast({
-    //         title: data.message,
-    //         duration: 2000,
-    //         placement: "top-end"
-    //       })
-    //     } else {
-    //       createToast({
-    //         title: data.message,
-    //         duration: 2000,
-    //         placement: "top-end"
-    //       })
-    //     }
-    //   })
-    //   .catch((err: any) => {
-    //     createToast({
-    //       title: err.response.data.message,
-    //       duration: 2000,
-    //       placement: "top-end"
-    //     })
-    //   });
-  };
-
   const reset = () => {
     playData = [];
     clips = [];
@@ -225,19 +124,35 @@ export const Play = () => {
     setShowChoiceResult(false);
     setHS(false);
   };
+  
+  const [showAnswers, setShowAnswers] = createSignal(true);
+  const [answer, setAnswer] = createSignal("")
+  let correct = false;
 
-  const hands = createMemo(() => {
-    const _hands = [];
-    for (let i = 0; i < StocksContext.stocks; i++) {
-      _hands.push(<img class="hand" alt="hand" src={"/logo.png"} />);
-    }
-    return _hands;
-  });
+  const guess = async (choice: string) => {
+    const response = await makeGuess(choice);
+    correct = response.data.message === "Correct";
+    setAnswer(response.data.data);
+    setShowAnswers(true);
+    //show correct answers for 2 seconds
+    await new Promise((r) => setTimeout(r, 2000));
+    //todo request next while showing answers
+    setLoading(true);
+    await play();
+    await doPlay();
+    setLoading(false);
+  }
 
   return (
-    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "100vh", margin: "auto"}}>
+    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "90vh", margin: "auto"}}>
       <div class="row justify-content-center w-100">
         <Viewer />
+      </div>
+      <div class="row justify-content-center" style={{"text-align": 'center'}}>
+        { playStore.currentClip && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
+      </div>
+      <div class="row mt-4" style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
+        <Choices guess={guess} answer={answer()} />
       </div>
     </div>
   );
