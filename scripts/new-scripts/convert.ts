@@ -29,11 +29,12 @@ import cliProgress from 'cli-progress';
 import byteSize from 'byte-size';
 import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-generator';
 import { FileData, getCharacterAndPlayerData } from './addCharacterToJson';
+import { SlippiGame } from '@slippi/slippi-js';
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
-const HIGHLIGHTS_FILE = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\highlights.json"
+const HIGHLIGHTS_FILE = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\TEST\\highlights.json"
 
-const SUB_DIR = "spark"
+const SUB_DIR = "test"
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
 const CLIP_FILE = path.join(CLIP_DIR, "clips.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
@@ -92,6 +93,9 @@ function cutSlp () {
         for (let i = 0; i < highlights.length; i++) {
             bar1.update(i);
             let highlight = highlights[i];
+            //get character and player info
+            const data = await getCharacterAndPlayerData(highlight.path, highlight);
+            console.log(data)
             const gameName = highlight.path.match(gameMatchRegex);
             if (!gameName || !gameName[0]) {
                 console.log('unable to find a match');
@@ -107,11 +111,14 @@ function cutSlp () {
             highlight.clipName = newName;
             highlight.path = outFile;
             
-            //get character and player info
-            const data = await getCharacterAndPlayerData(highlight.path, highlight);
-            console.log(data)
             if (!data) throw Error("unable to get character and player data");
             fileData.push(data);
+
+            //verify cut slps
+            const verifySlp = new SlippiGame(outFile);
+            const _ = verifySlp.getFrames()
+            console.log(`${path.basename(outFile)} is valid .slp :)`)
+
         }
 
 

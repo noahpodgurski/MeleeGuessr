@@ -1,4 +1,4 @@
-import { SlippiGame } from '@slippi/slippi-js'; // Import necessary modules
+import { SlippiGame } from '@slippi/slippi-js';
 import fs from "fs";
 import { Highlight } from './convert';
 

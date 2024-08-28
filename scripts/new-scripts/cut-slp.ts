@@ -1,9 +1,7 @@
 import { decode, encode } from "@shelacek/ubjson";
 import fs from 'fs';
-import { UbjsonEncoder } from "@shelacek/ubjson";
-import path from "path";
-import { Frame, GameEnding } from "./common/types";
-import { readUint, parseEventPayloadsEvent, parseGameStartEvent, firstVersion, handleFrameStartEvent, handleItemUpdateEvent, handlePostFrameUpdateEvent, handlePreFrameUpdateEvent } from "./parser/parser";
+import { Frame } from "./common/types";
+import { readUint, parseEventPayloadsEvent, parseGameStartEvent, firstVersion, handleFrameStartEvent, handleItemUpdateEvent, handlePostFrameUpdateEvent, handlePreFrameUpdateEvent, clearData } from "./parser/parser";
 
 
 
@@ -25,7 +23,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
     raw.byteOffset
     // baseJson.raw.byteLength
   );
-  const slicedData = new Uint8Array(fileSize); //20MB buffer - should be enough for any slp file :shrug:
+  const slicedData = new Uint8Array(fileSize);
   
   const length = readUint(
     rawData,
@@ -182,9 +180,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
 
 export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endFrame: number): Promise<number> {
   try {
-    console.log('here1')
     const fd = await fs.promises.open(inFile, 'r');
-    console.log('here2')
     // if (err) {
     //   console.error('Error opening file:', err);
     //   return Promise.resolve();
@@ -193,10 +189,6 @@ export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endF
     // Get the file stats to know the size
     const stats = await fd.stat()
     console.log(`size is ${stats.size}`)
-    // if (err) {
-    //   console.error('Error getting file stats:', err);
-    //   return Promise.resolve();
-    // }
 
     // Create a Buffer to hold the file contents
     const size = Buffer.alloc(stats.size);
@@ -204,11 +196,6 @@ export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endF
     
     // Read the file into the buffer
     const { buffer } = await fd.read(size, 0, stats.size, null);
-    // console.log('can we find the buffer?')
-    // if (err) {
-    //   console.error('Error reading file:', err);
-    //   return Promise.resolve();
-    // }
 
     // Convert the Buffer into an ArrayBuffer
     const arrayBuffer = buffer.buffer.slice(
@@ -219,7 +206,7 @@ export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endF
     const data = decode(arrayBuffer, { useTypedArrays:true});
 
     const dataSaved = await clipReplay(data, stats.size, outFile, 0, endFrame);
-
+    await readFileAndCutNamesAndMetadata(outFile, outFile);
     // Don't forget to close the file descriptor
     await fd.close();
     return dataSaved;
@@ -229,58 +216,94 @@ export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endF
   }
 }
 
-function cutMetadata(file: fs.PathLike) {
-  fs.open(file, 'r', (err, fd) => {
-    if (err) {
-      console.error('Error opening file:', err);
-      return;
-    }
-  
-    // Get the file stats to know the size
-    fs.fstat(fd, (err, stats) => {
-      if (err) {
-        console.error('Error getting file stats:', err);
-        return;
-      }
-  
-      // Create a Buffer to hold the file contents
-      const buffer = Buffer.alloc(stats.size);
-  
-      // Read the file into the buffer
-      fs.read(fd, buffer, 0, stats.size, null, (err, bytesRead, buffer) => {
-        if (err) {
-          console.error('Error reading file:', err);
-          return;
-        }
-        const data = decode(buffer.buffer, { useTypedArrays:true});
-        delete data.metadata;
-  
-        const d = new DataView(
-          data.raw.buffer
-        )
-        
-        // const encoder = new UbjsonEncoder();
-        // const test1 = encoder.encode(data);
-        const deletedMetadata = new DataView(
-          d.buffer
-          // data.raw.byteOffset,
-          // data.raw.byteLength
-        );
-        
-        // const test2 = Buffer.from(data);
-        // const test2 = encoder.encode(data);
-        fs.writeFile('no-metadata.slp', deletedMetadata, (err) => {
+function cutMetadataAndNames(
+    rawData: DataView,
+    offset: number,
+  ): ArrayBuffer {
+  const replayFormatVersion = [
+    readUint(rawData, 8, firstVersion, firstVersion, offset + 0x01),
+    readUint(rawData, 8, firstVersion, firstVersion, offset + 0x02),
+    readUint(rawData, 8, firstVersion, firstVersion, offset + 0x03),
+    readUint(rawData, 8, firstVersion, firstVersion, offset + 0x04),
+  ].join(".");
+  const settings: any = {}
+  settings.playerSettings = {};
+  for (let playerIndex = 0; playerIndex < 4; playerIndex++) {
+    const playerType = readUint(
+      rawData,
+      8,
+      replayFormatVersion,
+      firstVersion,
+      offset + 0x66 + 0x24 * playerIndex
+    );
+    if (playerType === 3) continue;
 
-        });
+    clearData(rawData, offset + 0x161 + 0x10 * playerIndex, 9); //nametag
+    clearData(rawData, offset + 0x1a5 + 0x1f * playerIndex, 16);//display name
+    clearData(rawData, offset + 0x221 + 0x0a * playerIndex, 10);//connect code
+    clearData(rawData, offset + 0x249 + 0x1d * playerIndex, 28);//slippi uid
+  }
   
-        // Don't forget to close the file descriptor
-        fs.close(fd, (err) => {
-          if (err) console.error('Error closing file:', err);
-        });
-      });
-    });
-  });
+  clearData(rawData, offset + 0x1a5, 16, true);//display name
+
+  return rawData.buffer;
 }
 
-// schliceSlp("test.slp", "C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr\\scripts\\new-scripts\\test.slp", 10542);
-// cutMetadata("C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr\\scripts\\new-scripts\\test.slp") //todo
+
+// const testFilePath = "C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr\\scripts\\new-scripts\\test.slp"
+// cutMetadataAndNames(testFilePath) //todo
+const readFileAndCutNamesAndMetadata = async (inFile: fs.PathLike, outFile: fs.PathLike) => {
+  const fd = await fs.promises.open(inFile, 'r');
+  // if (err) {
+  //   console.error('Error opening file:', err);
+  //   return Promise.resolve();
+  // }
+  
+  // Get the file stats to know the size
+  const stats = await fd.stat()
+  console.log(`size is ${stats.size}`)
+
+  // Create a Buffer to hold the file contents
+  const size = Buffer.alloc(stats.size);
+  // console.log('can we make the size thing?')
+  
+  // Read the file into the buffer
+  const { buffer } = await fd.read(size, 0, stats.size, null);
+
+  // Convert the Buffer into an ArrayBuffer
+  const arrayBuffer = buffer.buffer.slice(
+    buffer.byteOffset,
+    buffer.byteOffset + buffer.byteLength
+  );
+
+  let data = decode(arrayBuffer, { useTypedArrays:true});
+  //what causes the {U to {i
+  delete data.metadata;
+  const encoded = encode(data, { optimizeArrays: true }); //it's
+  data = decode(encoded, { useTypedArrays: true });       //this
+  const rawData = new DataView(
+    data.raw.buffer,
+    // data.raw.byteOffset
+    0
+  )
+  //convert it back
+  rawData.setUint8(1, 0x55);
+  const commandPayloadSizes = parseEventPayloadsEvent(rawData, data.raw.byteOffset);
+  const cutNames = cutMetadataAndNames(
+    rawData, 
+    data.raw.byteOffset + 0x01 + commandPayloadSizes[0x35],
+  );
+  await fd.close();
+  console.log(`cut metadata and names and writing to ${outFile}`)
+  await fs.promises.writeFile(outFile, Buffer.from(cutNames))
+}
+
+//testing
+const x = async () => {
+  // await test("test.slp");
+  // const game = new SlippiGame("cut-names.slp")
+  // console.log(game.getFrames()[-1] === null)
+
+  schliceSlp("test.slp", "C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr\\scripts\\new-scripts\\out.slp", 1052);
+};
+x();

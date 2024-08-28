@@ -953,7 +953,7 @@ export function readUint(
   }
 }
 
-function readFloat(
+export function readFloat(
   rawData: DataView,
   size: 32 | 64,
   replayVersion: string,
@@ -973,7 +973,7 @@ function readFloat(
   }
 }
 
-function readInt(
+export function readInt(
   rawData: DataView,
   size: 8 | 16 | 32,
   replayVersion: string,
@@ -995,7 +995,7 @@ function readInt(
   }
 }
 
-function readShiftJisString(
+export function readShiftJisString(
   rawData: DataView,
   replayVersion: string,
   firstVersionPresent: string,
@@ -1039,4 +1039,31 @@ function toHalfWidth(s: string): string {
   return s.replace(/[！-～]/g, function (r) {
     return String.fromCharCode(r.charCodeAt(0) - 0xfee0);
   });
+}
+
+// Function to clear data within a specified range
+export function clearData(dataView: DataView, offset: number, length: number, beCocky: boolean=false) {
+  // console.log(`Clearing data from offset ${offset} for ${length} bytes.`);
+  
+  for (let i = 0; i < length; i++) {
+    dataView.setUint8(offset + i, 0);  // Set each byte to 0
+  }
+  if (beCocky) {
+    // nice try
+    // 6E 69 63 65 20 74 72 79
+    dataView.setUint8(offset + 0, 0x6e);
+    dataView.setUint8(offset + 1, 0x69);
+    dataView.setUint8(offset + 2, 0x63);
+    dataView.setUint8(offset + 3, 0x65);
+    dataView.setUint8(offset + 4, 0x20);
+    dataView.setUint8(offset + 5, 0x74);
+    dataView.setUint8(offset + 6, 0x72);
+    dataView.setUint8(offset + 7, 0x79);
+  }
+
+  // Debug: Check cleared data
+  // console.log('Data after clearing:');
+  // for (let i = 0; i < length; i++) {
+  //   console.log(dataView.getUint8(offset + i));  // This should print 0
+  // }
 }
