@@ -113,12 +113,12 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
         }
     }
 
-    const char1StartStocks = charStartStocks[ports[0]] ?? -100;
-    const char1EndStocks = charEndStocks[ports[0]] ?? -100;
-    const char2StartStocks = charStartStocks[ports[1]] ?? -100;
-    const char2EndStocks = charEndStocks[ports[1]] ?? -100;
+    const char1StartStocks = charStartStocks[ports[0]] ?? 4; // 4
+    const char1EndStocks = charEndStocks[ports[0]] ?? char1StartStocks; //4
+    const char2StartStocks = charStartStocks[ports[1]] ?? 4; 
+    const char2EndStocks = charEndStocks[ports[1]] ?? char2StartStocks;
     console.log(char1StartStocks, char1EndStocks, char2StartStocks, char2EndStocks)
-    if (char1StartStocks === -100 && char1EndStocks === -100 && char2StartStocks === -100 && char2EndStocks === -100) {
+    if (char1StartStocks === char1EndStocks && char2StartStocks === char2EndStocks) {
         console.error('no start/end stock resolution')
         return null
     };
@@ -134,7 +134,7 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
 
     if (char1StartStocks - char1EndStocks < char2StartStocks - char2EndStocks) {
         // char1 wins
-        portToGuess = 0;
+        portToGuess = ports[0];
         character = characterIds[0];
         characterColor = characterColors[0];
         oppCharacter = characterIds[1];
@@ -143,7 +143,7 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
         oppPlayer = players[1];
     } else if (char1StartStocks - char1EndStocks > char2StartStocks - char2EndStocks) {
         // char2 wins
-        portToGuess = 1;
+        portToGuess = ports[1];
         character = characterIds[1];
         characterColor = characterColors[1];
         oppCharacter = characterIds[0];
@@ -157,7 +157,7 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
             const char2Stocks = frames[i].players[ports[1]]?.post.stocksRemaining;
 
             if (char1Stocks !== char1EndStocks || char1Stocks === char1StartStocks) {
-                portToGuess = 1;
+                portToGuess = ports[1];
                 character = characterIds[1];
                 characterColor = characterColors[1];
                 oppCharacter = characterIds[0];
@@ -166,7 +166,7 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
                 oppPlayer = players[0];
                 break;
             } else if (char2Stocks !== char2EndStocks || char1Stocks === char1StartStocks) {
-                portToGuess = 0;
+                portToGuess = ports[0];
                 character = characterIds[0];
                 characterColor = characterColors[0];
                 oppCharacter = characterIds[1];
