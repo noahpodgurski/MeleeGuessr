@@ -20,12 +20,12 @@ export const Home: Component = () => {
 				<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v2.0</Typography>
 				<h1 class="logo" style={{"text-align": "center", "font-size": "2.5rem"}}>MeleeGuessr</h1>
 				<div class="centered">
-					<Button fullWidth sx={{mb: 1}} color="secondary" href="/play" onClick={() => StocksContext.stocks = STARTING_STOCKS} variant="contained" style={{height: '50px'}}>
+					<Button sx={{mb: 1}} color="secondary" href="/play" onClick={() => StocksContext.stocks = STARTING_STOCKS} variant="contained" style={{height: '50px', width: '50%'}}>
 						Play
 					</Button>
 				</div>
 				<div class="centered">
-					<Button fullWidth href="/leaderboards" onClick={() => StocksContext.stocks = STARTING_STOCKS} class="w-100" variant="contained" style={{height: '50px'}} color="success" >Leaderboards</Button>
+					<Button href="/leaderboards" onClick={() => StocksContext.stocks = STARTING_STOCKS} class="w-100" variant="contained" style={{height: '50px', width: '50%'}} color="success" >Leaderboards</Button>
 				</div>
 				{/* <h5 class="centered text-white">{greeting()}</h5> */}
 			</Container>

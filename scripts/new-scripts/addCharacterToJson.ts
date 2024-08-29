@@ -4,6 +4,8 @@ import { Highlight } from './convert';
 
 export interface FileData {
   path: string;
+  ogPath?: string;
+  tournament?: string;
   endFrame: number;
   startFrame: number;
   characterId: number | null;
@@ -32,8 +34,10 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
         game = new SlippiGame(slpFile);
         settings = game.getSettings();
         frames = game.getFrames();
-        stats = game.getStats();
-        metadata = game.getMetadata();
+    } catch(err) {}
+    try {
+        stats = game!.getStats();
+        metadata = game!.getMetadata();
     } catch (error) {
         return null; // Skip this file if it fails to lonull;
     }
@@ -92,18 +96,29 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
 
     // Determine stocks at start and end frames
     let endFrame = highlight.endFrame;
-    const char1StartStocks = frames[highlight.startFrame].players[ports[0]]?.post.stocksRemaining;
-    const char2StartStocks = frames[highlight.startFrame].players[ports[1]]?.post.stocksRemaining;
-
+    
     if (endFrame > stats.lastFrame) {
         endFrame = stats.lastFrame;
     }
+    
+    const charStartStocks: [number | null | undefined] = [undefined];
+    const charEndStocks: [number | null | undefined] = [undefined];
+    for (let i = 0; i < 4; i++) {
+        charStartStocks[i] = frames[highlight.startFrame].players[ports[0]]?.post.stocksRemaining;
+        for (let j = highlight.startFrame; j < endFrame; j++) {
+            if (charStartStocks[i] !== frames[j].players[ports[i]]?.post.stocksRemaining) {
+                charEndStocks[i] = frames[j].players[ports[i]]?.post.stocksRemaining;
+                break;
+            }
+        }
+    }
 
-    const char1EndStocks = frames[endFrame-1].players[ports[0]]?.post.stocksRemaining;
-    const char2EndStocks = frames[endFrame-1].players[ports[1]]?.post.stocksRemaining;
-
-    console.log(!!char1StartStocks, !!char1EndStocks, !!char2StartStocks, !!char2EndStocks)
-    if (!char1StartStocks || !char1EndStocks || !char2StartStocks || !char2EndStocks) {
+    const char1StartStocks = charStartStocks[ports[0]] ?? -100;
+    const char1EndStocks = charEndStocks[ports[0]] ?? -100;
+    const char2StartStocks = charStartStocks[ports[1]] ?? -100;
+    const char2EndStocks = charEndStocks[ports[1]] ?? -100;
+    console.log(char1StartStocks, char1EndStocks, char2StartStocks, char2EndStocks)
+    if (char1StartStocks === -100 && char1EndStocks === -100 && char2StartStocks === -100 && char2EndStocks === -100) {
         console.error('no start/end stock resolution')
         return null
     };

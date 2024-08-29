@@ -61,10 +61,10 @@ export const Play = () => {
     // 1. doPlay (request at /play)
     // 2. 
     // const url = new URLSearchParams(location.search).get("replayUrl");
-    const isDebug = false;
+    const isDebug = true;
     if (!playStore.currentClip) return;
     // const url = "../slp-test/test.slp";
-    const url = isDebug ? "../slp-test/test2.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
+    const url = isDebug ? "../slp-test/test3.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
     const startFrame = isDebug ? 0 : Math.max(playStore.currentClip.startFrame, 0);
     console.log(startFrame)
     setStartFrame(startFrame);

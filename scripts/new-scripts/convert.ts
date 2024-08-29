@@ -31,12 +31,12 @@ import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-
 import { FileData, getCharacterAndPlayerData } from './addCharacterToJson';
 import { SlippiGame } from '@slippi/slippi-js';
 
-const IS_TOURNAMENT = false;
-const SUB_DIR = "all"
+const IS_TOURNAMENT = true;
+const SUB_DIR = "tournament"
 const player = "lloD"
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
+// const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\highlights.json`
 
-// const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\${IS_TOURNAMENT ? "Tournament\\TEST" : player}\\highlights.json`
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
@@ -102,15 +102,15 @@ function cutSlp () {
         for (let i = 0; i < highlights.length; i++) {
             bar1.update(i);
             let highlight = highlights[i];
+            let tournamentName;
             if (IS_TOURNAMENT) {
                 //add tournament data
                 const tournamentMatchRegex = new RegExp(/Tournament\\(.*)\\/)
-                const tournamentName = highlight.path.match(tournamentMatchRegex);
+                tournamentName = highlight.path.match(tournamentMatchRegex);
                 if (!tournamentName || !tournamentName[0]) {
                     console.warn(`unable to find a tournament match for ${highlight.path}`)
                     continue;
                 }
-                highlight.tournament = tournamentName[0];
             }
             //get character and player info
             const data = await getCharacterAndPlayerData(highlight.path, highlight);
@@ -127,8 +127,9 @@ function cutSlp () {
             console.log(`schlicin clip ${highlight.path}`)
             dataSaved += await schliceSlp(highlight.path, outFile, highlight.endFrame);
             
-            //rename to SaltyChickenBone.slp
             data.path = outFile;
+            data.ogPath = highlight.path;
+            data.tournament = tournamentName?.[0] ?? "";
             // console.log(data);
             
             //verify cut slps
