@@ -1,7 +1,7 @@
 import { decode, encode } from "@shelacek/ubjson";
 import fs from 'fs';
 import { Frame } from "./common/types";
-import { readUint, parseEventPayloadsEvent, parseGameStartEvent, firstVersion, handleFrameStartEvent, handleItemUpdateEvent, handlePostFrameUpdateEvent, handlePreFrameUpdateEvent, clearData } from "./parser/parser";
+import { readUint, parseEventPayloadsEvent, parseGameStartEvent, firstVersion, handleFrameStartEvent, handleItemUpdateEvent, handlePostFrameUpdateEvent, handlePreFrameUpdateEvent, clearData, isInVersion } from "./parser/parser";
 
 
 
@@ -64,11 +64,8 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
   let push = true;
   let go = true;
   while (go && offset <= rawData.byteLength) {
-    if (frameCount === 0 || (frameCount >= start && frameCount < end)) push = true;
-    else push = false;
+    if (frameCount > end) push = false;
 
-    if (savedFrames > end-start) push = false;
-    if (offset === rawData.byteLength-1) push = true;
     
     const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
     // console.log(command.toString(16));
@@ -88,7 +85,6 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
       default:
         go = false;
         break;
-      //   console.log(`command: ${command} l is ${l}`)
       case 0x10:
         // console.log(`OTHER: ${command}: setting at: ${offset}, ${l}, ${slicedDataOffset}`)
         slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
@@ -112,10 +108,8 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
         break;
       case 0x39: //game end
         // console.log('39')
-        if (push) {
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
-        }
         break;
       case 0x3a: //frame start
         // console.log('3a')
@@ -124,7 +118,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
         }
-        handleFrameStartEvent(rawData, offset, replayVersion, frames);
+        frameCount = handleFrameStartEvent(rawData, offset, replayVersion, frames);
         break;
       case 0x3b: //item update
         // console.log('3b')
@@ -141,7 +135,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
         }
-        frameCount++;
+        // frameCount++;
         //frame bookend
         break;
     }
@@ -206,9 +200,9 @@ export async function schliceSlp(inFile: fs.PathLike, outFile: fs.PathLike, endF
     const data = decode(arrayBuffer, { useTypedArrays:true});
 
     const dataSaved = await clipReplay(data, stats.size, outFile, 0, endFrame);
+    await fd.close();
     await readFileAndCutNamesAndMetadata(outFile, outFile);
     // Don't forget to close the file descriptor
-    await fd.close();
     return dataSaved;
   } catch(err) {
     console.warn(`there was an error with ${inFile}:: ${err}`)
@@ -228,6 +222,7 @@ function cutMetadataAndNames(
   ].join(".");
   const settings: any = {}
   settings.playerSettings = {};
+  console.log(`replayFormatVersion: ${replayFormatVersion}`)
   for (let playerIndex = 0; playerIndex < 4; playerIndex++) {
     const playerType = readUint(
       rawData,
@@ -238,13 +233,18 @@ function cutMetadataAndNames(
     );
     if (playerType === 3) continue;
 
-    clearData(rawData, offset + 0x161 + 0x10 * playerIndex, 9); //nametag
-    clearData(rawData, offset + 0x1a5 + 0x1f * playerIndex, 16);//display name
-    clearData(rawData, offset + 0x221 + 0x0a * playerIndex, 10);//connect code
-    clearData(rawData, offset + 0x249 + 0x1d * playerIndex, 28);//slippi uid
+    if (isInVersion(replayFormatVersion, "1.3.0.0"))
+      clearData(rawData, offset + 0x161 + 0x10 * playerIndex, 9); //nametag
+    if (isInVersion(replayFormatVersion, "3.9.0.0")) 
+      clearData(rawData, offset + 0x1a5 + 0x1f * playerIndex, 16);//display name
+    if (isInVersion(replayFormatVersion, "3.9.0.0")) 
+      clearData(rawData, offset + 0x221 + 0x0a * playerIndex, 10);//connect code
+    if (isInVersion(replayFormatVersion, "3.11.0.0")) 
+      clearData(rawData, offset + 0x249 + 0x1d * playerIndex, 28);//slippi uid
   }
   
-  clearData(rawData, offset + 0x1a5, 16, true);//display name
+  if (isInVersion(replayFormatVersion, "3.9.0.0")) 
+    clearData(rawData, offset + 0x1a5, 16, true);//display name
 
   return rawData.buffer;
 }
@@ -306,4 +306,4 @@ const x = async () => {
 
   schliceSlp("test.slp", "C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr\\scripts\\new-scripts\\out.slp", 1052);
 };
-x();
+// x();

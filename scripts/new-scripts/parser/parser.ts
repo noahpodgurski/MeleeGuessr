@@ -37,7 +37,7 @@ export function parseGameSettings({ metadata, raw }: any): GameSettings {
   return gameSettings;
 }
 
-export function parseReplay({ metadata, raw }: any): ReplayData {
+export function parseReplay({ metadata, raw }: any): any[] {
   const rawData = new DataView(
     raw.buffer,
     raw.byteOffset
@@ -53,8 +53,8 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
     0x01 + commandPayloadSizes[0x35],
     metadata
   );
-
-  console.log(commandPayloadSizes)
+  
+  // console.log(commandPayloadSizes)
   let gameEnding: GameEnding | undefined;
   const replayVersion = gameSettings.replayFormatVersion;
   let offset =
@@ -62,7 +62,7 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
   // inputs/states may come multiple times for a given player on a given
   // frame due to rollbacks. Because we are overwriting, we will just save the
   // last one which will be the official "finalized" one.
-  console.log(`Starting offset is ${offset}`);
+  // console.log(`Starting offset is ${offset}`);
   let frameCount = 0;
   let lastOffset = 0;
   while (offset < rawData.byteLength) {
@@ -89,26 +89,31 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
         gameEnding = parseGameEndEvent(rawData, offset, replayVersion);
         break;
       case 0x3a:
-        frameCount++;
         handleFrameStartEvent(rawData, offset, replayVersion, frames);
         break;
       case 0x3b:
         handleItemUpdateEvent(rawData, offset, replayVersion, frames);
         break;
+      case 0x3c:
+        frameCount++;
+        break;
+
     }
     offset = offset + commandPayloadSizes[command] + 0x01;
   }
-  console.log(`${frameCount} total frames`)
-  console.log(`${frames.length} total frames`)
-  if (gameEnding === undefined) {
-    console.warn("Game end event not found");
-    // throw new Error("Game Ending not found");
-  }
-  return {
-    settings: gameSettings,
-    frames: frames,
-    ending: gameEnding as GameEnding,
-  };
+  console.log(`${frameCount} total frames (frameCount)`)
+  console.log(`${frames.length} ACTUAL total frames`)
+  // if (gameEnding === undefined) {
+  //   console.warn("Game end event not found");
+  //   // throw new Error("Game Ending not found");
+  // }
+  //return numframes for validator
+  return [frames.length, gameSettings.replayFormatVersion];
+  // return {
+  //   settings: gameSettings,
+  //   frames: frames,
+  //   ending: gameEnding as GameEnding,
+  // };
 }
 
 export function handlePreFrameUpdateEvent(
@@ -161,7 +166,7 @@ export function handleFrameStartEvent(
   offset: number,
   replayVersion: string,
   frames: Frame[]
-): void {
+): number {
   const { frameNumber, randomSeed } = parseFrameStartEvent(
     rawData,
     offset,
@@ -170,6 +175,7 @@ export function handleFrameStartEvent(
   initFrameIfNeeded(frames, frameNumber);
   // @ts-ignore will only be readonly once parser is done
   frames[frameNumber].randomSeed = randomSeed;
+  return frameNumber;
 }
 
 export function handleItemUpdateEvent(
@@ -1020,7 +1026,7 @@ export function readShiftJisString(
   return "";
 }
 
-function isInVersion(
+export function isInVersion(
   replayVersion: string,
   firstVersionPresent: string
 ): boolean {
