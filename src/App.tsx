@@ -5,9 +5,7 @@ import { Router, Route } from '@solidjs/router';
 import './App.scss';
 import './Modal.scss';
 import NavbarPage from './components/Navbar';
-import { Home } from './pages/Home';
 import { Play } from './pages/Play';
-import Leaderboards from './pages/Leaderboards';
 import { Clip } from './models/Clip';
 import { Player } from './consts/Player';
 import AuthService from './services/auth.service';
@@ -155,9 +153,7 @@ export const App = () => {
           </ThemeProvider>
           <Router>
             <Route path="*" component={NavbarPage} {...updateUser} />
-            <Route path="/" component={Home} />
-            <Route path="/play" component={Play} />
-            <Route path="/leaderboards" component={Leaderboards} />
+            <Route path="/" component={Play} />
           </Router>
           <Toaster toastOptions={{position: 'top-center'}} />
         </LoaderProvider>

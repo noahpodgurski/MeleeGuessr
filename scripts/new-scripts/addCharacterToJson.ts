@@ -27,9 +27,13 @@ async function readJson(filePath: string): Promise<JsonData> {
 export async function getCharacterAndPlayerData(slpFile: string, highlight: Highlight): Promise<FileData | null> {
     const playerCodeMap: { [key: string]: string[] } = {};
     let game: SlippiGame;
-
+    let settings, frames, stats, metadata;
     try {
         game = new SlippiGame(slpFile);
+        settings = game.getSettings();
+        frames = game.getFrames();
+        stats = game.getStats();
+        metadata = game.getMetadata();
     } catch (error) {
         return null; // Skip this file if it fails to lonull;
     }
@@ -39,20 +43,20 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
     const characterColors: number[] = [];
     let players: any[] = [];
     
-    const settings = game.getSettings();
-    const frames = game.getFrames();
-    const stats = game.getStats();
     console.log(!!settings, !!frames, !!stats)
     if (!settings || !frames || !stats) return null;
     for (let i = 0; i < 4; i++) {
         try {
-            const player = settings.players[i];
-            if (!player) continue;
-            
-            if (player.characterId === null) {
+            let player = settings.players[i];
+            if (!player || player.characterId === null) {
                 console.error('no character id')
-                return null;
+                continue;
             }
+            if (!player?.displayName) {
+                player.connectCode = metadata?.players?.[i]?.names?.code ?? "";
+                player.displayName = metadata?.players?.[i]?.names?.netplay ?? "";
+            };
+            
             characterIds.push(player.characterId);
             if (player.characterColor === null) {
                 console.error('no character color')
@@ -161,7 +165,11 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
     
     console.log('are we here?')
     console.log(!!player, !!character, !!characterColor, !!oppCharacter, !!oppPlayer, !!oppCharacterColor)
-    if (!player || !character || !characterColor || !oppCharacter || !oppPlayer || !oppCharacterColor) return null;
+    console.log(player, character, characterColor, oppCharacter, oppPlayer, oppCharacterColor)
+    if (!player || !character || !oppCharacter || !oppPlayer) {
+        console.log('couldnt get player/character data??? 2')
+        return null;
+    };
     console.log(playerCodeMap);
     return {
         path: slpFile,
@@ -169,10 +177,10 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
         endFrame: highlight.endFrame,
         playerName: player,
         characterId: character,
-        characterColor: characterColor,
+        characterColor: characterColor ?? -1,
         oppCharacterId: oppCharacter,
         oppPlayerName: oppPlayer,
-        oppCharacterColor: oppCharacterColor,
+        oppCharacterColor: oppCharacterColor ?? -1,
         portToGuess: portToGuess
     }
 }

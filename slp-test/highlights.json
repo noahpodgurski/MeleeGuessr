@@ -1,0 +1,32 @@
+{
+  "mode": "queue",
+  "replay": "",
+  "isRealTimeMode": false,
+  "outputOverlayFiles": true,
+  "queue": [
+    {
+      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T202816.slp",
+      "gameStartAt": "05/06/22 11:28 pm",
+      "startFrame": 1464,
+      "endFrame": 2366
+    },
+    {
+      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T203315.slp",
+      "gameStartAt": "05/06/22 11:33 pm",
+      "startFrame": 9143,
+      "endFrame": 10244
+    },
+    {
+      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T210346.slp",
+      "gameStartAt": "05/07/22 12:03 am",
+      "startFrame": 156,
+      "endFrame": 1192
+    },
+    {
+      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T211128.slp",
+      "gameStartAt": "05/07/22 12:11 am",
+      "startFrame": 3432,
+      "endFrame": 4242
+    }
+  ]
+}

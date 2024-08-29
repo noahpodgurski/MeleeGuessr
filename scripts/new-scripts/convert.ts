@@ -31,13 +31,18 @@ import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-
 import { FileData, getCharacterAndPlayerData } from './addCharacterToJson';
 import { SlippiGame } from '@slippi/slippi-js';
 
-const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
-const HIGHLIGHTS_FILE = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\TEST\\highlights.json"
+const IS_TOURNAMENT = false;
+const SUB_DIR = "all"
+const player = "lloD"
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
 
-const SUB_DIR = "test"
+// const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\${IS_TOURNAMENT ? "Tournament\\TEST" : player}\\highlights.json`
+
+const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
 const CLIP_FILE = path.join(CLIP_DIR, "clips.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
+
 
 console.log(HIGHLIGHTS_FILE)
 console.log(CLIP_DIR)
@@ -49,6 +54,8 @@ export type Highlight = {
     path: string;
 
     gameStartAt: string;
+    gameStation?: string;
+    tournament?: string;
     startFrame: number;
     endFrame: number;
     character: number;
@@ -76,16 +83,18 @@ if (!fs.existsSync(CUT_DIR)) {
 
 // 2. use cut-slp to cut each file in queue[i].path
 function cutSlp () {
+    let erroredFiles = 0;
     const fileData: FileData[] = [];
     fs.readFile(HIGHLIGHTS_FILE, 'utf-8', async (err, fd) => {
         if (err) {
             console.error('Error opening file:', err);
+            erroredFiles++;
             return;
         }
         
         const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
         let dataSaved = 0;
-        const gameMatchRegex = new RegExp(/(Game_.*\.slp)/g);
+        // const gameMatchRegex = new RegExp(/(Game_.*\.slp)/g);
         const data = JSON.parse(fd);
         bar1.start(data.queue.length, 0);
         
@@ -93,15 +102,26 @@ function cutSlp () {
         for (let i = 0; i < highlights.length; i++) {
             bar1.update(i);
             let highlight = highlights[i];
+            if (IS_TOURNAMENT) {
+                //add tournament data
+                const tournamentMatchRegex = new RegExp(/Tournament\\(.*)\\/)
+                const tournamentName = highlight.path.match(tournamentMatchRegex);
+                if (!tournamentName || !tournamentName[0]) {
+                    console.warn(`unable to find a tournament match for ${highlight.path}`)
+                    continue;
+                }
+                highlight.tournament = tournamentName[0];
+            }
             //get character and player info
             const data = await getCharacterAndPlayerData(highlight.path, highlight);
-            console.log(data)
-            const gameName = highlight.path.match(gameMatchRegex);
-            if (!gameName || !gameName[0]) {
-                console.log('unable to find a match');
-                throw Error(`unable to parse filename ${highlight.path}`);
-            }
+            if (!data) {
+                console.log(`ERROR: SKIPPING ${path.basename(highlight.path)}`)
+                continue;
+            };
+            //make new name
             const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }) + ".slp";
+            //use original name
+            // const newName = path.basename(highlight.path);
             const outFile = path.join(CUT_DIR, newName);
             // console.log(highlight.path, path.join(CUT_DIR, gameName[0]));
             console.log(`schlicin clip ${highlight.path}`)
@@ -111,13 +131,19 @@ function cutSlp () {
             highlight.clipName = newName;
             highlight.path = outFile;
             
-            if (!data) throw Error("unable to get character and player data");
-            fileData.push(data);
-
             //verify cut slps
-            const verifySlp = new SlippiGame(outFile);
-            const _ = verifySlp.getFrames()
-            console.log(`${path.basename(outFile)} is valid .slp :)`)
+            try {
+                if (!data) throw Error("unable to get character and player data");
+                const verifySlp = new SlippiGame(outFile);
+                const _ = verifySlp.getFrames()
+                console.log(`${path.basename(outFile)} is valid .slp :)`)
+                fileData.push(data);
+            } catch(err) {
+                erroredFiles++;
+                console.warn(err);
+                // await fs.promises.unlink(outFile);
+                // delete highlights[i];
+            }
 
         }
 
@@ -128,6 +154,7 @@ function cutSlp () {
         bar1.stop();
         const b = byteSize(dataSaved);
         console.log(`Data saved: ${b.value}${b.unit}`)
+        console.log(`Errored files: ${erroredFiles}`)
     });   
 }
 
