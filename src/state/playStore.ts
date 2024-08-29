@@ -37,9 +37,9 @@ export async function play(): Promise<AxiosResponse> {
     headers.authorization = `Bearer ${userStore.data}`;
   }
   params.sessionId = playStore.sessionId || localStorage.getItem("session");
-
   return await axios.get(`${SERVER_IP}/play`, {headers, params})
   .then((response) => {
+    console.log(`setting currentClip to ${response.data.data.currentClip}`)
     setState("currentClip", response.data.data.currentClip);
     setState("sessionId", response.data.data.sessionId);
     localStorage.setItem("session", response.data.data.sessionId); //todo do jwt for this too

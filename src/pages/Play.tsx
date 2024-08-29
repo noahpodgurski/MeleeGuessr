@@ -1,17 +1,7 @@
-import { createSignal, createEffect, createMemo } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import { STARTING_STOCKS } from "../App";
-import { ClipsContext } from "../components/common/Clips";
-import { Character } from '../models/Character';
-import { Player } from "../consts/Player";
 import { StocksContext } from "../components/common/Stocks";
-import { UserContext } from "../components/common/User";
-import { Choice } from "../models/Choice";
 import { Clip } from "../models/Clip";
-import UserService from "../services/user.service";
-
-import { choiceTime } from "../consts/Time";
-import { shuffleArray } from "../utils/Shuffle";
-import { RandomChoice } from "../utils/RandomChoice";
 import { StageType } from "~/components/Stage";
 import { Viewer } from "~/components/viewer/Viewer";
 
@@ -24,8 +14,9 @@ import { setStartFrame } from "~/state/replayStore";
 import { makeGuess, play, playStore } from "~/state/playStore";
 import { useLoader } from "~/components/common/Loader";
 import { characterNameByExternalId } from "~/common/ids";
-import { Button } from "@suid/material";
 import { Choices } from "~/components/Choices";
+import toast from "solid-toast";
+import { Grid } from "@suid/material";
 
 export type PlayData = {
   stage: number;
@@ -42,12 +33,12 @@ const NO_HINT_POINTS = 2;
 
 export const Play = () => {
   
-  const [stage, setStage] = createSignal(0);
+  const [selected, setSelected] = createSignal(false);
   const [score, setScore] = createSignal(0);
   const [showChoiceResult, setShowChoiceResult] = createSignal(false);
   const [HS, setHS] = createSignal(false);
   const [currStage, setCurrStage] = createSignal<StageType | null>(null);
-  const [, {setLoading}] = useLoader();
+  const [loading, {setLoading}] = useLoader();
   
   createEffect(async () => {
     if (!playStore.currentClip) {
@@ -55,6 +46,8 @@ export const Play = () => {
       await play();
       await doPlay();
       setLoading(false);
+    } else {
+      setSelected(true);
     }
     // if (clips.length === 0) {
     //   // const fetchData = async () => {
@@ -64,29 +57,15 @@ export const Play = () => {
     // }
   });
 
-  
-
-  createEffect(() => {
-    const x = Number(localStorage.getItem("HS"));
-    if (StocksContext.stocks === 0) {
-      if (x === null || x < score()) {
-        setHS(true);
-        localStorage.setItem("HS", score().toLocaleString());
-      }
-      setShowChoiceResult(true);
-    }
-  });
-
   const doPlay = async () => {
     // 1. doPlay (request at /play)
     // 2. 
     // const url = new URLSearchParams(location.search).get("replayUrl");
-
+    const isDebug = false;
     if (!playStore.currentClip) return;
     // const url = "../slp-test/test.slp";
-    const debug = false;
-    const url = debug ? '../slp-test/test.slp' : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
-    const startFrame = playStore.currentClip.startFrame;
+    const url = isDebug ? "../slp-test/test2.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
+    const startFrame = isDebug ? 0 : Math.max(playStore.currentClip.startFrame, 0);
     console.log(startFrame)
     setStartFrame(startFrame);
     if (url !== null) {
@@ -101,10 +80,13 @@ export const Play = () => {
             //   error: "error"
             // })
 
-            await load([file], debug ? 0 : startFrame)
+            await load([file], startFrame)
             const _file = currentSelectionStore().data.filteredStubs;
             if (_file.length > 0) {
               await currentSelectionStore().select(_file[0]);
+              setSelected(true);
+            } else {
+              toast("Something went wrong. Please try again later")
             }
           });
       } catch (e) {
@@ -113,47 +95,39 @@ export const Play = () => {
     }
 
   }
-
-  const reset = () => {
-    playData = [];
-    clips = [];
-
-    setStage(0);
-    setScore(0);
-    StocksContext.stocks = STARTING_STOCKS;
-    setShowChoiceResult(false);
-    setHS(false);
-  };
   
   const [showAnswers, setShowAnswers] = createSignal(true);
   const [answer, setAnswer] = createSignal("")
   let correct = false;
 
   const guess = async (choice: string) => {
+    setLoading(true);
     const response = await makeGuess(choice);
     correct = response.data.message === "Correct";
     setAnswer(response.data.data);
     setShowAnswers(true);
+    setLoading(false);
     //show correct answers for 2 seconds
     await new Promise((r) => setTimeout(r, 2000));
     //todo request next while showing answers
-    setLoading(true);
+    setAnswer("");
     await play();
     await doPlay();
-    setLoading(false);
   }
 
   return (
-    <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "90vh", margin: "auto"}}>
-      <div class="row justify-content-center w-100">
-        <Viewer />
-      </div>
-      <div class="row justify-content-center" style={{"text-align": 'center'}}>
-        { playStore.currentClip && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
-      </div>
-      <div class="row mt-4" style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
-        <Choices guess={guess} answer={answer()} />
-      </div>
+    <div class="justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "90vh", margin: "auto", display: 'flex'}}>
+      <Grid sx={{alignItems: 'center', width: '100%'}}>
+        <Grid>
+          <Viewer />
+        </Grid>
+        <Grid style={{"text-align": 'center'}}>
+          { playStore.currentClip && !loading() && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
+        </Grid>
+        <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
+          { selected() && <Choices guess={guess} answer={answer} />}
+        </Grid>
+      </Grid>
     </div>
   );
 };

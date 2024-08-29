@@ -3,6 +3,7 @@ import { For } from "solid-js/web";
 import { replayStore } from "~/state/replayStore";
 import { PlayerHUD } from "~/components/viewer/PlayerHUD";
 import { Timer } from "~/components/viewer/Timer";
+import { useLoader } from "../common/Loader";
 
 export function HUD() {
   const playerIndexes = createMemo(() =>

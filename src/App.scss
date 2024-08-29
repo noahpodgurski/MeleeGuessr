@@ -5,6 +5,11 @@
   src: url("../public/fonts/impact.ttf");
 }
 
+@font-face {
+  font-family: "Now-Loading";
+  src: url("../public/fonts/hyperspacerace-italic.otf");
+}
+
 .logo {       
   background-image: linear-gradient(180deg, black 0%, black 50%, #805dad 90%, white 100%);
   /* filter: drop-shadow(0 20px 30px #28d8ff33); */
@@ -25,6 +30,7 @@
     -webkit-text-stroke: .02rem rgb(255, 255, 255, 0.5);
   }
 }
+
 
 .navbar-brand {
   display: flex;
@@ -108,3 +114,29 @@
   animation-delay: 5s;
   animation-fill-mode: forwards;
 } */
+
+
+.now-loading {
+  font-family: Now-Loading;
+  transform: scale(1, .5);
+  top: calc(min(70vw, 70vh) - min(2vw, 2vh));
+  left: calc(max(0px, calc((100vw - 90vh) / 2)) + min(40vh, 40vw));
+  position: absolute;
+  font-size: min(5vw, 5vh);
+  color: #c2b87f;
+  z-index: 10000;
+}
+
+.now-loading-bar {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .5);
+  top: min(70vw, 70vh);
+  left: max(0px, calc((100vw - 90vh) / 2));
+  max-width: calc(90vh - 2px);
+  width: 100%;
+  height: 46px;
+  z-index: 9990;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}

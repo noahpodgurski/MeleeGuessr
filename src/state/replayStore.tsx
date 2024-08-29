@@ -18,7 +18,6 @@ import {
 } from "~/common/types";
 import { parseReplay } from "~/parser/parser";
 import { queries } from "~/search/queries";
-import { Highlight, search } from "~/search/search";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { CharacterAnimations, fetchAnimations } from "~/viewer/animationCache";
 import { actionMapByInternalId } from "~/viewer/characters";
@@ -47,7 +46,6 @@ export interface RenderData {
 
 export interface ReplayStore {
   replayData?: ReplayData;
-  highlights: Record<string, Highlight[]>;
   selectedHighlight?: [string, Highlight];
   animations: (CharacterAnimations | undefined)[];
   frame: number;
@@ -64,9 +62,6 @@ export interface ReplayStore {
   startFrame: number;
 }
 export const defaultReplayStoreState: ReplayStore = {
-  highlights: Object.fromEntries(
-    Object.entries(queries).map(([name]) => [name, []])
-  ),
   frame: 0,
   renderDatas: [],
   animations: Array(4).fill(undefined),
@@ -177,6 +172,7 @@ createRoot(disposer => {
   createEffect(async () => {
     // Accessing the selected file and stub, which makes it a reactive dependency
     const selected = currentSelectionStore().data.selectedFileAndStub;
+    // console.log(selected);
   
     // If selected is not yet available, return early
     if (!selected) return;
@@ -185,15 +181,13 @@ createRoot(disposer => {
     const replayData = parseReplay(
       decode(await selected[0].arrayBuffer(), { useTypedArrays: true })
     );
-    
+    console.log(`total Frames: ${replayData.frames.length}`)
     //todo get from .slp metadata
+    console.log(`setting replayStore startFrame: ${fileStore.urlStartFrame}`)
     setReplayState("startFrame", fileStore.urlStartFrame ?? 0); //todo set from metadata
-  
-    const highlights = {}
-  
+    
     setReplayState({
       replayData,
-      highlights,
       frame: fileStore.urlStartFrame ?? 0,
       renderDatas: [],
     });
@@ -202,8 +196,7 @@ createRoot(disposer => {
       start(); //always start
     // }
   });
-  
-  
+
   const animationResources = [];
   for (let playerIndex = 0; playerIndex < 4; playerIndex++) {
     animationResources.push(
@@ -213,6 +206,7 @@ createRoot(disposer => {
           if (replay === undefined) {
             return undefined;
           }
+          if (replayState.frame > replay.frames.length) return undefined;
           const playerSettings = replay.settings.playerSettings[playerIndex];
           if (playerSettings === undefined) {
             return undefined;
@@ -254,10 +248,12 @@ createRoot(disposer => {
     )
   );
   
+  
   createEffect(() => {
     if (replayState.replayData === undefined) {
       return;
     }
+    if (replayStore.replayData && replayStore.replayData.frames.length < replayStore.frame) return;
     setReplayState(
       "renderDatas",
       replayState.replayData.frames[replayState.frame].players
@@ -472,6 +468,8 @@ export function getPlayerColor(
 
 function wrapFrame(replayState: ReplayStore, frame: number): number {
   if (!replayState.replayData) return frame;
+  // console.log(Math.max(replayStore.startFrame, (frame + replayState.replayData.frames.length) %
+  // replayState.replayData.frames.length))
   return (
     Math.max(replayStore.startFrame, (frame + replayState.replayData.frames.length) %
     replayState.replayData.frames.length)

@@ -10,6 +10,7 @@ export function Camera(props: ParentProps) {
     const padding = [25, 25];
     const minimums = [100, 100];
 
+    if (replayStore.replayData && replayStore.replayData.frames.length < replayStore.frame) return;
     const currentFrame = replayStore.replayData!.frames[replayStore.frame];
     const focuses = currentFrame.players.filter(Boolean).map((player) => ({
       x: player.state.xPosition,

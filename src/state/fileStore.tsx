@@ -17,6 +17,7 @@ const [state, setState] = createStore<FileStore>({
   stubs: [],
   parseProgress: 0,
 });
+//todo going from a shorter clip to a longer clip breaks things numero uno
 
 export const fileStore = state;
 export async function load(files: File[], startFrame?: number): Promise<void> {

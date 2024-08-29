@@ -1,4 +1,4 @@
-import { createContext, createMemo, createSignal, For, Show } from "solid-js";
+import { createMemo, For, Show } from "solid-js";
 import { Camera } from "~/components/viewer/Camera";
 import { HUD } from "~/components/viewer/HUD";
 import { Players } from "~/components/viewer/Player";
@@ -6,15 +6,18 @@ import { Stage } from "~/components/viewer/Stage";
 import { Item } from "~/components/viewer/Item";
 import { replayStore } from "~/state/replayStore";
 import { Controls } from "~/components/viewer/Controls";
-import { Button, FormControlLabel, Switch, ToggleButton } from "@suid/material";
 import { useDarkMode } from "../common/Dark";
+import { useLoader } from "../common/Loader";
 
 export function Viewer() {
   const items = createMemo(
-    () => replayStore.replayData?.frames[replayStore.frame].items ?? []
+    () => {
+      if (replayStore.replayData && replayStore.replayData.frames.length < replayStore.frame) return [];
+      return replayStore.replayData?.frames[replayStore.frame].items ?? []
+    }
   );
-
   const [darkMode, {toggle}] = useDarkMode() as any;
+  const [loading] = useLoader();
   return (
     <div class="flex flex-col overflow-y-auto pb-4">
       <Show when={replayStore.replayData}>

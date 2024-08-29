@@ -251,7 +251,7 @@ function FalcoLaser(props: { item: ItemUpdate }) {
           props.item.yPosition +
           hitboxOffsets[hitboxOffsets.length - 1] * rotations()[1]
         }
-        stroke="rgb(35, 116, 247)"
+        stroke="red"
       />
       <For each={hitboxOffsets}>
         {(hitboxOffset) => (
@@ -259,7 +259,7 @@ function FalcoLaser(props: { item: ItemUpdate }) {
             cx={props.item.xPosition + hitboxOffset * rotations()[0]}
             cy={props.item.yPosition + hitboxOffset * rotations()[1]}
             r={hitboxSize}
-            fill="rgb(35, 116, 247)"
+            fill="red"
           />
         )}
       </For>
