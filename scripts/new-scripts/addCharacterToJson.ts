@@ -56,6 +56,7 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
                 console.error('no character id')
                 continue;
             }
+            console.log(`player ${i} exists`)
             if (!player?.displayName) {
                 player.connectCode = metadata?.players?.[i]?.names?.code ?? "";
                 player.displayName = metadata?.players?.[i]?.names?.netplay ?? "";
@@ -66,8 +67,8 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
                 console.error('no character color')
                 return null;
             }
-            characterColors.push(player.characterColor);
-            ports.push(i);
+            characterColors.push(player.characterColor ?? -1);
+            // ports.push(i);
             players.push({
                 code: player.connectCode,
                 name: player.displayName
@@ -78,6 +79,16 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
         // Skip if any error occurs for this player
             return null;
         }
+    }
+    for (let i = 0; i < 4; i++) {
+        if (frames[highlight.startFrame].players[i]?.pre.playerIndex !== undefined)
+            ports.push(frames[0].players[i]?.pre.playerIndex ?? -1);
+        else if (frames[highlight.startFrame].players[i]?.post.playerIndex !== undefined)
+            ports.push(frames[0].players[i]?.post.playerIndex ?? -1);
+    }
+
+    if (ports.length !== 2){
+        return null;
     }
 
     if (characterIds.some((char: any) => char.value === 26)) {
@@ -177,6 +188,8 @@ export async function getCharacterAndPlayerData(slpFile: string, highlight: High
             }
         }
     }
+    console.log(`port to guess: ${portToGuess}`)
+    console.log(ports);
     
     console.log('are we here?')
     console.log(!!player, !!character, !!characterColor, !!oppCharacter, !!oppPlayer, !!oppCharacterColor)

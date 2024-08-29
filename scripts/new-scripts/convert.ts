@@ -99,6 +99,13 @@ function cutSlp () {
         bar1.start(data.queue.length, 0);
         
         const highlights = data.queue as Highlight[];
+        // const highlights = [{
+        //     "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T110325.slp",
+        //     "gameStartAt": "07/09/23 2:03 pm",
+        //     "gameStation": "BTS 322",
+        //     "startFrame": 2477,
+        //     "endFrame": 3558
+        //   } as Highlight]
         for (let i = 0; i < highlights.length; i++) {
             bar1.update(i);
             let highlight = highlights[i];
