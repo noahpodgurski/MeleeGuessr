@@ -11,7 +11,7 @@ import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { setStartFrame } from "~/state/replayStore";
-import { play, playStore } from "~/state/playStore";
+import { play, playStore, setClipIndex } from "~/state/playStore";
 import { useLoader } from "~/components/common/Loader";
 import { characterNameByExternalId } from "~/common/ids";
 import { Input, Typography } from "@suid/material";
@@ -32,7 +32,6 @@ const NO_HINT_POINTS = 2;
 export const Play = () => {
   
   const [stage, setStage] = createSignal(0);
-  const [clipIndex, setClipIndex] = createSignal(0);
   const [showChoiceResult, setShowChoiceResult] = createSignal(false);
   const [HS, setHS] = createSignal(false);
   const [currStage, setCurrStage] = createSignal<StageType | null>(null);
@@ -41,7 +40,7 @@ export const Play = () => {
   createEffect(async () => {
     await play();
     await doPlay();
-    if (!playStore.clips[clipIndex()]) {
+    if (!playStore.clips[playStore.clipIndex]) {
       setLoading(true);
       setLoading(false);
     }
@@ -57,7 +56,9 @@ export const Play = () => {
 
 
   const doPlay = async () => {
-    const url = playStore.clips[clipIndex()].path.replace("\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp", "http://192.168.1.111:8000")
+    console.log(playStore.clipIndex)
+    const url = playStore.clips[playStore.clipIndex].path.replace("\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp", "http://192.168.1.111:8000")
+    console.log(url);
     try {
       void fetch(url)
         .then(async (response) => await response.blob())
@@ -69,7 +70,7 @@ export const Play = () => {
           //   error: "error"
           // })
           if (playStore.clips.length < 1) return;
-          const startFrame = playStore.clips[clipIndex()].startFrame;
+          const startFrame = playStore.clips[playStore.clipIndex].startFrame;
           setStartFrame(startFrame);
 
           await load([file], startFrame)
@@ -87,7 +88,8 @@ export const Play = () => {
   const categorize = async (e: any) => {
     if (e.key === "Enter") {
       console.log(e.target.value)
-      
+      setClipIndex(playStore.clipIndex+1)
+      doPlay();
     }
     // const response = await makeGuess(choice);
     // correct = response.data.message === "Correct";
@@ -109,8 +111,21 @@ export const Play = () => {
         <Viewer />
       </div>
       <Typography>
-        {playStore.clips?.length > 0 && playStore.clips[clipIndex()].gameStation}
-        {playStore.clips?.length > 0 && playStore.clips[clipIndex()].characterColor}
+        {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.startFrame} - 
+        {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.endFrame}
+          --- Guess {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.portToGuess}
+      </Typography>
+      <Typography>
+        Color: {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.characterColor}
+      </Typography>
+      <Typography>
+        Tournament: {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.tournament}
+      </Typography>
+      <Typography>
+        {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.path}
+      </Typography>
+      <Typography>
+        {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.ogPath}
       </Typography>
       <div class="row mt-4" style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
         <Input onKeyDown={categorize} />

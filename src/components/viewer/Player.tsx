@@ -20,7 +20,7 @@ export function Players() {
               stroke-width={2}
               stroke={darkMode() ? "#fcf2e0" : renderData.outerColor}
               />
-            { renderData.playerSettings.port === (playStore.currentClip?.portToGuess ?? 0)+1 && 
+            { renderData.playerSettings.port === (playStore.clips[playStore.clipIndex]?.portToGuess ?? 0)+1 && 
               //render question mark
               <path 
               // transform="translate(10, 10)"

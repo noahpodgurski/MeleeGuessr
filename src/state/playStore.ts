@@ -20,8 +20,11 @@ export interface PlayStore {
         },
         oppCharacterColor: number,
         portToGuess: number,
-        choices: string[]
-    }]
+        choices: string[],
+        tournament?: string;
+        ogPath?: string;
+    }],
+    clipIndex: number;
 }
 
 const [state, setState] = createStore<PlayStore>([] as any);
@@ -31,9 +34,15 @@ export async function play(): Promise<AxiosResponse> {
   return await axios.get(`../slp-test/highlights.json`)
   .then((response) => {
     console.log(response)
-    setState("clips", response.data.queue);
+    setState("clips", response.data);
+    setState("clipIndex", 0);
     return response;
   });
+}
+
+export const setClipIndex = (n: number) => {
+  console.log(n)
+  setState("clipIndex", n)
 }
 
 // export async function makeGuess(guess: string): Promise<AxiosResponse> {

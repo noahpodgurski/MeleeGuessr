@@ -1,32 +1,4382 @@
-{
-  "mode": "queue",
-  "replay": "",
-  "isRealTimeMode": false,
-  "outputOverlayFiles": true,
-  "queue": [
-    {
-      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T202816.slp",
-      "gameStartAt": "05/06/22 11:28 pm",
-      "startFrame": 1464,
-      "endFrame": 2366
+[
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\favourable_jade_rooster.slp",
+    "startFrame": 59,
+    "endFrame": 977,
+    "playerName": {
+      "code": "",
+      "name": ""
     },
-    {
-      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T203315.slp",
-      "gameStartAt": "05/06/22 11:33 pm",
-      "startFrame": 9143,
-      "endFrame": 10244
+    "characterId": 12,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
     },
-    {
-      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T210346.slp",
-      "gameStartAt": "05/07/22 12:03 am",
-      "startFrame": 156,
-      "endFrame": 1192
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\FullBloom5\\6747-13-Game_20190324T151241.slp",
+    "tournament": "Tournament\\Parsed\\FullBloom5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\underlying_olive_ladybug.slp",
+    "startFrame": 2266,
+    "endFrame": 3512,
+    "playerName": {
+      "code": "",
+      "name": ""
     },
-    {
-      "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Spark\\Game_20220506T211128.slp",
-      "gameStartAt": "05/07/22 12:11 am",
-      "startFrame": 3432,
-      "endFrame": 4242
-    }
-  ]
-}
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\FullBloom5\\6747-Main Stream-Game_20140204T105151.slp",
+    "tournament": "Tournament\\Parsed\\FullBloom5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\specified_fuchsia_landfowl.slp",
+    "startFrame": 6825,
+    "endFrame": 8142,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis-7\\BTSSmash-Game_20200126T181722.slp",
+    "tournament": "Tournament\\Parsed\\Genesis-7\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\statutory_scarlet_magpie.slp",
+    "startFrame": 3451,
+    "endFrame": 4377,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis-7\\BTSSmash-Game_20200126T190146.slp",
+    "tournament": "Tournament\\Parsed\\Genesis-7\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\brilliant_cyan_turtle.slp",
+    "startFrame": 3557,
+    "endFrame": 4735,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis-7\\test.slp",
+    "tournament": "Tournament\\Parsed\\Genesis-7\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\close_cyan_silverfish.slp",
+    "startFrame": 1913,
+    "endFrame": 2758,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T115335.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\capable_scarlet_jellyfish.slp",
+    "startFrame": 5399,
+    "endFrame": 6170,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T124819.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\fantastic_purple_junglefowl.slp",
+    "startFrame": 8199,
+    "endFrame": 9276,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 15,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T141800.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\outrageous_purple_frog.slp",
+    "startFrame": 1804,
+    "endFrame": 2652,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T144319.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\armed_crimson_possum.slp",
+    "startFrame": 5174,
+    "endFrame": 5992,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T160400.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\precious_pink_mouse.slp",
+    "startFrame": 5958,
+    "endFrame": 6754,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T160942.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\giant_coral_tarantula.slp",
+    "startFrame": 456,
+    "endFrame": 1269,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T161214.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\horizontal_crimson_snipe.slp",
+    "startFrame": 5617,
+    "endFrame": 6418,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T162501.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\select_plum_gecko.slp",
+    "startFrame": 15510,
+    "endFrame": 16551,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T184725.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\spotless_red_pony.slp",
+    "startFrame": 5489,
+    "endFrame": 6264,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230707T190103.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\civil_bronze_coyote.slp",
+    "startFrame": 642,
+    "endFrame": 1651,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T114938.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\awkward_amethyst_elephant.slp",
+    "startFrame": 4045,
+    "endFrame": 5044,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T122356.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\empirical_coffee_junglefowl.slp",
+    "startFrame": 2664,
+    "endFrame": 3496,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T141759.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\loud_lavender_horse.slp",
+    "startFrame": 4882,
+    "endFrame": 5993,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T142306.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\fascinating_purple_narwhal.slp",
+    "startFrame": 7313,
+    "endFrame": 8049,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T180742.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\driving_salmon_earthworm.slp",
+    "startFrame": 8189,
+    "endFrame": 8827,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230708T180742.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\aesthetic_chocolate_snail.slp",
+    "startFrame": 2477,
+    "endFrame": 3558,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T110325.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\stingy_scarlet_blackbird.slp",
+    "startFrame": 9130,
+    "endFrame": 9942,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T115926.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\specified_emerald_gerbil.slp",
+    "startFrame": 4690,
+    "endFrame": 5615,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T120232.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\exact_indigo_sailfish.slp",
+    "startFrame": 7783,
+    "endFrame": 8791,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T120916.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\natural_fuchsia_tyrannosaurus.slp",
+    "startFrame": 4842,
+    "endFrame": 5689,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T122713.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\intensive_peach_puma.slp",
+    "startFrame": 4597,
+    "endFrame": 6338,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T131132.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vital_chocolate_dove.slp",
+    "startFrame": 267,
+    "endFrame": 1199,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T131625.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\noble_peach_gull.slp",
+    "startFrame": 1570,
+    "endFrame": 2536,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T131625.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\like_chocolate_falcon.slp",
+    "startFrame": 6196,
+    "endFrame": 7375,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T131759.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\puzzled_tan_raven.slp",
+    "startFrame": 1661,
+    "endFrame": 2350,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T133134.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\accurate_teal_salamander.slp",
+    "startFrame": 2584,
+    "endFrame": 3428,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T151257.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\accessible_black_jackal.slp",
+    "startFrame": 4328,
+    "endFrame": 5173,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T151257.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\divine_white_roundworm.slp",
+    "startFrame": 2773,
+    "endFrame": 4099,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T151454.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\head_purple_octopus.slp",
+    "startFrame": 7725,
+    "endFrame": 8685,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 17,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T161121.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\violent_orange_tiglon.slp",
+    "startFrame": 17302,
+    "endFrame": 18350,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 14,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T164542.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\bizarre_aqua_alligator.slp",
+    "startFrame": 2077,
+    "endFrame": 2882,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T170919.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\static_chocolate_mite.slp",
+    "startFrame": 3119,
+    "endFrame": 4065,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T170919.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\imaginative_coffee_quokka.slp",
+    "startFrame": 6739,
+    "endFrame": 7632,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T170919.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\dizzy_crimson_deer.slp",
+    "startFrame": 8388,
+    "endFrame": 9603,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T170919.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\terrible_bronze_mollusk.slp",
+    "startFrame": 2990,
+    "endFrame": 3903,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T171213.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\agreeable_emerald_condor.slp",
+    "startFrame": 4285,
+    "endFrame": 5334,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T171213.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\grim_peach_sailfish.slp",
+    "startFrame": 5589,
+    "endFrame": 6682,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T171213.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\psychological_peach_aardvark.slp",
+    "startFrame": 3314,
+    "endFrame": 4055,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T172035.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\intellectual_coral_bee.slp",
+    "startFrame": 777,
+    "endFrame": 1621,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T175950.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vulnerable_amber_guanaco.slp",
+    "startFrame": 12719,
+    "endFrame": 13678,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T183714.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\redundant_magenta_rattlesnake.slp",
+    "startFrame": 7573,
+    "endFrame": 8303,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T184220.slp",
+    "tournament": "Tournament\\Parsed\\LACS 5\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\wet_coffee_bonobo.slp",
+    "startFrame": 19475,
+    "endFrame": 20146,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T170907.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\temporary_amethyst_loon.slp",
+    "startFrame": 4931,
+    "endFrame": 5786,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 2,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T174022.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\generous_emerald_vole.slp",
+    "startFrame": 1765,
+    "endFrame": 2688,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 17,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T174559.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\misty_coffee_anteater.slp",
+    "startFrame": 3710,
+    "endFrame": 4576,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 0,
+    "oppCharacterId": 17,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T174559.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\concrete_maroon_rooster.slp",
+    "startFrame": 4424,
+    "endFrame": 5313,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T190423.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\modern_maroon_manatee.slp",
+    "startFrame": 6072,
+    "endFrame": 6967,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash-Game_20190922T190423.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\smiling_rose_centipede.slp",
+    "startFrame": 6572,
+    "endFrame": 7365,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash2-Game_20190922T113804.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\innovative_gray_duck.slp",
+    "startFrame": 2317,
+    "endFrame": 3181,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash2-Game_20190922T130520.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\harsh_violet_tahr.slp",
+    "startFrame": 4793,
+    "endFrame": 5562,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Mainstage 2019\\BTSSmash2-Game_20190922T130805.slp",
+    "tournament": "Tournament\\Parsed\\Mainstage 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\remote_brown_barnacle.slp",
+    "startFrame": -40,
+    "endFrame": 1018,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Pound2019\\Station 101-D-Game_20190420T225511.slp",
+    "tournament": "Tournament\\Parsed\\Pound2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\severe_indigo_porcupine.slp",
+    "startFrame": 7662,
+    "endFrame": 8436,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Pound2019\\Station 101-D-Game_20190420T225511.slp",
+    "tournament": "Tournament\\Parsed\\Pound2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\efficient_ivory_newt.slp",
+    "startFrame": 6185,
+    "endFrame": 7005,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 23,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Pound2019\\Station 105-A-Game_20190420T223739.slp",
+    "tournament": "Tournament\\Parsed\\Pound2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\confused_cyan_jellyfish.slp",
+    "startFrame": 316,
+    "endFrame": 1126,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2019\\BTSsmash-Game_20190825T122820.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\yodelling_yellow_stoat.slp",
+    "startFrame": 4779,
+    "endFrame": 5817,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\redundant_emerald_silkworm.slp",
+    "startFrame": 8042,
+    "endFrame": 9000,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\golden_turquoise_dinosaur.slp",
+    "startFrame": 9204,
+    "endFrame": 10224,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2019\\BTSsmash-Game_20190825T152718.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2019\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\influential_copper_shark.slp",
+    "startFrame": 10523,
+    "endFrame": 11562,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 1-Game_20210716T004807.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\graceful_violet_guineafowl.slp",
+    "startFrame": 10590,
+    "endFrame": 11489,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 1-Game_20210716T005144.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\convenient_azure_chicken.slp",
+    "startFrame": 2777,
+    "endFrame": 3610,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T001743.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\distinct_bronze_camel.slp",
+    "startFrame": 4919,
+    "endFrame": 5828,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T025740.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\nutritious_crimson_echidna.slp",
+    "startFrame": 6094,
+    "endFrame": 7331,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T030001.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\ideological_rose_bee.slp",
+    "startFrame": 7366,
+    "endFrame": 8151,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T033447.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vast_copper_walrus.slp",
+    "startFrame": 11636,
+    "endFrame": 12387,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T062647.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\agricultural_tomato_hare.slp",
+    "startFrame": 9183,
+    "endFrame": 10139,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 2-Game_20210717T063433.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\large_amethyst_seahorse.slp",
+    "startFrame": 1535,
+    "endFrame": 2367,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 15,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 3-Game_20210718T063436.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\panicky_aquamarine_whippet.slp",
+    "startFrame": 6400,
+    "endFrame": 7199,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 11\\Day 3-Game_20210718T072157.slp",
+    "tournament": "Tournament\\Parsed\\Summit 11\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\civic_violet_aardwolf.slp",
+    "startFrame": 336,
+    "endFrame": 1430,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T033151.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\contemporary_coral_crab.slp",
+    "startFrame": 1394,
+    "endFrame": 2306,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T033432.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\controversial_gold_skink.slp",
+    "startFrame": 1866,
+    "endFrame": 2743,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T035011.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\musical_plum_orca.slp",
+    "startFrame": 10056,
+    "endFrame": 11177,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T044150.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\dreadful_tomato_finch.slp",
+    "startFrame": 6006,
+    "endFrame": 6751,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T085753.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\current_moccasin_lizard.slp",
+    "startFrame": 924,
+    "endFrame": 1696,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T092041.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\compact_salmon_puffin.slp",
+    "startFrame": 7960,
+    "endFrame": 8653,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_001AE99F99CA_20220512T092041.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\heavy_yellow_rooster.slp",
+    "startFrame": 14905,
+    "endFrame": 16044,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220512T100352.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\powerful_silver_meadowlark.slp",
+    "startFrame": 16420,
+    "endFrame": 17298,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220512T100352.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\many_sapphire_leech.slp",
+    "startFrame": 20889,
+    "endFrame": 21767,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220512T100352.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\critical_red_halibut.slp",
+    "startFrame": 4179,
+    "endFrame": 4947,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220513T110525.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\suspicious_lavender_tarsier.slp",
+    "startFrame": 5248,
+    "endFrame": 6070,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220513T155342.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\cognitive_blue_caribou.slp",
+    "startFrame": 4587,
+    "endFrame": 5424,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220514T150052.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\attractive_chocolate_horse.slp",
+    "startFrame": 3638,
+    "endFrame": 4944,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220514T155701.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\nice_aqua_orangutan.slp",
+    "startFrame": 1813,
+    "endFrame": 3098,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220514T171123.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vitreous_coral_sturgeon.slp",
+    "startFrame": 6828,
+    "endFrame": 7826,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220514T171123.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\advisory_turquoise_puma.slp",
+    "startFrame": 6646,
+    "endFrame": 7823,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220515T101446.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\super_cyan_mockingbird.slp",
+    "startFrame": 3525,
+    "endFrame": 4849,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220515T102214.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\full_beige_caterpillar.slp",
+    "startFrame": 1087,
+    "endFrame": 2209,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220515T115556.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\industrial_copper_cockroach.slp",
+    "startFrame": -123,
+    "endFrame": 792,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220515T182017.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\cuddly_amber_fowl.slp",
+    "startFrame": 8060,
+    "endFrame": 9196,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_0022D7004942_20220515T202801.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\controversial_harlequin_lizard.slp",
+    "startFrame": 8060,
+    "endFrame": 9196,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Game_20220515T212005.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\sexual_green_dragon.slp",
+    "startFrame": 1587,
+    "endFrame": 2435,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Summit 8\\Day 4-Game_20190616T141948.slp",
+    "tournament": "Tournament\\Parsed\\Summit 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\chief_bronze_bedbug.slp",
+    "startFrame": 3557,
+    "endFrame": 4735,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\test\\test.slp",
+    "tournament": "Tournament\\Parsed\\test\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\distinct_green_snake.slp",
+    "startFrame": 12668,
+    "endFrame": 13596,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T144539.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\mute_coral_ape.slp",
+    "startFrame": 11843,
+    "endFrame": 12707,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T152110.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\original_amaranth_moose.slp",
+    "startFrame": 9482,
+    "endFrame": 10500,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T152456.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\wonderful_lime_silkworm.slp",
+    "startFrame": 1193,
+    "endFrame": 2304,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T165958.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\constant_rose_orangutan.slp",
+    "startFrame": 11325,
+    "endFrame": 12258,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T182803.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\blonde_brown_mole.slp",
+    "startFrame": 486,
+    "endFrame": 1424,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T190049.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\spare_red_lark.slp",
+    "startFrame": 3522,
+    "endFrame": 4762,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T200215.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\institutional_gold_puffin.slp",
+    "startFrame": 8487,
+    "endFrame": 9371,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The BIg House 9\\BTSSmash-Game_20191006T200538.slp",
+    "tournament": "Tournament\\Parsed\\The BIg House 9\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\glamorous_magenta_hyena.slp",
+    "startFrame": 7230,
+    "endFrame": 8163,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\TheGangStealsTheScript\\3-stream-Game_20190309T120731.slp",
+    "tournament": "Tournament\\Parsed\\TheGangStealsTheScript\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\thin_orange_anaconda.slp",
+    "startFrame": 189,
+    "endFrame": 1328,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\TheGangStealsTheScript\\3-stream-Game_20190309T203254.slp",
+    "tournament": "Tournament\\Parsed\\TheGangStealsTheScript\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\compact_green_mollusk.slp",
+    "startFrame": 3298,
+    "endFrame": 4168,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 1,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_00224CCD4B5E_20220415T125804.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\useless_beige_marten.slp",
+    "startFrame": 4652,
+    "endFrame": 5466,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_00224CCD4B5E_20220415T141717.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\exciting_copper_peafowl.slp",
+    "startFrame": 5551,
+    "endFrame": 7018,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T103110.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\sleepy_green_perch.slp",
+    "startFrame": 3505,
+    "endFrame": 4761,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T103955.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\willowy_blue_dog.slp",
+    "startFrame": -123,
+    "endFrame": 620,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T115122.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\obvious_gold_flea.slp",
+    "startFrame": 11166,
+    "endFrame": 12109,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T135308.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\reduced_plum_cicada.slp",
+    "startFrame": 354,
+    "endFrame": 1349,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T172549.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\productive_crimson_ladybug.slp",
+    "startFrame": 6785,
+    "endFrame": 7564,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T183555.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\empty_scarlet_leech.slp",
+    "startFrame": 7867,
+    "endFrame": 8973,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash2\\Game_8C56C58C3FBD_20220416T183555.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash2\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\definite_sapphire_panda.slp",
+    "startFrame": 114,
+    "endFrame": 796,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 2,
+    "oppCharacterId": 8,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220415T104600.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\meaningful_yellow_bass.slp",
+    "startFrame": 3352,
+    "endFrame": 4089,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220415T143554.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\elderly_amber_boar.slp",
+    "startFrame": 15093,
+    "endFrame": 17220,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 22,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220415T181202.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\rubber_brown_wildcat.slp",
+    "startFrame": 6115,
+    "endFrame": 6976,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220415T233205.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\steady_aquamarine_hawk.slp",
+    "startFrame": 13046,
+    "endFrame": 13911,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220416T110733.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\semantic_fuchsia_heron.slp",
+    "startFrame": 6105,
+    "endFrame": 6844,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Genesis8\\btssmash4\\Game_20220416T141521.slp",
+    "tournament": "Tournament\\Parsed\\Genesis8\\btssmash4\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\magnetic_indigo_jay.slp",
+    "startFrame": 3638,
+    "endFrame": 4944,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220514T164903.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\required_scarlet_rook.slp",
+    "startFrame": 1813,
+    "endFrame": 3098,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220514T180325.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\graceful_jade_flyingfish.slp",
+    "startFrame": 6828,
+    "endFrame": 7826,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220514T180325.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\bright_peach_penguin.slp",
+    "startFrame": 6646,
+    "endFrame": 7823,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220515T110649.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\disturbing_coffee_partridge.slp",
+    "startFrame": 3525,
+    "endFrame": 4849,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220515T111417.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\weekly_purple_gecko.slp",
+    "startFrame": 1087,
+    "endFrame": 2209,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 1,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220515T124800.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\awkward_crimson_pelican.slp",
+    "startFrame": -123,
+    "endFrame": 792,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\Game_20220515T191221.slp",
+    "tournament": "Tournament\\Parsed\\Smash Summit 13\\Backup Mirrored Replays\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\hilarious_gray_chimpanzee.slp",
+    "startFrame": -123,
+    "endFrame": 661,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 12,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221008T144106.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vertical_salmon_roadrunner.slp",
+    "startFrame": 4927,
+    "endFrame": 5860,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221008T215046.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\socialist_teal_termite.slp",
+    "startFrame": 5957,
+    "endFrame": 6977,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221008T215046.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\unchanged_peach_dingo.slp",
+    "startFrame": 5871,
+    "endFrame": 6677,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221008T221201.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\limited_green_sailfish.slp",
+    "startFrame": 7216,
+    "endFrame": 8113,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221008T221716.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\hard_blush_swordfish.slp",
+    "startFrame": 2950,
+    "endFrame": 3796,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T175020.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\inquisitive_silver_marten.slp",
+    "startFrame": 2962,
+    "endFrame": 3703,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T175639.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\developing_red_tyrannosaurus.slp",
+    "startFrame": 5094,
+    "endFrame": 5951,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T180459.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\grim_harlequin_pig.slp",
+    "startFrame": 1452,
+    "endFrame": 2294,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 15,
+    "characterColor": 3,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T195319.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\smoggy_fuchsia_starfish.slp",
+    "startFrame": 3498,
+    "endFrame": 4388,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T211411.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\primitive_bronze_canid.slp",
+    "startFrame": 4790,
+    "endFrame": 5842,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221009T211411.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\uniform_white_lion.slp",
+    "startFrame": 4311,
+    "endFrame": 5102,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T121720.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\arbitrary_aquamarine_prawn.slp",
+    "startFrame": 6444,
+    "endFrame": 7251,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T121720.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\constitutional_rose_flea.slp",
+    "startFrame": 8484,
+    "endFrame": 9317,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T122206.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\conceptual_magenta_halibut.slp",
+    "startFrame": 6670,
+    "endFrame": 7407,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 15,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T135605.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\tricky_green_worm.slp",
+    "startFrame": 10466,
+    "endFrame": 11383,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T160955.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\funny_sapphire_orangutan.slp",
+    "startFrame": 13279,
+    "endFrame": 14190,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 17,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T172718.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\resident_turquoise_monkey.slp",
+    "startFrame": 290,
+    "endFrame": 1403,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Main Stream\\Game_D86BF78D2149_20221010T175341.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\urgent_bronze_loon.slp",
+    "startFrame": 10446,
+    "endFrame": 11202,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 6,
+    "characterColor": 2,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T174514.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\energetic_fuchsia_alligator.slp",
+    "startFrame": 694,
+    "endFrame": 1701,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T174936.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\ideal_blue_lion.slp",
+    "startFrame": 11387,
+    "endFrame": 12422,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T174936.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\okay_aqua_roadrunner.slp",
+    "startFrame": 2627,
+    "endFrame": 3564,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T201020.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\gay_yellow_mole.slp",
+    "startFrame": 7637,
+    "endFrame": 8735,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T201020.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\expensive_azure_aardvark.slp",
+    "startFrame": 348,
+    "endFrame": 1169,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T201257.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\odd_emerald_meadowlark.slp",
+    "startFrame": 1862,
+    "endFrame": 2623,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 7,
+    "characterColor": 0,
+    "oppCharacterId": 7,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 10\\Side Stream\\Game_001CBEB0814C_20221008T232914.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 10\\Side Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\informal_coffee_scallop.slp",
+    "startFrame": 4280,
+    "endFrame": 5339,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 1,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231020T185956.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\swift_white_fowl.slp",
+    "startFrame": 3921,
+    "endFrame": 4721,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 1,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231020T190219.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\historic_magenta_fowl.slp",
+    "startFrame": 7338,
+    "endFrame": 8294,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231020T201747.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\rich_rose_grasshopper.slp",
+    "startFrame": 4806,
+    "endFrame": 6062,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231021T162021.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\monthly_aqua_seahorse.slp",
+    "startFrame": 2148,
+    "endFrame": 3052,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231021T173121.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\comfortable_cyan_dinosaur.slp",
+    "startFrame": 389,
+    "endFrame": 1847,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231021T175138.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\romantic_lime_lemming.slp",
+    "startFrame": 2952,
+    "endFrame": 3578,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231021T184333.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\immediate_emerald_dog.slp",
+    "startFrame": 7105,
+    "endFrame": 7981,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231021T212650.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\private_chocolate_cuckoo.slp",
+    "startFrame": 12719,
+    "endFrame": 13805,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 1,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231022T120819.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\fond_rose_hummingbird.slp",
+    "startFrame": 1987,
+    "endFrame": 2954,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231022T123134.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\natural_moccasin_cheetah.slp",
+    "startFrame": 723,
+    "endFrame": 1473,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231022T153735.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\conservation_scarlet_goose.slp",
+    "startFrame": 9568,
+    "endFrame": 10641,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231022T161657.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\ultimate_coral_panther.slp",
+    "startFrame": 1391,
+    "endFrame": 2128,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Main Stream\\Game_8C56C529AEAA_20231022T174034.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Main Stream\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\managing_coffee_meerkat.slp",
+    "startFrame": 5117,
+    "endFrame": 6116,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231020T083345.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\bare_aquamarine_reptile.slp",
+    "startFrame": 8085,
+    "endFrame": 9115,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231020T083717.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\prickly_aquamarine_chickadee.slp",
+    "startFrame": 4370,
+    "endFrame": 5259,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231020T095615.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\querulous_sapphire_hedgehog.slp",
+    "startFrame": 1499,
+    "endFrame": 2249,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 1,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231021T071108.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\impressive_chocolate_squid.slp",
+    "startFrame": 482,
+    "endFrame": 1275,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 1,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231021T231555.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\vivacious_blue_magpie.slp",
+    "startFrame": 281,
+    "endFrame": 1200,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 13,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231021T233550.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\general_amethyst_armadillo.slp",
+    "startFrame": 4971,
+    "endFrame": 6265,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\Game_00224CD395E8_20231021T235712.slp",
+    "tournament": "Tournament\\Parsed\\The Big House 11\\Offline Recording Setup\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\naughty_tomato_grouse.slp",
+    "startFrame": 4550,
+    "endFrame": 5679,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Friday\\Game_20230825T210155.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Friday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\short_blush_canid.slp",
+    "startFrame": 2667,
+    "endFrame": 3412,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 4,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T103330.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\blank_cyan_trout.slp",
+    "startFrame": 1954,
+    "endFrame": 2869,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T152000.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\identical_crimson_whale.slp",
+    "startFrame": 1029,
+    "endFrame": 2003,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 14,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T153419.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\rare_blue_otter.slp",
+    "startFrame": 3891,
+    "endFrame": 4847,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T162327.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\quarrelsome_purple_tyrannosaurus.slp",
+    "startFrame": 11963,
+    "endFrame": 12821,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 2,
+    "oppCharacterId": 12,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T170755.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\digital_amethyst_giraffe.slp",
+    "startFrame": -72,
+    "endFrame": 942,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T192932.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\identical_apricot_dolphin.slp",
+    "startFrame": 11770,
+    "endFrame": 12618,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T201551.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\psychological_chocolate_armadillo.slp",
+    "startFrame": 8244,
+    "endFrame": 9176,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T204431.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\mighty_pink_halibut.slp",
+    "startFrame": 6271,
+    "endFrame": 7181,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T205200.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\hidden_sapphire_sawfish.slp",
+    "startFrame": 3024,
+    "endFrame": 4092,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\Game_20230826T210702.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\explicit_black_owl.slp",
+    "startFrame": 3939,
+    "endFrame": 4743,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T170907.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\remarkable_blush_dingo.slp",
+    "startFrame": 16228,
+    "endFrame": 17580,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T181639.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\administrative_harlequin_hamster.slp",
+    "startFrame": 243,
+    "endFrame": 1061,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 17,
+    "characterColor": 1,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T191105.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\tired_fuchsia_panther.slp",
+    "startFrame": 7584,
+    "endFrame": 8425,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 17,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T194736.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\ugliest_pink_cat.slp",
+    "startFrame": 2256,
+    "endFrame": 3357,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T214024.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\crucial_fuchsia_ferret.slp",
+    "startFrame": 6008,
+    "endFrame": 7435,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\Game_20230827T214024.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Main Stream (twitch.tv-btssmash, Friday, Saturday, and Sunday)\\Shine 2023 Main Stream, Sunday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\peaceful_turquoise_wasp.slp",
+    "startFrame": 7835,
+    "endFrame": 8912,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Friday\\Game_0022AA25BF20_20230825T202427.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Friday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\wild_coffee_hummingbird.slp",
+    "startFrame": 707,
+    "endFrame": 1917,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Friday\\Game_0022AA25BF20_20230825T202828.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Friday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\conscious_purple_tick.slp",
+    "startFrame": 1046,
+    "endFrame": 1804,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 1,
+    "characterColor": 3,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T151136.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\juicy_magenta_chinchilla.slp",
+    "startFrame": 3010,
+    "endFrame": 4176,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 1,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T151525.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\widespread_chocolate_sailfish.slp",
+    "startFrame": 2338,
+    "endFrame": 3217,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 1,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T152547.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\absolute_copper_cheetah.slp",
+    "startFrame": 2027,
+    "endFrame": 2814,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T153238.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\colorful_black_owl.slp",
+    "startFrame": 2605,
+    "endFrame": 3391,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 1,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T160350.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\general_plum_narwhal.slp",
+    "startFrame": 2629,
+    "endFrame": 3770,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T175730.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\youthful_azure_kangaroo.slp",
+    "startFrame": 548,
+    "endFrame": 1383,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 0,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T194811.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\variable_emerald_pig.slp",
+    "startFrame": 7627,
+    "endFrame": 8579,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T200258.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\handicapped_blue_loon.slp",
+    "startFrame": 7382,
+    "endFrame": 8908,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 13,
+    "characterColor": 2,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T200541.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\disappointed_amethyst_deer.slp",
+    "startFrame": 6479,
+    "endFrame": 7416,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 14,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T201915.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\glad_bronze_chimpanzee.slp",
+    "startFrame": 1044,
+    "endFrame": 2283,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T203921.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\satisfied_magenta_tarantula.slp",
+    "startFrame": 4349,
+    "endFrame": 5730,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 25,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\Game_0022AA25BF20_20230826T204727.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Saturday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\mobile_rose_skink.slp",
+    "startFrame": 8386,
+    "endFrame": 9265,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 0,
+    "oppCharacterId": 17,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 5,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Thursday\\Game_0022AA25BF20_20230824T214422.slp",
+    "tournament": "Tournament\\Parsed\\Shine 2023\\Melee Side Stream (twitch.tv-the_pubbers, Friday and Saturday)\\Shine 2023 Side Stream, Thursday\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\living_emerald_warbler.slp",
+    "startFrame": 4343,
+    "endFrame": 5237,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T112712.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\eventual_fuchsia_clownfish.slp",
+    "startFrame": 4857,
+    "endFrame": 5741,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T123043.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\multiple_white_vulture.slp",
+    "startFrame": 8138,
+    "endFrame": 9105,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 19,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T140247.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\glorious_gray_shrew.slp",
+    "startFrame": 90,
+    "endFrame": 1019,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 4,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T154133.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\bewildered_teal_quokka.slp",
+    "startFrame": 3221,
+    "endFrame": 4026,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 9,
+    "characterColor": 4,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T154337.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\typical_silver_trout.slp",
+    "startFrame": 239,
+    "endFrame": 1020,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 3,
+    "oppCharacterId": 9,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T172721.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\cognitive_beige_ocelot.slp",
+    "startFrame": 605,
+    "endFrame": 2210,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 2,
+    "oppCharacterId": 3,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T182559.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\permanent_jade_beaver.slp",
+    "startFrame": 3837,
+    "endFrame": 5396,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 3,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240809T182559.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\free_violet_mongoose.slp",
+    "startFrame": 9217,
+    "endFrame": 9992,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 4,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240810T141548.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\bold_amethyst_swordtail.slp",
+    "startFrame": 1422,
+    "endFrame": 2213,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 19,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 0,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240810T151648.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\profitable_black_wolverine.slp",
+    "startFrame": 3557,
+    "endFrame": 4309,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 20,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 1,
+    "portToGuess": 0,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\Game_A45C27BA0AE1_20240811T120006.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Pre-Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\fun_crimson_elk.slp",
+    "startFrame": 4291,
+    "endFrame": 5057,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 2,
+    "characterColor": 1,
+    "oppCharacterId": 1,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 2,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Top 8\\Game_20240811T154701.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Top 8\\"
+  },
+  {
+    "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\tournament\\cut\\supreme_coffee_catshark.slp",
+    "startFrame": 1701,
+    "endFrame": 2618,
+    "playerName": {
+      "code": "",
+      "name": ""
+    },
+    "characterId": 20,
+    "characterColor": 0,
+    "oppCharacterId": 2,
+    "oppPlayerName": {
+      "code": "",
+      "name": ""
+    },
+    "oppCharacterColor": 3,
+    "portToGuess": 1,
+    "ogPath": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\Supernova 2024\\Stream\\Top 8\\Game_20240811T160543.slp",
+    "tournament": "Tournament\\Parsed\\Supernova 2024\\Stream\\Top 8\\"
+  }
+]
