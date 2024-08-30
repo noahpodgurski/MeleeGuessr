@@ -11,10 +11,10 @@ import "~/state/selectionStore";
 import { load } from "~/state/fileStore";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { setStartFrame } from "~/state/replayStore";
-import { play, playStore, setClipIndex } from "~/state/playStore";
+import { play, playStore, setClipIndex, setClips } from "~/state/playStore";
 import { useLoader } from "~/components/common/Loader";
 import { characterNameByExternalId } from "~/common/ids";
-import { Input, Typography } from "@suid/material";
+import { Button, Input, TextField, Typography } from "@suid/material";
 
 export type PlayData = {
   stage: number;
@@ -57,6 +57,10 @@ export const Play = () => {
 
   const doPlay = async () => {
     console.log(playStore.clipIndex)
+    if (playStore.clips[playStore.clipIndex].playerName?.name !== "" || playStore.clips[playStore.clipIndex].playerName?.name === "skip") {
+      setClipIndex(playStore.clipIndex+1);
+      return doPlay();
+    }
     const url = playStore.clips[playStore.clipIndex].path.replace("\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp", "http://192.168.1.111:8000")
     console.log(url);
     try {
@@ -88,22 +92,26 @@ export const Play = () => {
   const categorize = async (e: any) => {
     if (e.key === "Enter") {
       console.log(e.target.value)
+      let clips = JSON.parse(JSON.stringify(playStore.clips));
+      clips[playStore.clipIndex]!.playerName!.name = e.target.value;
+      setClips(clips);
+      console.log(playStore.clips[playStore.clipIndex])
       setClipIndex(playStore.clipIndex+1)
       doPlay();
+      e.target.value = "";
     }
-    // const response = await makeGuess(choice);
-    // correct = response.data.message === "Correct";
-    // setAnswer(response.data.data);
-    // setShowAnswers(true);
-    // //show correct answers for 2 seconds
-    // await new Promise((r) => setTimeout(r, 2000));
-    // //todo request next while showing answers
-    // setLoading(true);
-    // await play();
-    // setAnswer("");
-    // await doPlay();
-    // setLoading(false);
   }
+
+  const saveJSONFile = () => {
+    const jsonData = JSON.stringify(playStore.clips, null, 2); // Convert data to a JSON string with indentation
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "data.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div class="d-flex justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "90vh", margin: "auto"}}>
@@ -128,7 +136,8 @@ export const Play = () => {
         {playStore.clips?.length > 0 && playStore.clips[playStore.clipIndex]?.ogPath}
       </Typography>
       <div class="row mt-4" style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
-        <Input onKeyDown={categorize} />
+        <TextField variant="standard" color="success" focused onKeyDown={categorize} />
+        <Button onClick={saveJSONFile} variant="contained" color="primary">Save highlights</Button>
       </div>
     </div>
   );

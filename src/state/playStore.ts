@@ -45,6 +45,10 @@ export const setClipIndex = (n: number) => {
   setState("clipIndex", n)
 }
 
+export const setClips = (clips: any) => {
+  setState("clips", clips);
+}
+
 // export async function makeGuess(guess: string): Promise<AxiosResponse> {
   // let headers: any = {};
   // if (userStore.data) {
