@@ -67,7 +67,7 @@ function Shield(props: { renderData: RenderData }) {
   );
   // Formulas from https://www.ssbwiki.com/Shield#Shield_statistics
   const triggerStrengthMultiplier = createMemo(
-    () => 1 - (0.5 * (triggerStrength() - 0.3)) / 0.7
+    () => 1 - (0.5 * (triggerStrength() - .3)) / 0.7
   );
   const shieldSizeMultiplier = createMemo(
     () => ((shieldHealth() * triggerStrengthMultiplier()) / 60) * 0.85 + 0.15
@@ -92,7 +92,7 @@ function Shield(props: { renderData: RenderData }) {
           }
           r={props.renderData.characterData.shieldSize * shieldSizeMultiplier()}
           fill={props.renderData.innerColor}
-          opacity={0.6}
+          opacity={Math.min(props.renderData.playerInputs.processed.anyTrigger, .8)}
         />
       </Show>
     </>

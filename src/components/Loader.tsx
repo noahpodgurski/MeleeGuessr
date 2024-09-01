@@ -10,7 +10,7 @@ export const Loader = () => {
 				<h1 class="now-loading">NOW LOADING</h1>
 				<div class="now-loading-bar"></div>
 			</div>
-			<div class="loader-container" hidden={!loading()}>
+			<div class="loader-container" hidden>
 				<div class="gel c7 r2">
 					<div class="hex-brick h1"></div>
 					<div class="hex-brick h2"></div>

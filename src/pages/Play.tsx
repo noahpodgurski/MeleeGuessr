@@ -1,10 +1,9 @@
 import { createSignal, createEffect } from "solid-js";
-import { STARTING_STOCKS } from "../App";
-import { StocksContext } from "../components/common/Stocks";
 import { Clip } from "../models/Clip";
 import { StageType } from "~/components/Stage";
 import { Viewer } from "~/components/viewer/Viewer";
 
+import './Play.scss';
 import "~/state/fileStore";
 import "~/state/replayStore";
 import "~/state/selectionStore";
@@ -25,47 +24,41 @@ export type PlayData = {
   correctChoice?: string;
 };
 
-let playData: PlayData[] = [];
-let clips: Clip[] = [];
-
-const BASE_POINTS = 1;
-const NO_HINT_POINTS = 2;
-
 export const Play = () => {
   
   const [selected, setSelected] = createSignal(false);
-  const [score, setScore] = createSignal(0);
-  const [showChoiceResult, setShowChoiceResult] = createSignal(false);
-  const [HS, setHS] = createSignal(false);
-  const [currStage, setCurrStage] = createSignal<StageType | null>(null);
+  const [isDebug, ] = createSignal(false);
   const [loading, {setLoading}] = useLoader();
   
   createEffect(async () => {
-    if (!playStore.currentClip) {
-      setLoading(true);
-      await play();
-      await doPlay();
-      setLoading(false);
-    } else {
-      setSelected(true);
+    try {
+      if (!playStore.currentClip) {
+        setLoading(true);
+        await play();
+        await doPlay();
+        setLoading(false);
+      } else {
+        setSelected(true);
+      }
+      // if (clips.length === 0) {
+      //   // const fetchData = async () => {
+      //   //   // await getClips(); //todo
+      //   // };
+      //   // fetchData();
+      // }
+    } catch (e) {
+      toast("Something went wrong. Try again later")
     }
-    // if (clips.length === 0) {
-    //   // const fetchData = async () => {
-    //   //   // await getClips(); //todo
-    //   // };
-    //   // fetchData();
-    // }
   });
 
   const doPlay = async () => {
     // 1. doPlay (request at /play)
     // 2. 
     // const url = new URLSearchParams(location.search).get("replayUrl");
-    const isDebug = true;
     if (!playStore.currentClip) return;
     // const url = "../slp-test/test.slp";
-    const url = isDebug ? "../slp-test/test3.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
-    const startFrame = isDebug ? 0 : Math.max(playStore.currentClip.startFrame, 0);
+    const url = isDebug() ? "../slp-test/test.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
+    const startFrame = isDebug() ? 0 : Math.max(playStore.currentClip.startFrame, 0);
     console.log(startFrame)
     setStartFrame(startFrame);
     if (url !== null) {
@@ -88,9 +81,11 @@ export const Play = () => {
             } else {
               toast("Something went wrong. Please try again later")
             }
+          }).catch((e) => {
+            toast("Something went wwrong. Please try again later")
           });
       } catch (e) {
-        console.error("Error: could not load replay", url, e);
+        toast("Error: could not load replay");
       }
     }
 
@@ -116,13 +111,15 @@ export const Play = () => {
   }
 
   return (
-    <div class="justify-content-center align-items-center mt-5" style={{ height: "100%", "max-width": "90vh", margin: "auto", display: 'flex'}}>
+    <div class="justify-content-center align-items-center mt-5 play">
+      
       <Grid sx={{alignItems: 'center', width: '100%'}}>
         <Grid>
           <Viewer />
         </Grid>
         <Grid style={{"text-align": 'center'}}>
           { playStore.currentClip && !loading() && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
+          { isDebug() && "Debug"}
         </Grid>
         <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
           { selected() && <Choices guess={guess} answer={answer} />}

@@ -116,13 +116,15 @@
 } */
 
 
+
+
 .now-loading {
   font-family: Now-Loading;
   transform: scale(1, .5);
-  top: calc(min(70vw, 70vh) - min(2vw, 2vh));
-  left: calc(max(0px, calc((100vw - 90vh) / 2)) + min(40vh, 40vw));
+  top: calc(min(50vw, 50vh) - min(2vw, 2vh));
+  left: calc(max(0px, calc((100vw - 90vh) / 2)) + min(35vh, 35vw));
   position: absolute;
-  font-size: min(5vw, 5vh);
+  font-size: min(10vw, 6vh);
   color: #c2b87f;
   z-index: 10000;
 }
@@ -130,10 +132,10 @@
 .now-loading-bar {
   position: absolute;
   background-color: rgba(0, 0, 0, .5);
-  top: min(70vw, 70vh);
-  left: max(0px, calc((100vw - 90vh) / 2));
-  max-width: calc(90vh - 2px);
-  width: 100%;
+  top: min(51vw, 51vh);
+  left: calc(max(0px, calc((100vw - 90vh) / 2)) + 2px);
+  max-width: calc(90vh - 4px);
+  width: calc(100% - 4px);
   height: 46px;
   z-index: 9990;
   display: flex;

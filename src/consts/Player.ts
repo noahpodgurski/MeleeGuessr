@@ -211,6 +211,7 @@ export const Player: PlayerType = {
     score: 72.5},
   'Gahtzu': { 
     label: 'Gahtzu',
+    aliases: ['GUTZ', 'GAHT#867'],
     characters: [Character.Falcon,],
     flag: 'us',
     score: 71.3},
@@ -593,7 +594,11 @@ export const Player: PlayerType = {
       aliases: ['null', 'null4summit :)'],
       characters: [Character.Fox]
     },
-    
+    'Faust': {
+      label: "Faust",
+      aliases: ["PTBO#289"],
+      characters: [Character.Jigglypuff]
+    },
   
     
     'TEST': {
