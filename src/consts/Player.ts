@@ -8,7 +8,7 @@ export interface PlayerType {
 export const Player: PlayerType = { 
   'Hungrybox': { 
     label: 'Hungrybox',
-    characters: [Character.Jigglypuff,],
+    characters: [Character.Jigglypuff, Character.Ness],
     flag: 'us',
     aliases: ["Hbox", "HGod", "Clutchbox", "Clutchgod"],
     score: 100},
@@ -24,7 +24,7 @@ export const Player: PlayerType = {
     label: 'Mang0',
     aliases: ['mang0', 'mang', 'mango', 'mang#0'],
     // color: 'primary',
-    characters: [Character.Fox, Character.Falco],
+    characters: [Character.Fox, Character.Falco, Character.Mario, Character.DrMario],
     conditionalCharacters: {
       "Fox": [Character.Falco],
       "Falco": AllCharacters
@@ -32,10 +32,20 @@ export const Player: PlayerType = {
     flag: 'us',
     score: 98.3,
   },
+  'cpu0': { 
+    label: 'cpu0',
+    characters: [Character.Jigglypuff],
+    flag: 'us',
+  },
+  'mof': { 
+    label: 'mof',
+    characters: [Character.IC],
+    flag: 'us',
+  },
   'Axe': { 
     label: 'Axe',
     aliases: ['frozenpizza', 'chillaxe', 'axe.pizza'],
-    characters: [Character.Pikachu,],
+    characters: [Character.Pikachu, Character.YLink, Character.DrMario],
     flag: 'us',
     score: 97},
   'Wizzrobe': { 
@@ -43,10 +53,18 @@ export const Player: PlayerType = {
     characters: [Character.Falcon,],
     flag: 'us',
     score: 96.4},
+  'JChu': { 
+    label: 'JChu',
+    characters: [Character.Pikachu],
+  },
+  'ChaoticNordi': { 
+    label: 'ChaoticNordi',
+    characters: [Character.Roy],
+  },
   'Zain': { 
     label: 'Zain',
     aliases: ['zain ', 'dontrestme', 'zain', '@boyo_boost', 'cock9 dinodick', 'albert999999999', 'spilledmycumjar'],
-    characters: [Character.Marth,],
+    characters: [Character.Marth,Character.Roy],
     conditionalCharacters: {
         "Ice Climbers": [Character.Marth]
     },
@@ -60,9 +78,14 @@ export const Player: PlayerType = {
   'Plup': { 
     label: 'Plup',
     aliases: ['plub'],
-    characters: [Character.Sheik, Character.Fox],
+    characters: [Character.Sheik, Character.Samus, Character.Luigi],
     flag: 'us',
     score: 93.5},
+  'Eddy Mexico': { 
+    label: 'Eddy Mexico',
+    characters: [Character.Luigi],
+    flag: 'us',
+  },
   'Cody': { 
     label: 'Cody Schwab',
     aliases: ['iBDW', 'ibdw', 'Cody', 'IBDW#0', 'ibdw#734'],
@@ -79,6 +102,11 @@ export const Player: PlayerType = {
     },
     flag: 'us',
     score: 92},
+  'SDJ': { 
+    label: 'SDJ',
+    characters: [Character.Jigglypuff],
+    flag: 'us',
+  },
   'S2J': { 
     label: 'S2J',
     aliases: ['john redcorn', 'tony soprano', 'barry lyndon', 'mr plow', 'yolanda'],
@@ -99,10 +127,20 @@ export const Player: PlayerType = {
     score: 90.3},
   'n0ne': { 
     label: 'n0ne',
-    aliases: ['bond'],
-    characters: [Character.Falcon,],
+    aliases: ['bond', 'none'],
+    characters: [Character.Falcon, Character.Ganondorf, Character.Mario],
     flag: 'ni',
     score: 88.1},
+  'Egg$': { 
+    label: 'Egg$',
+    characters: [Character.Yoshi],
+    flag: 'us',
+  },
+  'Franz': { 
+    label: 'Franz',
+    characters: [Character.DrMario],
+    flag: 'us',
+  },
   'Trif': { 
     label: 'Trif',
     characters: [Character.Peach,],
@@ -135,6 +173,14 @@ export const Player: PlayerType = {
     characters: [Character.Falco,],
     flag: 'us',
     score: 83.2},
+  'Kibbles': { 
+    label: 'Kibbles',
+    characters: [Character.Yoshi,]
+  },
+  'LittleCoaks': { 
+    label: 'LittleCoaks',
+    characters: [Character.Yoshi,]
+  },
   'Spark': { 
     label: 'Spark',
     aliases: ["hug money", "ZAID#633"],
@@ -209,6 +255,16 @@ export const Player: PlayerType = {
     characters: [Character.Jigglypuff,],
     flag: 'us',
     score: 72.5},
+  'Salt': { 
+    label: 'Salt',
+    characters: [Character.Falcon, Character.Roy],
+    flag: 'us',
+  },
+  'Zuppy': { 
+    label: 'Zuppy',
+    characters: [Character.Fox],
+    flag: 'us',
+  },
   'Gahtzu': { 
     label: 'Gahtzu',
     aliases: ['GUTZ', 'GAHT#867'],
@@ -257,6 +313,26 @@ export const Player: PlayerType = {
     characters: [Character.Samus],
     flag: 'us',
     score: 63.1},
+  'Junebug': { 
+    label: 'Junebug',
+    characters: [Character.DK],
+    flag: 'us',
+  },
+  'ckyulmiqnudaetr': { 
+    label: 'ckyulmiqnudaetr',
+    characters: [Character.DK],
+    flag: 'us',
+  },
+  'Moe': { 
+    label: 'Moe',
+    characters: [Character.DK],
+    flag: 'us',
+  },
+  'Aklo': { 
+    label: 'Aklo',
+    characters: [Character.Fox, Character.Link],
+    flag: 'us',
+  },
 //   'Jakenshaken': { 
 //     label: 'Jakenshaken',
 //     characters: [Character.Marth,],
@@ -428,11 +504,6 @@ export const Player: PlayerType = {
     characters: [Character.Marth, Character.IC],
     flag: 'us',
     score: 36.8},
-  'Franz': { 
-    label: 'Franz',
-    characters: [Character.DrMario,],
-    flag: 'us',
-    score: 36.4},
   'Nicki': { 
     label: 'Nicki',
     characters: [Character.Fox,],
@@ -529,6 +600,7 @@ export const Player: PlayerType = {
       characters: [Character.Peach],
       conditionalCharacters: {
         "Fox": [Character.Jigglypuff, Character.Fox],
+        "Young Link": [Character.Jigglypuff],
       },
     },
     'PPMD': {
@@ -564,8 +636,8 @@ export const Player: PlayerType = {
       label: 'Tyler Swift',
       characters: [Character.Pikachu]
     },
-    'BobbyScar': {
-      label: "BobbyScar",
+    'Scar': {
+      label: "Scar",
       aliases: ['bobbyscar'],
       characters: [Character.Falcon]
     },
@@ -589,6 +661,21 @@ export const Player: PlayerType = {
       aliases: ['ludwig'],
       characters: [Character.Jigglypuff]
     },
+    'Jmook': { 
+      label: 'Jmook',
+      characters: [Character.Sheik],
+      flag: 'us',
+    },
+    'Jah Ridin': { 
+      label: 'Jah Ridin',
+      characters: [Character.Luigi],
+      flag: 'us',
+    },
+    'Abate': { 
+      label: 'Abate',
+      characters: [Character.Luigi],
+      flag: 'us',
+    },
     'null': {
       label: "null",
       aliases: ['null', 'null4summit :)'],
@@ -598,6 +685,75 @@ export const Player: PlayerType = {
       label: "Faust",
       aliases: ["PTBO#289"],
       characters: [Character.Jigglypuff]
+    },
+    'A Rookie': {
+      label: "A Rookie",
+      characters: [Character.Mario]
+    },
+    'Nen': {
+      label: "Nen",
+      characters: [Character.Jigglypuff]
+    },
+    'Melee Enjoyer': {
+      label: "Melee Enjoyer",
+      characters: [Character.Link]
+    },
+    'Savestate': {
+      label: "Savestate",
+      characters: [Character.Link]
+    },
+    'El Link': {
+      label: "El Link",
+      characters: [Character.Link]
+    },
+    'Dream': {
+      label: "Dream",
+      characters: [Character.Ganondorf]
+    },
+    'Ap0stl3': {
+      label: "Ap0stl3",
+      characters: [Character.Ness]
+    },
+    'Joe(y) Bats': {
+      label: "Joe(y) Bats",
+      aliases: ["Joey bats"],
+      characters: [Character.Ness]
+    },
+    'Ayo Yanos': {
+      label: "Ayo Yanos",
+      characters: [Character.Ness]
+    },
+    'Ulsi': {
+      label: "Ulsi",
+      characters: [Character.Ness]
+    },
+    'Jimbob': {
+      label: "Jimbob",
+      characters: [Character.Mario]
+    },
+    'wcbq': {
+      label: "wcbq",
+      characters: [Character.Roy]
+    },
+    'LSDX': {
+      label: "LSDX",
+      characters: [Character.Roy]
+    },
+    'Rocket': {
+      label: "Rocket",
+      characters: [Character.YLink]
+    },
+    'Stats': {
+      label: "Stats",
+      characters: [Character.YLink]
+    },
+    'Mekk': {
+      label: "Mekk",
+      characters: [Character.Falcon, Character.Ganondorf]
+    },
+    'Bizzaro Flame': {
+      label: "Bizzaro Flame",
+      characters: [Character.Ganondorf]
     },
   
     
