@@ -43,6 +43,7 @@
     "autoprefixer": "^10.4.13",
     "byte-size": "^9.0.0",
     "cli-progress": "^3.12.0",
+    "node-color-log": "^12.0.1",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.0",

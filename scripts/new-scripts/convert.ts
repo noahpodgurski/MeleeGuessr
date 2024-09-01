@@ -28,14 +28,15 @@ import path from "path";
 import cliProgress from 'cli-progress';
 import byteSize from 'byte-size';
 import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-generator';
-import { FileData, getCharacterAndPlayerData } from './addCharacterToJson';
-import { SlippiGame } from '@slippi/slippi-js';
+import { FramesType, SlippiGame } from '@slippi/slippi-js';
+import logger from 'node-color-log';
+// import { SlippiGame } from './slippi';
 
-const IS_TOURNAMENT = true;
-const SUB_DIR = "tournament"
+const IS_TOURNAMENT = false;
+const SUB_DIR = "all3"
 const player = "lloD"
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\highlights.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
 
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
@@ -43,12 +44,12 @@ const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
 const CLIP_FILE = path.join(CLIP_DIR, "clips.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
 
+export type PlayerName = {
+    code: string;
+    name: string;
+}
 
-console.log(HIGHLIGHTS_FILE)
-console.log(CLIP_DIR)
-console.log(CLIP_FILE)
-console.log(CUT_DIR)
-
+//highlights.json object
 export type Highlight = {
     clipName?: string;
     path: string;
@@ -65,6 +66,28 @@ export type Highlight = {
     portToGuess: number;
 }
 
+//clips.json object
+export interface FileData {
+  path: string;
+  ogPath?: string;
+  tournament?: string;
+  endFrame: number;
+  startFrame: number;
+  characterId: number | null;
+  characterColor: number | null;
+  playerName: PlayerName | null;
+  oppCharacterId: number | null;
+  oppCharacterColor: number | null;
+  oppPlayerName: PlayerName | null;
+  portToGuess: number | null;
+}
+
+console.log(HIGHLIGHTS_FILE)
+console.log(CLIP_DIR)
+console.log(CLIP_FILE)
+console.log(CUT_DIR)
+
+
 if (!fs.existsSync(CLIP_DIR)) {
     fs.mkdirSync(CLIP_DIR, { recursive: true });
     console.log('Directory created successfully.');
@@ -77,6 +100,14 @@ if (!fs.existsSync(CUT_DIR)) {
     console.log('Directory created successfully.');
 } else {
     console.log('Directory already exists.');
+}
+
+const isNotAFK = (frames: FramesType, startFrame: number, endFrame: number, playerIndex: number) => {
+    for (let i = startFrame; i < endFrame; i++) {
+        if (frames[i].players[playerIndex]?.pre.buttons !== 0 || frames[i].players[playerIndex]?.pre.trigger !== 0)
+            return true;
+    }
+    return false;
 }
 
 // 1. add character to json (done already)
@@ -106,7 +137,10 @@ function cutSlp () {
         //     "startFrame": 2477,
         //     "endFrame": 3558
         //   } as Highlight]
+        let success = 0;
+        let errored = 0;
         for (let i = 0; i < highlights.length; i++) {
+            console.log(`${success} / ${errored} === ${success+errored} (${success/(success+errored+1)})`)
             bar1.update(i);
             let highlight = highlights[i];
             let tournamentName;
@@ -120,18 +154,122 @@ function cutSlp () {
                 }
             }
             //get character and player info
-            const data = await getCharacterAndPlayerData(highlight.path, highlight);
-            if (!data) {
-                console.log(`ERROR: SKIPPING ${path.basename(highlight.path)}`)
-                continue;
+            // this function sucks ass
+            // const data = await getCharacterAndPlayerData(highlight.path, highlight);
+            const data: FileData = {
+                path: highlight.path,
+                startFrame: highlight.startFrame,
+                endFrame: highlight.endFrame,
+                characterId: null,
+                characterColor: null,
+                playerName: null,
+                oppCharacterId: null,
+                oppCharacterColor: null,
+                oppPlayerName: null,
+                portToGuess: null,
+                
             };
+
+            let verifySlp, stats;
+            try {
+                verifySlp = new SlippiGame(highlight.path);
+                stats = verifySlp.getStats();
+            } catch(e) {
+                errored++;
+                continue;
+            }
+            
+            //get combo port
+            //find combo
+            const VALIDATION_BUFFER = 5; //frames of leniency between start and endframe
+            const CLIPPI_END_OFFSET = 57;
+            let validatedPort = false;
+            let validatedInput = true;
+            let validatedCombo = false;
+            if (stats?.combos) {
+                console.log(data.startFrame, data.endFrame)
+                for (let i = 0; i < stats.combos.length; i++) {
+                    const combo = stats.combos[i];
+                    combo.startFrame += 123;
+                    if (combo.endFrame)
+                        combo.endFrame += 123;
+                    // console.log(combo.playerIndex, combo.startFrame, combo.endFrame, (combo.endFrame ?? combo.startFrame)-combo.startFrame, combo.didKill)
+                    if (
+                        combo.didKill && 
+                        //start frame is within range
+                        // combo.startFrame > data.startFrame-VALIDATION_BUFFER && combo.startFrame < data.startFrame+VALIDATION_BUFFER &&
+                        //end frame is within range
+                        (!combo.endFrame || combo.endFrame > data.endFrame-CLIPPI_END_OFFSET-VALIDATION_BUFFER) && (!combo.endFrame || combo.endFrame < data.endFrame-CLIPPI_END_OFFSET+VALIDATION_BUFFER)
+                    ) {
+                        validatedCombo = true;
+                        const players = verifySlp.getSettings()?.players;
+                        if (!players) throw Error(`cant get players for ${highlight.path}`);
+                        //get opponent port number
+                        let playerPort: number | undefined;
+                        let oppPlayerPort: number | undefined;
+                        console.log(combo.playerIndex)
+                        if (players[0] && players[0].playerIndex !== combo.playerIndex) playerPort = 0;
+                        if (players[0] && players[0].playerIndex === combo.playerIndex) oppPlayerPort = 0;
+                        if (players[1] && players[1].playerIndex !== combo.playerIndex) playerPort = 1
+                        if (players[1] && players[1].playerIndex === combo.playerIndex) oppPlayerPort = 1
+                        if (players[2] && players[2].playerIndex !== combo.playerIndex) playerPort = 2
+                        if (players[2] && players[2].playerIndex === combo.playerIndex) oppPlayerPort = 2
+                        if (players[3] && players[3].playerIndex !== combo.playerIndex) playerPort = 3
+                        if (players[3] && players[3].playerIndex === combo.playerIndex) oppPlayerPort = 3
+                        if (playerPort === undefined || oppPlayerPort === undefined) {
+                            throw Error(`cant get player indexes for ${highlight.path}`);
+                            // break;
+                        }
+                        console.log(`player: ${combo.playerIndex} ::: opp: ${oppPlayerPort}`)
+
+                        console.log('WOW WE FOUND A MATCH WHAT ARE TEH CHANcES')
+                        //ensure the opponent is actually attempting to move...
+                        validatedInput = isNotAFK(verifySlp.getFrames(), highlight.startFrame, highlight.endFrame, oppPlayerPort);
+                        logger.color('cyan').log(`HAS INPUT??: ${validatedInput}`);
+                        if (!validatedInput) break;
+
+                        // assert(combo.playerIndex === data.portToGuess)
+                        if (combo.playerIndex !== data.portToGuess) {
+                            logger.color('yellow').log(`combo port ${combo.playerIndex} doesnt match ours ${data.portToGuess}`)
+                        } else {
+                            logger.color('green').log(`combo port MATCHED yay`);
+                        }
+                        data.playerName = {
+                            name: players[playerPort].displayName,
+                            code: players[playerPort].connectCode
+                        };
+                        data.characterId = players[playerPort].characterId;
+                        data.characterColor = players[playerPort].characterColor;
+                        data.portToGuess = players[playerPort].playerIndex;
+                        data.oppPlayerName = {
+                            name: players[oppPlayerPort].displayName,
+                            code: players[oppPlayerPort].connectCode
+                        }
+                        data.oppCharacterId = players[oppPlayerPort].characterId;
+                        data.oppCharacterColor = players[oppPlayerPort].characterColor;
+                        validatedPort = true;
+                    }
+                }
+            }
+            if (!validatedCombo) {
+                console.log(highlight.path);
+                throw Error("Unable to validate combo");
+            }
+            if (!validatedInput || !data.playerName || data.playerName.name === "") {
+                errored++;
+                continue;
+            }
+            if (!validatedPort) {
+                throw Error("Unable to validate port to guess");
+            }
+
             //make new name
             const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }) + ".slp";
             //use original name
             // const newName = path.basename(highlight.path);
             const outFile = path.join(CUT_DIR, newName);
-            // console.log(highlight.path, path.join(CUT_DIR, gameName[0]));
-            console.log(`schlicin clip ${highlight.path}`)
+            
+            // console.log(`schlicin clip ${highlight.path}`)
             dataSaved += await schliceSlp(highlight.path, outFile, highlight.endFrame);
             
             data.path = outFile;
@@ -141,18 +279,17 @@ function cutSlp () {
             
             //verify cut slps
             try {
-                if (!data) throw Error("unable to get character and player data");
-                // const verifySlp = new SlippiGame(outFile);
+                // verifySlp = new SlippiGame(outFile);
                 // const _ = verifySlp.getFrames()
-                console.log(`${path.basename(outFile)} is valid .slp :)`)
-                fileData.push(data);
-            } catch(err) {
-                erroredFiles++;
-                console.warn(err);
+                // stats = verifySlp.getStats();
+                logger.color('green').log(`${highlight.path} -> ${path.basename(outFile)} is valid .slp :)`)
+                success++;
+            } catch {
+                logger.color('red').log(`${highlight.path} -> ${path.basename(outFile)} is INVALID: (${highlight.startFrame}, ${highlight.endFrame})`)
+                errored++;
                 // await fs.promises.unlink(outFile);
-                // delete highlights[i];
             }
-
+            fileData.push(data);
         }
 
 

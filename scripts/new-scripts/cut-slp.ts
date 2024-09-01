@@ -63,8 +63,10 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
   // rawData.byteLength
   let push = true;
   let go = true;
+  // console.log(commandPayloadSizes)
   while (go && offset <= rawData.byteLength) {
     if (frameCount > end) push = false;
+    // else if (frameCount > end-1) push = true;
 
     
     const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
@@ -79,6 +81,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
     // 0x3b '59': 42,  item update
     // 0x3c '60': 8,   frame bookend
     // 0x3d '61': 31256 gecko list
+
 
     const l = commandPayloadSizes[command];
     switch (command) {
@@ -110,6 +113,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
         // console.log('39')
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
+          console.log(`pushing GAME END at ${slicedDataOffset.toString(16)} (OG ${offset.toString(16)})`)
         break;
       case 0x3a: //frame start
         // console.log('3a')
@@ -122,10 +126,10 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
         break;
       case 0x3b: //item update
         // console.log('3b')
-        if (push) {
+        // if (push) {
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
-        }
+        // }
         handleItemUpdateEvent(rawData, offset, replayVersion, frames);
         break;
       case 0x3c: //frame bookend
@@ -134,6 +138,7 @@ async function clipReplay({ metadata, raw }: any, fileSize: number, outName: fs.
           savedFrames++;
           slicedData.set(new Uint8Array(rawData.buffer, offset, l+1), slicedDataOffset);
           slicedDataOffset += l + 0x01;
+          // console.log(`pushing frame at ${slicedDataOffset.toString(16)} (OG ${offset.toString(16)})`)
         }
         // frameCount++;
         //frame bookend
@@ -261,7 +266,7 @@ const readFileAndCutNamesAndMetadata = async (inFile: fs.PathLike, outFile: fs.P
   
   // Get the file stats to know the size
   const stats = await fd.stat()
-  console.log(`size is ${stats.size}`)
+  // console.log(`size is ${stats.size}`)
 
   // Create a Buffer to hold the file contents
   const size = Buffer.alloc(stats.size);
@@ -294,7 +299,7 @@ const readFileAndCutNamesAndMetadata = async (inFile: fs.PathLike, outFile: fs.P
     data.raw.byteOffset + 0x01 + commandPayloadSizes[0x35],
   );
   await fd.close();
-  console.log(`cut metadata and names and writing to ${outFile}`)
+  // console.log(`cut metadata and names and writing to ${outFile}`)
   await fs.promises.writeFile(outFile, Buffer.from(cutNames))
 }
 

@@ -44,7 +44,6 @@ fs.readFile('\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\all\\clips.json',
         //     console.error(`${clip.path} is not a valid slp ${version}`)
         //     problematics.push(clip.path);
         // } 
-        // const game = new SlippiGame(clip.path);
         // const slpFrames = (game.getLatestFrame()?.frame ?? 0) + 123;
         const slpFrames = 0;
         console.log(`\n${clip.startFrame} -> ${numFrames} | [${slpFrames}]`)
@@ -52,6 +51,10 @@ fs.readFile('\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\all\\clips.json',
             console.error(`${clip.path} has less frames than the start frame ${version}`)
             problematics.push({path: clip.path, version});
         }
+        
+        //make sure portToGuess is actually the one doing the combo
+        const game = new SlippiGame(clip.path);
+        console.log(game.getFrames());
     }
     console.log(problematics.length)
     await fs.promises.writeFile('problematics.json', JSON.stringify(problematics, null, 2));
