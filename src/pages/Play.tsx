@@ -59,7 +59,6 @@ export const Play = () => {
     // const url = "../slp-test/test.slp";
     const url = isDebug() ? "../slp-test/test.slp" : `https://meleeguessr-v2-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
     const startFrame = isDebug() ? 0 : Math.max(playStore.currentClip.startFrame, 0);
-    console.log(startFrame)
     setStartFrame(startFrame);
     if (url !== null) {
       try {
@@ -79,10 +78,10 @@ export const Play = () => {
               await currentSelectionStore().select(_file[0]);
               setSelected(true);
             } else {
-              toast("Something went wrong. Please try again later")
+              toast(`Something went wrong. Please try again later`)
             }
           }).catch((e) => {
-            toast("Something went wwrong. Please try again later")
+            toast(`Something went wrong. Please try again later ${e}`)
           });
       } catch (e) {
         toast("Error: could not load replay");
@@ -118,7 +117,7 @@ export const Play = () => {
           <Viewer />
         </Grid>
         <Grid style={{"text-align": 'center'}}>
-          { playStore.currentClip && !loading() && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
+          { playStore.currentClip && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
           { isDebug() && "Debug"}
         </Grid>
         <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>

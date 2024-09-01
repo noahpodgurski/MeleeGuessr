@@ -11,7 +11,6 @@ export const userStore = state;
 export async function loadUser(_user?: string): Promise<void> {
   const user = _user ?? localStorage.getItem("user");
   if (user) {
-    console.log(`setting userStore: ${user}`)
     setState("data", user);
   }
 }

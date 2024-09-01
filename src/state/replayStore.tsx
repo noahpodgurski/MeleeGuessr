@@ -181,9 +181,7 @@ createRoot(disposer => {
     const replayData = parseReplay(
       decode(await selected[0].arrayBuffer(), { useTypedArrays: true })
     );
-    console.log(`total Frames: ${replayData.frames.length}`)
     //todo get from .slp metadata
-    console.log(`setting replayStore startFrame: ${fileStore.urlStartFrame}`)
     setReplayState("startFrame", fileStore.urlStartFrame ?? 0); //todo set from metadata
     
     setReplayState({

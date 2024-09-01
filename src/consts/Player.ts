@@ -199,11 +199,11 @@ export const Player: PlayerType = {
     characters: [Character.Fox,],
     flag: 'us',
     score: 73.4},
-  'Professor Pro': { 
-    label: 'Professor Pro',
-    characters: [Character.Fox,],
-    flag: 'gb',
-    score: 72.5},
+  // 'Professor Pro': { 
+  //   label: 'Professor Pro',
+  //   characters: [Character.Fox,],
+  //   flag: 'gb',
+  //   score: 72.5},
   '2saint': { 
     label: '2saint',
     characters: [Character.Jigglypuff,],
@@ -236,11 +236,11 @@ export const Player: PlayerType = {
     characters: [Character.Marth, Character.DK],
     flag: 'us',
     score: 67.3},
-  'Bimbo': { 
-    label: 'Bimbo',
-    characters: [Character.Falco,],
-    flag: 'mx',
-    score: 66.2},
+  // 'Bimbo': { 
+  //   label: 'Bimbo',
+  //   characters: [Character.Falco,],
+  //   flag: 'mx',
+  //   score: 66.2},
 //   'Setchi': { 
 //     label: 'Setchi',
 //     characters: [Character.Falcon,],
@@ -292,11 +292,11 @@ export const Player: PlayerType = {
 //     characters: [Character.Fox,],
 //     flag: 'us',
 //     score: 58.7},
-  'Colbol': { 
-    label: 'Colbol',
-    characters: [Character.Fox, Character.Marth,],
-    flag: 'us',
-    score: 57.2},
+  // 'Colbol': { 
+  //   label: 'Colbol',
+  //   characters: [Character.Fox, Character.Marth,],
+  //   flag: 'us',
+  //   score: 57.2},
 //   'Overtriforce': { 
 //     label: 'Overtriforce',
 //     characters: [Character.Sheik,],
@@ -438,11 +438,11 @@ export const Player: PlayerType = {
     characters: [Character.Fox,],
     flag: 'de',
     score: 36.2},
-  'lint': { 
-    label: 'lint',
-    characters: [Character.Falco,],
-    flag: 'us',
-    score: 34.7},
+  // 'lint': { 
+  //   label: 'lint',
+  //   characters: [Character.Falco,],
+  //   flag: 'us',
+  //   score: 34.7},
 //   'King Mom': { 
 //     label: 'King Mom',
 //     characters: [Character.Falco,],

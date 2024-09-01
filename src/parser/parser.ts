@@ -60,26 +60,31 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
   // inputs/states may come multiple times for a given player on a given
   // frame due to rollbacks. Because we are overwriting, we will just save the
   // last one which will be the official "finalized" one.
-  while (offset < rawData.byteLength) {
-    const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
-    switch (command) {
-      case 0x37:
-        handlePreFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x38:
-        handlePostFrameUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x39:
-        gameEnding = parseGameEndEvent(rawData, offset, replayVersion);
-        break;
-      case 0x3a:
-        handleFrameStartEvent(rawData, offset, replayVersion, frames);
-        break;
-      case 0x3b:
-        handleItemUpdateEvent(rawData, offset, replayVersion, frames);
-        break;
+  try {
+    while (offset < rawData.byteLength) {
+      const command = readUint(rawData, 8, replayVersion, firstVersion, offset);
+      switch (command) {
+        case 0x37:
+          handlePreFrameUpdateEvent(rawData, offset, replayVersion, frames);
+          break;
+        case 0x38:
+          handlePostFrameUpdateEvent(rawData, offset, replayVersion, frames);
+          break;
+        case 0x39:
+          gameEnding = parseGameEndEvent(rawData, offset, replayVersion);
+          break;
+        case 0x3a:
+          handleFrameStartEvent(rawData, offset, replayVersion, frames);
+          break;
+        case 0x3b:
+          handleItemUpdateEvent(rawData, offset, replayVersion, frames);
+          break;
+      }
+      offset = offset + commandPayloadSizes[command] + 0x01;
     }
-    offset = offset + commandPayloadSizes[command] + 0x01;
+  } catch (e) {
+    // toast("Something went wrong. Please try again later");
+    // console.log(`${playStore.currentClip.path} is problematic`)
   }
   if (gameEnding === undefined) {
     console.warn("Game end event not found");

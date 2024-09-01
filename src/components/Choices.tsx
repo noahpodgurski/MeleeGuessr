@@ -9,7 +9,6 @@ export interface IChoices {
 
 export const Choices = (props: IChoices) => {
   const { guess, answer } = props;
-  console.log(answer)
   return (
     <>
     { playStore.currentClip?.choices && playStore.currentClip.choices.map((choice, i) => {
