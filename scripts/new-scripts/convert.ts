@@ -33,10 +33,10 @@ import logger from 'node-color-log';
 // import { SlippiGame } from './slippi';
 
 const IS_TOURNAMENT = false;
-const SUB_DIR = "all3"
+const SUB_DIR = "diversity"
 const player = "lloD"
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\diversity.json`
 
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
@@ -175,6 +175,7 @@ function cutSlp () {
                 verifySlp = new SlippiGame(highlight.path);
                 stats = verifySlp.getStats();
             } catch(e) {
+                console.warn(e);
                 errored++;
                 continue;
             }
@@ -190,12 +191,13 @@ function cutSlp () {
                 console.log(data.startFrame, data.endFrame)
                 for (let i = 0; i < stats.combos.length; i++) {
                     const combo = stats.combos[i];
+                    console.log(combo);
                     combo.startFrame += 123;
                     if (combo.endFrame)
                         combo.endFrame += 123;
                     // console.log(combo.playerIndex, combo.startFrame, combo.endFrame, (combo.endFrame ?? combo.startFrame)-combo.startFrame, combo.didKill)
                     if (
-                        combo.didKill && 
+                        // combo.didKill && 
                         //start frame is within range
                         // combo.startFrame > data.startFrame-VALIDATION_BUFFER && combo.startFrame < data.startFrame+VALIDATION_BUFFER &&
                         //end frame is within range
@@ -252,8 +254,9 @@ function cutSlp () {
                 }
             }
             if (!validatedCombo) {
-                console.log(highlight.path);
-                throw Error("Unable to validate combo");
+                errored++;
+                continue;
+                // throw Error("Unable to validate combo");
             }
             if (!validatedInput || !data.playerName || data.playerName.name === "") {
                 errored++;

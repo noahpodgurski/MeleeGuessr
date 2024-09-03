@@ -1,4 +1,3 @@
-import { Typography } from "@suid/material";
 import { useLoader } from "./common/Loader";
 import "./Loader.css"
 
