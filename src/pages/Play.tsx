@@ -37,7 +37,7 @@ export const Play = () => {
         setLoading(true);
         await play();
         await doPlay();
-        setLoading(false);
+        // setLoading(false);
       } else {
         setSelected(true);
       }
@@ -78,6 +78,7 @@ export const Play = () => {
             if (_file.length > 0) {
               await currentSelectionStore().select(_file[0]);
               setSelected(true);
+              setLoading(false);
             } else {
               toast(`Something went wrong. Please try again later`)
             }
@@ -105,6 +106,7 @@ export const Play = () => {
     //show correct answers for 2 seconds
     await new Promise((r) => setTimeout(r, 2000));
     //todo request next while showing answers
+    setLoading(true);
     setAnswer("");
     await play();
     await doPlay();
