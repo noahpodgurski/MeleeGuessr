@@ -87,3 +87,23 @@ export const Floaties:Character[] = [
   Character.Marth,
   Character.Roy
 ]
+
+export const MidLowTiers:Character[] = [
+  Character.DrMario,
+  Character.Mario,
+  Character.Luigi,
+  Character.Bowser,
+  Character.DK,
+  Character.Ganondorf,
+  Character.Ness,
+  Character.Kirby,
+  Character.Samus,
+  Character.Zelda,
+  Character.Link,
+  Character.YLink,
+  Character.Pichu,
+  Character.Pikachu,
+  Character.Mewtwo,
+  Character.GAW,
+  Character.Roy
+]

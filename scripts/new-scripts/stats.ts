@@ -37,17 +37,17 @@ const main = async () => {
   // console.log(game.getFrames()[-1] === null)
   const charMap: Data = {};
   const playerMap: Data = {};
-  const fd = await fs.promises.readFile('\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0\\all3\\clips.json', 'utf-8')
+  const fd = await fs.promises.readFile('C:\\Users\\noahp\\Documents\\Programming\\Websites\\MeleeGuessr-Server\\meleeguessr-server\\routes\\clips.json', 'utf-8')
   const clips = JSON.parse(fd);
   console.log(clips[0]);
   for (let i = 0; i < clips.length; i++) {
     const clip = clips[i];
     const character = characterNameByExternalId[clip.characterId];
     const player = getPlayer(clip.playerName.name, clip.playerName.code);
-    if (charMap[character]) {
-      charMap[character]++;
+    if (charMap[`${character} (${clip.characterId})`]) {
+      charMap[`${character} (${clip.characterId})`]++;
     } else {
-      charMap[character] = 1;
+      charMap[`${character} (${clip.characterId})`] = 1;
     }
     if (playerMap[player]) {
       playerMap[player]++;

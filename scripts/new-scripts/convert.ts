@@ -33,10 +33,10 @@ import logger from 'node-color-log';
 // import { SlippiGame } from './slippi';
 
 const IS_TOURNAMENT = false;
-const SUB_DIR = "diversity"
+const SUB_DIR = "gccvsbox"
 const player = "lloD"
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\diversity.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\gccvsboxx.json`
 
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
@@ -191,7 +191,6 @@ function cutSlp () {
                 console.log(data.startFrame, data.endFrame)
                 for (let i = 0; i < stats.combos.length; i++) {
                     const combo = stats.combos[i];
-                    console.log(combo);
                     combo.startFrame += 123;
                     if (combo.endFrame)
                         combo.endFrame += 123;
