@@ -148,18 +148,18 @@ export const App = () => {
     <>
       <DarkModeProvider>
         <LoaderProvider>
-          <Loader />
+          {/* <Loader /> */}
           <ThemeProvider theme={navTheme}>
             <CssBaseline />
             <NavbarPage />
-          </ThemeProvider>
+          
           <Router>
-            <Route path="*" component={NavbarPage} {...updateUser} />
             <Route path="/" component={Home} />
             <Route path="/play" component={Play} />
             <Route path="/leaderboards" component={Leaderboards} />
           </Router>
           <Toaster toastOptions={{position: 'top-center'}} />
+          </ThemeProvider>
         </LoaderProvider>
       </DarkModeProvider>
     </>

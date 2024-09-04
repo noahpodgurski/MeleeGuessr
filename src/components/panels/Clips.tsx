@@ -25,38 +25,6 @@ export function Clips() {
 
   return (
     <div {...api().getRootProps()}>
-      <For each={Object.entries(replayStore.highlights)}>
-        {([name, highlights]) => (
-          <div {...api().getItemProps({ value: name })}>
-            <h3>
-              <button
-                class="flex w-full justify-between gap-3 rounded border border-slate-400 p-2"
-                classList={{
-                  "text-slate-400":
-                    highlights.length === 0 &&
-                    name !== "customAction" &&
-                    name !== "customAttack",
-                }}
-                {...api().getItemTriggerProps({
-                  value: name,
-                  disabled:
-                    highlights.length === 0 &&
-                    name !== "customAction" &&
-                    name !== "customAttack",
-                })}
-              >
-                <Show when={highlights.length > 0}>
-                  <div class="material-icons">
-                    {api().getItemState({ value: name }).expanded
-                      ? "expand_less"
-                      : "expand_more"}
-                  </div>
-                </Show>
-              </button>
-            </h3>
-          </div>
-        )}
-      </For>
     </div>
   );
 }

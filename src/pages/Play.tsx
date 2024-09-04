@@ -16,6 +16,7 @@ import { characterNameByExternalId } from "~/common/ids";
 import { Choices } from "~/components/Choices";
 import toast from "solid-toast";
 import { Grid } from "@suid/material";
+import { Loader } from "~/components/Loader";
 
 export type PlayData = {
   stage: number;
@@ -110,20 +111,22 @@ export const Play = () => {
   }
 
   return (
-    <div class="justify-content-center align-items-center mt-5 play">
-      
-      <Grid sx={{alignItems: 'center', width: '100%'}}>
-        <Grid>
-          <Viewer />
+    <>
+      <Loader />
+      <div class="justify-content-center align-items-center mt-5 play">
+        <Grid sx={{alignItems: 'center', width: '100%'}}>
+          <Grid>
+            <Viewer />
+          </Grid>
+          <Grid style={{"text-align": 'center'}}>
+            { playStore.currentClip && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
+            { isDebug() && "Debug"}
+          </Grid>
+          <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
+            { selected() && <Choices guess={guess} answer={answer} />}
+          </Grid>
         </Grid>
-        <Grid style={{"text-align": 'center'}}>
-          { playStore.currentClip && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
-          { isDebug() && "Debug"}
-        </Grid>
-        <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
-          { selected() && <Choices guess={guess} answer={answer} />}
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 };

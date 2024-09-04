@@ -1,13 +1,13 @@
 import { Component, createEffect, createSignal } from 'solid-js';
 import './Table.scss';
 import UserService from "../services/user.service";
-import { GetStat } from "../models/Stat";
 import { useLoader } from "../components/common/Loader";
-import toast from 'solid-toast';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, useTheme, Grid } from '@suid/material';
+import { Loader } from '~/components/Loader';
 // import { createToast } from "../components/common/toaster";
 
 export type LeaderboardData = {
-  user: string; 
+  username: string; 
   highScore: number;
 }
 
@@ -15,36 +15,50 @@ export type LeaderboardData = {
 const Leaderboards: Component = () => {
   const [data, setData] = createSignal<LeaderboardData[]>([]);
   const [, {setLoading}] = useLoader() as any;
+  const theme = useTheme();
 
   createEffect(() => {
     setLoading(true);
     UserService.getAllStats()
     .then((response) => {
-      toast(response.data.message);
+      console.log(response)
+      // toast(response.data.message);
       setLoading(false);
-      setData(response.data
-        .sort((row1:GetStat, row2:GetStat) => row2.highScore - row1.highScore )
-        .map((row:GetStat) => {
-        return { user: row.username, highScore: `${row.highScore}%` }
-      }))
+      setData(response.data.data);
     })
     .catch((err:any) => {
       setLoading(false);
     })
-     // eslint-disable-next-line
   }, [createEffect]);
-    
-  let test = {
-    columns: [{label: "User", field: "user"}, {label: "High Score", field: "highScore", sort: "desc"}],
-    rows: data,
-  }
+
   return (
-    <div class="d-flex justify-content-center align-items-center mt-1" style={{height: "100%"}}>
-			<div class="row justify-content-center w-75">
-        {/* todo replace with table */}
-        {/* <MDBDataTableV5 hover scrollY searching={false} sortable order={['High Score', 'desc']} paging={false} data={test as any} /> */}
+    <Grid container sx={{justifyContent: "center"}}>
+      <Loader />
+			<div class="row justify-content-center w-50">
+        <TableContainer component={Paper} >
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>User</TableCell>
+                <TableCell>High Score</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data().map((row) => (
+                <TableRow
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.username}
+                  </TableCell>
+                  <TableCell >{row.highScore}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
-    </div>
+    </Grid>
   );
 };
 export default Leaderboards;

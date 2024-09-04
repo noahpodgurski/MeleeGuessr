@@ -1,8 +1,8 @@
 // import { createToast } from "../components/common/toaster";
 import { PostStat } from "../models/Stat";
 import axios from 'axios';
-// const SERVER_IP = process.env.REACT_APP_SERVER_IP;
-const SERVER_IP = "localhost";
+// const SERVER_IP = process.env.SERVER_IP;
+const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod/";
 // if not prod server_ip = "" todo
 const updateStats = (stat:PostStat) => {
   const params = new URLSearchParams()
@@ -37,10 +37,13 @@ const getStats = (userId:string) => {
 
 const getAllStats = () => {
   return axios
-    .get(`${SERVER_IP}/get-all-stats`,
+    .get(`${SERVER_IP}/stats`,
     {
       headers: {
         "Content-Type": "application/json"
+      }, 
+      params: {
+        page: 1
       }
     })
     .then((response) => {
