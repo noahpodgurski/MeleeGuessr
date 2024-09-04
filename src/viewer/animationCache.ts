@@ -13,8 +13,9 @@ export const fetchAnimations = async (
   if (animationsCache.has(externalCharacterId)) {
     return animationsCache.get(externalCharacterId) as CharacterAnimations;
   }
+  //todo do islocal ? /zips/ : ''
   const animations = await load(
-    characterZipUrlByExternalId[externalCharacterId]
+    `https://meleeguessr-v2-zips.s3.amazonaws.com/${characterZipUrlByExternalId[externalCharacterId]}`
   );
   animationsCache.set(externalCharacterId, animations);
   return animations;
@@ -22,32 +23,32 @@ export const fetchAnimations = async (
 
 // zips expected to exist at the root
 const characterZipUrlByExternalId = [
-  "/zips/captainFalcon.zip",
-  "/zips/donkeyKong.zip",
-  "/zips/fox.zip",
-  "/zips/mrGameAndWatch.zip",
-  "/zips/kirby.zip",
-  "/zips/bowser.zip",
-  "/zips/link.zip",
-  "/zips/luigi.zip",
-  "/zips/mario.zip",
-  "/zips/marth.zip",
-  "/zips/mewtwo.zip",
-  "/zips/ness.zip",
-  "/zips/peach.zip",
-  "/zips/pikachu.zip",
-  "/zips/iceClimbers.zip",
-  "/zips/jigglypuff.zip",
-  "/zips/samus.zip",
-  "/zips/yoshi.zip",
-  "/zips/zelda.zip",
-  "/zips/sheik.zip",
-  "/zips/falco.zip",
-  "/zips/youngLink.zip",
-  "/zips/doctorMario.zip",
-  "/zips/roy.zip",
-  "/zips/pichu.zip",
-  "/zips/ganondorf.zip",
+  "captainFalcon.zip",
+  "donkeyKong.zip",
+  "fox.zip",
+  "mrGameAndWatch.zip",
+  "kirby.zip",
+  "bowser.zip",
+  "link.zip",
+  "luigi.zip",
+  "mario.zip",
+  "marth.zip",
+  "mewtwo.zip",
+  "ness.zip",
+  "peach.zip",
+  "pikachu.zip",
+  "iceClimbers.zip",
+  "jigglypuff.zip",
+  "samus.zip",
+  "yoshi.zip",
+  "zelda.zip",
+  "sheik.zip",
+  "falco.zip",
+  "youngLink.zip",
+  "doctorMario.zip",
+  "roy.zip",
+  "pichu.zip",
+  "ganondorf.zip",
 ];
 
 async function load(url: string): Promise<CharacterAnimations> {
