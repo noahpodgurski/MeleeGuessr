@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "Now-Loading";
-  src: url("/fonts/hyperspacerace-italic.otf");
+  src: url("/fonts/hyper.ttf");
 }
 
 .logo {       
@@ -133,8 +133,8 @@
   position: absolute;
   background-color: rgba(0, 0, 0, .5);
   top: min(51vw, 51vh);
-  left: calc(max(0px, calc((100vw - 90vh) / 2)) + 2px);
-  max-width: calc(90vh - 4px);
+  left: calc(max(0px, calc((100vw - 86vh) / 2)) + 2px);
+  max-width: calc(86vh - 2px);
   width: calc(100% - 4px);
   height: 46px;
   z-index: 9990;
