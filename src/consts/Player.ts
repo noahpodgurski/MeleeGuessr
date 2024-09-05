@@ -81,7 +81,10 @@ export const Player: PlayerType = {
       type: {
         rectangle: false,
         phob: true,
-      }
+      },
+      mods: {
+        notches: true
+      },
     },
     characters: [Character.Falco, ...MidLowTiers],
     flag: 'us',
@@ -219,7 +222,8 @@ export const Player: PlayerType = {
   },
   'Taj': {
     label: 'Taj',
-    characters: [Character.Mewtwo],
+    aliases: ["TAJ#69", "DEEP KRO"],
+    characters: [Character.Mewtwo, Character.Samus],
     controllerType: {
       type: {
         rectangle: false

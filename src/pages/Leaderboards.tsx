@@ -32,11 +32,11 @@ const Leaderboards: Component = () => {
   }, [createEffect]);
 
   return (
-    <Grid container sx={{justifyContent: "center"}}>
+    <Grid container sx={{justifyContent: "center"}} class="nav-m">
       <Loader />
-			<div class="row justify-content-center w-50">
+			<div class="row justify-content-center">
         <TableContainer component={Paper} >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{width: "80vw", maxWidth: "600px"}}>
             <TableHead>
               <TableRow>
                 <TableCell>User</TableCell>

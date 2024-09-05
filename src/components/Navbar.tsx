@@ -16,7 +16,7 @@ const NavbarPage: Component<any> = ({ updateUser }) => {
   return (
       <>
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="relative">
+        <AppBar position="fixed">
           <Toolbar variant="dense">
             <IconButton
               size="large"

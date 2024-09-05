@@ -1,6 +1,4 @@
-import { STARTING_STOCKS } from "../App";
 import { randomGreeting } from "../consts/Greetings";
-import { StocksContext } from "../components/common/Stocks";
 import { Component, createEffect, createMemo } from "solid-js";
 import { Button, Container, Grid, Typography } from "@suid/material";
 import toast from "solid-toast";
@@ -15,18 +13,21 @@ export const Home: Component = () => {
 	setLoading(false);
   return (
     <>
-		<Grid container minHeight="90vh" justifyContent="center" alignItems="center">
+		<Grid container minHeight="90vh" justifyContent="center" alignItems="center" class="nav-m">
 			<Container maxWidth="sm">
-				<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v2.0</Typography>
-				<h1 class="logo" style={{"text-align": "center", "font-size": "2.5rem"}}>MeleeGuessr</h1>
-				<div class="centered">
-					<Button sx={{mb: 1}} color="secondary" href="/play" onClick={() => StocksContext.stocks = STARTING_STOCKS} variant="contained" style={{height: '50px', width: '50%'}}>
-						Play
-					</Button>
-				</div>
-				<div class="centered">
-					<Button href="/leaderboards" onClick={() => StocksContext.stocks = STARTING_STOCKS} class="w-100" variant="contained" style={{height: '50px', width: '50%'}} color="success" >Leaderboards</Button>
-				</div>
+				<Grid xs={12}>
+					<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v2.0</Typography>
+					<h1 class="logo" style={{"text-align": "center", "font-size": "2.5rem"}}>MeleeGuessr</h1>
+				</Grid>
+				<Grid xs={12} lg={6} class="centered">
+					<Button sx={{mb: 1}} color="secondary" href="/play" variant="contained" style={{height: '50px', width: '100%'}}>Play</Button>
+				</Grid>
+				<Grid xs={12} lg={6} class="centered">
+					<Button sx={{mb: 1}} href="/leaderboards" variant="contained" style={{height: '50px', width: '100%'}} color="primary" >Leaderboards</Button>
+				</Grid>
+				<Grid xs={12} lg={6} class="centered">
+					<Button href="/about" variant="text" style={{height: '50px', width: "100%"}} color="primary">About</Button>
+				</Grid>
 				{/* <h5 class="centered text-white">{greeting()}</h5> */}
 			</Container>
 			<div class="row justify-content-center mt-2">
