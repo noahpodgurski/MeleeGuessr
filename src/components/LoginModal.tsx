@@ -44,8 +44,9 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
         toast(data.message);
         if (response.status === 200){
           // navigate("/play"); //navigate somewhere after login?
-          toggleShowModal();
-          updateUser();
+          window.location.pathname = "/play";
+          // toggleShowModal();
+          // updateUser();
         } else {
         }
       })
@@ -68,11 +69,12 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
         setLoading(false)
         if (response.status === 200){
           // navigate("/play");
-          setEmail("");
-          setUsername("");
-          setPassword("");
-          setRegister(false);
-          toggleShowModal();
+          window.location.pathname = "/play";
+          // setEmail("");
+          // setUsername("");
+          // setPassword("");
+          // setRegister(false);
+          // toggleShowModal();
         } else {
         }
       })

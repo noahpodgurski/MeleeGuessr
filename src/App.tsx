@@ -15,7 +15,7 @@ import { User } from './models/User';
 import { Toaster } from "solid-toast";
 import { DarkModeProvider } from "./components/common/Dark";
 import { createTheme, CssBaseline, ThemeProvider } from "@suid/material";
-import { purple, grey } from "@suid/material/colors";
+import { purple, grey, pink, red, blue } from "@suid/material/colors";
 import { LoaderProvider } from "./components/common/Loader";
 import { loadUser } from "./state/userStore";
 import { About } from "./pages/About";
@@ -45,6 +45,18 @@ export const App = () => {
       background: {
         default: purple[500],
         
+      },
+      primary: {
+        main: "#91cbfa",
+        light: "#b8ddfb",
+        dark: "#76a0b0"
+      },
+      secondary: {
+        main: "#6a4e85",
+        light: "#87719d",
+        dark: "#4a365d",
+        // #7b5aa6
+        // #6a4e85
       },
       text: {
         primary: '#fff',

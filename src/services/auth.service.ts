@@ -34,6 +34,7 @@ const login = (email:string, password:string) => {
 const logout = () => {
   //todo change from local storage?
   localStorage.removeItem("user");
+  localStorage.removeItem("session");
   // return axios.post(SERVER_IP + "signout").then((response:any) => {
   //   return response.data;
   // });

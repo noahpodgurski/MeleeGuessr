@@ -149,9 +149,6 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
                 </div>
                 <div class="d-flex justify-content-between m-4">
                   <Button sx={{m: 1}} onClick={logout} color="error" variant="contained" type="submit">Logout</Button>
-                <a target="_blank" rel="noreferrer" href="https://www.paypal.com/donate/?business=TMLZ8JYEQBCY2&no_recurring=0&currency_code=USD">
-                  <Button sx={{m: 1}} color="success" variant="outlined">Donate</Button>
-                </a>
                 </div>
                   </div>
               </div>
