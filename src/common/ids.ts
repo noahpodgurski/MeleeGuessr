@@ -668,7 +668,7 @@ export const itemNamesById = [
 
   // Character Related
   "Mario's fire", // 0x30
-  "", // 0x31
+  "Pill", // 0x31
   "Kirby's Cutter beam", // 0x32
   "Kirby's Hammer", // 0x33
   "", // 0x34
@@ -686,7 +686,7 @@ export const itemNamesById = [
   "Arrow", // 0x40
   "Fire Arrow", // 0x41
   "PK Fire", // 0x42
-  "PK Flash", // 0x43
+  "PK Fire Pillar", // 0x43
   "PK Flash", // 0x44
   "PK Thunder (Primary)", // 0x45
   "PK Thunder", // 0x46

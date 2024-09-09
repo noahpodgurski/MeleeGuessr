@@ -1,1 +1,0 @@
-export const choiceTime = 2500; //ms it shows correct choice after choosing

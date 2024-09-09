@@ -13,20 +13,19 @@ export const About = () => {
               <br />
               All clips are from .slp files from top players and tournaments. 
               <br />
-              Creating an account is not necessary to play.
-              Using this site with an account allows high score tracking on leaderboards.
+              Creating an account is not necessary to play, but using one allows personal stat tracking and high scores on leaderboards.
               <br />
               <br />
-              This site is mostly a proof of concept until there can be more diverse .slps added to the pool. <b style={{color: "#ff8f96"}}>If you're a top player and would like
+              This site is mostly a proof of concept until there can be much more diverse .slps added to the pool. <b style={{color: "#ff8f96"}}>If you're a top player and would like
               to add your clips to the site, please reach out to me on Twitter <Link target="_blank" href="https://x.com/NoahSSBM">@NoahSSBM</Link></b>
               <br />
               <br />
-              Development is ongoing and upcoming features may include guessing if the player is on gcc or rectangle and what mods the player is using (z jump, notches, etc...)
+              Upcoming features may include guessing if the player is on gcc or rectangle, or what mods the player is using (z jump, notches, etc...)
               <br />
               <br />
               (SPOILER) To slightly ruin the magic of the site... <span class="spoiler">It could be deduced that there are essentially zero clips of some older, inactive players here, even though
-              they may show up as choices. This is because archiving matches as .slp files is still relatively new - 
-              but don't ruin the magic for others who don't understand yet! :3</span> (SPOILER)
+              they may sometimes show up as choices. This is because archiving matches as .slp files is still relatively new - 
+              but don't ruin the magic for new visitors! :3</span> (SPOILER)
             </Typography>
             <br />
             <br />
@@ -40,7 +39,7 @@ export const About = () => {
               Ultimately the reason the site is back online!
             </Typography>
             <Typography variant="body1">
-              All the top players who sent me their .slp
+              Everone who sent me their .slp
             files
             </Typography>
             <Typography variant="body1">

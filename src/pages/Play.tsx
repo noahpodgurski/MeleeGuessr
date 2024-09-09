@@ -28,7 +28,7 @@ export type PlayData = {
 export const Play = () => {
   
   const [selected, setSelected] = createSignal(false);
-  const [isDebug, ] = createSignal(false);
+  const [isDebug, ] = createSignal(true);
   const [loading, {setLoading}] = useLoader();
   
   createEffect(async () => {

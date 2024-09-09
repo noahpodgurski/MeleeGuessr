@@ -347,9 +347,9 @@ function computeRenderData(
       playerState.isNana
     ),
     outerColor:
-      startOfActionPlayerState.lCancelStatus === "missed"
-        ? "red"
-        : playerState.hurtboxCollisionState !== "vulnerable"
+    //show L cancel miss
+      // startOfActionPlayerState.lCancelStatus === "missed" ? "red" : 
+        playerState.hurtboxCollisionState !== "vulnerable"
         ? "blue"
         : "black",
     transforms: [

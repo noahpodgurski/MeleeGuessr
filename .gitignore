@@ -41,3 +41,5 @@ dist
 .env
 .dev.vars
 .wrangler
+
+slp-test/

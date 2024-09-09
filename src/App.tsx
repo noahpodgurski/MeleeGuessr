@@ -15,7 +15,7 @@ import { User } from './models/User';
 import { Toaster } from "solid-toast";
 import { DarkModeProvider } from "./components/common/Dark";
 import { createTheme, CssBaseline, ThemeProvider } from "@suid/material";
-import { purple, grey, pink, red, blue } from "@suid/material/colors";
+import { purple, grey } from "@suid/material/colors";
 import { LoaderProvider } from "./components/common/Loader";
 import { loadUser } from "./state/userStore";
 import { About } from "./pages/About";

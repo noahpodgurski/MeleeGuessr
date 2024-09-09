@@ -866,3 +866,15 @@ export const itemNamesById = [
   "Birdo's Egg", // 0xEC
 ] as const;
 export type ItemName = typeof itemNamesById[number];
+
+export const turnipNamesById = [
+  "Smile", // 0
+  "T Eyes", // 1
+  "Line Eyes", // 2
+  "Circle Eyes", // 3
+  "Upward Curve", // 4
+  "Wink", // 5
+  "Dot Eyes", // 6
+  "Stitch Face", // 7
+]
+export type TurnipName = typeof turnipNamesById[number];

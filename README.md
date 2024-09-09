@@ -3,14 +3,14 @@
 Think you can really guess who's playing that captain falcon - based solely off the movement? Now's your chance! Visit [MeleeGuessr](https://www.MeleeGuessr.com) and play now!
 
 ### TODOS ###
-1. Scoring & Leaderboard
+1. ~~Scoring & Leaderboard~~
 2. Guess the controller! (Clips of fox/marth/pikachu), guess if classic or box controller
 3. Optimizations: 
     
     a. What else can we strip from .slp file? (player input maybe? Other game settings not necessary? Any data transfer saved would save $$$)
     
     b. Look again at stripping beginning from slp (probably not possible (?) unless player states could be saved (which *probabbllyyy* takes up >= space))
-4. Make more character-diverse combos (current clip state:)
+4. ~~Make more character-diverse combos (current clip state:)~~
     ```
     Falco: 863,
     Marth: 407,
@@ -58,3 +58,5 @@ Think you can really guess who's playing that captain falcon - based solely off 
     ```
 
 5. Filter for combos ??? (doesn't affect high score)
+6. Add missing projectiles/items to game
+    a. Pikachu/pichu down b

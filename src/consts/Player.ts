@@ -377,17 +377,6 @@ export const Player: PlayerType = {
     },
     flag: 'us',
     score: 86.9},
-  'Hax': { 
-    label: 'Hax',
-    aliases: ["hax$"],
-    controllerType: {
-      type: {
-        rectangle: false,
-      }
-    },
-    characters: [Character.Fox, Character.Falcon],
-    flag: 'us',
-    score: 84.7},
   'Lucky': { 
     label: 'Lucky',
     aliases: ['jbone', 'joey =d', 'j03y', 'eatyourmeat', 'lucky'],
@@ -1066,6 +1055,7 @@ export const Player: PlayerType = {
     score: 37.4},
   'bobby big ballz': { 
     label: 'bobby big ballz',
+    aliases: ["Chickenman400", "BOB#283"],
     characters: [Character.Falco,],
     controllerType: {
       type: {
@@ -1313,7 +1303,8 @@ export const Player: PlayerType = {
     },
     'Hax$': {
       label: 'Hax$',
-      characters: [Character.Fox],
+      aliases: ['hax'],
+      characters: [Character.Fox, Character.Falcon],
       controllerType: {
         type: {
           rectangle: true,
