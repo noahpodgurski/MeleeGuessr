@@ -24,7 +24,8 @@ export interface PlayStore {
         portToGuess: number,
         choices: string[]
     },
-    sessionId?: string
+    sessionId?: string,
+    score?: number,
 }
 
 const [state, setState] = createStore<PlayStore>();
@@ -41,6 +42,7 @@ export async function play(): Promise<AxiosResponse> {
   .then((response) => {
     setState("currentClip", response.data.data.currentClip);
     setState("sessionId", response.data.data.sessionId);
+    setState("score", response.data.data.score);
     localStorage.setItem("session", response.data.data.sessionId); //todo do jwt for this too
     return response;
   });
@@ -54,6 +56,9 @@ export async function makeGuess(guess: string): Promise<AxiosResponse> {
   return await axios.post(`${SERVER_IP}/guess`, {guess, sessionId: state.sessionId}, {headers})
   .then((response) => {
     console.log(response.data);
+    if (response.data.message === "Correct") {
+      setState("score", (state.score ?? 0)+1);
+    }
     return response;
   });
 }

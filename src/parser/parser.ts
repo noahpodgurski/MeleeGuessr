@@ -87,7 +87,7 @@ export function parseReplay({ metadata, raw }: any): ReplayData {
     // console.log(`${playStore.currentClip.path} is problematic`)
   }
   if (gameEnding === undefined) {
-    console.warn("Game end event not found");
+    // console.warn("Game end event not found");
     // throw new Error("Game Ending not found");
   }
   return {

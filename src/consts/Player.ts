@@ -54,7 +54,8 @@ export const Player: PlayerType = {
   },
   'cpu0': { 
     label: 'cpu0',
-    characters: [Character.Jigglypuff],
+    aliases: ['CPU#0'],
+    characters: [Character.Jigglypuff, Character.Marth, Character.Fox],
     controllerType: {
       type: {
         rectangle: false,
@@ -76,7 +77,7 @@ export const Player: PlayerType = {
   },
   'Axe': { 
     label: 'Axe',
-    aliases: ['frozenpizza', 'chillaxe', 'axe.pizza'],
+    aliases: ['AXE#845', 'frozenpizza', 'chillaxe', 'axe.pizza'],
     controllerType: {
       type: {
         rectangle: false,
@@ -571,6 +572,7 @@ export const Player: PlayerType = {
     score: 72.5},
   'Salt': { 
     label: 'Salt',
+    aliases: ['SALT#747'],
     characters: [Character.Falcon, Character.Roy],
     controllerType: {
       type: {
@@ -603,6 +605,7 @@ export const Player: PlayerType = {
     score: 71.3},
   'Albert': { 
     label: 'Albert',
+    aliases: ['ALBE#135'],
     characters: [Character.Falco,],
     controllerType: {
       type: {
@@ -674,7 +677,7 @@ export const Player: PlayerType = {
   },
   'Magi': { 
     label: 'Magi',
-    aliases: ['burrito dog', 'built depressed', 'dumbfuckdipshit', 'hottub streamer', 'come get it bby', 'ahhhhhhhhhhhhhh', 'the ironcat', 'go ez on me :(', 'big strong cat', 'magi', 'bitch', 'vroom vroom cat'],
+    aliases: ['MAGI#732', 'burrito dog', 'built depressed', 'dumbfuckdipshit', 'hottub streamer', 'come get it bby', 'ahhhhhhhhhhhhhh', 'the ironcat', 'go ez on me :(', 'big strong cat', 'magi', 'bitch', 'vroom vroom cat'],
     controllerType: {
       type: {
         rectangle: false,
@@ -953,7 +956,7 @@ export const Player: PlayerType = {
     score: 45.5},
   'KoDoRiN': { 
     label: 'KoDoRiN',
-    aliases: ['||||||||||||'],
+    aliases: ['||||||||||||', "KOD#0"],
     controllerType: {
       type: {
         rectangle: false,
@@ -1496,8 +1499,9 @@ export const Player: PlayerType = {
         }
       },
     },
-    'Dream': {
-      label: "Dream",
+    'CowCowCowCowCow': {
+      label: "CowCowCowCowCow",
+      aliases: ['COW#5'],
       characters: [Character.Ganondorf],
       controllerType: {
         type: {

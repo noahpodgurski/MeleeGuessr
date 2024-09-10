@@ -1,6 +1,4 @@
 import { createSignal, createEffect } from "solid-js";
-import { Clip } from "../models/Clip";
-import { StageType } from "~/components/Stage";
 import { Viewer } from "~/components/viewer/Viewer";
 
 import './Play.scss';
@@ -28,7 +26,7 @@ export type PlayData = {
 export const Play = () => {
   
   const [selected, setSelected] = createSignal(false);
-  const [isDebug, ] = createSignal(true);
+  const [isDebug, ] = createSignal(false);
   const [loading, {setLoading}] = useLoader();
   
   createEffect(async () => {

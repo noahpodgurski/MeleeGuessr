@@ -33,15 +33,15 @@ import logger from 'node-color-log';
 // import { SlippiGame } from './slippi';
 
 const IS_TOURNAMENT = false;
-const SUB_DIR = "gccvsbox"
+const SUB_DIR = "converted"
 const player = "lloD"
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\gccvsboxx.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\all.json`
 
 
 const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
-const CLIP_FILE = path.join(CLIP_DIR, "clips.json");
+const CLIP_FILE = path.join(CLIP_DIR, "all.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
 
 export type PlayerName = {
@@ -129,7 +129,23 @@ function cutSlp () {
         const data = JSON.parse(fd);
         bar1.start(data.queue.length, 0);
         
-        const highlights = data.queue as Highlight[];
+        //filter out duplicates
+        const _highlights = data.queue as Highlight[];
+        const highlights: Highlight[] = [];
+        for (let i = 0; i < _highlights.length-1; i++) {
+            let isDup = false;
+            for (let j = i+1; j < _highlights.length; j++) {
+                if (_highlights[i].path === _highlights[j].path && _highlights[i].startFrame === _highlights[j].startFrame && _highlights[i].endFrame === _highlights[j].endFrame) {
+                    //duplicate detected
+                    isDup = true;
+                    break;
+                }
+            }
+            if (!isDup) {
+                highlights.push(_highlights[i]);
+            }
+        }
+        console.log(`${_highlights.length - highlights.length} dups detected`)
         // const highlights = [{
         //     "path": "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Tournament\\Parsed\\LACS 5\\Game_20230709T110325.slp",
         //     "gameStartAt": "07/09/23 2:03 pm",
@@ -140,7 +156,10 @@ function cutSlp () {
         let success = 0;
         let errored = 0;
         for (let i = 0; i < highlights.length; i++) {
-            console.log(`${success} / ${errored} === ${success+errored} (${success/(success+errored+1)})`)
+            if (errored === 0) {
+                console.log()
+            }
+            console.log(`${success} / ${errored} === ${success+errored} (${errored === 0 ? 1 : success/(success+errored)})`)
             bar1.update(i);
             let highlight = highlights[i];
             let tournamentName;

@@ -78,6 +78,9 @@ export function Timer() {
       .toString()
       .padStart(2, "0");
     const hundredths = meleeHundredths[frames % 60];
+    if (minutes === "08") {
+      return "8:00:00";
+    }
     return `${minutes}:${seconds}:${hundredths}`;
   });
   return (

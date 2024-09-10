@@ -11,21 +11,22 @@ export const About = () => {
             </Typography>
             <Typography variant="body1">
               <br />
-              All clips are from .slp files from top players and tournaments. 
+              All clips on this site come from .slp files from top players and tournaments. 
               <br />
-              Creating an account is not necessary to play, but using one allows personal stat tracking and high scores on leaderboards.
-              <br />
-              <br />
-              This site is mostly a proof of concept until there can be much more diverse .slps added to the pool. <b style={{color: "#ff8f96"}}>If you're a top player and would like
-              to add your clips to the site, please reach out to me on Twitter <Link target="_blank" href="https://x.com/NoahSSBM">@NoahSSBM</Link></b>
+              While creating an account is not required to use the site, doing so will allow you to track your personal stats and achieve high scores on the leaderboard.
               <br />
               <br />
-              Upcoming features may include guessing if the player is on gcc or rectangle, or what mods the player is using (z jump, notches, etc...)
+              Currently, this site is a proof of concept until a more diverse pool of .slp files can be added. 
+              <br />
+              <b style={{color: "#ff8f96"}}>If you're a top player and want to contribute your clips, feel free to reach out to me on Twitter <Link target="_blank" href="https://x.com/NoahSSBM">@NoahSSBM</Link></b>
               <br />
               <br />
-              (SPOILER) To slightly ruin the magic of the site... <span class="spoiler">It could be deduced that there are essentially zero clips of some older, inactive players here, even though
-              they may sometimes show up as choices. This is because archiving matches as .slp files is still relatively new - 
-              but don't ruin the magic for new visitors! :3</span> (SPOILER)
+              Upcoming features might include guessing if a player is using a GCC or a rectangle controller, or guessing on mods like Z-jump, notches, etc.
+              <br />
+              <br />
+              (SPOILER) To slightly ruin the magic of the site... <span class="spoiler">It could be deduced that there are essentially zero clips of some older, inactive players here,
+              even though they may sometimes show up as choices. This is because archiving matches as .slp files is still relatively new. 
+              Another factor is that only a few top players have sent me their .slp files, so the pool of clips isn't quite diverse enough to be sufficiently challenging... <strong><i>yet!</i></strong></span> (SPOILER)
             </Typography>
             <br />
             <br />
@@ -33,10 +34,8 @@ export const About = () => {
               Thanks to:
             </Typography>
             <Typography variant="body1">
-              Frank of <Link target="_blank" href="https://slippilab.com/">slippilab.com</Link> for the amazing web-based .slp renderer. 
-              This allowed this site to move from sending big video data to the client,
-               to sending the smaller .slp files instead, saving $ on data transfer costs. 
-              Ultimately the reason the site is back online!
+              Frank of <Link target="_blank" href="https://slippilab.com/">slippilab.com</Link> for the amazing web-based .slp renderer,
+              which allowed the site to switch from sending large video files to smaller .slp files. This saved significantly on data transfer costs and ultimately brought the site back online!
             </Typography>
             <Typography variant="body1">
               Everone who sent me their .slp

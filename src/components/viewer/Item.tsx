@@ -11,102 +11,101 @@ import { useDarkMode } from "../common/Dark";
 // Note: Most items coordinates and sizes are divided by 256 to convert them
 // from hitboxspace to worldspace.
 export function Item(props: { item: ItemUpdate, darkMode: Accessor<boolean> }) {
-  const [darkMode,] = useDarkMode() as any;
   const itemName = createMemo(() => itemNamesById[props.item.typeId]);
   return (
     <Switch>
       <Match when={itemName() === "Needle(thrown)"}>
-        <Needle item={props.item} darkMode={darkMode} />
+        <Needle item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Fox's Laser"}>
-        <FoxLaser item={props.item} darkMode={darkMode} />
+        <FoxLaser item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Falco's Laser"}>
-        <FalcoLaser item={props.item} darkMode={darkMode} />
+        <FalcoLaser item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Turnip"}>
-        <Turnip item={props.item} darkMode={darkMode} />
+        <Turnip item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Yoshi's egg(thrown)"}>
-        <YoshiEgg item={props.item} darkMode={darkMode} />
+        <YoshiEgg item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Luigi's fire"}>
-        <LuigiFireball item={props.item} darkMode={darkMode} />
+        <LuigiFireball item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Mario's fire"}>
-        <MarioFireball item={props.item} darkMode={darkMode} />
+        <MarioFireball item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Missile"}>
-        <Missile item={props.item} darkMode={darkMode} />
+        <Missile item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Samus's bomb"}>
-        <SamusBomb item={props.item} darkMode={darkMode} />
+        <SamusBomb item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Samus's chargeshot"}>
-        <SamusChargeshot item={props.item} darkMode={darkMode} />
+        <SamusChargeshot item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Shyguy (Heiho)"}>
-        <FlyGuy item={props.item} darkMode={darkMode} />
+        <FlyGuy item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Mewtwo's Shadowball"}>
-        <Shadowball item={props.item} darkMode={darkMode} />
+        <Shadowball item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Pikachu's thunder (B)"}>
-        <ThunderJolt item={props.item} darkMode={darkMode} />
+        <ThunderJolt item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Pichu's thunder (B)"}>
-        <ThunderJolt item={props.item} darkMode={darkMode} />
+        <ThunderJolt item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Link's boomerang"}>
-        <Boomerang item={props.item} darkMode={darkMode} />
+        <Boomerang item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Young Link's boomerang"}>
-        <Boomerang item={props.item} darkMode={darkMode} />
+        <Boomerang item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Link's bomb"}>
-        <LinkBomb item={props.item} darkMode={darkMode} />
+        <LinkBomb item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Young Link's bomb"}>
-        <LinkBomb item={props.item} darkMode={darkMode} />
+        <LinkBomb item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Arrow"}>
-        <Arrow item={props.item} darkMode={darkMode} />
+        <Arrow item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Fire Arrow"}>
-        <Arrow item={props.item} darkMode={darkMode} />
+        <Arrow item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Blizzard"}>
-        <Blizzard item={props.item} darkMode={darkMode} />
+        <Blizzard item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Ice(Iceclimbers)"}>
-        <MrFreezy item={props.item} darkMode={darkMode} />
+        <MrFreezy item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Kirby's Cutter beam"}>
-        <KirbyCutterBeam item={props.item} darkMode={darkMode} />
+        <KirbyCutterBeam item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "PK Thunder (Primary)"}>
-        <PKThunder item={props.item} darkMode={darkMode} />
+        <PKThunder item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "PK Fire Pillar"}>
-        <PKFirePillar item={props.item} darkMode={darkMode} />
+        <PKFirePillar item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "PK Flash (explosion)"}>
-        <PKFlash item={props.item} darkMode={darkMode} />
+        <PKFlash item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "PK Fire"}>
-        <PKFire item={props.item} darkMode={darkMode} />
+        <PKFire item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Yoshi's Star"}>
-        <YoshiStar item={props.item} darkMode={darkMode} />
+        <YoshiStar item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Pill"}>
-        <Pill item={props.item} darkMode={darkMode} />
+        <Pill item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Bowser's flame"}>
-        <BowserFlame item={props.item} darkMode={darkMode} />
+        <BowserFlame item={props.item} darkMode={props.darkMode} />
       </Match>
       <Match when={itemName() === "Sausage"}>
-        <Sausage item={props.item} darkMode={darkMode} />
+        <Sausage item={props.item} darkMode={props.darkMode} />
       </Match>
       
       
@@ -289,12 +288,13 @@ function Turnip(props: { item: ItemUpdate, darkMode: Accessor<boolean> }) {
   });
   return (
     <>
-      <circle
+      {/* <circle
         cx={props.item.xPosition}
         cy={props.item.yPosition}
         r={900/256}
-        fill="blue"
-        />
+        fill="darkgray"
+        opacity={.5}
+        /> */}
       <g opacity={held ? 0.5 : 1} transform={`rotate(${rotation()*16} ${held ? xOffset : props.item.xPosition}, ${held ? yOffset : props.item.yPosition}) translate(${xOffset}, ${yOffset})`}>
         <TurnipFace turnipName={turnipNamesById[props.item.peachTurnipFace]} />
       </g>

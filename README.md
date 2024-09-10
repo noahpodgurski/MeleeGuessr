@@ -2,6 +2,14 @@
 
 Think you can really guess who's playing that captain falcon - based solely off the movement? Now's your chance! Visit [MeleeGuessr](https://www.MeleeGuessr.com) and play now!
 
+## CLIP GENERATION ##
+1. Run clippi on directory of .slps - name .json output as profile name (ex: default.json, bettercombos.json)
+2. Edit convert.ts to target above output json file and run `ts-node convert.ts`
+3. Copy \\NOAH-PC\Clout\Backups\MeleeGuessrSlp\2.0\converted\all.json to meleeguessr-server\clips.json
+4. Run `npm run test`, it will cleanup the clips.json and cut clips directory, run again (should be success)
+5. Verify clips.json and clips files match in length, **(make sure clips s3 BUCKET is empty)** run `npm run upload`
+6. Deploy new API with `npm run sam`
+
 ### TODOS ###
 1. ~~Scoring & Leaderboard~~
 2. Guess the controller! (Clips of fox/marth/pikachu), guess if classic or box controller

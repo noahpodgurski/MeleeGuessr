@@ -8,6 +8,7 @@ import { replayStore } from "~/state/replayStore";
 import { Controls } from "~/components/viewer/Controls";
 import { useDarkMode } from "../common/Dark";
 import { useLoader } from "../common/Loader";
+import { Score } from "./Score";
 
 export function Viewer() {
   const items = createMemo(
@@ -27,8 +28,9 @@ export function Viewer() {
             <Camera>
               <Stage />
               <Players />
-              <For each={items()}>{(item) => <Item item={item} />}</For>
+              <For each={items()}>{(item) => <Item item={item} darkMode={darkMode} />}</For>
             </Camera>
+            <Score />
             <HUD />
           </g>
         </svg>
