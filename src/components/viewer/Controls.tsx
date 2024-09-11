@@ -18,6 +18,7 @@ import {
 import { currentSelectionStore } from "~/state/selectionStore";
 import { useDarkMode } from "../common/Dark";
 import { AiFillBulb, AiTwotoneBulb } from "solid-icons/ai";
+import { loginStore } from "../Navbar";
 
 export function Controls() {
   const [darkMode, {toggle}] = useDarkMode() as any;
@@ -31,6 +32,7 @@ export function Controls() {
   });
 
   function onKeyDown({ key }: KeyboardEvent): void {
+    if (loginStore.showLogin) return;
     switch (key) {
       case "k":
       case "K":

@@ -1,14 +1,11 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, InputLabel, Modal, OutlinedInput, TextField, Typography, useMediaQuery } from "@suid/material";
-import { Accessor, createContext, createEffect, createSignal } from 'solid-js';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, InputLabel, Modal, OutlinedInput, TextField, Typography, useMediaQuery } from "@suid/material";
+import { Accessor, createEffect, createSignal } from 'solid-js';
 import { GetStat } from "../models/Stat";
-// import { createToast } from "./common/toaster";
 import AuthService from "../services/auth.service";
-import UserService from "../services/user.service";
 import { Component } from 'solid-js';
 import { useLoader } from "./common/Loader";
-import { IUser, UserContext } from "./common/User";
+import { UserContext } from "./common/User";
 import useTheme from "@suid/material/styles/useTheme";
-import { register } from "module";
 import { AiFillCloseCircle, AiFillEye, AiFillEyeInvisible } from "solid-icons/ai";
 
 interface IProfileModal {
@@ -33,30 +30,30 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
 
   createEffect(() => {
     if (UserContext.user && showModal()){
-      setLoading(true);
-      UserService.getStats(UserContext.user.id)
-      .then((response:any) => {
-        setLoading(false);
-        setStat(response.data);
-      })
-      .catch((err:any) => {
-        setLoading(false);
-        // createToast({
-        //   title: "Failed to retrieve stats",
-        //   duration: 2000,
-        //   placement: "top-end"
-        // })
-        if (UserContext.user) {
-          setStat({
-            userId: UserContext.user.id,
-            username: UserContext.user.username,
-            correct: 0,
-            incorrect: 0,
-            highScore: 0,
-            games: 0
-          })
-        }
-      });
+      // setLoading(true);
+      // UserService.getStats(UserContext.user.id)
+      // .then((response:any) => {
+      //   setLoading(false);
+      //   setStat(response.data);
+      // })
+      // .catch((err:any) => {
+      //   setLoading(false);
+      //   // createToast({
+      //   //   title: "Failed to retrieve stats",
+      //   //   duration: 2000,
+      //   //   placement: "top-end"
+      //   // })
+      //   if (UserContext.user) {
+      //     setStat({
+      //       userId: UserContext.user.id,
+      //       username: UserContext.user.username,
+      //       correct: 0,
+      //       incorrect: 0,
+      //       highScore: 0,
+      //       games: 0
+      //     })
+      //   }
+      // });
     }
   }, [UserContext.user, showModal, loading])
   

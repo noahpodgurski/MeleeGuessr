@@ -65,6 +65,13 @@ export const App = () => {
     },
   })
 
+  const Navbar = (props: any) => (
+    <>
+    <NavbarPage />
+    {props.children}
+    </>
+  )
+
   return (
     <>
       <DarkModeProvider>
@@ -72,13 +79,13 @@ export const App = () => {
           {/* <Loader /> */}
           <ThemeProvider theme={navTheme}>
             <CssBaseline />
-            <NavbarPage />
-          
-          <Router>
-            <Route path="/" component={Home} />
-            <Route path="/play" component={Play} />
-            <Route path="/leaderboards" component={Leaderboards} />
-            <Route path="/about" component={About} />
+          <Router >
+            <Route path="/" component={Navbar}>
+              <Route path="/" component={Home} />
+              <Route path="/play" component={Play} />
+              <Route path="/leaderboards" component={Leaderboards} />
+              <Route path="/about" component={About} />
+            </Route>
           </Router>
           <Toaster toastOptions={{position: 'top-center'}} />
           </ThemeProvider>

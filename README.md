@@ -68,3 +68,17 @@ Think you can really guess who's playing that captain falcon - based solely off 
 5. Filter for combos ??? (doesn't affect high score)
 6. Add missing projectiles/items to game
     a. Pikachu/pichu down b
+7. Login improvements:
+    1. Backend
+
+        a. Add rate limiting to login endpoint (express-rate-limit?)
+
+        b. Token expiration
+
+        c. Token storage (use httpOnly cookies)
+        
+    2. Frontend
+    
+        a. Instead of storing the JWT in localStorage, consider using secure cookies to store the token and enable the httpOnly and Secure flags to mitigate potential XSS attacks.
+
+        b. When the token expires or is invalid, make sure to handle such cases (e.g., force logout if an invalid token is detected).

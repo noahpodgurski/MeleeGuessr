@@ -5,15 +5,14 @@ import AuthService from "../services/auth.service";
 import { Accessor, Component, createContext, createSignal } from 'solid-js';
 import { AiFillCloseCircle } from 'solid-icons/ai'
 import toast from "solid-toast";
+import { loginStore, setLoginModal } from "./Navbar";
+import { setLoaderType } from "./Loader";
 
 interface ILoginModal {
-  showModal: Accessor<boolean>;
-  setShowModal: any;
-  toggleShowModal: () => void;
   updateUser: () => void;
 }
 
-export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, toggleShowModal, updateUser}) => {
+export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
   const [email, setEmail] = createSignal("");
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
@@ -34,6 +33,7 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
       // })
       return;
     }
+    setLoaderType(true);
     setLoading(true)
 
     if (endpoint() === "/login"){
@@ -43,16 +43,19 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
         setLoading(false)
         toast(data.message);
         if (response.status === 200){
+          if (window.location.pathname === "/play") {
+            window.location.reload();
+          }
           // navigate("/play"); //navigate somewhere after login?
-          window.location.pathname = "/play";
+          // window.location.pathname = "/play";
           // toggleShowModal();
           // updateUser();
+          setLoginModal(false);
         } else {
         }
       })
       .catch((err:any) => {
-        console.log(err);
-        console.log('err from login cb')
+        toast("Error logging in")
         setLoading(false)
       });
     }
@@ -68,13 +71,17 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
         toast(response.data.message)
         setLoading(false)
         if (response.status === 200){
+          if (window.location.pathname === "/play") {
+            window.location.reload();
+          }
           // navigate("/play");
-          window.location.pathname = "/play";
+          // window.location.pathname = "/play";
           // setEmail("");
           // setUsername("");
           // setPassword("");
           // setRegister(false);
           // toggleShowModal();
+          setLoginModal(false);
         } else {
         }
       })
@@ -92,9 +99,9 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
   return (
     <>
     <Dialog
-        onClose={toggleShowModal}
+        onClose={() => {setLoginModal(false)}}
         aria-labelledby="customized-dialog-title"
-        open={showModal()}
+        open={loginStore.showLogin === true}
         fullWidth={true}
         maxWidth="sm"
         fullScreen={fullScreen()}
@@ -105,7 +112,7 @@ export const LoginModal: Component<ILoginModal> = ({showModal, setShowModal, tog
               <IconButton
                 edge="start"
                 color="inherit"
-                onClick={toggleShowModal}
+                onClick={() => setLoginModal(!loginStore.showLogin)}
                 aria-label="close"
                 >
                 <AiFillCloseCircle />

@@ -21,20 +21,6 @@ const updateStats = (stat:PostStat) => {
     });
 };
 
-const getStats = (userId:string) => {
-  return axios
-    .get(`${SERVER_IP}/get-stats`,
-    {
-      params: { userId: userId },
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then((response) => {
-      return response;
-    });
-};
-
 const getAllStats = () => {
   return axios
     .get(`${SERVER_IP}/stats`,
@@ -71,7 +57,6 @@ const reportClip = (clip:string | undefined) => {
 
 const UserService = {
   updateStats,
-  getStats,
   getAllStats,
   reportClip
 }

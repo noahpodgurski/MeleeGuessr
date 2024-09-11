@@ -14,3 +14,6 @@ export async function loadUser(_user?: string): Promise<void> {
     setState("data", user);
   }
 }
+export async function resetUser(): Promise<void> {
+  setState("data", null);
+}

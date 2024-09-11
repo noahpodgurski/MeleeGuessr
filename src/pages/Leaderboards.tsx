@@ -3,7 +3,7 @@ import './Table.scss';
 import UserService from "../services/user.service";
 import { useLoader } from "../components/common/Loader";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, useTheme, Grid } from '@suid/material';
-import { Loader } from '~/components/Loader';
+import { Loader, setLoaderType } from '~/components/Loader';
 // import { createToast } from "../components/common/toaster";
 
 export type LeaderboardData = {
@@ -18,10 +18,10 @@ const Leaderboards: Component = () => {
   const theme = useTheme();
 
   createEffect(() => {
+    setLoaderType(true);
     setLoading(true);
     UserService.getAllStats()
     .then((response) => {
-      console.log(response)
       // toast(response.data.message);
       setLoading(false);
       setData(response.data.data);

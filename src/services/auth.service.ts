@@ -1,5 +1,6 @@
 import axios from "axios";
-import { loadUser, userStore } from "~/state/userStore";
+import { clearPlayStore } from "~/state/playStore";
+import { loadUser, resetUser, userStore } from "~/state/userStore";
 const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod";
 // if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
@@ -14,9 +15,6 @@ const register = (email:string, username:string, password:string) => {
 };
 
 const login = (email:string, password:string) => {
-  // const params = new URLSearchParams();
-  // params.append('email', email);
-  // params.append('password', password);
   return axios
     .post(`${SERVER_IP}/login`, {
       email,
@@ -33,14 +31,13 @@ const login = (email:string, password:string) => {
 
 const logout = () => {
   //todo change from local storage?
-  localStorage.removeItem("user");
-  localStorage.removeItem("session");
-  // return axios.post(SERVER_IP + "signout").then((response:any) => {
-  //   return response.data;
-  // });
+  localStorage.clear();
+  clearPlayStore();
+  resetUser();
 };
 const getCurrentUser = () => {
-  return localStorage.getItem("user") || "";
+  // return localStorage.getItem("user") || "";
+  return userStore.data;
 };
 const AuthService = {
   register,

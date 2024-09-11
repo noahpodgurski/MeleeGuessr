@@ -15,6 +15,7 @@ import { Choices } from "~/components/Choices";
 import toast from "solid-toast";
 import { Grid } from "@suid/material";
 import { Loader } from "~/components/Loader";
+import { useNavigate } from "@solidjs/router";
 
 export type PlayData = {
   stage: number;
@@ -28,12 +29,13 @@ export const Play = () => {
   const [selected, setSelected] = createSignal(false);
   const [isDebug, ] = createSignal(false);
   const [loading, {setLoading}] = useLoader();
+  const navigate = useNavigate();
   
   createEffect(async () => {
     try {
       if (!playStore.currentClip) {
         setLoading(true);
-        await play();
+        await play(navigate);
         await doPlay();
         // setLoading(false);
       } else {
@@ -96,17 +98,19 @@ export const Play = () => {
 
   const guess = async (choice: string) => {
     setLoading(true);
-    const response = await makeGuess(choice);
-    correct = response.data.message === "Correct";
-    setAnswer(response.data.data);
-    setShowAnswers(true);
+    const response = await makeGuess(choice, navigate);
+    if (response) {
+      correct = response.data.message === "Correct";
+      setAnswer(response.data.data);
+      setShowAnswers(true);
+    }
     setLoading(false);
     //show correct answers for 2 seconds
     await new Promise((r) => setTimeout(r, 2000));
     //todo request next while showing answers
     setLoading(true);
     setAnswer("");
-    await play();
+    await play(navigate);
     await doPlay();
   }
 
