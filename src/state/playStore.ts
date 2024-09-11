@@ -65,7 +65,7 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
   .catch((err) => {
     nav("/");
     setLoading(false);
-    if (err.response.data.message === "Token expired") {
+    if (err.response.data.message === "Token expired" || err.response.data.message === "Invalid token") {
       //show login modal
       toast('Session expired, please login again');
       setLoginModal(true);
