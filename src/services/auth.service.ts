@@ -30,11 +30,11 @@ const login = (email:string, password:string) => {
     });
 };
 
-const logout = () => {
+const logout = async () => {
   //todo change from local storage?
   localStorage.clear();
-  clearPlayStore();
-  resetUser();
+  await clearPlayStore();
+  await resetUser();
 };
 const getCurrentUser = () => {
   // return localStorage.getItem("user") || "";

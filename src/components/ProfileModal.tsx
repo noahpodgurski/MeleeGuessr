@@ -1,6 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, InputLabel, Modal, OutlinedInput, TextField, Typography, useMediaQuery } from "@suid/material";
 import { Accessor, createEffect, createSignal } from 'solid-js';
-import { GetStat } from "../models/Stat";
 import AuthService from "../services/auth.service";
 import { Component } from 'solid-js';
 import { useLoader } from "./common/Loader";
@@ -19,7 +18,6 @@ interface IProfileModal {
 }
 
 export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal, toggleShowModal, updateUser }) => {  
-  const [stat, setStat] = createSignal<GetStat>();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [loading, {setLoading}] = useLoader() as any;
@@ -35,8 +33,8 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
 
   createEffect(() => {
     if (showModal()){
-      setLoading(true);
       setLoaderType(true);
+      setLoading(true);
       UserService.getStats()
       .then((response:any) => {
         setLoading(false);
@@ -55,15 +53,14 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
     }
   })
   
-  const logout = () => {
-    AuthService.logout();
+  const logout = async () => {
+    setLoaderType(true);
+    setLoading(true);
+    await AuthService.logout();
     updateUser();
     toggleShowModal();
-    // createToast({
-    //   title: "Logged out",
-    //   duration: 2000,
-    //   placement: "top-end"
-    // })
+    setLoading(false);
+    toast('Logged out')
   }
   
   return (

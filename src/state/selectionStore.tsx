@@ -5,7 +5,7 @@ import {
   ExternalStageName,
   stageNameByExternalId,
 } from "~/common/ids";
-import { createComputed, createEffect, createSignal, on } from "solid-js";
+import { createComputed, createEffect, createRoot, createSignal, on } from "solid-js";
 import { fileStore } from "~/state/fileStore";
 import { listCloudReplays, loadFromCloud } from "~/cloudClient";
 
@@ -201,12 +201,12 @@ function wrap(index: number, limit: number): number {
 }
 
 const [cloudStubs, setCloudStubs] = createSignal<ReplayStub[]>([]);
-export const cloudLibrary = createSelectionStore({
+export const cloudLibrary = createRoot(() => createSelectionStore({
   stubs: cloudStubs,
   getFile(stub) {
     return loadFromCloud(stub.fileName.toString());
   },
-});
+}));
 
 listCloudReplays().then((rows) => {
   setCloudStubs(rows);
@@ -219,24 +219,24 @@ listCloudReplays().then((rows) => {
   }
 });
 
-export const localLibrary = createSelectionStore({
+export const localLibrary = createRoot(() => createSelectionStore({
   stubs: () => fileStore.stubs,
   async getFile(stub) {
     return fileStore.files[fileStore.stubs.indexOf(stub)];
   },
-});
+}));
 
 export const [currentSelectionStore, setCurrentSelectionStore] =
   createSignal<SelectionStore>(cloudLibrary);
-createComputed(
+createRoot(() => createComputed(
   on(
     () => cloudLibrary.data.selectedFileAndStub,
     () => setCurrentSelectionStore(cloudLibrary)
   )
-);
-createComputed(
+))
+createRoot(() => createComputed(
   on(
     () => localLibrary.data.selectedFileAndStub,
     () => setCurrentSelectionStore(localLibrary)
   )
-);
+))

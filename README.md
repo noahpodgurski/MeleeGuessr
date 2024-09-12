@@ -73,7 +73,7 @@ Think you can really guess who's playing that captain falcon - based solely off 
 
         a. Add rate limiting to login endpoint (express-rate-limit?)
 
-        b. Token expiration
+        ~~b. Token expiration~~
 
         c. Token storage (use httpOnly cookies)
         

@@ -19,6 +19,8 @@ import { purple, grey } from "@suid/material/colors";
 import { LoaderProvider } from "./components/common/Loader";
 import { loadUser } from "./state/userStore";
 import { About } from "./pages/About";
+import { Result } from "./pages/Result";
+import { Loader } from "./components/Loader";
 
 export const App = () => {
   const [user, setUser] = createSignal<User | null>(null);
@@ -68,6 +70,7 @@ export const App = () => {
   const Navbar = (props: any) => (
     <>
     <NavbarPage />
+    <Loader />
     {props.children}
     </>
   )
@@ -85,6 +88,7 @@ export const App = () => {
               <Route path="/play" component={Play} />
               <Route path="/leaderboards" component={Leaderboards} />
               <Route path="/about" component={About} />
+              <Route path="/result" component={Result} />
             </Route>
           </Router>
           <Toaster toastOptions={{position: 'top-center'}} />

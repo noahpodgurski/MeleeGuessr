@@ -116,7 +116,6 @@ export const Play = () => {
 
   return (
     <>
-      <Loader />
       <div class="justify-content-center align-items-center mt-5 play nav-m">
         <Grid sx={{alignItems: 'center', width: '100%'}}>
           <Grid>

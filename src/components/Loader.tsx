@@ -16,8 +16,6 @@ export interface LoaderType {
 
 export const Loader: Component = () => {
 	const [loading] = useLoader();
-	const location = useLocation();
-	const isLeaderboards = location.pathname === '/leaderboards';
 
 	return (
 		<>

@@ -21,7 +21,7 @@ export const About = () => {
               <b style={{color: "#ff8f96"}}>If you're a top player and want to contribute your clips, feel free to reach out to me on Twitter <Link target="_blank" href="https://x.com/NoahSSBM">@NoahSSBM</Link></b>
               <br />
               <br />
-              Upcoming features might include guessing if a player is using a GCC or a rectangle controller, or guessing on mods like Z-jump, notches, etc.
+              Upcoming features might include guessing if a player is using a GCC or a rectangle controller, or guessing mods like Z-jump, notches, etc.
               <br />
               <br />
               (SPOILER) To slightly ruin the magic of the site... <span class="spoiler">It could be deduced that there are essentially zero clips of some older, inactive players here,
@@ -42,7 +42,7 @@ export const About = () => {
             files
             </Typography>
             <Typography variant="body1">
-              Fizzi and the Slippi team for making projects like this possible
+              Fizzi and the <Link target="blank" href="https://slippi.gg/about">Slippi</Link> team for making projects like this possible
             </Typography>
             <Typography variant="body1">
               Leslee

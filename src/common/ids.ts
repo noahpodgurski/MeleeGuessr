@@ -640,8 +640,8 @@ export const itemNamesById = [
   "Fan (Harisen)", // 0x18
   "Fire Flower (F Flower)", // 0x19
   "Super Mushroom (Kinoko)", // 0x1A
-  "", // 0x1B
-  "", // 0x1C
+  "unknown 1b", // 0x1B
+  "unknown 1c", // 0x1C
   "Warp Star (WStar)", // 0x1D
   "Screw Attack (ScBall)", // 0x1E
   "Bunny Hood (RabbitC)", // 0x1F
@@ -671,8 +671,8 @@ export const itemNamesById = [
   "Pill", // 0x31
   "Kirby's Cutter beam", // 0x32
   "Kirby's Hammer", // 0x33
-  "", // 0x34
-  "", // 0x35
+  "unknown 34", // 0x34
+  "unknown 35", // 0x35
   "Fox's Laser", // 0x36
   "Falco's Laser", // 0x37
   "Fox's shadow", // 0x38
@@ -717,7 +717,7 @@ export const itemNamesById = [
   "Missile", // 0x5F
   "Grapple beam", // 0x60
   "Sheik's chain", // 0x61
-  "", // 0x62
+  "unknown 62", // 0x62
   "Turnip", // 0x63
   "Bowser's flame", // 0x64
   "Ness's bat", // 0x65
@@ -729,7 +729,7 @@ export const itemNamesById = [
   "Blizzard", // 0x6B
   "Zelda's fire", // 0x6C
   "Zelda's fire (explosion)", // 0x6D
-  "", // 0x6E
+  "unknown 6e", // 0x6E
   "Toad's spore", // 0x6F
   "Mewtwo's Shadowball", // 0x70
   "Iceclimbers' UpB", // 0x71
@@ -740,7 +740,7 @@ export const itemNamesById = [
   "Turtle", // 0x76
   "Sperky", // 0x77
   "Judge", // 0x78
-  "", // 0x79
+  "unknown 79", // 0x79
   "Sausage", // 0x7A
   "Milk (Young Link)", // 0x7B
   "Firefighter(G&W)", // 0x7C

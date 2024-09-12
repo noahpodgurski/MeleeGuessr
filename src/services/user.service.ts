@@ -1,13 +1,10 @@
-// import { createToast } from "../components/common/toaster";
 import { userStore } from "~/state/userStore";
-import { PostStat } from "../models/Stat";
 import axios from 'axios';
 // const SERVER_IP = process.env.SERVER_IP;
 const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod/";
 // if not prod server_ip = "" todo
 
 const getStats = () => {
-  console.log('get stats')
   const auth = localStorage.getItem("user") ? { Authorization: `Bearer ${localStorage.getItem("user")}`} : {};
   return axios
     .get(`${SERVER_IP}/stats`,
@@ -27,7 +24,6 @@ const getStats = () => {
 
 
 const getAllStats = () => {
-  console.log('get all stats')
   return axios
     .get(`${SERVER_IP}/stats`,
     {

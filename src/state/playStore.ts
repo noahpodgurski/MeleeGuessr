@@ -37,7 +37,7 @@ export interface PlayStore {
 const [state, setState] = createStore<PlayStore>();
 
 export const playStore = state;
-export const clearPlayStore = () => {
+export const clearPlayStore = async () => {
   setState("currentClip", undefined);
   setState("sessionId", undefined);
   setState("score", undefined);
@@ -78,7 +78,7 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
 }
 
 export async function makeGuess(guess: string, nav: Navigator): Promise<AxiosResponse | null> {
-  const [loading, {setLoading}] = useLoader();
+  const [, {setLoading}] = useLoader();
   setLoaderType(true);
   let headers: any = {};
   if (localStorage.getItem("user")) {

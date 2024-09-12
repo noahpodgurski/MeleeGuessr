@@ -69,7 +69,6 @@ const Leaderboards: Component = () => {
     <Grid container minHeight="90vh" justifyContent="center" class="nav-m">
         <Container maxWidth="md">
           <Grid sx={{width: "100%", mt: 5, mb: 5}} xs={12} justifyContent="center">
-          <Loader />
             <TableContainer component={Paper} >
               <Table>
                 <TableHead>

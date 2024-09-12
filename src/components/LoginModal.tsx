@@ -22,22 +22,18 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
   const [error, setError] = createSignal("");
 
   const theme = useTheme();
-  const [, {setLoading}] = useLoader() as any
+  const [loading, {setLoading}] = useLoader() as any
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   // const navigate = useNavigate();
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
     if (email() === "" || password() === ""){
-      // createToast({
-      //   title: "Unknown error",
-      //     duration: 2000,
-      //     placement: "top-end"
-      // })
       return;
     }
+    
     setLoaderType(true);
-    setLoading(true)
+    setLoading(true);
 
     if (endpoint() === "/login"){
       AuthService.login(email(), password())
@@ -49,10 +45,6 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
           if (window.location.pathname === "/play") {
             window.location.reload();
           }
-          // navigate("/play"); //navigate somewhere after login?
-          // window.location.pathname = "/play";
-          // toggleShowModal();
-          // updateUser();
           setLoginModal(false);
         } else {
         }
