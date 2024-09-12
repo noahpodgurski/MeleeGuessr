@@ -18,6 +18,9 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
   const [password, setPassword] = createSignal("");
   const [endpoint, setEndpoint] = createSignal("/login");
   const [register, setRegister] = createSignal(false);
+
+  const [error, setError] = createSignal("");
+
   const theme = useTheme();
   const [, {setLoading}] = useLoader() as any
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -65,7 +68,6 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
         toast("Please fill out all required fields");
         return;
       }
-      setLoading(true)
       AuthService.register(email(), username(), password())
       .then((response) => {
         toast(response.data.message)
@@ -86,8 +88,14 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
         }
       })
       .catch((err:any) => {
-        console.log(err)
-        console.log('err from register cb')
+        toast(err.response.data.message)
+        if (err.response.data.message.includes("Email")) {
+          setError("email");
+        } else if (err.response.data.message.includes("Username")) {
+          setError("username");
+        } else if (err.response.data.message.includes("Password")) {
+          setError("password");
+        }
         setLoading(false)
       });
     } else if (endpoint() === "/forgot"){
@@ -137,14 +145,14 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
                 <div class="row justify-content-center">
                   <div class="m-1">
                     {/* <Input required value={email} onChange={(v) => setEmail(v.target.value)} class="login-form" autoComplete="email" sx={{background: "#2d313a", color: 'white'}} id='email' type='email' name="email">test</Input> */}
-                    <TextField sx={{width: '100%'}} required value={email()} onChange={(v) => setEmail(v.target.value)} autoComplete="email" id="email" label="Email" variant="standard" type='email' name="email"/>
+                    <TextField sx={{width: '100%'}} error={error()==="email"} required value={email()} onChange={(v) => setEmail(v.target.value)} autoComplete="email" id="email" label="Email" variant="standard" type='email' name="email"/>
                     
                   </div>
                   { register() && <div class="m-1">
-                    <TextField sx={{width: '100%'}} required value={username()} onChange={(v) => setUsername(v.target.value)} autoComplete="current-username" id="username" label="Username" variant="standard" type='username' name="username"/>
+                    <TextField sx={{width: '100%'}} error={error()==="username"} required value={username()} onChange={(v) => setUsername(v.target.value)} autoComplete="current-username" id="username" label="Username" variant="standard" type='username' name="username"/>
                   </div> }
                   <div class="m-1">
-                    <TextField sx={{width: '100%'}} required value={password()} onChange={(v) => setPassword(v.target.value)} autoComplete="current-password" id="password" label="Password" variant="standard" type='password' name="password"/>
+                    <TextField sx={{width: '100%'}} error={error()==="password"} required value={password()} onChange={(v) => setPassword(v.target.value)} autoComplete="current-password" id="password" label="Password" variant="standard" type='password' name="password"/>
                     {/* <Input required tabIndex={1} value={password} onChange={(v) => setPassword(v.target.value)} class="login-form" autoComplete="current-password" contrast style={{background: "#2d313a", color: 'white'}}  id='password' type='password' name="password" minLength={8} /> */}
                   </div>
                 </div>

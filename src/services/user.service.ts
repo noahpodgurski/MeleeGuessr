@@ -1,27 +1,33 @@
 // import { createToast } from "../components/common/toaster";
+import { userStore } from "~/state/userStore";
 import { PostStat } from "../models/Stat";
 import axios from 'axios';
 // const SERVER_IP = process.env.SERVER_IP;
 const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod/";
 // if not prod server_ip = "" todo
-const updateStats = (stat:PostStat) => {
-  const params = new URLSearchParams()
-  params.append('stat', JSON.stringify(stat));
+
+const getStats = () => {
+  console.log('get stats')
+  const auth = localStorage.getItem("user") ? { Authorization: `Bearer ${localStorage.getItem("user")}`} : {};
   return axios
-    .post(`${SERVER_IP}/update-stats`, params)
-    .then((response:any) => {
-      return response.data;
+    .get(`${SERVER_IP}/stats`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...auth
+      }, 
+      params: {
+        page: 1,
+      }
     })
-    .catch((err:any) => {
-      // createToast({
-      //   title: "Unexpected error...",
-      //   duration: 2000,
-      //   placement: "top-end",
-      // })
+    .then((response) => {
+      return response;
     });
 };
 
+
 const getAllStats = () => {
+  console.log('get all stats')
   return axios
     .get(`${SERVER_IP}/stats`,
     {
@@ -56,7 +62,7 @@ const reportClip = (clip:string | undefined) => {
 };
 
 const UserService = {
-  updateStats,
+  getStats,
   getAllStats,
   reportClip
 }

@@ -4,11 +4,12 @@ import { loadUser, resetUser, userStore } from "~/state/userStore";
 const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod";
 // if not prod server_ip = "" todo
 const register = (email:string, username:string, password:string) => {
-  const params = new URLSearchParams();
-  params.append('email', email);
-  params.append('username', username);
-  params.append('password', password);
-  return axios.post(`${SERVER_IP}/register`, params)
+  return axios.post(`${SERVER_IP}/register`, {
+      email,
+      password,
+      username,
+    }, {headers: {'Content-Type': 'application/json'}}
+  )
   .then((response) => {
     return response;
   });

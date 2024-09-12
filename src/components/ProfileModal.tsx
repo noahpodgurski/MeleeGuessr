@@ -7,6 +7,9 @@ import { useLoader } from "./common/Loader";
 import { UserContext } from "./common/User";
 import useTheme from "@suid/material/styles/useTheme";
 import { AiFillCloseCircle, AiFillEye, AiFillEyeInvisible } from "solid-icons/ai";
+import UserService from "~/services/user.service";
+import { setLoaderType } from "./Loader";
+import toast from "solid-toast";
 
 interface IProfileModal {
   showModal: Accessor<boolean>;
@@ -21,6 +24,8 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [loading, {setLoading}] = useLoader() as any;
   const [showPassword, setShowPassword] = createSignal(false);
+  const [username, setUsername] = createSignal("");
+  const [email, setEmail] = createSignal("");
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -29,33 +34,26 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
   };
 
   createEffect(() => {
-    if (UserContext.user && showModal()){
-      // setLoading(true);
-      // UserService.getStats(UserContext.user.id)
-      // .then((response:any) => {
-      //   setLoading(false);
-      //   setStat(response.data);
-      // })
-      // .catch((err:any) => {
-      //   setLoading(false);
-      //   // createToast({
-      //   //   title: "Failed to retrieve stats",
-      //   //   duration: 2000,
-      //   //   placement: "top-end"
-      //   // })
-      //   if (UserContext.user) {
-      //     setStat({
-      //       userId: UserContext.user.id,
-      //       username: UserContext.user.username,
-      //       correct: 0,
-      //       incorrect: 0,
-      //       highScore: 0,
-      //       games: 0
-      //     })
-      //   }
-      // });
+    if (showModal()){
+      setLoading(true);
+      setLoaderType(true);
+      UserService.getStats()
+      .then((response:any) => {
+        setLoading(false);
+        setUsername(response.data.data.username);
+        setEmail(response.data.data.email);
+      })
+      .catch((err:any) => {
+        setLoading(false);
+        toast("Failed to retrieve info");
+        // createToast({
+        //   title: "Failed to retrieve stats",
+        //   duration: 2000,
+        //   placement: "top-end"
+        // })
+      });
     }
-  }, [UserContext.user, showModal, loading])
+  })
   
   const logout = () => {
     AuthService.logout();
@@ -112,7 +110,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
                       <TextField
                         label="Username"
                         id="outlined-start-adornment"
-                        value={UserContext.user?.username}
+                        value={username()}
                         sx={{ m: 1, width: '25ch' }}
                       />
                       {/* <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel> */}
@@ -120,7 +118,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
                         label="Email"
                         type={showPassword() ? 'text' : 'password'}
                         id="outlined-adornment-email"
-                        value={UserContext.user?.email}
+                        value={email()}
                         sx={{ m: 1, width: '25ch' }}
                         InputProps={{
                           endAdornment:
