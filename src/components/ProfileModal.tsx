@@ -108,6 +108,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
                   <div class="d-flex white-text justify-content-center align-items-center m-2" style={{"text-align": 'start'}}>
                   <div class="col-6">
                       <TextField
+                        disabled
                         label="Username"
                         id="outlined-start-adornment"
                         value={username()}
@@ -115,6 +116,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
                       />
                       {/* <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel> */}
                       <TextField
+                        disabled
                         label="Email"
                         type={showPassword() ? 'text' : 'password'}
                         id="outlined-adornment-email"

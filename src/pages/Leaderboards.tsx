@@ -93,7 +93,7 @@ const Leaderboards: Component = () => {
                       <TableCell >{row.highScore}</TableCell>
                       <TableCell >{row.correct}</TableCell>
                       <TableCell >{row.incorrect}</TableCell>
-                      <TableCell >{(row.correct / (row.correct+row.incorrect)).toFixed(2)}</TableCell>
+                      <TableCell >{row.correct+row.incorrect > 0 ? (row.correct / (row.correct+row.incorrect)).toFixed(2) : 0}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
