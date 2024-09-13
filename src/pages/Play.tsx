@@ -25,7 +25,6 @@ export type PlayData = {
 };
 
 export const Play = () => {
-  
   const [selected, setSelected] = createSignal(false);
   const [isDebug, ] = createSignal(false);
   const [loading, {setLoading}] = useLoader();

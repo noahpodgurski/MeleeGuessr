@@ -3,8 +3,7 @@ import { itemNamesById } from "~/common/ids";
 import { ItemUpdate, PlayerUpdate } from "~/common/types";
 import { replayStore, ReplayStore } from "~/state/replayStore";
 import { TurnipFace } from "./TurnipFace";
-import { turnipNamesById } from "scripts/new-scripts/common/ids";
-import { useDarkMode } from "../common/Dark";
+import { getJudgeNumber, turnipNamesById } from "scripts/new-scripts/common/ids";
 
 // TODO: characters projectiles
 
@@ -107,7 +106,9 @@ export function Item(props: { item: ItemUpdate, darkMode: Accessor<boolean> }) {
       <Match when={itemName() === "Sausage"}>
         <Sausage item={props.item} darkMode={props.darkMode} />
       </Match>
-      
+      <Match when={itemName() === "Judge"}>
+        <Judge item={props.item} darkMode={props.darkMode} />
+      </Match>
       
     </Switch>
   );
@@ -719,6 +720,37 @@ function Sausage(props: { item: ItemUpdate, darkMode: Accessor<boolean> }) {
       />
     </>
   );
+}
+
+function Judge(props: { item: ItemUpdate, darkMode: Accessor<boolean> }) {
+  const state = replayStore.replayData?.frames[props.item.frameNumber].players[props.item.owner].state;
+  if (!state) return;
+  const judgeNumber = getJudgeNumber(state.actionStateId ?? 0);
+  if (judgeNumber)
+    return (
+      <>
+        <rect
+          x={state.xPosition-4}
+          y={state.yPosition+15}
+          width={6}
+          height={8}
+          fill={props.darkMode() ? "white" : "black"}
+          fill-opacity={.5}
+        >  
+        </rect>
+        <text
+          fill={props.darkMode() ? "black" : "white"} // Invert text color for visibility
+          font-size="12" // Adjust size as needed
+          text-anchor="middle"
+          dominant-baseline="middle"
+          // transform={`translate(0, 20)`}
+          transform={`${replayStore.renderDatas[props.item.owner].transforms[0]} scale(.5,-.5) translate(-2, -36)`}
+
+        >
+          {judgeNumber}
+        </text>
+      </>
+    );
 }
 
 //todo pikachu down b

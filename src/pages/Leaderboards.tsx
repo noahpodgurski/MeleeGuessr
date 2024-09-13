@@ -2,7 +2,7 @@ import { Component, createEffect, createSignal } from 'solid-js';
 import './Table.scss';
 import UserService from "../services/user.service";
 import { useLoader } from "../components/common/Loader";
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, useTheme, Grid, Container } from '@suid/material';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Grid, Container } from '@suid/material';
 import { Loader, setLoaderType } from '~/components/Loader';
 // import { createToast } from "../components/common/toaster";
 
@@ -48,7 +48,7 @@ const mockData: LeaderboardData[] = [
 
 const Leaderboards: Component = () => {
   const [data, setData] = createSignal<LeaderboardData[]>([]);
-  const [, {setLoading}] = useLoader() as any;
+  const [loading, {setLoading}] = useLoader() as any;
 
   createEffect(() => {
     setLoaderType(true);
@@ -70,7 +70,7 @@ const Leaderboards: Component = () => {
         <Container maxWidth="md">
           <Grid sx={{width: "100%", mt: 5, mb: 5}} xs={12} justifyContent="center">
             <TableContainer component={Paper} >
-              <Table>
+              { !loading() && <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>Rank</TableCell>
@@ -97,7 +97,7 @@ const Leaderboards: Component = () => {
                     </TableRow>
                   ))}
                 </TableBody>
-              </Table>
+              </Table> }
             </TableContainer>
         </Grid>
       </Container>

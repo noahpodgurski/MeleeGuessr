@@ -736,7 +736,7 @@ export const itemNamesById = [
   "Pesticide", // 0x72
   "Manhole", // 0x73
   "Fire(G&W)", // 0x74
-  "Parashute", // 0x75
+  "Parachute", // 0x75
   "Turtle", // 0x76
   "Sperky", // 0x77
   "Judge", // 0x78
@@ -878,3 +878,54 @@ export const turnipNamesById = [
   "Stitch Face", // 7
 ]
 export type TurnipName = typeof turnipNamesById[number];
+
+export const judgeNumbersByActionStateId = [
+  1, // 355
+  2, // 356
+  3, // 357
+  4, // 358
+  5, // 359
+  6, // 360
+  7, // 361
+  8, // 362
+  9, // 363
+  
+
+  //below is a guess (for players 2-4)
+  1, // 364
+  2, // 365
+  3, // 366
+  4, // 367
+  5, // 368
+  6, // 369
+  7, // 370
+  8, // 371
+  9, // 372
+
+  1, // 373
+  2, // 374
+  3, // 375
+  4, // 376
+  5, // 377
+  6, // 378
+  7, // 379
+  8, // 380
+  9, // 381
+
+  1, // 382
+  2, // 383
+  3, // 384
+  4, // 385
+  5, // 386
+  6, // 387
+  7, // 388
+  8, // 389
+  9, // 390
+];
+
+export type JudgeNumber = typeof judgeNumbersByActionStateId[number];
+
+export function getJudgeNumber(actionStateId: number): JudgeNumber | undefined {
+  const index = actionStateId - 355; // Offset action state IDs by 355
+  return judgeNumbersByActionStateId[index] ?? undefined; // Return undefined if out of range
+}

@@ -28,6 +28,7 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
+    if (loading()) return;
     if (email() === "" || password() === ""){
       return;
     }

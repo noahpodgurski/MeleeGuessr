@@ -3,7 +3,6 @@ import { Accessor, createEffect, createSignal } from 'solid-js';
 import AuthService from "../services/auth.service";
 import { Component } from 'solid-js';
 import { useLoader } from "./common/Loader";
-import { UserContext } from "./common/User";
 import useTheme from "@suid/material/styles/useTheme";
 import { AiFillCloseCircle, AiFillEye, AiFillEyeInvisible } from "solid-icons/ai";
 import UserService from "~/services/user.service";
@@ -54,13 +53,17 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
   })
   
   const logout = async () => {
+    if (loading()) return;
     setLoaderType(true);
     setLoading(true);
-    await AuthService.logout();
+    await AuthService.logout()
     updateUser();
     toggleShowModal();
     setLoading(false);
     toast('Logged out')
+    // navigate('/');
+    window.location.pathname = '/'
+    // window.location.reload();
   }
   
   return (
