@@ -1,4 +1,4 @@
-import { Bar, BarChart, ResponsiveContainer, CartesianGrid, Legend, Tooltip, XAxis, YAxis, Cell } from "recharts";
+import { Component } from 'solid-js';
 import { Choice } from "../models/Choice";
 
 export type choiceDataType = {
@@ -17,12 +17,12 @@ const labelFormatter = (value:any, payload:any) => {
   else return <></>
 }
 
-export const ChoiceData: React.FC<choiceDataProps> = ({choiceData, correctChoice}) => {  
+export const ChoiceData: Component<choiceDataProps> = ({choiceData, correctChoice}) => {  
 
   return (
-    <div className="row justify-content-center w-100" style={{height: "20vh", width: "100vw"}}>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart width={150} height={40} data={choiceData} className="no-icon" >
+    <div class="row justify-content-center w-100" style={{height: "20vh", width: "100vw"}}>
+      {/* <ResponsiveContainer width="100%" height="100%">
+        <BarChart width={150} height={40} data={choiceData} class="no-icon" >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="label" />
           <YAxis />
@@ -31,12 +31,12 @@ export const ChoiceData: React.FC<choiceDataProps> = ({choiceData, correctChoice
           <Bar legendType={'circle'} name={"Total Votes"} dataKey="totalVotes" fill={"white"}>
             { choiceData.map((entry) => {
               return (
-                <Cell key={`${entry.label}`} fill={entry.label === correctChoice.label ? '#5a964b' : '#706daa'} />
+                <Cell fill={entry.label === correctChoice.label ? '#5a964b' : '#706daa'} />
                 )
             })}
           </Bar>
         </BarChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
     </div>
   )
 }

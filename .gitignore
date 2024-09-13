@@ -35,3 +35,11 @@ yarn-error.log*
 __pycache__
 User/
 Scripts/slp2mp4/User-*
+
+node_modules
+dist
+.env
+.dev.vars
+.wrangler
+
+slp-test/

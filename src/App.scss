@@ -2,11 +2,16 @@
 
 @font-face {
   font-family: "Melee";
-  src: url("../public/fonts/impact.ttf");
+  src: url("/fonts/impact.ttf");
+}
+
+@font-face {
+  font-family: "Now-Loading";
+  src: url("/fonts/hyper.ttf");
 }
 
 .logo {       
-  background-image: linear-gradient(180deg, black 0%, black 50%, #805dad 90%, white 100%);
+  background-image: linear-gradient(180deg, black 50%, #805dad 80%, white 100%);
   /* filter: drop-shadow(0 20px 30px #28d8ff33); */
   color: black;
   -webkit-text-fill-color: transparent;
@@ -16,22 +21,41 @@
   /* font-size: 2.5rem; */
   // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-family: Melee;
-  -webkit-transform: scale(1.5, 1);
-  -moz-transform: scale(1.5, 1);
-  -o-transform: scale(1.5, 1);
-  transform: scale(1.5, 1);
+  -webkit-transform: scale(1.5, .85);
+  -moz-transform: scale(1.5, .85);
+  -o-transform: scale(1.5, .85);
+  transform: scale(1.5, .85);
 
   &.brand {
     -webkit-text-stroke: .02rem rgb(255, 255, 255, 0.5);
   }
 }
 
+.nav-m {
+  margin-top: 48px !important;
+}
+
+.spoiler {
+  color: black;
+  background-color: black;
+  user-select: none;
+}
+
+.spoiler:hover {
+  color: white;
+}
+
 .navbar-brand {
-  margin-left: 10%;
-  -webkit-transform: scale(1.5, 1);
-  -moz-transform: scale(1.5, 1);
-  -o-transform: scale(1.5, 1);
-  transform: scale(1.5, 1);
+  display: flex;
+  position: fixed;
+  -webkit-transform: scale(1.5, .85);
+  -moz-transform: scale(1.5, .85);
+  -o-transform: scale(1.5, .85);
+  transform: scale(1.5, .85);
+  &.logo {
+    background-image: linear-gradient(180deg, black 50%, #805dad 70%, white 100%);
+    font-size: 1.8rem;
+  }
 }
 
 .white-text {
@@ -107,3 +131,31 @@
   animation-delay: 5s;
   animation-fill-mode: forwards;
 } */
+
+
+
+
+.now-loading {
+  font-family: Now-Loading;
+  transform: scale(1, .5);
+  top: calc(min(50vw, 50vh) - min(2vw, 2vh));
+  left: calc(max(0px, calc((100vw - 90vh) / 2)) + min(35vh, 35vw));
+  position: absolute;
+  font-size: min(10vw, 6vh);
+  color: #c2b87f;
+  z-index: 1000;
+}
+
+.now-loading-bar {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .5);
+  top: min(51vw, 51vh);
+  left: calc(max(0px, calc((100vw - 86vh) / 2)) + 2px);
+  max-width: calc(86vh - 2px);
+  width: calc(100% - 4px);
+  height: 46px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
