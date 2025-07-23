@@ -13,12 +13,7 @@ export const fetchAnimations = async (
   if (animationsCache.has(externalCharacterId)) {
     return animationsCache.get(externalCharacterId) as CharacterAnimations;
   }
-  const isLocal = true;
-  //todo do islocal ? /zips/ : ''
-  const animations = await load(
-    isLocal ? `zips/${characterZipUrlByExternalId[externalCharacterId]}` :
-    `https://meleeguessr-v2-zips.s3.amazonaws.com/${characterZipUrlByExternalId[externalCharacterId]}`
-  );
+  const animations = await load(`zips/${characterZipUrlByExternalId[externalCharacterId]}`);
   animationsCache.set(externalCharacterId, animations);
   return animations;
 };

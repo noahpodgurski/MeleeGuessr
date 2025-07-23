@@ -34,7 +34,10 @@ export interface PlayStore {
     score?: number,
 }
 
+const isDebug = false;
+const debugFiles: any = []
 const [state, setState] = createStore<PlayStore>();
+let debugIndex = 320;
 
 export const playStore = state;
 export const clearPlayStore = async () => {
@@ -53,6 +56,30 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
   }
   params.sessionId = playStore.sessionId || localStorage.getItem("session");
   const [loading, {setLoading}] = useLoader();
+  if (isDebug) {
+    const cc = debugFiles[debugIndex];
+    cc.path = cc.path.replace("\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp", "http://192.168.1.111:8000").replaceAll("\\", "/")
+    setState("currentClip", cc);
+    setState("sessionId", "DEBUG");
+    setState("score", 0);
+    localStorage.setItem("session", "DEBUG");
+    return {
+      data: {
+        data: {
+          currentClip: {
+            path: cc.path,
+            startFrame: cc.startFrame
+          },
+          sessionId: "DEBUG",
+          score: debugIndex
+        }
+      },
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: {headers},
+    };
+  }
   return await axios.get(`${SERVER_IP}/play`, {headers, params})
   .then((response) => {
     setState("currentClip", response.data.data.currentClip);
@@ -75,6 +102,11 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
     }
     return null;
   });
+}
+
+export async function goNext(nav: Navigator): Promise<AxiosResponse | null> {
+  debugIndex++;
+  return play(nav);
 }
 
 export async function makeGuess(guess: string, nav: Navigator): Promise<AxiosResponse | null> {

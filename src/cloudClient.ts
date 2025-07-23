@@ -5,7 +5,7 @@ export async function downloadReplay(
   name: string
 ): Promise<{ data: Blob | null; error: Error | null }> {
   try {
-    const res = await fetch(`https://meleeguessr-v2-clips.s3.amazonaws.com/${name}`);
+    const res = await fetch(`https://meleeguessr-v3-clips.s3.amazonaws.com/${name}`);
     const data = await res.blob();
     return { data, error: null };
   } catch (e) {

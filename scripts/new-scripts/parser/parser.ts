@@ -1048,7 +1048,7 @@ function toHalfWidth(s: string): string {
 }
 
 // Function to clear data within a specified range
-export function clearData(dataView: DataView, offset: number, length: number, beCocky: boolean=false) {
+export function clearData(dataView: DataView, offset: number, length: number, beCocky: boolean=true) {
   // console.log(`Clearing data from offset ${offset} for ${length} bytes.`);
   
   for (let i = 0; i < length; i++) {

@@ -27,7 +27,7 @@ import fs from 'fs';
 import path from "path";
 import cliProgress from 'cli-progress';
 import byteSize from 'byte-size';
-import { adjectives, animals, colors, uniqueNamesGenerator } from 'unique-names-generator';
+import { adjectives, names, colors, uniqueNamesGenerator } from 'unique-names-generator';
 import { FramesType, SlippiGame } from '@slippi/slippi-js';
 import logger from 'node-color-log';
 // import { SlippiGame } from './slippi';
@@ -35,7 +35,7 @@ import logger from 'node-color-log';
 const IS_TOURNAMENT = false;
 const SUB_DIR = "converted"
 const player = "Nicki"
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Nicki\\highlights.json`
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\all.json`
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\all.json`
 
 
@@ -202,7 +202,7 @@ function cutSlp () {
                 endFrame: highlight.endFrame,
                 characterId: null,
                 characterColor: null,
-                playerName: null,
+                playerName: highlight.player ? {name: highlight.player, code: ""} : null,
                 oppCharacterId: null,
                 oppCharacterColor: null,
                 oppPlayerName: null,
@@ -267,8 +267,10 @@ function cutSlp () {
                         //ensure the opponent is actually attempting to move...
                         const frames = verifySlp.getFrames();
                         validatedInput = isNotAFK(frames, highlight.startFrame, highlight.endFrame, oppPlayerPort);
-                        logger.color('cyan').log(`HAS INPUT??: ${validatedInput}`);
-                        if (!validatedInput) break;
+                        if (!validatedInput) {
+                            console.log('afk clip.. skipping')
+                            break
+                        };
 
                         // let containsICS = false;
                         
@@ -278,13 +280,15 @@ function cutSlp () {
                         }
 
                         // assert(combo.playerIndex === data.portToGuess)
-                        if (combo.playerIndex !== data.portToGuess) {
-                            logger.color('yellow').log(`combo port ${combo.playerIndex} doesnt match ours ${data.portToGuess}`)
-                        } else {
-                            logger.color('green').log(`combo port MATCHED yay`);
+                        if (data.portToGuess) {
+                            if (combo.playerIndex !== data.portToGuess) {
+                                logger.color('yellow').log(`combo port ${combo.playerIndex} doesnt match ours ${data.portToGuess}`)
+                            } else {
+                                logger.color('green').log(`combo port MATCHED yay`);
+                            }
                         }
                         data.playerName = {
-                            name: players[playerPort].displayName,
+                            name: data.playerName?.name ?? players[playerPort].displayName,
                             code: players[playerPort].connectCode
                         };
                         data.characterId = players[playerPort].characterId;
@@ -301,11 +305,14 @@ function cutSlp () {
                 }
             }
             if (!validatedCombo) {
+                console.log('no validated combo :(')
                 errored++;
                 continue;
                 // throw Error("Unable to validate combo");
             }
-            if (!validatedInput || !data.playerName || data.playerName.name === "") {
+            if (!validatedInput || !data.playerName || data.playerName?.name === "") {
+                console.log(`other error :( ${validatedInput}`)
+                console.log(data.playerName)
                 errored++;
                 continue;
             }
@@ -313,8 +320,8 @@ function cutSlp () {
                 throw Error("Unable to validate port to guess");
             }
 
-            //make new name                                         1400       50       350
-            const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }) + ".slp";
+            //make new name                                         1400       50       4900
+            const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, names] }) + ".slp";
             //use original name
             // const newName = path.basename(highlight.path);
             const outFile = path.join(CUT_DIR, newName);
@@ -325,7 +332,6 @@ function cutSlp () {
             data.path = outFile;
             data.ogPath = highlight.path;
             data.tournament = tournamentName?.[0] ?? "";
-            // console.log(data);
             
             //verify cut slps
             try {

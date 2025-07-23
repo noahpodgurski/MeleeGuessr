@@ -21,7 +21,7 @@ export function PlayerHUD(props: { player: number }) {
       ? [
           // renderData()!.playerSettings.displayName,
           // renderData()!.playerSettings.connectCode,
-          renderData()!.playerSettings.nametag,
+          // renderData()!.playerSettings.nametag, //enable for debug
           // renderData()!.playerSettings.displayName,
           characterNameByInternalId[
             renderData()!.playerState.internalCharacterId

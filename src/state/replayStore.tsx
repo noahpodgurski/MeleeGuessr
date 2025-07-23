@@ -17,7 +17,6 @@ import {
   ReplayData,
 } from "~/common/types";
 import { parseReplay } from "~/parser/parser";
-import { queries } from "~/search/queries";
 import { currentSelectionStore } from "~/state/selectionStore";
 import { CharacterAnimations, fetchAnimations } from "~/viewer/animationCache";
 import { actionMapByInternalId } from "~/viewer/characters";
@@ -25,7 +24,6 @@ import { Character } from "~/viewer/characters/character";
 import { getPlayerOnFrame, getStartOfAction } from "~/viewer/viewerUtil";
 import colors from "tailwindcss/colors";
 import { fileStore } from "~/state/fileStore";
-import { action, landsAttack } from "~/search/framePredicates";
 import { decode } from "@shelacek/ubjson";
 
 export interface RenderData {
