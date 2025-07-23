@@ -121,7 +121,7 @@ export const Play = () => {
           </Grid>
           <Grid style={{"text-align": 'center'}}>
             { playStore.currentClip && selected() && <h2 class="white-text">Who is the {characterNameByExternalId[playStore.currentClip?.characterId]}?</h2> }
-            { playStore.sessionId === "DEBUG" && <><p>{playStore.currentClip?.path}</p><p>{playStore.currentClip?.gameStation}</p></>}
+            {/* { playStore.sessionId === "DEBUG" && <><p>{playStore.currentClip?.path}</p><p>{playStore.currentClip?.gameStation}</p></>} */}
           </Grid>
           <Grid sx={{mt: 1}} style={{"text-align": 'center', 'justify-content': 'space-around', 'display': 'flex'}}>
             { selected() && <Choices guess={guess} answer={answer} />}
