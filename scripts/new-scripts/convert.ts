@@ -34,12 +34,12 @@ import logger from 'node-color-log';
 
 const IS_TOURNAMENT = false;
 const SUB_DIR = "converted"
-const player = "lloD"
-// const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\highlights.json`
-const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\all.json`
+const player = "Nicki"
+const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\Nicki\\highlights.json`
+// const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\all.json`
 
 
-const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\2.0";
+const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\3.0";
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
 const CLIP_FILE = path.join(CLIP_DIR, "all.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
@@ -104,8 +104,24 @@ if (!fs.existsSync(CUT_DIR)) {
 
 const isNotAFK = (frames: FramesType, startFrame: number, endFrame: number, playerIndex: number) => {
     for (let i = startFrame; i < endFrame; i++) {
-        if (frames[i].players[playerIndex]?.pre.buttons !== 0 || frames[i].players[playerIndex]?.pre.trigger !== 0)
+        if (frames[i]?.players[playerIndex]?.pre.buttons !== 0 || frames[i]?.players[playerIndex]?.pre.trigger !== 0)
             return true;
+    }
+    return false;
+}
+
+const isHandOffCombo = (frames: FramesType, startFrame: number, endFrame: number, playerIndex: number) => {
+    // is character popo or nana
+    if (frames[startFrame].players[playerIndex]?.post.internalCharacterId === 10 || frames[startFrame].players[playerIndex]?.post.internalCharacterId === 11) {
+        let grabCount = 0;        
+        for (let i = startFrame; i < endFrame; i++) {
+            if (frames[i]?.players[playerIndex]?.post.actionStateId === 213) {
+                grabCount++;
+            }
+        }
+        if (grabCount > 4) {
+            return true;
+        }
     }
     return false;
 }
@@ -132,17 +148,22 @@ function cutSlp () {
         //filter out duplicates
         const _highlights = data.queue as Highlight[];
         const highlights: Highlight[] = [];
-        for (let i = 0; i < _highlights.length-1; i++) {
-            let isDup = false;
-            for (let j = i+1; j < _highlights.length; j++) {
-                if (_highlights[i].path === _highlights[j].path && _highlights[i].startFrame === _highlights[j].startFrame && _highlights[i].endFrame === _highlights[j].endFrame) {
-                    //duplicate detected
-                    isDup = true;
-                    break;
+
+        if (_highlights.length === 1) {
+            highlights.push(_highlights[0]);
+        } else {
+            for (let i = 0; i < _highlights.length-1; i++) {
+                let isDup = false;
+                for (let j = i+1; j < _highlights.length; j++) {
+                    if (_highlights[i].path === _highlights[j].path && _highlights[i].startFrame === _highlights[j].startFrame && _highlights[i].endFrame === _highlights[j].endFrame) {
+                        //duplicate detected
+                        isDup = true;
+                        break;
+                    }
                 }
-            }
-            if (!isDup) {
-                highlights.push(_highlights[i]);
+                if (!isDup) {
+                    highlights.push(_highlights[i]);
+                }
             }
         }
         console.log(`${_highlights.length - highlights.length} dups detected`)
@@ -244,9 +265,17 @@ function cutSlp () {
 
                         console.log('WOW WE FOUND A MATCH WHAT ARE TEH CHANcES')
                         //ensure the opponent is actually attempting to move...
-                        validatedInput = isNotAFK(verifySlp.getFrames(), highlight.startFrame, highlight.endFrame, oppPlayerPort);
+                        const frames = verifySlp.getFrames();
+                        validatedInput = isNotAFK(frames, highlight.startFrame, highlight.endFrame, oppPlayerPort);
                         logger.color('cyan').log(`HAS INPUT??: ${validatedInput}`);
                         if (!validatedInput) break;
+
+                        // let containsICS = false;
+                        
+                        if (isHandOffCombo(frames, highlight.startFrame, highlight.endFrame, playerPort)) {
+                            logger.color('red').log(`HAND OFF COMBO DETECTED`);
+                            break;
+                        }
 
                         // assert(combo.playerIndex === data.portToGuess)
                         if (combo.playerIndex !== data.portToGuess) {
@@ -284,7 +313,7 @@ function cutSlp () {
                 throw Error("Unable to validate port to guess");
             }
 
-            //make new name
+            //make new name                                         1400       50       350
             const newName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] }) + ".slp";
             //use original name
             // const newName = path.basename(highlight.path);

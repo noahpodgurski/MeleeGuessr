@@ -81,4 +81,4 @@ Think you can really guess who's playing that captain falcon - based solely off 
     
         a. Instead of storing the JWT in localStorage, consider using secure cookies to store the token and enable the httpOnly and Secure flags to mitigate potential XSS attacks.
 
-        b. When the token expires or is invalid, make sure to handle such cases (e.g., force logout if an invalid token is detected).
+        ~~b. When the token expires or is invalid, make sure to handle such cases (e.g., force logout if an invalid token is detected).~~
