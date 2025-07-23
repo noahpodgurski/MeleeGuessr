@@ -16,7 +16,7 @@ export const Home: Component = () => {
 		<Grid container minHeight="90vh" justifyContent="center" alignItems="center" class="nav-m">
 			<Container maxWidth="sm">
 				<Grid xs={12}>
-					<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v3</Typography>
+					<Typography style={{"text-align": "center", "margin-right": "70%"}} variant="subtitle1" color="thistle">v3.0</Typography>
 					<h1 class="logo" style={{"text-align": "center", "font-size": "2.5rem"}}>MeleeGuessr</h1>
 				</Grid>
 				<Grid xs={12} lg={6} class="centered">
