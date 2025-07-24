@@ -1,20 +1,20 @@
 import { choiceDataType } from "../../components/ChoiceData";
 
-const mockChoiceData:choiceDataType[] = [
+const mockChoiceData: choiceDataType[] = [
   {
     totalVotes: 124,
-    label: 'Armada'
+    label: "Armada",
   },
   {
     totalVotes: 14,
-    label: 'Polish'
+    label: "Polish",
   },
   {
     totalVotes: 44,
-    label: "Llod"
+    label: "Llod",
   },
   {
     totalVotes: 3,
-    label: "M2K"
-  }
+    label: "M2K",
+  },
 ];

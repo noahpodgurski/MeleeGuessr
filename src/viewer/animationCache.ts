@@ -13,7 +13,9 @@ export const fetchAnimations = async (
   if (animationsCache.has(externalCharacterId)) {
     return animationsCache.get(externalCharacterId) as CharacterAnimations;
   }
-  const animations = await load(`zips/${characterZipUrlByExternalId[externalCharacterId]}`);
+  const animations = await load(
+    `zips/${characterZipUrlByExternalId[externalCharacterId]}`
+  );
   animationsCache.set(externalCharacterId, animations);
   return animations;
 };

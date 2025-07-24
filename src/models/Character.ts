@@ -1,33 +1,33 @@
 export enum Character {
-  DrMario = "Dr. Mario", 
-  Mario = "Mario", 
-  Luigi = "Luigi", 
-  Bowser = "Bowser", 
-  Peach = "Peach", 
-  Yoshi = "Yoshi", 
-  DK = "Donkey Kong", 
-  Falcon = "Captain Falcon", 
-  Ganondorf = "Ganondorf", 
-  Falco = "Falco", 
-  Fox = "Fox", 
-  Ness = "Ness", 
-  IC = "Ice Climbers", 
-  Kirby = "Kirby", 
-  Samus = "Samus", 
-  Zelda = "Zelda", 
-  Sheik = "Sheik", 
-  Link = "Link", 
-  YLink = "Young Link", 
-  Pichu = "Pichu", 
-  Pikachu = "Pikachu", 
-  Jigglypuff = "Jigglypuff", 
-  Mewtwo = "Mewtwo", 
-  GAW = "Mr. Game & Watch", 
-  Marth = "Marth", 
-  Roy = "Roy"
+  DrMario = "Dr. Mario",
+  Mario = "Mario",
+  Luigi = "Luigi",
+  Bowser = "Bowser",
+  Peach = "Peach",
+  Yoshi = "Yoshi",
+  DK = "Donkey Kong",
+  Falcon = "Captain Falcon",
+  Ganondorf = "Ganondorf",
+  Falco = "Falco",
+  Fox = "Fox",
+  Ness = "Ness",
+  IC = "Ice Climbers",
+  Kirby = "Kirby",
+  Samus = "Samus",
+  Zelda = "Zelda",
+  Sheik = "Sheik",
+  Link = "Link",
+  YLink = "Young Link",
+  Pichu = "Pichu",
+  Pikachu = "Pikachu",
+  Jigglypuff = "Jigglypuff",
+  Mewtwo = "Mewtwo",
+  GAW = "Mr. Game & Watch",
+  Marth = "Marth",
+  Roy = "Roy",
 }
 
-export const AllCharacters:Character[] = [
+export const AllCharacters: Character[] = [
   Character.DrMario,
   Character.Mario,
   Character.Luigi,
@@ -53,16 +53,16 @@ export const AllCharacters:Character[] = [
   Character.Mewtwo,
   Character.GAW,
   Character.Marth,
-  Character.Roy
-]
+  Character.Roy,
+];
 
-export const Spacies:Character[] = [
+export const Spacies: Character[] = [
   Character.Falcon,
   Character.Falco,
   Character.Fox,
-]
+];
 
-export const Floaties:Character[] = [
+export const Floaties: Character[] = [
   Character.DrMario,
   Character.Mario,
   Character.Luigi,
@@ -85,10 +85,10 @@ export const Floaties:Character[] = [
   Character.Mewtwo,
   Character.GAW,
   Character.Marth,
-  Character.Roy
-]
+  Character.Roy,
+];
 
-export const MidLowTiers:Character[] = [
+export const MidLowTiers: Character[] = [
   Character.DrMario,
   Character.Mario,
   Character.Luigi,
@@ -105,5 +105,5 @@ export const MidLowTiers:Character[] = [
   Character.Pikachu,
   Character.Mewtwo,
   Character.GAW,
-  Character.Roy
-]
+  Character.Roy,
+];

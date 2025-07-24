@@ -1,4 +1,4 @@
-export const shuffleArray = (array:any) => {
+export const shuffleArray = (array: any) => {
   let curId = array.length;
   // There remain elements to shuffle
   while (0 !== curId) {
@@ -11,4 +11,4 @@ export const shuffleArray = (array:any) => {
     array[randId] = tmp;
   }
   return array;
-}
+};

@@ -2,18 +2,18 @@ import { Character } from "./Character";
 
 type conditionalCharacter = {
   [key: string]: Character[];
-}
+};
 
 export type Choice = {
   label: string;
-  characters: Character[],
+  characters: Character[];
   color?: string;
   aliases?: string[];
-  conditionalCharacters?: conditionalCharacter,
+  conditionalCharacters?: conditionalCharacter;
   flag?: string;
   score?: number;
   controllerType?: ControllerType;
-}
+};
 
 export interface ControllerType {
   type: {

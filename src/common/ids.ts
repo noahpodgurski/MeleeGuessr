@@ -37,7 +37,7 @@ export const characterNameByExternalId = [
   "Sandbag", // 31, 0x1f
   "Popo", // 32, 0x20
 ] as const;
-export type ExternalCharacterName = typeof characterNameByExternalId[number];
+export type ExternalCharacterName = (typeof characterNameByExternalId)[number];
 
 /**
  * Note: internal and external lists do not match.
@@ -78,7 +78,7 @@ export const characterNameByInternalId = [
   "Giga Bowser", // 31, 0x1f
   "Sandbag", // 32, 0x20
 ] as const;
-export type InternalCharacterNames = typeof characterNameByInternalId[number];
+export type InternalCharacterNames = (typeof characterNameByInternalId)[number];
 
 /**
  * Does not yet include single player stages (ids 33-285)
@@ -120,7 +120,7 @@ export const stageNameByExternalId = [
   "Final Destination", // 32, 0x20
   // TODO: Single player mode stages, goes up to 285
 ] as const;
-export type ExternalStageName = typeof stageNameByExternalId[number];
+export type ExternalStageName = (typeof stageNameByExternalId)[number];
 
 /**
  * Source: https://github.com/project-slippi/slippi-wiki/blob/master/SPEC.md#melee-ids
@@ -154,7 +154,7 @@ export const stageNameByInternalId = [
   "Yoshi's Island (64)", // 29, 0x1d
   "Kongo Jungle (64)", // 30, 0x1e
 ] as const;
-export type InternalStageName = typeof stageNameByInternalId[number];
+export type InternalStageName = (typeof stageNameByInternalId)[number];
 
 /**
  * Does not include character-specific actions, and some characters may use
@@ -505,7 +505,7 @@ export const actionNameById = [
   "ThrownCrazyhand", // 339, 0x153
   "BarrelCannonWait", // 340, 0x154
 ] as const;
-export type ActionName = typeof actionNameById[number];
+export type ActionName = (typeof actionNameById)[number];
 
 /**
  * Source: https://github.com/project-slippi/slippi-wiki/blob/master/SPEC.md#melee-ids
@@ -606,7 +606,7 @@ export const attackNamesById = [
   "Super Scope (Charged)", // 92, 0x5C
   "Hammer", // 93, 0x5D
 ] as const;
-export type AttackName = typeof attackNamesById[number];
+export type AttackName = (typeof attackNamesById)[number];
 
 /**
  * Source: https://github.com/project-slippi/slippi-wiki/blob/master/SPEC.md#melee-ids
@@ -865,4 +865,4 @@ export const itemNamesById = [
   "Great Fox's Laser", // 0xEB
   "Birdo's Egg", // 0xEC
 ] as const;
-export type ItemName = typeof itemNamesById[number];
+export type ItemName = (typeof itemNamesById)[number];

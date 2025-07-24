@@ -11,31 +11,31 @@ import { Navigator } from "@solidjs/router";
 import { setLoaderType } from "~/components/Loader";
 import { pause } from "./replayStore";
 export interface PlayStore {
-    currentClip?: {
-        path: string,
-        startFrame: number,
-        endFrame: number,
-        playerName?: {
-            code: string,
-            name: string,
-        },
-        characterId: number,
-        characterColor: number,
-        oppCharacterId: number,
-        oppPlayerName?: {
-            code: string,
-            name: string,
-        },
-        oppCharacterColor: number,
-        portToGuess: number,
-        choices: string[]
-    },
-    sessionId?: string,
-    score?: number,
+  currentClip?: {
+    path: string;
+    startFrame: number;
+    endFrame: number;
+    playerName?: {
+      code: string;
+      name: string;
+    };
+    characterId: number;
+    characterColor: number;
+    oppCharacterId: number;
+    oppPlayerName?: {
+      code: string;
+      name: string;
+    };
+    oppCharacterColor: number;
+    portToGuess: number;
+    choices: string[];
+  };
+  sessionId?: string;
+  score?: number;
 }
 
 const isDebug = false;
-const debugFiles: any = []
+const debugFiles: any = [];
 const [state, setState] = createStore<PlayStore>();
 let debugIndex = 320;
 
@@ -44,7 +44,7 @@ export const clearPlayStore = async () => {
   setState("currentClip", undefined);
   setState("sessionId", undefined);
   setState("score", undefined);
-}
+};
 
 export async function play(nav: Navigator): Promise<AxiosResponse | null> {
   let headers: any = {};
@@ -55,10 +55,15 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
     headers.authorization = `Bearer ${localStorage.getItem("user")}`;
   }
   params.sessionId = playStore.sessionId || localStorage.getItem("session");
-  const [loading, {setLoading}] = useLoader();
+  const [loading, { setLoading }] = useLoader();
   if (isDebug) {
     const cc = debugFiles[debugIndex];
-    cc.path = cc.path.replace("\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp", "http://192.168.1.111:8000").replaceAll("\\", "/")
+    cc.path = cc.path
+      .replace(
+        "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp",
+        "http://192.168.1.111:8000"
+      )
+      .replaceAll("\\", "/");
     setState("currentClip", cc);
     setState("sessionId", "DEBUG");
     setState("score", 0);
@@ -68,40 +73,44 @@ export async function play(nav: Navigator): Promise<AxiosResponse | null> {
         data: {
           currentClip: {
             path: cc.path,
-            startFrame: cc.startFrame
+            startFrame: cc.startFrame,
           },
           sessionId: "DEBUG",
-          score: debugIndex
-        }
+          score: debugIndex,
+        },
       },
       status: 200,
       statusText: "OK",
       headers: {},
-      config: {headers},
+      config: { headers },
     };
   }
-  return await axios.get(`${SERVER_IP}/play`, {headers, params})
-  .then((response) => {
-    setState("currentClip", response.data.data.currentClip);
-    setState("sessionId", response.data.data.sessionId);
-    setState("score", response.data.data.score);
-    localStorage.setItem("session", response.data.data.sessionId);
-    setLoading(false);
-    return response;
-  })
-  .catch((err) => {
-    nav("/");
-    setLoading(false);
-    if (err.response.data.message === "Token expired" || err.response.data.message === "Invalid token") {
-      //show login modal
-      toast('Session expired, please login again');
-      setLoginModal(true);
-      AuthService.logout();
-    } else {
-      toast("Something went wrong, please try again");
-    }
-    return null;
-  });
+  return await axios
+    .get(`${SERVER_IP}/play`, { headers, params })
+    .then((response) => {
+      setState("currentClip", response.data.data.currentClip);
+      setState("sessionId", response.data.data.sessionId);
+      setState("score", response.data.data.score);
+      localStorage.setItem("session", response.data.data.sessionId);
+      setLoading(false);
+      return response;
+    })
+    .catch((err) => {
+      nav("/");
+      setLoading(false);
+      if (
+        err.response.data.message === "Token expired" ||
+        err.response.data.message === "Invalid token"
+      ) {
+        //show login modal
+        toast("Session expired, please login again");
+        setLoginModal(true);
+        AuthService.logout();
+      } else {
+        toast("Something went wrong, please try again");
+      }
+      return null;
+    });
 }
 
 export async function goNext(nav: Navigator): Promise<AxiosResponse | null> {
@@ -109,32 +118,43 @@ export async function goNext(nav: Navigator): Promise<AxiosResponse | null> {
   return play(nav);
 }
 
-export async function makeGuess(guess: string, nav: Navigator): Promise<AxiosResponse | null> {
-  const [, {setLoading}] = useLoader();
+export async function makeGuess(
+  guess: string,
+  nav: Navigator
+): Promise<AxiosResponse | null> {
+  const [, { setLoading }] = useLoader();
   setLoaderType(true);
   let headers: any = {};
   if (localStorage.getItem("user")) {
     headers.authorization = `Bearer ${localStorage.getItem("user")}`;
   }
-  return await axios.post(`${SERVER_IP}/guess`, {guess, sessionId: state.sessionId}, {headers})
-  .then((response) => {
-    if (response.data.message === "Correct") {
-      setState("score", (state.score ?? 0)+1);
-    }
-    setLoading(false);
-    return response;
-  })
-  .catch((err) => {
-    nav("/");
-    setLoading(false);
-    if (err.response.data.message === "Token expired" || err.response.data.message === "Invalid token") {
-      //show login modal
-      toast('Session expired, please login again');
-      setLoginModal(true);
-      AuthService.logout();
-    } else {
-      toast('Something went wrong. Please try again');
-    }
-    return null;
-  });
+  return await axios
+    .post(
+      `${SERVER_IP}/guess`,
+      { guess, sessionId: state.sessionId },
+      { headers }
+    )
+    .then((response) => {
+      if (response.data.message === "Correct") {
+        setState("score", (state.score ?? 0) + 1);
+      }
+      setLoading(false);
+      return response;
+    })
+    .catch((err) => {
+      nav("/");
+      setLoading(false);
+      if (
+        err.response.data.message === "Token expired" ||
+        err.response.data.message === "Invalid token"
+      ) {
+        //show login modal
+        toast("Session expired, please login again");
+        setLoginModal(true);
+        AuthService.logout();
+      } else {
+        toast("Something went wrong. Please try again");
+      }
+      return null;
+    });
 }

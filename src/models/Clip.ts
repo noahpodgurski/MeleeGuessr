@@ -8,4 +8,4 @@ export type Clip = {
   slp?: string;
   oppChar?: Character;
   oppPlayer?: Choice;
-}
+};

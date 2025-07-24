@@ -53,12 +53,12 @@ export function parseReplay({ metadata, raw }: any): any[] {
     0x01 + commandPayloadSizes[0x35],
     metadata
   );
-  
+
   // console.log(commandPayloadSizes)
   let gameEnding: GameEnding | undefined;
   const replayVersion = gameSettings.replayFormatVersion;
   let offset =
-  0x00 + commandPayloadSizes[0x35] + 0x01 + commandPayloadSizes[0x36] + 0x01;
+    0x00 + commandPayloadSizes[0x35] + 0x01 + commandPayloadSizes[0x36] + 0x01;
   // inputs/states may come multiple times for a given player on a given
   // frame due to rollbacks. Because we are overwriting, we will just save the
   // last one which will be the official "finalized" one.
@@ -97,12 +97,11 @@ export function parseReplay({ metadata, raw }: any): any[] {
       case 0x3c:
         frameCount++;
         break;
-
     }
     offset = offset + commandPayloadSizes[command] + 0x01;
   }
-  console.log(`${frameCount} total frames (frameCount)`)
-  console.log(`${frames.length} ACTUAL total frames`)
+  console.log(`${frameCount} total frames (frameCount)`);
+  console.log(`${frames.length} ACTUAL total frames`);
   // if (gameEnding === undefined) {
   //   console.warn("Game end event not found");
   //   // throw new Error("Game Ending not found");
@@ -1048,11 +1047,16 @@ function toHalfWidth(s: string): string {
 }
 
 // Function to clear data within a specified range
-export function clearData(dataView: DataView, offset: number, length: number, beCocky: boolean=true) {
+export function clearData(
+  dataView: DataView,
+  offset: number,
+  length: number,
+  beCocky: boolean = true
+) {
   // console.log(`Clearing data from offset ${offset} for ${length} bytes.`);
-  
+
   for (let i = 0; i < length; i++) {
-    dataView.setUint8(offset + i, 0);  // Set each byte to 0
+    dataView.setUint8(offset + i, 0); // Set each byte to 0
   }
   if (beCocky) {
     // nice try

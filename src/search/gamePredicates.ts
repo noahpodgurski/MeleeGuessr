@@ -38,7 +38,7 @@ export function vsCharacter(character: ExternalCharacterName): GamePredicate {
     ) ?? false;
 }
 
-export type Stage = typeof stageNameByExternalId[number];
+export type Stage = (typeof stageNameByExternalId)[number];
 
 export function isStage(stage: Stage): GamePredicate {
   return (game: ReplayData, _playerIndex: number) =>
