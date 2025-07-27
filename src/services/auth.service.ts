@@ -1,7 +1,8 @@
 import axios from "axios";
 import { clearPlayStore } from "~/state/playStore";
 import { loadUser, resetUser, userStore } from "~/state/userStore";
-const SERVER_IP = "https://64vwhnl0nk.execute-api.us-east-1.amazonaws.com/Prod";
+
+const SERVER_IP = import.meta.env.VITE_SERVER_IP;
 // if not prod server_ip = "" todo
 const register = (email: string, username: string, password: string) => {
   return axios

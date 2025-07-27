@@ -1,3 +1,12 @@
+# 3.1
+* Added guess the controller
+
+# 3.0
+* Added clips from tournaments, and debug options, google tag, bugfixes
+
+# 2.0
+* Refactor to use slippilab and send .slps instead of video files
+
 # 1.3
 * Report button
 

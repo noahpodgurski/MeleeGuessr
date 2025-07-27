@@ -6,8 +6,7 @@ import cliProgress from "cli-progress";
 const client = new S3Client({});
 
 export const main = async () => {
-  const dir =
-    "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\3.0\\converted\\cut";
+  const dir = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\${process.env.VITE_VERSION}\\converted\\cut`;
   const files = await fs.promises.readdir(dir);
 
   const bar1 = new cliProgress.SingleBar(
@@ -20,7 +19,7 @@ export const main = async () => {
     const file = files[i];
     const data = await fs.promises.readFile(path.join(dir, file));
     const command = new PutObjectCommand({
-      Bucket: "meleeguessr-v3-clips",
+      Bucket: `meleeguessr-v${process.env.VITE_VERSION}-clips`,
       Key: file,
       Body: data,
     });

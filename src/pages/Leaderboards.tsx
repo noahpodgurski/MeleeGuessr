@@ -3,7 +3,7 @@ import './Table.scss';
 import UserService from "../services/user.service";
 import { useLoader } from "../components/common/Loader";
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Grid, Container } from '@suid/material';
-import { Loader, setLoaderType } from '~/components/Loader';
+import { setLoaderIsHexType } from '~/components/Loader';
 // import { createToast } from "../components/common/toaster";
 
 export type LeaderboardData = {
@@ -51,7 +51,7 @@ const Leaderboards: Component = () => {
   const [loading, {setLoading}] = useLoader() as any;
 
   createEffect(() => {
-    setLoaderType(true);
+    setLoaderIsHexType(true);
     // setData(mockData)
     setLoading(true);
     UserService.getAllStats()

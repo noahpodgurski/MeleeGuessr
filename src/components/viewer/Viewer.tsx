@@ -1,4 +1,4 @@
-import { createMemo, For, Show } from "solid-js";
+import { createEffect, createMemo, For, Show } from "solid-js";
 import { Camera } from "~/components/viewer/Camera";
 import { HUD } from "~/components/viewer/HUD";
 import { Players } from "~/components/viewer/Player";
@@ -9,14 +9,20 @@ import { Controls } from "~/components/viewer/Controls";
 import { useDarkMode } from "../common/Dark";
 import { Score } from "./Score";
 import AuthService from "~/services/auth.service";
+import { useLoader } from "../common/Loader";
 
 export function Viewer() {
+  const [_, {setLoading}] = useLoader();
   const items = createMemo(
     () => {
       if (replayStore.replayData && replayStore.replayData.frames.length < replayStore.frame) return [];
       return replayStore.replayData?.frames[replayStore.frame].items ?? []
     }
   );
+  createEffect(() => {
+    setLoading(!replayStore.replayData);
+  }, [replayStore.replayData]);
+  
   const [darkMode, ] = useDarkMode() as any;
   return (
     <div class="flex flex-col overflow-y-auto pb-4">
@@ -34,6 +40,10 @@ export function Viewer() {
           </g>
         </svg>
         <Controls />
+      </Show>
+      <Show when={!replayStore.replayData}>
+      <svg class={`rounded-t border ${darkMode() ? "bg-zinc-800" : "bg-slate-50"}`} viewBox="-365 -300 730 600">
+      </svg>
       </Show>
     </div>
   );

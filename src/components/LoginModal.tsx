@@ -6,7 +6,7 @@ import { Accessor, Component, createContext, createSignal } from 'solid-js';
 import { AiFillCloseCircle } from 'solid-icons/ai'
 import toast from "solid-toast";
 import { loginStore, setLoginModal } from "./Navbar";
-import { setLoaderType } from "./Loader";
+import { setLoaderIsHexType } from "./Loader";
 
 interface ILoginModal {
   updateUser: () => void;
@@ -33,7 +33,7 @@ export const LoginModal: Component<ILoginModal> = ({updateUser}) => {
       return;
     }
     
-    setLoaderType(true);
+    setLoaderIsHexType(true);
     setLoading(true);
 
     if (endpoint() === "/login"){

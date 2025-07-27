@@ -10,7 +10,7 @@ export interface LoaderType {
   }
   const [state, setState] = createStore<LoaderType>({ isHex: true});
   export const loaderStore = state;
-  export const setLoaderType = (isHex: boolean) => {
+  export const setLoaderIsHexType = (isHex: boolean) => {
 	setState("isHex", isHex);
   }
 

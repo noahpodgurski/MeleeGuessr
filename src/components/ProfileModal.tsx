@@ -6,7 +6,7 @@ import { useLoader } from "./common/Loader";
 import useTheme from "@suid/material/styles/useTheme";
 import { AiFillCloseCircle, AiFillEye, AiFillEyeInvisible } from "solid-icons/ai";
 import UserService from "~/services/user.service";
-import { setLoaderType } from "./Loader";
+import { setLoaderIsHexType } from "./Loader";
 import toast from "solid-toast";
 
 interface IProfileModal {
@@ -32,7 +32,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
 
   createEffect(() => {
     if (showModal()){
-      setLoaderType(true);
+      setLoaderIsHexType(true);
       setLoading(true);
       UserService.getStats()
       .then((response:any) => {
@@ -54,7 +54,7 @@ export const ProfileModal: Component<IProfileModal> = ({showModal, setShowModal,
   
   const logout = async () => {
     if (loading()) return;
-    setLoaderType(true);
+    setLoaderIsHexType(true);
     setLoading(true);
     await AuthService.logout()
     updateUser();

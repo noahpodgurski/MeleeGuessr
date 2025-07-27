@@ -38,6 +38,11 @@ import {
 } from "unique-names-generator";
 import { FramesType, SlippiGame } from "@slippi/slippi-js";
 import logger from "node-color-log";
+import {
+  getUniqueCStickAngles,
+  UNIQUE_COORD_GCC_THRESH_MAX,
+  UNIQUE_COORD_GCC_THRESH_MIN,
+} from "./common/util";
 // import { SlippiGame } from './slippi';
 
 const IS_TOURNAMENT = false;
@@ -46,7 +51,7 @@ const player = "Nicki";
 const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\all.json`;
 // const HIGHLIGHTS_FILE = `\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\Player\\all.json`
 
-const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\3.0";
+const BASE_DIR = "\\\\NOAH-PC\\Clout\\Backups\\MeleeGuessrSlp\\3.1";
 const CLIP_DIR = path.join(BASE_DIR, SUB_DIR);
 const CLIP_FILE = path.join(CLIP_DIR, "all.json");
 const CUT_DIR = path.join(CLIP_DIR, "cut");
@@ -73,6 +78,8 @@ export type Highlight = {
   portToGuess: number;
 };
 
+type SimpleControllerType = "gcc" | "box";
+
 //clips.json object
 export interface FileData {
   path: string;
@@ -83,9 +90,11 @@ export interface FileData {
   characterId: number | null;
   characterColor: number | null;
   playerName: PlayerName | null;
+  controllerType: SimpleControllerType | null;
   oppCharacterId: number | null;
   oppCharacterColor: number | null;
   oppPlayerName: PlayerName | null;
+  oppControllerType: SimpleControllerType | null;
   portToGuess: number | null;
 }
 
@@ -219,7 +228,7 @@ function cutSlp() {
       let tournamentName;
       if (IS_TOURNAMENT) {
         //add tournament data
-        const tournamentMatchRegex = new RegExp(/Tournament\\(.*)\\/);
+        const tournamentMatchRegex = new RegExp(/Tournament\\Parsed\\(.*)\\/);
         tournamentName = highlight.path.match(tournamentMatchRegex);
         if (!tournamentName || !tournamentName[0]) {
           console.warn(
@@ -240,9 +249,11 @@ function cutSlp() {
         playerName: highlight.player
           ? { name: highlight.player, code: "" }
           : null,
+        controllerType: null,
         oppCharacterId: null,
         oppCharacterColor: null,
         oppPlayerName: null,
+        oppControllerType: null,
         portToGuess: null,
       };
 
@@ -341,6 +352,22 @@ function cutSlp() {
               break;
             }
 
+            let playerIsBox = false;
+            let oppIsBox = false;
+            if (stats.lastFrame > 1800 || stats.gameComplete) {
+              const uniqueCStickAngles = getUniqueCStickAngles(
+                frames,
+                stats.lastFrame
+              );
+              playerIsBox =
+                uniqueCStickAngles[playerPort] > UNIQUE_COORD_GCC_THRESH_MIN &&
+                uniqueCStickAngles[playerPort] < UNIQUE_COORD_GCC_THRESH_MAX;
+              oppIsBox =
+                uniqueCStickAngles[oppPlayerPort] >
+                  UNIQUE_COORD_GCC_THRESH_MIN &&
+                uniqueCStickAngles[oppPlayerPort] < UNIQUE_COORD_GCC_THRESH_MAX;
+            }
+
             // assert(combo.playerIndex === data.portToGuess)
             if (data.portToGuess) {
               if (combo.playerIndex !== data.portToGuess) {
@@ -357,6 +384,7 @@ function cutSlp() {
               name: data.playerName?.name ?? players[playerPort].displayName,
               code: players[playerPort].connectCode,
             };
+            data.controllerType = playerIsBox ? "box" : "gcc";
             data.characterId = players[playerPort].characterId;
             data.characterColor = players[playerPort].characterColor;
             data.portToGuess = players[playerPort].playerIndex;
@@ -364,6 +392,7 @@ function cutSlp() {
               name: players[oppPlayerPort].displayName,
               code: players[oppPlayerPort].connectCode,
             };
+            data.oppControllerType = oppIsBox ? "box" : "gcc";
             data.oppCharacterId = players[oppPlayerPort].characterId;
             data.oppCharacterColor = players[oppPlayerPort].characterColor;
             validatedPort = true;

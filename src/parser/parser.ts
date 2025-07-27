@@ -405,6 +405,7 @@ function parseGameStartEvent(
       internalCharacterIds: Object.keys(
         metadata?.players[playerIndex]?.characters ?? {}
       ).map((key) => Number(key)),
+
       externalCharacterId: readUint(
         rawData,
         8,
