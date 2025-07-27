@@ -43,3 +43,4 @@ dist
 .wrangler
 
 slp-test/
+.env

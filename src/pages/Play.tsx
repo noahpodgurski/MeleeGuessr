@@ -82,9 +82,10 @@ export const Play = () => {
     //   playStore.currentClip.path;
     const url = isDebug
       ? playStore.currentClip.path
-      : `https://meleeguessr-v${
-          import.meta.env.VITE_VERSION
-        }-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
+      : `https://meleeguessr-v${import.meta.env.VITE_VERSION.replace(
+          ".",
+          "-"
+        )}-clips.s3.amazonaws.com/${playStore.currentClip.path}`;
     const startFrame = Math.max(playStore.currentClip.startFrame, 0);
     setStartFrame(startFrame);
     if (url !== null) {
